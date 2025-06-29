@@ -1,0 +1,315 @@
+{
+  "navbar": {
+    "home": "Home",
+    "services": "Our Services",
+    "faq": "FAQ / Blog",
+    "who_we_are": "Who We Are",
+    "contact": "Contact Us",
+    "language": "LANGUAGE",
+    "book_appointment": "Book Free Appointment",
+    "language_options": {
+      "en": "English",
+      "fr": "Français"
+    }
+  },
+  
+   "hero": {
+    "tagline": "Open Your Company in Hong Kong 100% Online",
+    "title_part1": "Launch your business",
+    "title_part2": "quickly",
+    "title_part3": "legally, and without leaving your home",
+    "benefits": [
+      "Company registration in 5 business days",
+      "0% tax* thanks to the territorial system",
+      "Dedicated expert French-speaking team",
+      "Documents in English and French"
+    ],
+    "description": "Opening your company in Hong Kong has never been easier: without unnecessary paperwork, with professional support from A to Z.",
+    "cta_button": "Book a Free Appointment"
+  },
+
+   "pricing": {
+    "title": "Why choose Hong Kong?",
+    "subtitle": "Hong Kong is one of the most dynamic economic hubs in the world.",
+    "plans": [
+      {
+        "title": "STARTER Pack",
+        "price": "€3,900",
+        "features": [
+          "Company formation in Hong Kong.",
+          "Includes: 1-year Domiciliation.",
+          "Excludes: Bank account opening, secretarial services, accounting.",
+          "Virtual office address included."
+        ],
+        "recommended_text": "RECOMMENDED",
+        "cta_button": "Get Started"
+      },
+      {
+        "title": "TURNKEY Pack",
+        "price": "€4,600",
+        "features": [
+          "Company with bank account.",
+          "Includes: Secretarial services, priority support.",
+          "Accounting option available.",
+          "Ideal for: Consultants, growing businesses."
+        ],
+        "recommended_text": "RECOMMENDED",
+        "cta_button": "Get Started"
+      },
+      {
+        "title": "PREMIUM Pack",
+        "price": "€9,800",
+        "features": [
+          "Fast solution with full management.",
+          "Includes: Opening of two bank accounts, personalized support.",
+          "Ideal for: Holdings, large e-commerce firms.",
+          "Dedicated account manager included."
+        ],
+        "recommended_text": "RECOMMENDED",
+        "cta_button": "Get Started"
+      }
+    ]
+  },
+
+  "services": {
+    "subtitle": "WHAT WE OFFER",
+    "title": "Our Comprehensive Services",
+    "ctaButton": "Get Started With Our Services",
+    "contactText": "Or",
+    "contactLink": "contact us",
+    "contactSuffix": "for more information",
+    "serviceCategories": [
+      {
+        "category": "Company Formation in Hong Kong",
+        "name": "Hong Kong Company Registration Services",
+        "description": "Complete Hong Kong company incorporation with full legal compliance and tax advantages",
+        "slug": "hong-kong-company-formation",
+        "icon": "🏢",
+        "items": [
+          "Articles of Association drafted in English",
+          "Certificate of Incorporation",
+          "Premium Registered Office Address",
+          "Local Company Secretary (mandatory in Hong Kong)"
+        ]
+      },
+      {
+        "category": "Accounting and Annual Obligations",
+        "name": "Hong Kong Accounting and Compliance Services",
+        "description": "Professional accounting, tax filing and annual compliance for Hong Kong businesses",
+        "slug": "accounting-compliance",
+        "icon": "📊",
+        "items": [
+          "Bookkeeping",
+          "Tax Returns",
+          "Annual Audit (mandatory for companies)",
+          "Financial Statement Preparation",
+          "Monthly Accounting"
+        ]
+      },
+      {
+        "category": "Bank Account Opening",
+        "name": "Hong Kong Business Bank Account Services",
+        "description": "Assistance opening local and offshore business accounts with preferred banking partners",
+        "slug": "bank-account-opening",
+        "icon": "🏦",
+        "items": [
+          "Support for Opening a Local or Offshore Business Account",
+          "Partnership with Airwallex, Statrys, Wise, Neat, and other Fintechs",
+          "Bank Introduction Letters Preparation"
+        ]
+      },
+      {
+        "category": "French-Speaking Support",
+        "name": "French Language Business Support in Hong Kong",
+        "description": "Dedicated French-speaking assistance for all your Hong Kong business needs",
+        "slug": "french-support",
+        "icon": "🇫🇷",
+        "items": [
+          "A Dedicated French-Speaking Contact",
+          "Assistance by Email, WhatsApp, and Video",
+          "Document Translation Services",
+          "Business Meeting Interpretation"
+        ]
+      }
+    ]
+  },
+
+   "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about company formation in Hong Kong",
+    "questions": [
+      {
+        "id": "q1",
+        "question": "How long does Hong Kong company incorporation take?",
+        "answer": "Typically 5 business days after document submission. No physical presence required."
+      },
+      {
+        "id": "q2",
+        "question": "Do I need to travel to Hong Kong to register a company?",
+        "answer": "No, the entire process can be completed 100% online. All documents can be submitted digitally."
+      },
+      {
+        "id": "q3",
+        "question": "What is the minimum capital requirement?",
+        "answer": "There is no minimum capital requirement for standard companies. You can start with any amount."
+      },
+      {
+        "id": "q4",
+        "question": "Can foreigners own 100% of a Hong Kong company?",
+        "answer": "Yes, Hong Kong allows 100% foreign ownership. There are no nationality restrictions."
+      },
+      {
+        "id": "q5",
+        "question": "What are the ongoing compliance requirements?",
+        "answer": "Annual renewal and tax filing are mandatory. Company records must be properly maintained."
+      },
+      {
+        "id": "q6",
+        "question": "How much does incorporation cost?",
+        "answer": "Our all-inclusive package starts from €4,600. This covers all government fees and services."
+      },
+      {
+        "id": "q7",
+        "question": "Do I need a local office address?",
+        "answer": "Yes, a local address is required. We provide virtual office solutions in our package."
+      },
+      {
+        "id": "q8",
+        "question": "Can I open a corporate bank account remotely?",
+        "answer": "Yes, remote account opening is possible. We partner with fintech banking solutions."
+      },
+      {
+        "id": "q9",
+        "question": "What taxes will my company pay?",
+        "answer": "Only Hong Kong-sourced income is taxed. The profits tax rate is 16.5%."
+      },
+      {
+        "id": "q10",
+        "question": "Is this service legal for non-residents?",
+        "answer": "Absolutely, it's 100% legal for non-residents. Hong Kong welcomes international business."
+      }
+    ]
+  },
+
+  "contact": {
+    "title": "Contact Our Hong Kong Experts",
+    "subtitle": "Get personalized assistance for company registration, banking, and compliance.",
+    "callUs": {
+      "title": "Call Us",
+      "description": "Speak directly to our incorporation specialists"
+    },
+    "officeHours": "Office Hours",
+    "parisTime": "Paris Time",
+    "currentTime": "Current Time",
+    "status": "Status",
+    "availability": "Availability",
+    "callButton": "Call",
+    "whatsapp": {
+      "title": "WhatsApp Chat",
+      "description": "Message us directly on WhatsApp - 24/7 support",
+      "qrButton": "Open WhatsApp QR",
+      "message": "Hi! I need help with HK company registration. My name is {name}"
+    },
+    "officeLocation": {
+      "title": "Our Hong Kong Office",
+      "address1": "203 - 2/F, UPPER OFFICES HANKOW CTR",
+      "address2": "5-15 HANKOW RD TSIM SHA TSUI"
+    },
+    "viewOnMap": "View on Google Maps",
+    "formTab": "Contact Form",
+    "whatsappTab": "WhatsApp QR",
+    "formSuccess": "Thank you! We've received your message and will respond shortly.",
+    "formError": "There was an error submitting your form. Please try again or contact us directly.",
+    "formLabels": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number (WhatsApp)",
+      "message": "Your Message"
+    },
+    "formPlaceholders": {
+      "name": "Your Full Name",
+      "email": "your@email.com",
+      "phone": "+852 1234 5678",
+      "message": "How can we help you with your Hong Kong company registration?"
+    },
+    "formSending": "Sending...",
+    "formSubmit": "Send Message",
+    "scanToChat": "Scan to Chat on WhatsApp",
+    "whatsappResponseTime": "Our experts typically reply within 15 minutes during office hours (9:00-17:00 Paris Time).",
+    "preferManual": "Prefer manual?",
+    "clickToOpenWhatsapp": "Click here to open WhatsApp",
+    "officeStatus": {
+      "open": "OPEN NOW",
+      "closed": "CLOSED",
+      "closesToday": "Closes today at 17:00",
+      "opensMonday": "Opens Monday at 09:00",
+      "opensToday": "Opens today at 09:00",
+      "opensTomorrow": "Opens tomorrow at 09:00"
+    }
+  },
+
+  "footer": {
+    "companyName": "HK Company Formation Limited",
+    "tagline": "Your trusted partner for HK company registration, banking, and compliance",
+    "hkOffice": "Our Hong Kong Office",
+    "needHelp": "Need Help with HK Incorporation?",
+    "availableNow": "Our experts are available now!",
+    "bookCallback": "Book a callback for tomorrow.",
+    "speakToExpert": "Speak to an HK Expert Now",
+    "scheduleConsultation": "Schedule a Free Consultation",
+    "scanToChat": "Scan to chat on {platform}",
+    "wechatWhatsapp": "WhatsApp",
+    "openNow": "Open Now (Mon-Fri 9AM-5PM Paris)",
+    "closed": "Mon-Fri 9:00-17:00 (Paris Time)",
+    "privacyPolicy": "Privacy Policy",
+    "terms": "Terms of Service",
+    "compliance": "Compliance",
+    "sitemap": "Sitemap",
+    "copyright": "Licensed by Hong Kong SAR Government",
+    "trustBadges": [
+      {
+        "text": "500+ Companies Incorporated in HK",
+        "icon": "🏙️"
+      },
+      {
+        "text": "4.9/5 ★★★★★ from 87 Reviews",
+        "icon": "🌟"
+      },
+      {
+        "text": "Licensed by HK Government",
+        "icon": "📜"
+      }
+    ],
+    "contact": {
+      "liveChat": "Live Chat Available",
+      "offline": "Offline (Email Us)",
+      "whatsapp": "WhatsApp Chat"
+    },
+    "address": "203 - 2/F, UPPER OFFICES HANKOW CTR\n5-15 HANKOW RD TSIM SHA TSUI\nHONG KONG",
+   "actionLinks": [
+    {
+      "text": "Free Consultation",
+      "path": "/consultation",
+      "icon": "FiCalendar"
+    },
+    {
+      "text": "Download Brochure",
+      "path": "/brochure",
+      "icon": "FiDownload"
+    },
+    {
+      "text": "Client Portal",
+      "path": "/login",
+      "icon": "FiUser"
+    },
+    {
+      "text": "FAQ",
+      "path": "/faq",
+      "icon": "FiHelpCircle"
+    }
+  ]
+  }
+
+  
+
+}

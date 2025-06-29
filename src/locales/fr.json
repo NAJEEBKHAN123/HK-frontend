@@ -1,0 +1,293 @@
+{
+  "navbar": {
+    "home": "Accueil",
+    "services": "Nos Services",
+    "faq": "FAQ / Blog",
+    "who_we_are": "Qui Nous Sommes",
+    "contact": "Contactez-Nous",
+    "language": "LANG",
+    "book_appointment": "Réserver un Rendez-vous Gratuit",
+    "language_options": {
+      "en": "Anglais",
+      "fr": "Français"
+    }
+  },
+  
+   "hero": {
+    "tagline": "Créez votre entreprise à Hong Kong 100% en ligne",
+    "title_part1": "Lancez votre entreprise",
+    "title_part2": "rapidement",
+    "title_part3": "légalement, sans quitter votre domicile",
+    "benefits": [
+      "Enregistrement de société en 5 jours ouvrables",
+      "0% d'impôt* grâce au système territorial",
+      "Équipe dédiée d'experts francophones",
+      "Documents en anglais et en français"
+    ],
+    "description": "Créer votre entreprise à Hong Kong n'a jamais été aussi simple : sans paperasse inutile, avec un accompagnement professionnel de A à Z.",
+    "cta_button": "Réserver un rendez-vous gratuit"
+  },
+
+   "pricing": {
+    "title": "Pourquoi choisir Hong Kong?",
+    "subtitle": "Hong Kong est l'un des centres économiques les plus dynamiques au monde.",
+    "plans": [
+      {
+        "title": "Pack STARTER",
+        "price": "3 900 €",
+        "features": [
+          "Création de société à Hong Kong.",
+          "Inclus: 1 an de domiciliation.",
+          "Non inclus: Ouverture de compte bancaire, services de secrétariat, comptabilité.",
+          "Adresse du bureau virtuel incluse."
+        ],
+        "recommended_text": "RECOMMANDÉ",
+        "cta_button": "Commencer"
+      },
+      {
+        "title": "Pack CLÉ EN MAIN",
+        "price": "4 600 €",
+        "features": [
+          "Société avec compte bancaire.",
+          "Inclus: Services de secrétariat, support prioritaire.",
+          "Option comptabilité disponible.",
+          "Idéal pour: Consultants, entreprises en croissance."
+        ],
+        "recommended_text": "RECOMMANDÉ",
+        "cta_button": "Commencer"
+      },
+      {
+        "title": "Pack PREMIUM",
+        "price": "9 800 €",
+        "features": [
+          "Solution rapide avec gestion complète.",
+          "Inclus: Ouverture de deux comptes bancaires, support personnalisé.",
+          "Idéal pour: Holdings, grandes entreprises e-commerce.",
+          "Gestionnaire de compte dédié inclus. "
+        ],
+        "recommended_text": "RECOMMANDÉ",
+        "cta_button": "Commencer"
+      }
+    ]
+  },
+
+ "services": {
+    "subtitle": "NOS SERVICES",
+    "title": "Nos Services Complets",
+    "ctaButton": "Démarrer avec Nos Services",
+    "contactText": "Ou",
+    "contactLink": "contactez-nous",
+    "contactSuffix": "pour plus d'informations",
+    "serviceCategories": [
+      {
+        "category": "Création d'Entreprise à Hong Kong",
+        "name": "Services d'Enregistrement d'Entreprise à Hong Kong",
+        "description": "Incorporation complète d'entreprise à Hong Kong avec conformité légale et avantages fiscaux",
+        "slug": "creation-entreprise-hong-kong",
+        "icon": "🏢",
+        "items": [
+          "Rédaction des statuts en anglais",
+          "Certificat d'Incorporation",
+          "Adresse officielle premium",
+          "Secrétaire local obligatoire"
+        ]
+      },
+      {
+        "category": "Comptabilité et Obligations Annuelle",
+        "name": "Services Comptables et de Conformité à Hong Kong",
+        "description": "Comptabilité professionnelle, déclarations fiscales et conformité annuelle pour entreprises",
+        "slug": "comptabilite-conformite",
+        "icon": "📊",
+        "items": [
+          "Tenue de livres comptables",
+          "Déclarations fiscales",
+          "Audit annuel (obligatoire)",
+          "Préparation des états financiers",
+          "Comptabilité mensuelle"
+        ]
+      },
+      {
+        "category": "Ouverture de Compte Bancaire",
+        "name": "Services d'Ouverture de Compte Bancaire à Hong Kong",
+        "description": "Assistance pour l'ouverture de comptes bancaires locaux et offshore avec nos partenaires privilégiés",
+        "slug": "ouverture-compte-bancaire",
+        "icon": "🏦",
+        "items": [
+          "Aide à l'ouverture de compte local ou offshore",
+          "Partenariats avec Airwallex, Statrys, Wise, Neat et autres fintechs",
+          "Préparation de lettres d'introduction bancaire"
+        ]
+      },
+      {
+        "category": "Support Francophone",
+        "name": "Assistance en Français pour Entreprises à Hong Kong",
+        "description": "Support dédié en français pour tous vos besoins d'entreprise à Hong Kong",
+        "slug": "support-francophone",
+        "icon": "🇫🇷",
+        "items": [
+          "Un contact francophone dédié",
+          "Assistance par email, WhatsApp et vidéo",
+          "Services de traduction de documents",
+          "Interprétation pour réunions d'affaires"
+        ]
+      }
+    ]
+  },
+
+   "faq": {
+    "title": "Questions Fréquemment Posées",
+    "subtitle": "Tout ce que vous devez savoir sur la création d'entreprise à Hong Kong",
+    "questions": [
+      {
+        "id": "q1",
+        "question": "Combien de temps prend l'incorporation d'une société à Hong Kong ?",
+        "answer": "Environ 5 jours ouvrables après soumission des documents. Aucune présence physique requise."
+      },
+      {
+        "id": "q2",
+        "question": "Dois-je me rendre à Hong Kong pour enregistrer une société ?",
+        "answer": "Non, le processus peut être complété 100% en ligne. Tous les documents peuvent être soumis numériquement."
+      },
+      {
+        "id": "q3",
+        "question": "Quel est le capital minimum requis ?",
+        "answer": "Aucun capital minimum n'est requis pour les sociétés standard. Vous pouvez commencer avec n'importe quel montant."
+      },
+      {
+        "id": "q4",
+        "question": "Les étrangers peuvent-ils posséder 100% d'une société à Hong Kong ?",
+        "answer": "Oui, Hong Kong autorise une propriété 100% étrangère. Il n'y a aucune restriction de nationalité."
+      },
+      {
+        "id": "q5",
+        "question": "Quelles sont les obligations de conformité continues ?",
+        "answer": "Le renouvellement annuel et la déclaration fiscale sont obligatoires. Les registres de la société doivent être correctement tenus."
+      },
+      {
+        "id": "q6",
+        "question": "Combien coûte l'incorporation ?",
+        "answer": "Notre forfait tout compris commence à partir de 4 600 €. Cela inclut tous les frais gouvernementaux et services."
+      },
+      {
+        "id": "q7",
+        "question": "Ai-je besoin d'une adresse locale ?",
+        "answer": "Oui, une adresse locale est requise. Nous proposons des solutions de bureau virtuel dans notre forfait."
+      },
+      {
+        "id": "q8",
+        "question": "Puis-je ouvrir un compte bancaire d'entreprise à distance ?",
+        "answer": "Oui, l'ouverture à distance est possible. Nous collaborons avec des solutions bancaires fintech."
+      },
+      {
+        "id": "q9",
+        "question": "Quels impôts ma société devra-t-elle payer ?",
+        "answer": "Seuls les revenus provenant de Hong Kong sont imposables. Le taux d'imposition sur les bénéfices est de 16,5 %."
+      },
+      {
+        "id": "q10",
+        "question": "Ce service est-il légal pour les non-résidents ?",
+        "answer": "Absolument, c'est 100% légal pour les non-résidents. Hong Kong accueille favorablement les entreprises internationales."
+      }
+    ]
+  },
+
+  "contact": {
+    "title": "Contactez nos experts à Hong Kong",
+    "subtitle": "Recevez une assistance personnalisée pour l'enregistrement, la banque et la conformité.",
+    "callUs": {
+      "title": "Appelez-nous",
+      "description": "Parlez directement à nos spécialistes de l'incorporation"
+    },
+    "officeHours": "Horaires d'ouverture",
+    "parisTime": "Heure de Paris",
+    "currentTime": "Heure actuelle",
+    "status": "Statut",
+    "availability": "Disponibilité",
+    "callButton": "Appeler",
+    "whatsapp": {
+      "title": "Discussion WhatsApp",
+      "description": "Envoyez-nous un message directement sur WhatsApp - support 24/7",
+      "qrButton": "Ouvrir le QR WhatsApp",
+      "message": "Bonjour ! J’ai besoin d’aide pour créer une société à HK. Je m’appelle {name}"
+    },
+    "officeLocation": {
+      "title": "Notre bureau à Hong Kong",
+     "address1": "203 - 2/F, UPPER OFFICES HANKOW CTR",
+      "address2": "5-15 HANKOW RD TSIM SHA TSUI"
+    },
+    "viewOnMap": "Voir sur Google Maps",
+    "formTab": "Formulaire de contact",
+    "whatsappTab": "QR WhatsApp",
+    "formSuccess": "Merci ! Nous avons bien reçu votre message et vous répondrons sous peu.",
+    "formError": "Une erreur s'est produite lors de l'envoi. Veuillez réessayer ou nous contacter directement.",
+    "formLabels": {
+      "name": "Nom complet",
+      "email": "Adresse e-mail",
+      "phone": "Numéro WhatsApp",
+      "message": "Votre message"
+    },
+    "formPlaceholders": {
+      "name": "Votre nom complet",
+      "email": "votre@email.com",
+      "phone": "+852 1234 5678",
+      "message": "Comment pouvons-nous vous aider à créer votre entreprise à Hong Kong ?"
+    },
+    "formSending": "Envoi...",
+    "formSubmit": "Envoyer le message",
+    "scanToChat": "Scannez pour discuter sur WhatsApp",
+    "whatsappResponseTime": "Nos experts répondent généralement sous 15 minutes pendant les heures d'ouverture (9h00-17h00, heure de Paris).",
+    "preferManual": "Préférez le manuel ?",
+    "clickToOpenWhatsapp": "Cliquez ici pour ouvrir WhatsApp",
+    "officeStatus": {
+      "open": "OUVERT",
+      "closed": "FERMÉ",
+      "closesToday": "Ferme aujourd'hui à 17h00",
+      "opensMonday": "Ouvre lundi à 09h00",
+      "opensToday": "Ouvre aujourd'hui à 09h00",
+      "opensTomorrow": "Ouvre demain à 09h00"
+    }
+  },
+
+  "footer": {
+    "companyName": "Création de société à responsabilité limitée à Hong Kong",
+    "tagline": "Votre partenaire de confiance pour l'enregistrement d'entreprise, les services bancaires et la conformité à Hong Kong",
+    "quickLinks": "Liens Rapides",
+    "hkOffice": "Notre Bureau à Hong Kong",
+    "needHelp": "Besoin d'aide pour l'incorporation à HK?",
+    "availableNow": "Nos experts sont disponibles maintenant!",
+    "bookCallback": "Planifiez un rappel pour demain.",
+    "speakToExpert": "Parlez à un expert HK maintenant",
+    "scheduleConsultation": "Planifier une consultation gratuite",
+    "scanToChat": "Scannez pour discuter sur {platform}",
+    "wechatWhatsapp": "WhatsApp",
+    "openNow": "Ouvert (Lun-Ven 9h-17h Paris)",
+    "closed": "Du lundi au vendredi de 9h00 à 17h00 (heure de Paris)",
+    "privacyPolicy": "Politique de Confidentialité",
+    "terms": "Conditions d'Utilisation",
+    "compliance": "Conformité",
+    "sitemap": "Plan du Site",
+    "copyright": "Agréé par le Gouvernement de Hong Kong",
+    "trustBadges": [
+      {
+        "text": "500+ Sociétés enregistrées à HK",
+        "icon": "🏙️"
+      },
+      {
+        "text": "4.9/5 ★★★★★ sur 87 Avis",
+        "icon": "🌟"
+      },
+      {
+        "text": "Agréé par le Gouvernement HK",
+        "icon": "📜"
+      }
+    ],
+    "contact": {
+      "liveChat": "Chat en Direct Disponible",
+      "offline": "Hors Ligne (Envoyez-nous un email)",
+      "whatsapp": "Chat WhatsApp"
+    },
+    "address": "203 - 2/F, UPPER OFFICES HANKOW CTR\n5-15 HANKOW RD TSIM SHA TSUI\nHONG KONG"
+  }
+
+
+}
