@@ -77,7 +77,7 @@ function LegalNotices() {
   const renderSection = (section, index) => {
     if (index === 0 || index === 1) {
       return (
-        <section id={section.id} className="mb-12 max-w-4xl mx-auto" key={section.id}>
+        <section id={section.id} className="mb-12 max-w-4xl ml-[-10px] mr-[-10px] lg:px-4 mx-auto" key={section.id}>
           <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">
             {section.title}
           </h2>
@@ -110,10 +110,10 @@ function LegalNotices() {
   };
 
   return (
-    <div className="bg-gray-50 mx-[-16px] min-h-screen">
-      <div className="container mx-auto px-4 py-12">
+    <div className="bg-gray-50 ml-[-15px] mr-[-15px] min-h-screen">
+      <div className="container mx-auto px-3 py-12">
         {/* Mobile TOC - Shows before content on small screens */}
-        <div className="lg:hidden mb-8 bg-white shadow-md p-6 rounded-lg">
+        <div className="lg:hidden mb-8  bg-white shadow-md p-6   rounded-lg">
           <h2 className="text-xl font-bold mb-4 text-gray-800 border-b pb-2">
             Table of Contents
           </h2>
@@ -139,12 +139,12 @@ function LegalNotices() {
           </button>
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-10">
+        <div className="flex flex-col lg:flex-row gap-10 lg:px-2">
           {/* Main content - comes first in DOM for mobile */}
-          <div className="lg:w-2/3 order-2 lg:order-1">
+          <div className="lg:w-2/3 order-2 lg:order-1 px-2">
             {documentData.sections.map((section, index) => (
               renderSection(section, index)
-            ))}
+            ))} 
           </div>
 
           {/* Desktop TOC - Shows on right side on larger screens */}
