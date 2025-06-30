@@ -3,8 +3,18 @@ import { useNavigate } from "react-router-dom";
 import legalContent from "../../StaticData/legal-content.json";
 import { jsPDF } from "jspdf";
 
-function Conditions() {
+function Conditions({ documentType = "general_conditions" }) {
   const navigate = useNavigate();
+
+  // Get the appropriate document content
+  const documentData = {
+    ...legalContent.common_sections,
+    sections: [
+      legalContent.common_sections.site_editor,
+      legalContent.common_sections.site_owner,
+      ...legalContent[documentType].sections
+    ]
+  };
 
   // Function to handle navigation to sections
   const scrollToSection = (sectionId) => {
@@ -20,7 +30,9 @@ function Conditions() {
     
     // Add cover page
     doc.setFontSize(22);
-    doc.text("Legal Documents", 105, 30, { align: "center" });
+    doc.text(documentType === "general_conditions" 
+      ? "General Conditions" 
+      : "Legal Notices", 105, 30, { align: "center" });
     doc.setFontSize(16);
     doc.text("OSHK Legal Information", 105, 45, { align: "center" });
     doc.addPage();
@@ -28,7 +40,7 @@ function Conditions() {
     // Add all sections
     let yPosition = 20; // Start position on page
     
-    legalContent.sections.forEach((section) => {
+    documentData.sections.forEach((section) => {
       // Add section title
       doc.setFontSize(14);
       doc.setFont(undefined, 'bold');
@@ -73,11 +85,11 @@ function Conditions() {
     });
 
     // Save the PDF
-    doc.save("OSHK-Legal-Documents.pdf");
+    doc.save(`OSHK-${documentType === "general_conditions" ? "General-Conditions" : "Legal-Notices"}.pdf`);
   };
 
   // Render section content dynamically
-  const renderSection = (section) => {
+  const renderSection = (section, index) => {
     // Special handling for download section to add our button
     if (section.id === "download") {
       return (
@@ -99,61 +111,54 @@ function Conditions() {
     return (
       <section id={section.id} className="mb-12 w-full" key={section.id}>
         <h2 className="text-2xl font-bold mb-4 w-full">{section.title}</h2>
+        {section.intro && <p className="mb-6 text-gray-700 leading-relaxed">{section.intro}</p>}
         {section.content && (
           <div
             className="w-full"
             dangerouslySetInnerHTML={{ __html: section.content }}
           />
         )}
-        {section.subsections?.map((subsection) => (
-          <div key={subsection.id} className="w-full">
-            <h3 className="text-xl font-semibold mt-4 mb-2 w-full">
-              {subsection.title}
-            </h3>
-            <div
-              className="w-full"
-              dangerouslySetInnerHTML={{ __html: subsection.content }}
-            />
-          </div>
-        ))}
       </section>
     );
   };
 
   return (
     <div>
-      <div className="w-full px-2 lg:px-0">
-        <div className=" flex w-full flex-col md:flex-row gap-20">
+      <div className="w-full bg-gray-50 px-[-20px] lg:px-0">
+        <div className="flex w-full flex-col md:flex-row gap-20">
           {/* Left column - Content sections */}
           <div className="flex-1">
-            {/* Site Editor Section (first two sections keep original width) */}
             <div className="max-w-[1040px] mx-auto">
-              <section id="site-editor" className="mb-12">
+              <section id={documentData.sections[0].id} className="mb-12">
                 <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">
-                  {legalContent.sections[0].title}
+                  {documentData.sections[0].title}
                 </h2>
-                <p className="mb-6 text-gray-700 leading-relaxed">
-                  {legalContent.sections[0].intro}
-                </p>
+                {documentData.sections[0].intro && (
+                  <p className="mb-6 text-gray-700 leading-relaxed">
+                    {documentData.sections[0].intro}
+                  </p>
+                )}
                 <div
                   className="editor-info bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all"
                   dangerouslySetInnerHTML={{
-                    __html: legalContent.sections[0].content,
+                    __html: documentData.sections[0].content,
                   }}
                 />
               </section>
 
-              <section id="site-owner" className="mb-12">
+              <section id={documentData.sections[1].id} className="mb-12">
                 <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">
-                  {legalContent.sections[1].title}
+                  {documentData.sections[1].title}
                 </h2>
-                <p className="mb-6 text-gray-700 leading-relaxed">
-                  {legalContent.sections[1].intro}
-                </p>
+                {documentData.sections[1].intro && (
+                  <p className="mb-6 text-gray-700 leading-relaxed">
+                    {documentData.sections[1].intro}
+                  </p>
+                )}
                 <div
                   className="owner-info bg-gradient-to-br from-gray-50 to-gray-100 mt-10 p-7 lg:h-[366px] rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300"
                   dangerouslySetInnerHTML={{
-                    __html: legalContent.sections[1].content,
+                    __html: documentData.sections[1].content,
                   }}
                 />
               </section>
@@ -169,13 +174,13 @@ function Conditions() {
                 TABLE OF CONTENTS
               </h2>
               <ul className="">
-                {legalContent.sections.map((section) => (
+                {documentData.sections.map((section) => (
                   <li
                     key={section.id}
                     className="cursor-pointer hover:text-blue-600 py-1"
                     onClick={() => scrollToSection(section.id)}
                   >
-                    {section.tocTitle || section.title}
+                    {section.title}
                   </li>
                 ))}
               </ul>
@@ -184,7 +189,7 @@ function Conditions() {
         </div>
       </div>
       <div className="w-full px-2 lg:px-4 text-justify">
-        {legalContent.sections.slice(2).map(renderSection)}
+        {documentData.sections.slice(2).map(renderSection)}
       </div>
     </div>
   );

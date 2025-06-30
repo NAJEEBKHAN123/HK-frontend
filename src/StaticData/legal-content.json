@@ -1,151 +1,212 @@
 {
-  "sections": [
-    {
+  "common_sections": {
+    "site_editor": {
       "id": "site-editor",
       "title": "I - SITE EDITOR",
       "intro": "This website, accessible from the URL address https://ouvrir-societe-hong-kong.fr/ (hereinafter the Website) is published by:",
       "content": "<h3 class=\"text-xl font-semibold mb-4 text-gray-800 flex items-center\"><svg class=\"w-5 h-5 mr-2 text-indigo-600\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fillRule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z\" clipRule=\"evenodd\" /></svg>OSHK CONTACT</h3><ul class=\"space-y-3 mb-4 text-gray-700\"><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-blue-500 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fillRule=\"evenodd\" d=\"M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z\" clipRule=\"evenodd\" /></svg><span>203 - 2/F, UPPER OFFICES HANKOW CTR<br />5-15 HANKOW RD TSIM SHA TSUI<br />HONG KONG</span></li><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-green-500 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path d=\"M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z\" /></svg><span>+852 1234 5678</span></li><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-purple-500 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path d=\"M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z\" /><path d=\"M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z\" /></svg><span>bonjour@ouvrir-societe-hong-kong.fr</span></li><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-green-600 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z\" /></svg><div><span class=\"block\">WhatsApp Business</span><a href=\"https://wa.me/85212345678\" class=\"text-blue-600 hover:underline text-sm\" target=\"_blank\" rel=\"noopener noreferrer\">Chat with us on WhatsApp</a></div></li></ul><div class=\"flex items-center\"><svg class=\"w-5 h-5 mr-2 text-amber-500\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fillRule=\"evenodd\" d=\"M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z\" clipRule=\"evenodd\" /></svg><p class=\"text-gray-700\"><strong class=\"text-gray-800\">NIF:</strong> 78164472-000-05-25-0</p></div>"
     },
-    {
+    "site_owner": {
       "id": "site-owner",
       "title": "II – OWNER OF THE SITE",
       "intro": "The owner is Create Company Hongkong LCLS LIMITED. Legal entity.",
       "content": "<h3 class=\"text-2xl font-bold mb-4 text-gray-900 flex items-center\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 mr-2 text-blue-600\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth=\"2\" d=\"M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z\" /></svg>OSHK Legal Information</h3><ul class=\"space-y-3.5 text-gray-700\"><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-28 flex-shrink-0\">Tax Number:</strong><span class=\"font-mono bg-gray-100 px-2 py-1 rounded text-blue-700\">78164472-000-05-25-0</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-28 flex-shrink-0\">Head Office:</strong ><span class=\"px-2\">203 - 2/F, UPPER OFFICES HANKOW CTR<br />5-15 HANKOW RD TSIM SHA TSUI<br />HONG KONG</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-28 flex-shrink-0\">Email:</strong><a href=\"mailto:bonjour@ouvrir-societe-hong-kong.fr\" class=\"text-blue-600 px-2 hover:text-blue-800 hover:underline transition-colors\">bonjour@ouvrir-societe-hong-kong.fr</a></li></ul>"
-    },
-    {
-      "id": "scope",
-      "title": "1. Scope",
-      "content": "<p>These terms apply to the entire website as well as any transaction, service, or offering provided through it. They may be supplemented by specific agreements between you and our company. In case of contradiction, the provisions of such specific agreements shall prevail.</p>"
-    },
-    {
-      "id": "acceptance",
-      "title": "2. Acceptance of Terms",
-      "content": "<p>By accessing, registering, or using this website in any way, you acknowledge that you have read and fully accept these terms. In some cases, explicit validation may be required.</p>"
-    },
-    {
-      "id": "communication",
-      "title": "3. Digital Communications",
-      "content": "<p>By interacting with us electronically, you consent to receive information in digital form (email or website notifications), which fulfills any legal requirement for written communication.</p>"
-    },
-    {
-      "id": "property",
-      "title": "4. Intellectual Property Rights",
-      "content": "<p>All content on this website—texts, visuals, logos, documents, or data—is protected by copyright or other intellectual property rights. These rights belong exclusively to our company or its partners.</p><h3 class=\"text-xl font-semibold mt-4 mb-2\">4.1 Unauthorized Use Prohibited</h3><p>Unless expressly stated otherwise, it is strictly forbidden to reproduce, copy, modify, exploit, or distribute any content from this site without prior written authorization, except as permitted by mandatory legal provisions.</p>"
-    },
-    {
-      "id": "newsletter",
-      "title": "5. Newsletter",
-      "content": "<p>You may forward our newsletters to potentially interested third parties, provided this is done in a non-commercial manner.</p>"
-    },
-    {
-      "id": "third-party",
-      "title": "6. Third-Party Content",
-      "content": "<p>The site may contain links to external websites. We are not responsible for their content or privacy policies. Use of these platforms is at your own risk.</p>"
-    },
-    {
-      "id": "responsible-use",
-      "title": "7. Proper Use of the Site",
-      "content": "<p>Users agree to use this site only for lawful purposes, in compliance with applicable laws and digital etiquette. Any attempt to disrupt the site's functionality or accessibility is strictly prohibited.</p>"
-    },
-    {
-      "id": "registration",
-      "title": "8. Account Creation",
-      "content": "<p>By creating an account, you agree to keep your credentials confidential. Any activity conducted through your account is your responsibility. Re-registering after account deletion requires our authorization.</p>"
-    },
-    {
-      "id": "refund",
-      "title": "9. Withdrawal Policy",
-      "content": "<p>You have <strong>1 day</strong> from the contract date to withdraw without justification. A clear notification is sufficient. In case of withdrawal, you will be fully refunded.</p>"
-    },
-    {
-      "id": "idea-submission",
-      "title": "10. Unsolicited Proposals",
-      "content": "<p>No ideas, projects, or creations should be submitted without prior agreement. Otherwise, any contribution will be deemed transferred under a free, irrevocable, worldwide, and non-exclusive license.</p>"
-    },
-    {
-      "id": "termination",
-      "title": "11. Service Suspension or Termination",
-      "content": "<p>We reserve the right to modify, restrict, or discontinue access to the site or its services without notice or compensation. Bypassing access restrictions is prohibited.</p>"
-    },
-    {
-      "id": "guarantees",
-      "title": "12. Liability and Warranties",
-      "content": "<p>The site is provided \"as is.\" No guarantees are made regarding continuous availability, accuracy, or suitability for your needs. Our liability is limited to the amount you have paid us.</p>"
-    },
-    {
-      "id": "confidentiality",
-      "title": "13. Personal Data",
-      "content": "<p>All registration data must be accurate. Our privacy policy details our commitments regarding data protection.</p>"
-    },
-    {
-      "id": "accessibility",
-      "title": "14. Site Accessibility",
-      "content": "<p>We strive to make the site accessible to all. If you encounter difficulties due to a disability, please notify us so we can assist where possible.</p>"
-    },
-    {
-      "id": "export",
-      "title": "15. Compliance with Export Laws",
-      "content": "<p>Accessing the site from a country where its services are illegal is prohibited. You agree to comply with Hong Kong export laws.</p>"
-    },
-    {
-      "id": "affiliate",
-      "title": "16. Commercial Partnerships",
-      "content": "<p>We may earn revenue through affiliate links, sponsorships, or sponsored content. These collaborations comply with applicable laws, including French regulations.</p>"
-    },
-    {
-      "id": "assignment",
-      "title": "17. Prohibition of Rights Transfer",
-      "content": "<p>Any assignment or transfer of your rights and obligations without our written consent is void.</p>"
-    },
-    {
-      "id": "breach",
-      "title": "18. Violation of Terms",
-      "content": "<p>Any breach of these terms may result in sanctions, including account suspension, legal action, or other appropriate measures.</p>"
-    },
-    {
-      "id": "force-majeure",
-      "title": "19. Force Majeure",
-      "content": "<p>Any unforeseeable event beyond our control that prevents fulfillment of an obligation shall not be considered a breach.</p>"
-    },
-    {
-      "id": "compensation",
-      "title": "20. Indemnification",
-      "content": "<p>You agree to compensate us for any claims arising from your misuse of the site or violation of these terms.</p>"
-    },
-    {
-      "id": "exemption",
-      "title": "21. No Waiver",
-      "content": "<p>Failure to enforce a clause does not waive our right to do so later.</p>"
-    },
-    {
-      "id": "language",
-      "title": "22. Contractual Language",
-      "content": "<p>All contractual documents are exclusively written in French.</p>"
-    },
-    {
-      "id": "agreement",
-      "title": "23. Entire Agreement",
-      "content": "<p>These terms, along with our privacy policy, constitute the full agreement between you and our company.</p>"
-    },
-    {
-      "id": "revisions",
-      "title": "24. Revisions",
-      "content": "<p>We reserve the right to modify these terms at any time. Updates will be clearly communicated. Continued use constitutes acceptance.</p>"
-    },
-    {
-      "id": "governing",
-      "title": "25. Governing Law & Disputes",
-      "content": "<p>These terms are governed by Hong Kong law. Any dispute shall be submitted to Hong Kong's competent courts. If a clause is deemed unenforceable, it will be adjusted without affecting the rest.</p>"
-    },
-    {
-      "id": "contact",
-      "title": "26. Contact Information",
-      "content": "<address class=\"bg-gray-50 p-6 rounded-lg not-italic\"><strong class=\"text-lg\">MWT LIMITED</strong><br />203 - 2/F, UPPER OFFICES HANKOW CTR<br />5-15 HANKOW RD TSIM SHA TSUI<br />HONG KONG<br />✉️ <a href=\"mailto:bonjour@ouvrir-societe-hong-kong.fr\" class=\"text-blue-600 hover:underline\">bonjour@ouvrir-societe-hong-kong.fr</a></address>"
-    },
-    {
-      "id": "download",
-      "title": "27. Download",
-      "content": "<div class=\"bg-gray-50 p-6 rounded-lg\"><p class=\"mb-4\">These terms can be downloaded in PDF format from our website.</p><button class=\"px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition\">Download PDF Version</button></div>"
     }
-  ]
+  },
+
+  "legal_notices": {
+    "sections": [
+      {
+        "id": "company-info",
+        "title": "1. Company Information",
+        "content": "<ul class=\"space-y-3 text-gray-700 mt-10\"><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-40 flex-shrink-0\">Company Name:</strong><span>Create Company Hongkong LCLS LIMITED</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-40 flex-shrink-0\">Address:</strong><span>203 - 2/F, UPPER OFFICES HANKOW CTR, 5-15 HANKOW RD TSIM SHA TSUI, HONG KONG</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-40 flex-shrink-0\">Phone Number:</strong><span>+852 1234 5678</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-40 flex-shrink-0\">Email Address:</strong><span>bonjour@ouvrir-societe-hong-kong.fr</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-40 flex-shrink-0 \">Company Reg No:</strong class=\"flex items-center text-center\"><span>78164472-000-05-25-0</span></li></ul>"
+      },
+      {
+        "id": "publication-director",
+        "title": "2. Publication Director",
+        "content": "<p class=\"text-gray-700\">Mr. John Doe</p>"
+      },
+      {
+        "id": "hosting-provider",
+        "title": "3. Hosting Provider",
+        "content": "<ul class=\"space-y-3 text-gray-700\"><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-48 flex-shrink-0\">Hosting Provider Name:</strong><span>OVH Cloud</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-48 flex-shrink-0\">Address:</strong><span>2 rue Kellermann, 59100 Roubaix, France</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-48 flex-shrink-0\">Phone Number:</strong><span>+33 9 72 10 10 07</span></li></ul>"
+      },
+      {
+        "id": "intellectual-property",
+        "title": "4. Intellectual Property",
+        "content": "<p class=\"text-gray-700\">All content on this site is protected by Hong Kong's intellectual property laws. Reproduction, distribution, or use of the content without prior permission is prohibited.</p>"
+      },
+      {
+        "id": "data-protection",
+        "title": "5. Data Protection",
+        "content": "<p class=\"text-gray-700\">Information collected via this site may include name, email address, and other contact details necessary for customer service. We are committed to respecting data privacy in accordance with Hong Kong's Personal Data (Privacy) Ordinance.</p>"
+      },
+      {
+        "id": "cookies-usage",
+        "title": "6. Cookies Usage",
+        "content": "<p class=\"text-gray-700\">This site uses cookies to enhance user experience. By continuing to browse, you accept the use of cookies. You can manage cookie preferences through your browser.</p>"
+      },
+      {
+        "id": "liability-limitations",
+        "title": "7. Liability Limitations",
+        "content": "<p class=\"text-gray-700\">This site may contain links to external websites. We are not responsible for the content or practices of these sites.</p>"
+      },
+      {
+        "id": "applicable-law",
+        "title": "8. Applicable Law and Jurisdiction",
+        "content": "<p class=\"text-gray-700\">This legal notice is governed by the laws of Hong Kong. In case of disputes, the courts of Hong Kong will have exclusive jurisdiction.</p>"
+      }
+    ]
+  },
+  "general_conditions": {
+    "sections": [
+      {
+        "id": "site-editor",
+        "title": "I - SITE EDITOR",
+        "intro": "This website, accessible from the URL address https://ouvrir-societe-hong-kong.fr/ (hereinafter the Website) is published by:",
+        "content": "<h3 class=\"text-xl font-semibold mb-4 text-gray-800 flex items-center\"><svg class=\"w-5 h-5 mr-2 text-indigo-600\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fillRule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z\" clipRule=\"evenodd\" /></svg>OSHK CONTACT</h3><ul class=\"space-y-3 mb-4 text-gray-700\"><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-blue-500 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fillRule=\"evenodd\" d=\"M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z\" clipRule=\"evenodd\" /></svg><span>203 - 2/F, UPPER OFFICES HANKOW CTR<br />5-15 HANKOW RD TSIM SHA TSUI<br />HONG KONG</span></li><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-green-500 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path d=\"M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z\" /></svg><span>+852 1234 5678</span></li><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-purple-500 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path d=\"M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z\" /><path d=\"M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z\" /></svg><span>bonjour@ouvrir-societe-hong-kong.fr</span></li><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-green-600 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z\" /></svg><div><span class=\"block\">WhatsApp Business</span><a href=\"https://wa.me/85212345678\" class=\"text-blue-600 hover:underline text-sm\" target=\"_blank\" rel=\"noopener noreferrer\">Chat with us on WhatsApp</a></div></li></ul><div class=\"flex items-center\"><svg class=\"w-5 h-5 mr-2 text-amber-500\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fillRule=\"evenodd\" d=\"M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z\" clipRule=\"evenodd\" /></svg><p class=\"text-gray-700\"><strong class=\"text-gray-800\">NIF:</strong> 78164472-000-05-25-0</p></div>"
+      },
+      {
+        "id": "site-owner",
+        "title": "II – OWNER OF THE SITE",
+        "intro": "The owner is Create Company Hongkong LCLS LIMITED. Legal entity.",
+        "content": "<h3 class=\"text-2xl font-bold mb-4 text-gray-900 flex items-center\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 mr-2 text-blue-600\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth=\"2\" d=\"M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z\" /></svg>OSHK Legal Information</h3><ul class=\"space-y-3.5 text-gray-700\"><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-28 flex-shrink-0\">Tax Number:</strong><span class=\"font-mono bg-gray-100 px-2 py-1 rounded text-blue-700\">78164472-000-05-25-0</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-28 flex-shrink-0\">Head Office:</strong ><span class=\"px-2\">203 - 2/F, UPPER OFFICES HANKOW CTR<br />5-15 HANKOW RD TSIM SHA TSUI<br />HONG KONG</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-28 flex-shrink-0\">Email:</strong><a href=\"mailto:bonjour@ouvrir-societe-hong-kong.fr\" class=\"text-blue-600 px-2 hover:text-blue-800 hover:underline transition-colors\">bonjour@ouvrir-societe-hong-kong.fr</a></li></ul>"
+      },
+      {
+        "id": "scope",
+        "title": "1. Scope",
+        "content": "<p>These terms apply to the entire website as well as any transaction, service, or offering provided through it. They may be supplemented by specific agreements between you and our company. In case of contradiction, the provisions of such specific agreements shall prevail.</p>"
+      },
+      {
+        "id": "acceptance",
+        "title": "2. Acceptance of Terms",
+        "content": "<p>By accessing, registering, or using this website in any way, you acknowledge that you have read and fully accept these terms. In some cases, explicit validation may be required.</p>"
+      },
+      {
+        "id": "communication",
+        "title": "3. Digital Communications",
+        "content": "<p>By interacting with us electronically, you consent to receive information in digital form (email or website notifications), which fulfills any legal requirement for written communication.</p>"
+      },
+      {
+        "id": "property",
+        "title": "4. Intellectual Property Rights",
+        "content": "<p>All content on this website—texts, visuals, logos, documents, or data—is protected by copyright or other intellectual property rights. These rights belong exclusively to our company or its partners.</p><h3 class=\"text-xl font-semibold mt-4 mb-2\">4.1 Unauthorized Use Prohibited</h3><p>Unless expressly stated otherwise, it is strictly forbidden to reproduce, copy, modify, exploit, or distribute any content from this site without prior written authorization, except as permitted by mandatory legal provisions.</p>"
+      },
+      {
+        "id": "newsletter",
+        "title": "5. Newsletter",
+        "content": "<p>You may forward our newsletters to potentially interested third parties, provided this is done in a non-commercial manner.</p>"
+      },
+      {
+        "id": "third-party",
+        "title": "6. Third-Party Content",
+        "content": "<p>The site may contain links to external websites. We are not responsible for their content or privacy policies. Use of these platforms is at your own risk.</p>"
+      },
+      {
+        "id": "responsible-use",
+        "title": "7. Proper Use of the Site",
+        "content": "<p>Users agree to use this site only for lawful purposes, in compliance with applicable laws and digital etiquette. Any attempt to disrupt the site's functionality or accessibility is strictly prohibited.</p>"
+      },
+      {
+        "id": "registration",
+        "title": "8. Account Creation",
+        "content": "<p>By creating an account, you agree to keep your credentials confidential. Any activity conducted through your account is your responsibility. Re-registering after account deletion requires our authorization.</p>"
+      },
+      {
+        "id": "refund",
+        "title": "9. Withdrawal Policy",
+        "content": "<p>You have <strong>1 day</strong> from the contract date to withdraw without justification. A clear notification is sufficient. In case of withdrawal, you will be fully refunded.</p>"
+      },
+      {
+        "id": "idea-submission",
+        "title": "10. Unsolicited Proposals",
+        "content": "<p>No ideas, projects, or creations should be submitted without prior agreement. Otherwise, any contribution will be deemed transferred under a free, irrevocable, worldwide, and non-exclusive license.</p>"
+      },
+      {
+        "id": "termination",
+        "title": "11. Service Suspension or Termination",
+        "content": "<p>We reserve the right to modify, restrict, or discontinue access to the site or its services without notice or compensation. Bypassing access restrictions is prohibited.</p>"
+      },
+      {
+        "id": "guarantees",
+        "title": "12. Liability and Warranties",
+        "content": "<p>The site is provided \"as is.\" No guarantees are made regarding continuous availability, accuracy, or suitability for your needs. Our liability is limited to the amount you have paid us.</p>"
+      },
+      {
+        "id": "confidentiality",
+        "title": "13. Personal Data",
+        "content": "<p>All registration data must be accurate. Our privacy policy details our commitments regarding data protection.</p>"
+      },
+      {
+        "id": "accessibility",
+        "title": "14. Site Accessibility",
+        "content": "<p>We strive to make the site accessible to all. If you encounter difficulties due to a disability, please notify us so we can assist where possible.</p>"
+      },
+      {
+        "id": "export",
+        "title": "15. Compliance with Export Laws",
+        "content": "<p>Accessing the site from a country where its services are illegal is prohibited. You agree to comply with Hong Kong export laws.</p>"
+      },
+      {
+        "id": "affiliate",
+        "title": "16. Commercial Partnerships",
+        "content": "<p>We may earn revenue through affiliate links, sponsorships, or sponsored content. These collaborations comply with applicable laws, including French regulations.</p>"
+      },
+      {
+        "id": "assignment",
+        "title": "17. Prohibition of Rights Transfer",
+        "content": "<p>Any assignment or transfer of your rights and obligations without our written consent is void.</p>"
+      },
+      {
+        "id": "breach",
+        "title": "18. Violation of Terms",
+        "content": "<p>Any breach of these terms may result in sanctions, including account suspension, legal action, or other appropriate measures.</p>"
+      },
+      {
+        "id": "force-majeure",
+        "title": "19. Force Majeure",
+        "content": "<p>Any unforeseeable event beyond our control that prevents fulfillment of an obligation shall not be considered a breach.</p>"
+      },
+      {
+        "id": "compensation",
+        "title": "20. Indemnification",
+        "content": "<p>You agree to compensate us for any claims arising from your misuse of the site or violation of these terms.</p>"
+      },
+      {
+        "id": "exemption",
+        "title": "21. No Waiver",
+        "content": "<p>Failure to enforce a clause does not waive our right to do so later.</p>"
+      },
+      {
+        "id": "language",
+        "title": "22. Contractual Language",
+        "content": "<p>All contractual documents are exclusively written in French.</p>"
+      },
+      {
+        "id": "agreement",
+        "title": "23. Entire Agreement",
+        "content": "<p>These terms, along with our privacy policy, constitute the full agreement between you and our company.</p>"
+      },
+      {
+        "id": "revisions",
+        "title": "24. Revisions",
+        "content": "<p>We reserve the right to modify these terms at any time. Updates will be clearly communicated. Continued use constitutes acceptance.</p>"
+      },
+      {
+        "id": "governing",
+        "title": "25. Governing Law & Disputes",
+        "content": "<p>These terms are governed by Hong Kong law. Any dispute shall be submitted to Hong Kong's competent courts. If a clause is deemed unenforceable, it will be adjusted without affecting the rest.</p>"
+      },
+      {
+        "id": "contact",
+        "title": "26. Contact Information",
+        "content": "<address class=\"bg-gray-50 p-6 rounded-lg not-italic\"><strong class=\"text-lg\">MWT LIMITED</strong><br />203 - 2/F, UPPER OFFICES HANKOW CTR<br />5-15 HANKOW RD TSIM SHA TSUI<br />HONG KONG<br />✉️ <a href=\"mailto:bonjour@ouvrir-societe-hong-kong.fr\" class=\"text-blue-600 hover:underline\">bonjour@ouvrir-societe-hong-kong.fr</a></address>"
+      },
+      {
+        "id": "download",
+        "title": "27. Download",
+        "content": "<div class=\"bg-gray-50 p-6 rounded-lg\"><p class=\"mb-4\">These terms can be downloaded in PDF format from our website.</p><button class=\"px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition\">Download PDF Version</button></div>"
+      }
+    ]
+  }
 }
