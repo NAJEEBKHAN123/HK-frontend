@@ -320,24 +320,28 @@ export default function WhoWeAre() {
             Book a free consultation with our experts to discuss your specific
             needs.
           </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <motion.button
-              onClick={handleBookClick}
-              className="inline-block px-6 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold rounded-lg shadow-lg transition-all hover:shadow-xl text-sm md:text-base"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Schedule Free Consultation
-            </motion.button>
-            <motion.a
-              href="/team"
-              className="inline-block px-6 py-3 bg-transparent border border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 font-bold rounded-lg shadow-lg transition-all hover:shadow-xl text-sm md:text-base"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Meet Full Team
-            </motion.a>
-          </div>
+ <div className="flex flex-col sm:flex-row justify-center gap-4">
+  <motion.button
+    onClick={handleBookClick}
+    className="inline-block px-6 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-black font-bold rounded-lg shadow-lg transition-all hover:shadow-xl text-sm md:text-base"
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    Schedule Free Consultation
+  </motion.button>
+  
+  <motion.div
+    whileHover={{ scale: 1.05 }}
+    whileTap={{ scale: 0.95 }}
+  >
+    <Link
+      to="/team"
+      className="inline-block px-6 py-3 bg-transparent border border-yellow-500 text-yellow-500 hover:bg-yellow-500/10 font-bold rounded-lg shadow-lg transition-all hover:shadow-xl text-sm md:text-base"
+    >
+      Meet Full Team
+    </Link>
+  </motion.div>
+</div>
         </motion.div>
       </div>
     </section>
