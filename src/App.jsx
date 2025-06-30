@@ -26,7 +26,7 @@ import Conditions from "./pages/legal/Conditions";
 import Cookies from "./pages/legal/Cookies";
 import Accessibility from "./pages/legal/Accessibility";
 import Choices from "./pages/legal/Choices";
-import TeamPage from "./pages/TeamMember";
+import TeamMember from "./pages/TeamMember";
 
 function App() {
   return (
@@ -63,7 +63,7 @@ function App() {
             <Route path="accessibility" element={<Accessibility />} />
             <Route path="choices" element={<Choices />} />
           </Route>
-            <Route path="/team" element={<TeamPage />} />
+            <Route path="/team" element={<TeamMember />} />
 
         {/* Admindashboard  */}
           <Route
