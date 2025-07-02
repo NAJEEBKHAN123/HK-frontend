@@ -125,7 +125,7 @@ export default function OurServices() {
   };
 
   return (
-    <section id="services" className="py-20 px-2 sm:px-6 lg:px-12 bg-gradient-to-b from-gray-50 to-white">
+    <section id="services" className="py-20 px-1 sm:px-3 lg:px-12 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl xl:px-[0] lg:px-[55px] mx-auto">
         <motion.div
           initial="hidden"
@@ -136,13 +136,13 @@ export default function OurServices() {
         >
           <motion.p 
             variants={itemVariants}
-            className="text-blue-600 font-semibold mb-2"
+            className="text-blue-600  font-semibold mb-2"
           >
             {translations.subtitle}
           </motion.p>
           <motion.h2 
             variants={itemVariants}
-            className="text-4xl font-extrabold text-gray-900 sm:text-5xl"
+            className="text-4xl px-1 font-extrabold text-gray-900 sm:text-5xl"
           >
             {translations.title}
           </motion.h2>

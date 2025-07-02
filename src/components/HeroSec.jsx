@@ -49,7 +49,6 @@ function HeroSec() {
     },
   };
 
-
   const handleBookClick = (e) => {
     e.preventDefault();
 
@@ -74,7 +73,7 @@ function HeroSec() {
   };
 
   return (
-    <div className="relative pt-12 lg:px- pb-20 w-full overflow-hidden bg-gray-900">
+    <div className="relative pt-12 pb-20 w-full overflow-hidden bg-gray-900">
       {/* Enhanced Background Image */}
       <motion.div
         initial={{ scale: 1 }}
@@ -100,13 +99,13 @@ function HeroSec() {
         variants={containerVariants}
         className="relative h-full flex items-center px-4 sm:px-6 lg:px-4"
       >
-        <div className="max-w-5xl  w-full text-left text-white space-y-4 sm:space-y-6 px-4 sm:px-6 lg:pl-24">
+        <div className="max-w-5xl  w-full text-left text-white space-y-4 sm:space-y-6 px-4 mt-[-12px] sm:px-6 lg:pl-24">
           {/* Tagline & Heading */}
           <motion.div variants={itemVariants} className="w-full">
-            <span className="inline-block ml-[-3px] lg:ml-0 mt-0 sm:mt-6 bg-gradient-to-r from-pink-500 to-purple-600 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white rounded-full mb-3 sm:mb-6 shadow-lg">
+            <span className="inline-block ml-[-3px]  mt-0  sm:mt-6 bg-gradient-to-r from-pink-500 to-purple-600 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white rounded-full mb-3 lg:mb-8 sm:mb-6 shadow-lg">
               {translations.tagline}
             </span>
-            <h1 className="max-w-[800px]  text-2xl pb-6 xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent leading-8 sm:leading-[3.2rem] md:leading-[3.6rem]">
+            <h1 className="max-w-[800px]   text-2xl pb-6 xs:text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent leading-8 sm:leading-[3.2rem] md:leading-[3.6rem]">
               {translations.title_part1}{" "}
               <span className="text-blue-300">{translations.title_part2}</span>,{" "}
               {translations.title_part3}

@@ -60,18 +60,7 @@
   },
   "general_conditions": {
     "sections": [
-      {
-        "id": "site-editor",
-        "title": "I - SITE EDITOR",
-        "intro": "This website, accessible from the URL address https://ouvrir-societe-hong-kong.fr/ (hereinafter the Website) is published by:",
-        "content": "<h3 class=\"text-xl font-semibold mb-4 text-gray-800 flex items-center\"><svg class=\"w-5 h-5 mr-2 text-indigo-600\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fillRule=\"evenodd\" d=\"M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z\" clipRule=\"evenodd\" /></svg>OSHK CONTACT</h3><ul class=\"space-y-3 mb-4 text-gray-700\"><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-blue-500 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fillRule=\"evenodd\" d=\"M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z\" clipRule=\"evenodd\" /></svg><span>203 - 2/F, UPPER OFFICES HANKOW CTR<br />5-15 HANKOW RD TSIM SHA TSUI<br />HONG KONG</span></li><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-green-500 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path d=\"M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z\" /></svg><span>+852 1234 5678</span></li><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-purple-500 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path d=\"M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z\" /><path d=\"M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z\" /></svg><span>bonjour@ouvrir-societe-hong-kong.fr</span></li><li class=\"flex items-start\"><svg class=\"w-5 h-5 mr-3 mt-0.5 text-green-600 flex-shrink-0\" fill=\"currentColor\" viewBox=\"0 0 24 24\"><path d=\"M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z\" /></svg><div><span class=\"block\">WhatsApp Business</span><a href=\"https://wa.me/85212345678\" class=\"text-blue-600 hover:underline text-sm\" target=\"_blank\" rel=\"noopener noreferrer\">Chat with us on WhatsApp</a></div></li></ul><div class=\"flex items-center\"><svg class=\"w-5 h-5 mr-2 text-amber-500\" fill=\"currentColor\" viewBox=\"0 0 20 20\"><path fillRule=\"evenodd\" d=\"M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z\" clipRule=\"evenodd\" /></svg><p class=\"text-gray-700\"><strong class=\"text-gray-800\">NIF:</strong> 78164472-000-05-25-0</p></div>"
-      },
-      {
-        "id": "site-owner",
-        "title": "II – OWNER OF THE SITE",
-        "intro": "The owner is Create Company Hongkong LCLS LIMITED. Legal entity.",
-        "content": "<h3 class=\"text-2xl font-bold mb-4 text-gray-900 flex items-center\"><svg xmlns=\"http://www.w3.org/2000/svg\" class=\"h-6 w-6 mr-2 text-blue-600\" fill=\"none\" viewBox=\"0 0 24 24\" stroke=\"currentColor\"><path strokeLinecap=\"round\" strokeLinejoin=\"round\" strokeWidth=\"2\" d=\"M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z\" /></svg>OSHK Legal Information</h3><ul class=\"space-y-3.5 text-gray-700\"><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-28 flex-shrink-0\">Tax Number:</strong><span class=\"font-mono bg-gray-100 px-2 py-1 rounded text-blue-700\">78164472-000-05-25-0</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-28 flex-shrink-0\">Head Office:</strong ><span class=\"px-2\">203 - 2/F, UPPER OFFICES HANKOW CTR<br />5-15 HANKOW RD TSIM SHA TSUI<br />HONG KONG</span></li><li class=\"flex items-start\"><strong class=\"text-gray-900 font-medium w-28 flex-shrink-0\">Email:</strong><a href=\"mailto:bonjour@ouvrir-societe-hong-kong.fr\" class=\"text-blue-600 px-2 hover:text-blue-800 hover:underline transition-colors\">bonjour@ouvrir-societe-hong-kong.fr</a></li></ul>"
-      },
+
       {
         "id": "scope",
         "title": "1. Scope",
@@ -208,5 +197,101 @@
         "content": "<div class=\"bg-gray-50 p-6 rounded-lg\"><p class=\"mb-4\">These terms can be downloaded in PDF format from our website.</p><button class=\"px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition\">Download PDF Version</button></div>"
       }
     ]
+  },
+
+  "privacy_oshk": {
+    "sections": [
+      {
+        "id": "Data-Sharing-with-Third-Parties",
+        "title": "1. Sharing with Third Parties",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>We only share your personal information with third parties when absolutely necessary. These parties typically act as service providers working on our behalf and are bound by confidentiality agreements. We ensure that any partner we work with complies with data protection laws and uses your information solely for agreed purposes.</p><p>For example, we may collaborate with trusted agencies or developers to maintain and improve our website and services.</p><ul style=\"list-style-type: disc; padding-left: 1rem \" class=\"pl-6 space-y-2\"><li >Service providers for technical support, marketing, or analytics</li><li>Cloud hosting providers for secure data storage</li><li>Consultants or contractors assisting with system improvements</li></ul><div class=\"border rounded-lg p-4 bg-gray-50\"><h4 class=\"font-semibold text-gray-900 mb-2\">Example: Web Partner</h4><ul class=\"space-y-2\"><li><strong class=\"inline-block w-28\">Name:</strong> Najeeb Ullah</li><li><strong class=\"inline-block w-28\">Country:</strong> Pakistan</li><li><strong class=\"inline-block w-28\">Purpose:</strong> Web Development Services</li></ul></div></div>"
+      },
+      {
+        "id": "Use-Cookies",
+        "title": "2. Use of Cookies",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>Our website uses cookies and similar technologies to enhance your browsing experience, analyze usage patterns, and offer personalized content and advertisements.</p><ul style=\"list-style-type: disc;  padding-left: 1rem \"  class=\"list-disc list-inside space-y-2\"><li>Essential cookies for site functionality</li><li>Analytics cookies to understand user behavior</li><li>Preference cookies to remember your settings</li><li>Marketing cookies to tailor promotions</li></ul><p>You can manage or disable cookies through your browser settings at any time. Please refer to our <a href=\"/legal/cookies\" class=\"text-blue-600 hover:underline font-medium\">Cookie Policy</a> for more detailed information.</p></div>"
+
+      },
+      {
+        "id": "Legal-Disclosures",
+        "title": "3. Legal Disclosures",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>We may disclose your personal data when legally required to do so. This includes court orders, legal processes, or requests from regulatory or government authorities. Additionally, in the case of a merger, acquisition, or sale of our business, personal data may be shared with legal advisors or the acquiring organization under strict confidentiality agreements.</p><ol style=\"list-style-type: decimal ;  padding-left: 1rem \" class=\"list-disc list-inside space-y-2\"><li>Disclosures for compliance with legal obligations</li><li>Transfers due to business restructuring</li><li>Data shared with legal authorities or courts</li></ol><div class=\"border rounded-lg p-4 bg-gray-50\"><h4 class=\"font-semibold text-gray-900 mb-2\">Hosting Provider</h4><ul class=\"space-y-2\"><li><strong class=\"inline-block w-40\">Name:</strong> OVH Cloud</li><li><strong class=\"inline-block w-40\">Address:</strong> 2 rue Kellermann, 59100 Roubaix, France</li><li><strong class=\"inline-block w-40\">Phone:</strong> +33 9 72 10 10 07</li></ul></div></div>"
+      },
+      {
+        "id": "Data-Security",
+        "title": "4. Data Security",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>We are committed to ensuring the security of your personal data. Our security framework includes both technical and organizational measures to prevent unauthorized access, alteration, loss, or disclosure of information.</p><ul style=\"list-style-type: disc;  padding-left: 1rem \" class=\"list-disc list-inside space-y-2\"><li>End-to-end encrypted communication (SSL/TLS)</li><li>DNS authentication protocols (SPF, DKIM, DMARC)</li><li>Use of HTTP security headers</li><li>Firewall and server hardening techniques</li><li>Advanced threat monitoring tools</li><li>Access restricted to authorized personnel only</li><li>Regular security audits and risk assessments</li></ul></div>"
+      },
+      {
+        "id": "External-Links",
+        "title": "5. External Links",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>Our website may contain links to external sites that are not operated by us. Please note that we are not responsible for the privacy practices of these third-party websites. Once you leave our site, we encourage you to review the privacy statements of any other website you visit before submitting any personal data.</p><ul style=\"list-style-type: disc;  padding-left: 1rem \" class=\"list-disc list-inside space-y-2\"><li>Check third-party policies for clarity on data use</li><li>Be cautious about sharing personal information externally</li><li>We do not endorse external content or policies</li></ul></div>"
+      },
+      {
+        "id": "Policy-Updates",
+        "title": "6. Updates to This Policy",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>We may revise our Privacy Policy from time to time to reflect changes in legal requirements or our data practices. The updated version will always be posted on our website. In case of significant changes, we will make reasonable efforts to inform you through notices or direct communication, where applicable.</p><ul style=\"list-style-type: disc;  padding-left: 1rem \" class=\"list-disc list-inside space-y-2\"><li>Changes are effective upon posting</li><li>You are encouraged to review this page periodically</li><li>We aim for transparency in all policy updates</li></ul></div>"
+      },
+      {
+        "id": "Your-Rights",
+        "title": "7. Your Data Rights",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>You have certain rights regarding the personal data we hold about you. These rights allow you to control how your information is used and ensure transparency in our data practices.</p><ul style=\"list-style-type: disc;  padding-left: 1rem \" class=\"pl-5 space-y-2 text-gray-800\"><li>Right to know why and how we use your data</li><li>Right to access your personal information</li><li>Right to request correction of inaccurate data</li><li>Right to request deletion of data no longer needed</li><li>Right to withdraw previously given consent</li><li>Right to object to certain types of processing</li><li>Right to request data portability, if feasible</li></ul><p>To exercise your rights, please contact us with valid identification. We take privacy seriously and will process your request securely and promptly.</p></div>"
+      },
+      {
+        "id": "Complaints",
+        "title": "8. Complaints",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>If you believe your personal data has been mishandled or you have a privacy-related concern, you have the right to lodge a formal complaint. We aim to resolve all issues promptly and fairly. You can contact us directly, or if unsatisfied, escalate the matter to your local data protection authority.</p><ul style=\"list-style-type: disc;  padding-left: 1rem \" class=\"list-disc list-inside space-y-2\"><li>We handle all complaints confidentially</li><li>We aim to respond within a reasonable time</li><li>Contact your data authority if concerns remain unresolved</li></ul></div>"
+      }
+    ]
+  },
+
+  "Accessibility_Statement": {
+    "sections": [
+      {
+        "id": "Introduction",
+        "title": "1. Introduction",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>At <strong>RentFlex</strong>, we are deeply committed to ensuring that our services are accessible to everyone, including individuals with disabilities. This dedication aligns with <strong>Article 47 of Law No. 2005-102 of February 11, 2005</strong>, which guarantees equal rights, opportunities, and participation for all.</p><p>This accessibility statement applies to our official website: <a href=\"Ouvrir-société-hong-Kong.fr\" class=\"text-blue-600 hover:underline font-medium\">Ouvrir-société-hong-Kong.fr</a>.</p></div>"
+      },
+      {
+        "id": "Accessibility-Status",
+        "title": "2. Accessibility Status",
+        "content": "<div class=\"text-gray-700 bg-gray-200 p-4 rounded-lg space-y-4\"><p><strong>Status:</strong> Partially Compliant</p><p><strong>Audit Date:</strong> April 26, 2025</p><p>The RentFlex website currently meets many of the criteria defined in <strong>RGAA 4.1.2 (General Accessibility Guidelines)</strong>. We conducted a thorough evaluation of key pages (homepage, services, and contact) and identified a few accessibility concerns (e.g., color contrast and HTML structure). However, these do not hinder users from accessing the main content.</p></div>"
+      },
+      {
+        "id": "Dark-Mode",
+        "title": "3. Dark Mode Available",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>To enhance usability for users who are sensitive to brightness, we offer a <strong>Dark Mode</strong> version of our website. This can be triggered automatically based on your device’s system settings, or manually activated from the site menu.</p></div>"
+      },
+      {
+        "id": "Accessibility-Tools",
+        "title": "4. Accessibility Testing Tools",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p><strong>Tools Used:</strong></p><ul style=\"list-style-type: disc;  padding-left: 1rem \" class=\"list-disc list-inside space-y-1\"><li>WAVE Evaluation Tool</li><li>ARC Toolkit</li><li>AXE DevTools (Deque Systems)</li><li>Web Developer Toolbar</li><li>HeadingsMap</li><li>Adobe Color Contrast Checker</li></ul ><p><strong>Browsers & Assistive Tech:</strong></p><ul style=\"list-style-type: disc;  padding-left: 1rem \" class=\"list-disc list-inside space-y-1\"><li>Chrome + VoiceOver (macOS)</li><li>Firefox + NVDA (Windows)</li></ul></div>"
+      },
+      {
+        "id": "Non-Conformities",
+        "title": "5. Known Accessibility Issues",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>During our audit, we found a few accessibility issues that we are actively working to fix:</p><ul style=\"list-style-type: disc;  padding-left: 1rem \" class=\"list-disc list-inside space-y-2\"><li>Some images are missing descriptive <code>alt</code> attributes</li><li>Minor issues with color contrast</li><li>Tab order on specific pages needs refinement</li><li>Text labels for some buttons and forms can be improved for clarity</li></ul></div>"
+      },
+      {
+        "id": "Exemptions",
+        "title": "6. Exempted Content",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>As per <strong>Article 5 of the decree dated September 20, 2019</strong>, certain third-party content may be partially exempt from accessibility compliance. These include:</p><ul style=\"list-style-type: disc;  padding-left: 1rem \" class=\"list-disc list-inside space-y-2\"><li>Embedded maps (e.g., Google Maps)</li><li>YouTube videos</li><li>Third-party payment modules or iframe integrations</li></ul></div>"
+      },
+      {
+        "id": "Feedback-Contact",
+        "title": "7. Feedback and Contact",
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>If you experience any accessibility issues or are unable to access part of the site, please reach out to us. We will provide you with an alternative accessible version of the content.</p><p><strong>Email:</strong> <a href=\"mailto:bonjour@ouvrir-societe-hong-kong.fr\" class=\"text-blue-600 hover:underline font-medium\">bonjour@ouvrir-societe-hong-kong.fr</a></p><p><strong>Response time:</strong> Within 30 days</p></div>"
+      }
+      
+    ]
   }
+
+
+
+
+
+
+
+
+ 
 }

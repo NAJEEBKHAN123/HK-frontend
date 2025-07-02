@@ -52,20 +52,20 @@ function App() {
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/orders" element={<AllOrders />} />
 
-             {/* Legal Routes */}
+          {/* Legal Routes */}
           <Route path="/legal" element={<Legal />}>
             <Route index element={<Navigate to="/legal" replace />} />
             <Route path="privacy" element={<Privacy />} />
             <Route path="notices" element={<LegalNotices />} />
 
-            <Route path="conditions" element={<Conditions />} /> 
+            <Route path="conditions" element={<Conditions />} />
             <Route path="cookies" element={<Cookies />} />
             <Route path="accessibility" element={<Accessibility />} />
             <Route path="choices" element={<Choices />} />
           </Route>
-            <Route path="/team" element={<TeamMember />} />
+          <Route path="/team" element={<TeamMember />} />
 
-        {/* Admindashboard  */}
+          {/* Admindashboard  */}
           <Route
             path="/admin/dashboard"
             element={
@@ -74,8 +74,6 @@ function App() {
               </AdminProtectedRoute>
             }
           />
-
-       
         </Routes>
 
         <Footer />

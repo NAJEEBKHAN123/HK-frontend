@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import jean from "../assets/founder2.webp";
 import ludo from "../assets/Ludovic-Martinjpg.jpg";
 import sophie from "../assets/female.avif";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const team = [
   {
@@ -100,11 +100,39 @@ const staggerContainer = {
   }
 };
 
+
+
 export default function TeamPage() {
+
+  const navigate = useNavigate()
+
+   const handleBookClick = (e) => {
+    e.preventDefault();
+
+    if (window.location.pathname === "/") {
+      const bookingSection = document.getElementById("booking-section");
+      if (bookingSection) {
+        const navbarHeight = document.querySelector("nav")?.offsetHeight || 0;
+        const sectionPosition = bookingSection.offsetTop - navbarHeight;
+
+        window.scrollTo({
+          top: sectionPosition,
+          behavior: "smooth",
+        });
+
+        window.history.replaceState(null, "", "/#booking-section");
+      }
+    } else {
+      navigate("/", {
+        state: { scrollToBooking: true },
+      });
+    }
+  };
+
   return (
     <div className="bg-black lg:px-[75px] text-white min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-28 px-6  sm:px-10 overflow-hidden">
+      <section className="relative py-28 px-4  sm:px-10 overflow-hidden">
         <div className="max-w-6xl  mx-auto text-center">
           <motion.div
             initial="hidden"
@@ -128,7 +156,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Members */}
-      <section className="py-10 px-6 sm:px-10 max-w-7xl mx-auto">
+      <section className="py-10 px-5 sm:px-5 max-w-7xl mx-auto">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -142,7 +170,7 @@ export default function TeamPage() {
               variants={fadeIn}
               className="bg-gray-900 rounded-2xl overflow-hidden border border-gray-800"
             >
-              <div className="grid md:grid-cols-3 gap-8 p-8 md:p-12">
+              <div className="grid md:grid-cols-3 gap-8 p-4 lg:px-8 md:p-12">
                 {/* Photo Column */}
                 <div className="flex flex-col items-center">
                   <div className="relative w-full aspect-square max-w-xs rounded-xl overflow-hidden border-2 border-yellow-500/30">
@@ -255,7 +283,8 @@ export default function TeamPage() {
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
-                to="/contact"
+                onClick={handleBookClick}
+                // to="/contact"
                 className="px-8 py-3 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded-lg transition-colors"
               >
                 Schedule Consultation

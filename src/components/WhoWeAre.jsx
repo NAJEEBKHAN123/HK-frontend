@@ -76,7 +76,7 @@ export default function WhoWeAre() {
   };
 
   return (
-    <section className="py-20 md:py-28 bg-black text-white px-7  sm:px-10 overflow-hidden">
+    <section className="py-20 md:py-28 bg-black text-white px-5  sm:px-10 overflow-hidden">
       <div className="max-w-6xl mx-auto xl:px-[55px] lg:px-16">
         {/* Header */}
         <motion.div

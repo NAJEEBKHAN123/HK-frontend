@@ -142,7 +142,7 @@ const FAQPage = () => {
         >
           <motion.h1 
             variants={itemVariants}
-            className="lg:text-3xl text-2xl pl-7 lg:pl-0 font-bold text-gray-900   mb-8 md:mb-10"
+            className="text-3xl pl-7 lg:pl-0 font-bold text-gray-900 mb-8 md:mb-10"
             itemProp="name"
           >
             {translations.title}
