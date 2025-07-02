@@ -42,7 +42,7 @@
           "Adresse du bureau virtuel incluse."
         ],
         "recommended_text": "RECOMMANDÉ",
-        "cta_button": "Commencer"
+        "cta_button": "Commander"
       },
       {
         "title": "Pack CLÉ EN MAIN",
@@ -54,7 +54,7 @@
           "Idéal pour: Consultants, entreprises en croissance."
         ],
         "recommended_text": "RECOMMANDÉ",
-        "cta_button": "Commencer"
+        "cta_button": "Commander"
       },
       {
         "title": "Pack PREMIUM",
@@ -66,7 +66,7 @@
           "Gestionnaire de compte dédié inclus. "
         ],
         "recommended_text": "RECOMMANDÉ",
-        "cta_button": "Commencer"
+        "cta_button": "Commander"
       }
     ]
   },
