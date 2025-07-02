@@ -137,16 +137,16 @@ export default function PricingSection() {
                 },
               },
             }}
-            className="text-2xl sm:text-3xl font-bold tracking-tight mb-4"
+            className="text-2xl sm:text-3xl font-bold tracking-tight lg:mb-12 mb-8"
             itemProp="name"
           >
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="bg-clip-text text-3xl lg:text-5xl text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
+              className="bg-clip-text text-3xl lg:text-3xl lg:mb-10  text-transparent bg-gradient-to-r from-yellow-400 to-yellow-600"
             >
-              {translations?.title || "Why choose Hong Kong?"}
+              {translations?.title }
             </motion.span>
           </motion.h2>
           <motion.p
@@ -162,11 +162,11 @@ export default function PricingSection() {
                 },
               },
             }}
-            className="text-gray-400 px-4 mt-2 text-sm sm:text-base max-w-xl mx-auto"
+            className="text-gray-400 px-4 mt-2 text-justify lg:text-lg  mx-auto"
             itemProp="description"
           >
-            {translations?.subtitle ||
-              "Hong Kong is one of the most dynamic economic hubs in the world."}
+            {translations?.subtitle 
+             }
           </motion.p>
         </motion.div>
 

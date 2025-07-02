@@ -30,16 +30,16 @@ const Legal = () => {
     legalItems.find(item => location.pathname.includes(item.route))?.label || "Legal Information";
 
   return (
-    <div className="lg:px-[74px] p   max-w-7xl mx-auto">
+    <div className="lg:px-[74px]  max-w-7xl mx-auto">
       <h2 className="text-2xl font-bold mb-12 pl-8 pt-12 uppercase" >{currentLabel}</h2>
 
       {/* Legal Items Grid */}
-      <div className="grid px-2 grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 mb-10 text-center">
+      <div className="grid px-2 grid-cols-2 md:px-6 sm:grid-cols-3 md:grid-cols-6 gap-6 mb-10 text-center">
         {legalItems.map((item, index) => (
           <div
             key={index}
             onClick={() => navigate(item.route)}
-            className={`cursor-pointer flex flex-col items-center space-y-2 transition-all ${
+            className={`cursor-pointer   flex flex-col items-center space-y-2 transition-all ${
               location.pathname.includes(item.route)
                 ? "text-cyan-700"
                 : "hover:text-gray-700"
