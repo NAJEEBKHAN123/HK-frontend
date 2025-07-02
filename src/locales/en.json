@@ -30,7 +30,10 @@
 
    "pricing": {
     "title": "Why Choose Hong Kong for Your Business?",
-    "subtitle": "Hong Kong's 0% corporate tax rate is attractive, with no VAT or hidden taxes. It's simple: lower taxes, more profits for you! What's more, Hong Kong isn't a dubious tax haven. Its global reputation is solid thanks to clear rules and exemplary transparency. Your money is safe, and the legal framework protects you. For a European, it offers peace of mind with fewer tax worries. Doing business here is efficient and reliable.",
+    "subtitlePart1": "Le taux d'imposition des sociétés de 0% à Hong Kong est attractif,",
+    "subtitlePart2": " sans TVA ni taxes cachées. C'est simple : moins de taxes, plus de profits pour vous ! De plus, Hong Kong n'est pas un paradis fiscal douteux. Sa réputation mondiale est solide grâce à des règles claires et une transparence exemplaire. Votre argent est en sécurité, et le cadre juridique vous protège.",
+    "subtitlePart3": "Pour un Européen, cela offre une tranquillité d'esprit avec moins de soucis fiscaux.",
+    "subtitlePart4": "Faire des affaires ici est efficace et fiable.",
     "plans": [
       {
         "title": "STARTER Pack",

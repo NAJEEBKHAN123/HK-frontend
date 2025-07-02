@@ -165,8 +165,8 @@ export default function PricingSection() {
             className="text-gray-400 px-4 mt-2 text-justify lg:text-lg  mx-auto"
             itemProp="description"
           >
-            {translations?.subtitle 
-             }
+            <span className="text-yellow-500">{translations?.subtitlePart1}</span>{" "} {translations?.subtitlePart2}{" "}
+            <span className="text-yellow-500">{translations?.subtitlePart3}</span>{" "} {translations?.subtitlePart4}
           </motion.p>
         </motion.div>
 

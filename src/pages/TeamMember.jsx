@@ -164,7 +164,7 @@ export default function TeamPage() {
               variants={fadeIn}
               className="bg-white rounded-xl overflow-hidden shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="grid md:grid-cols-3 gap-8 p-8">
+              <div className="grid md:grid-cols-3 gap-8 p-4">
                 {/* Photo Column */}
                 <div className="flex flex-col items-center">
                   <div className="relative w-full aspect-square max-w-xs rounded-lg overflow-hidden border-4 border-white shadow-md">
