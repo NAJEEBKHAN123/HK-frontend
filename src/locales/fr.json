@@ -30,7 +30,10 @@
 
    "pricing": {
     "title": "Pourquoi Choisir Hong Kong pour Votre Entreprise ?",
-    "subtitle": "Hong Kong séduit avec son impôt sur les sociétés de 0 %, sans TVA ni impôt caché. C'est simple : moins d'impôts, plus de bénéfices pour vous ! En plus, Hong Kong n'est pas un paradis fiscal douteux. Sa réputation mondiale est solide grâce à des règles claires et une transparence exemplaire. Votre argent est en sécurité, et le cadre légal vous protège. Pour un Européen, c'est la tranquillité d'esprit avec moins de tracas fiscaux. Faire des affaires ici est efficace et fiable.",
+     "subtitlePart1": "Le taux d'imposition des sociétés de 0% à Hong Kong est attractif,",
+    "subtitlePart2": " sans TVA ni taxes cachées. C'est simple : moins de taxes, plus de profits pour vous ! De plus, Hong Kong n'est pas un paradis fiscal douteux. Sa réputation mondiale est solide grâce à des règles claires et une transparence exemplaire. Votre argent est en sécurité, et le cadre juridique vous protège.",
+    "subtitlePart3": "Pour un Européen, cela offre une tranquillité d'esprit avec moins de soucis fiscaux.",
+    "subtitlePart4": "Faire des affaires ici est efficace et fiable.",
     "plans": [
       {
         "title": "Pack STARTER",
