@@ -250,7 +250,7 @@
       {
         "id": "Introduction",
         "title": "1. Introduction",
-        "content": "<div class=\"text-gray-700 space-y-4\"><p>At <strong>RentFlex</strong>, we are deeply committed to ensuring that our services are accessible to everyone, including individuals with disabilities. This dedication aligns with <strong>Article 47 of Law No. 2005-102 of February 11, 2005</strong>, which guarantees equal rights, opportunities, and participation for all.</p><p>This accessibility statement applies to our official website: <a href=\"Ouvrir-société-hong-Kong.fr\" class=\"text-blue-600 hover:underline font-medium\">Ouvrir-société-hong-Kong.fr</a>.</p></div>"
+        "content": "<div class=\"text-gray-700 space-y-4\"><p>At <strong>RentFlex</strong>, we are deeply committed to ensuring that our services are accessible to everyone, including individuals with disabilities. This dedication aligns with <strong>Article 47 of Law No. 2005-102 of February 11, 2005</strong>, which guarantees equal rights, opportunities, and participation for all.</p><p>This accessibility statement applies to our official website: <a href=\"/\" class=\"text-blue-600 hover:underline font-medium\">Ouvrir-société-hong-Kong.fr</a>.</p></div>"
       },
       {
         "id": "Accessibility-Status",
@@ -284,7 +284,61 @@
       }
       
     ]
-  }
+  },
+
+ "cookies_policy": {
+  "last_updated": "July 2, 2025",
+  "applies_to": "Residents and legal permanent residents of the European Economic Area and Switzerland.",
+  "sections": [
+    {
+      "id": "Introduction",
+      "title": "1. Introduction",
+      "content": "<div class=\"text-gray-700 space-y-4\"><p>Welcome to our website, <a href=\"/\" class=\"text-blue-600 hover:underline font-medium\">Ouvrir-société-hong-Kong.fr</a> (referred to as \"the website\"). We use cookies and similar technologies to enhance your browsing experience. These technologies may also be used by third parties we collaborate with. This policy outlines how cookies are used on our website.</p></div>"
+    },
+    {
+      "id": "what-cookies",
+      "title": "2. What Are Cookies?",
+      "content": "<div class=\"text-gray-700 space-y-4\"><p>Cookies are small data files sent along with web pages and stored on your device via your browser. These files allow data to be retrieved during future visits either by our servers or those of third-party providers.</p></div>"
+    },
+    {
+      "id": "scripts",
+      "title": "3. What Are Scripts?",
+      "content": "<div class=\"text-gray-700 space-y-4\"><p>Scripts are lines of code that ensure our website functions correctly and interactively. These scripts may run on our server or directly on your device.</p></div>"
+    },
+    {
+      "id": "web-beacon",
+      "title": "4. What Is a Web Beacon?",
+      "content": "<div class=\"text-gray-700 space-y-4\"><p>Web beacons (or pixel tags) are invisible images or text snippets used to monitor user activity on a site. Through them, various user data can be collected and analyzed.</p></div>"
+    },
+    {
+      "id": "Use-Cookies",
+      "title": "5. Use of Cookies",
+      "content": "<div class=\"text-gray-700 space-y-4\"><p><strong>5.1 Functional (Technical) Cookies:</strong> These cookies are essential for the proper operation of our website. They store your preferences, making your experience smoother—for instance, remembering what’s in your shopping cart. These cookies may be placed without requiring your consent.</p><p><strong>5.2 Marketing and Tracking Cookies:</strong> Used to create user profiles and deliver personalized advertising, these cookies track your behavior across this and other websites for marketing purposes.</p><p><strong>5.3 Social Media Integration:</strong> Our website features content from platforms like Facebook, Twitter, and WhatsApp to allow you to like, share, or interact with content. These platforms may place cookies through embedded code and collect data for advertising purposes. We recommend reviewing their privacy policies, which may change over time, to understand how your data is used. The data collected is anonymized whenever possible. Note that Facebook, Twitter, and WhatsApp are headquartered in the United States.</p></div>"
+    },
+    {
+      "id": "Consent",
+      "title": "6. Consent",
+      "content": "<div class=\"text-gray-700 space-y-4\"><p>Upon your first visit, a cookie consent banner will appear. By clicking \"Save preferences,\" you agree to the use of the selected categories of cookies and plug-ins described in this policy. You can disable cookies in your browser, but some site functions may not work properly.</p><p><strong>6.1 Managing Your Consent:</strong> Functional: Always active – required for the website to work as intended. Marketing: Needed to build profiles, show ads, and track user behavior across websites.</p></div>"
+    },
+    {
+      "id": "managing-and-delete-cookies",
+      "title": "7. Managing and Deleting Cookies",
+      "content": "<div class=\"text-gray-700 space-y-4\"><p>You can manage or remove cookies through your browser settings—either automatically or manually. You can also choose to block specific cookies or receive alerts when cookies are placed. For details, consult your browser’s Help section.</p><p>Disabling all cookies may affect website functionality. If cookies are deleted, they will reappear after you provide consent during your next visit.</p></div>"
+    },
+    {
+      "id": "data-rights",
+      "title": "8. Your Data Rights",
+      "content": "<div class=\"text-gray-700 space-y-4\"><ul class=\"list-disc list-inside space-y-2\"><li><strong>Right to be informed:</strong> Know why and how your data is processed, and for how long.</li><li><strong>Right of access:</strong> Request access to the personal data we store about you.</li><li><strong>Right to correction:</strong> Request to update, correct, delete, or block your personal data.</li><li><strong>Right to withdraw consent:</strong> Withdraw your permission and request deletion of your data.</li><li><strong>Right to data portability:</strong> Receive your data and transfer it to another service provider.</li><li><strong>Right to object:</strong> Oppose data processing unless we have legitimate grounds.</li></ul><p>To exercise these rights, contact us using the information provided below. If you believe your data is not being handled appropriately, you also have the right to file a complaint with the Data Protection Authority.</p></div>"
+    },
+    {
+      "id": "Contact-Information",
+      "title": "9. Contact Information",
+      "content": "<div class=\"text-gray-700 space-y-4\"><p>For questions or comments about this Cookie Policy, you may contact us:</p><p><strong>MARIA WORLD TRADING LIMITED</strong><br/>203 - 2/F, Upper Offices, Hankow Centre, 5-15 Hankow Rd, Tsim Sha Tsui,<br/>Hong Kong</p><p><strong>Website:</strong> <a href=\"/\" class=\"text-blue-600 hover:underline font-medium\">Ouvrir-société-hong-Kong.fr</a></p><p><strong>Email:</strong> <a href=\"mailto:bonjour@ouvrir-societe-hong-kong.fr\" class=\"text-blue-600 hover:underline font-medium\">bonjour@ouvrir-societe-hong-kong.fr</a></p><p><strong>Phone:</strong> +33 (0)6 33 02 16 82</p><p><em>This Cookie Policy was last updated and synchronized with cookiedatabase.org on July 2, 2025.</em></p></div>"
+    }
+  ]
+}
+
+
 
 
 
