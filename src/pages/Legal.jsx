@@ -67,7 +67,7 @@ const Legal = () => {
         <div className="mt-6 text-center pb-4">
           <button
             onClick={() => navigate("/legal")}
-            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition"
+            className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded  hover:bg-gray-300 dark:hover:bg-gray-600 transition"
           >
             ← Back to All Legal Documents
           </button>

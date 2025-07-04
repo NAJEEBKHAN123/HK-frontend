@@ -124,7 +124,7 @@ function Conditions({ documentType = "general_conditions" }) {
 
   return (
     <div className="bg-white -mx-1.5">
-      <div className="w-full bg-gray-50  px-[-20px] lg:px-0">
+      <div className="w-full  px-[-20px] lg:px-0">
         <div className="flex w-full flex-col md:flex-row gap-20">
           {/* Left column - Content sections */}
           <div className="flex-1">

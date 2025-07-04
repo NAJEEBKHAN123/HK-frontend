@@ -44,11 +44,11 @@ function Privacy() {
 
   return (
     <div className="bg-white -mx-1.5 ">
-      <div className="w-full bg-gray-50  px-[-20px] lg:px-0">
+      <div className="w-full   px-[-20px] lg:px-0">
         <div className="flex w-full flex-col md:flex-row gap-20">
           {/* Left column - Content sections */}
           <div className="flex-1">
-            <div className="max-w-[1040px] mx-auto">
+            <div className="max-w-[1040px] px-1 mx-auto">
               <section id={documentData.sections[0].id} className="mb-12">
                 <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">
                   {documentData.sections[0].title}
@@ -108,7 +108,7 @@ function Privacy() {
           </div>
         </div>
       </div>
-      <div className="w-full px-2 lg:px-4">
+      <div className="w-full  lg:px-4">
         {documentData.sections.slice(2).map(renderSection)}
       </div>
     </div>
