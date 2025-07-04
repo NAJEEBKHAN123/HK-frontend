@@ -43,7 +43,7 @@ function Cookies() {
 
   return (
     <div>
-      <div className="w-full bg-gray-50  px-[-20px] lg:px-0">
+      <div className="w-full bg-gray-50  px-[-10px] lg:px-0">
         <div className="flex w-full flex-col md:flex-row gap-20">
           {/* Left column - Content sections */}
           <div className="flex-1">

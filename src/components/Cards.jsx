@@ -162,7 +162,7 @@ export default function PricingSection() {
                 },
               },
             }}
-            className="text-gray-400 px-4 mt-2  lg:text-lg  mx-auto"
+            className="text-gray-400 px-4 mt-2 lg:text-lg  mx-auto"
             itemProp="description"
           >
             <span className="text-yellow-500">{translations?.subtitlePart1}</span>{" "} {translations?.subtitlePart2}{" "}
@@ -176,7 +176,7 @@ export default function PricingSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-9 px-3 lg:px-5 sm:px-1 "
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-9 p-1 lg:px-5 sm:px-1 "
         >
           {pricingPlans.map((plan, index) => (
             <motion.div
