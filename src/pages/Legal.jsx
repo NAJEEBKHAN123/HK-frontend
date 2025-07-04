@@ -55,7 +55,7 @@ const Legal = () => {
 
       {/* Outlet for Selected Document */}
       <div
-        className={`bg-white dark:bg-gray-900 p-6 rounded-lg shadow transition-all ${
+        className={`bg-white p-6 rounded-lg shadow transition-all ${
           isDocumentView ? "opacity-100 max-h-full" : "opacity-0 max-h-0 overflow-hidden"
         }`}
       >
