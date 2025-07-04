@@ -145,7 +145,7 @@ const OrderForm = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-7 sm:px-6  py-20">
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5 sm:px-6  py-20">
       <form
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5"

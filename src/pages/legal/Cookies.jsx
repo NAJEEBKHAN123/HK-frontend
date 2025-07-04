@@ -42,8 +42,8 @@ function Cookies() {
   };
 
   return (
-    <div>
-      <div className="w-full bg-gray-50  px-[-10px] lg:px-0">
+    <div className="bg-white -mx-1.5 ">
+      <div className="w-full lg:px-0">
         <div className="flex w-full flex-col md:flex-row gap-20">
           {/* Left column - Content sections */}
           <div className="flex-1">
@@ -107,7 +107,7 @@ function Cookies() {
           </div>
         </div>
       </div>
-      <div className="w-full px-2 lg:px-4 text-justify">
+      <div className="w-full text-justify lg:px-4 ">
         {documentData.sections.slice(2).map(renderSection)}
       </div>
     </div>
