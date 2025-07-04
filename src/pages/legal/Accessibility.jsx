@@ -42,7 +42,7 @@ function Privacy() {
   };
 
   return (
-    <div>
+    <div className="bg-white -mx-1.5 ">
       <div className="w-full bg-gray-50  px-[-20px] lg:px-0">
         <div className="flex w-full flex-col md:flex-row gap-20">
           {/* Left column - Content sections */}
@@ -107,7 +107,7 @@ function Privacy() {
           </div>
         </div>
       </div>
-      <div className="w-full px-2 lg:px-4 text-justify">
+      <div className="w-full px-2 lg:px-4 text-left">
         {documentData.sections.slice(2).map(renderSection)}
       </div>
     </div>
