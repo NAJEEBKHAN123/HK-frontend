@@ -149,7 +149,7 @@ const Navbar = () => {
 
       {/* Mobile Header */}
       <div className="xl1170:hidden flex justify-between items-center px-4 h-16">
-        <div className="w-12 h-12 bg-[#1f2937] rotate-45 flex items-center justify-center">
+        <div className="w-10 h-10 bg-[#1f2937] rotate-45 flex items-center justify-center">
           <Link
             to="/"
             onClick={handleHomeClick}

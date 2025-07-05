@@ -77,6 +77,16 @@ const Footer = () => {
     return () => clearInterval(timeInterval);
   }, []);
 
+  // Scroll detection for back-to-top button
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const isOfficeOpen =
     ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"].includes(
       currentTime.day
@@ -186,7 +196,6 @@ const Footer = () => {
             <p className="text-gray-400 mb-6">{translations.tagline}</p>
 
             {/* carbon website */}
-
             <CarbonStatic />
             <div className="flex space-x-4 p-4 pt-6">
               <a
@@ -379,72 +388,67 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-      <div className="border-t border-gray-700/50 pt-">
-  <div className="container mx-auto px-4">
-    {/* Animated gradient divider */}
-    <div className="relative mb-8 h-px w-full overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent animate-[shimmer_3s_infinite]"></div>
-    </div>
+        <div className="border-t border-gray-700/50 pt-">
+          <div className="container mx-auto px-4">
+            {/* Animated gradient divider */}
+            <div className="relative mb-8 h-px w-full overflow-hidden">
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent animate-[shimmer_3s_infinite]"></div>
+            </div>
 
-    <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-      {/* Left side - Copyright with dynamic year animation */}
-      <motion.div 
-        whileHover={{ scale: 1.02 }}
-        className="flex items-center gap-2"
-      >
-        <span className="text-gray-400 text-sm">
-          © <span className="font-medium text-cyan-300">{new Date().getFullYear()}</span> {translations.companyName}
-        </span>
-        <span className="hidden md:inline-block h-4 w-px bg-gray-600/50"></span>
-        <span className="text-gray-500 text-sm hidden md:block">
-          {translations.copyright}
-        </span>
-      </motion.div>
+            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+              {/* Left side - Copyright with dynamic year animation */}
+              <motion.div 
+                whileHover={{ scale: 1.02 }}
+                className="flex items-center gap-2"
+              >
+                <span className="text-gray-400 text-sm">
+                  © <span className="font-medium text-cyan-300">{new Date().getFullYear()}</span> {translations.companyName}
+                </span>
+                <span className="hidden md:inline-block h-4 w-px bg-gray-600/50"></span>
+                <span className="text-gray-500 text-sm hidden md:block">
+                  {translations.copyright}
+                </span>
+              </motion.div>
 
- 
-
-      {/* Right side - Admin with subtle animation */}
-      <motion.div 
-        whileHover={{ x: 2 }}
-        transition={{ type: "spring", stiffness: 300 }}
-      >
-        <Link
-          to="/admin/login"
-          className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-sm"
-        >
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            className="h-4 w-4 group-hover:rotate-12 transition-transform" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" 
-            />
-            <path 
-              strokeLinecap="round" 
-              strokeLinejoin="round" 
-              strokeWidth={2} 
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" 
-            />
-          </svg>
-          <span className="hidden sm:inline-block">Admin Dashboard</span>
-          <span className="inline-block sm:hidden">Admin</span>
-        </Link>
-      </motion.div>
-    </div>
-
- 
-   
-  </div>
-</div>
+              {/* Right side - Admin with subtle animation */}
+              <motion.div 
+                whileHover={{ x: 2 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <Link
+                  to="/admin/login"
+                  className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-sm"
+                >
+                  <svg 
+                    xmlns="http://www.w3.org/2000/svg" 
+                    className="h-4 w-4 group-hover:rotate-12 transition-transform" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" 
+                    />
+                    <path 
+                      strokeLinecap="round" 
+                      strokeLinejoin="round" 
+                      strokeWidth={2} 
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" 
+                    />
+                  </svg>
+                  <span className="hidden sm:inline-block">Admin Dashboard</span>
+                  <span className="inline-block sm:hidden">Admin</span>
+                </Link>
+              </motion.div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* --- Back to Top Button (Animated) --- */}
+      {/* --- Back to Top Button (Now Working) --- */}
       <AnimatePresence>
         {isScrolled && (
           <motion.button
@@ -453,6 +457,7 @@ const Footer = () => {
             exit={{ opacity: 0, y: 20 }}
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="fixed bottom-6 right-6 bg-cyan-600 hover:bg-cyan-700 text-white p-3 rounded-full shadow-lg transition-all transform hover:scale-110 z-[1000]"
+            aria-label="Back to top"
           >
             <FiArrowUp size={20} />
           </motion.button>
