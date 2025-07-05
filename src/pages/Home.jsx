@@ -6,6 +6,7 @@ import WhoWeAre from '../components/WhoWeAre';
 import ContactUs from '../components/Contact';
 import Faq from '../pages/Faq';
 import BookingModal from '../components/BookingModal';
+import CookieConsent from './legal/Choices';
 
 const Home = () => {
   return (
@@ -17,6 +18,7 @@ const Home = () => {
       <WhoWeAre />
       <BookingModal  id="booking-section" />
       <ContactUs />
+       <CookieConsent onlyShowOnHomePage={true} />
     </div>
   );
 };

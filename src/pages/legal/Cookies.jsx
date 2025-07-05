@@ -107,7 +107,7 @@ function Cookies() {
           </div>
         </div>
       </div>
-      <div className="w-full bg-white text-justify lg:px-4 ">
+      <div className="w-full text-justify lg:px-4 ">
         {documentData.sections.slice(2).map(renderSection)}
       </div>
     </div>
