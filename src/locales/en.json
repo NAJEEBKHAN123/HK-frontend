@@ -89,10 +89,10 @@
         "slug": "hong-kong-company-formation",
         "icon": "🏢",
         "items": [
-          "Articles of Association drafted in English",
+          "Articles of Association drafted in French",
           "Certificate of Incorporation",
           "Premium Registered Office Address",
-          "Local Company Secretary (mandatory in Hong Kong)"
+          "Local Company Secretariat (mandatory in Hong Kong)"
         ]
       },
       {
@@ -129,7 +129,7 @@
         "icon": "🇫🇷",
         "items": [
           "A Dedicated French-Speaking Contact",
-          "Assistance by Email, WhatsApp, and Video",
+          "Assistance by Email and WhatsApp",
           "Document Translation Services",
           "Business Meeting Interpretation"
         ]
@@ -311,7 +311,40 @@
       "icon": "FiHelpCircle"
     }
   ]
+  },
+
+  "orderForm": {
+    "title": "Order Registration",
+    "planLabel": "Plan",
+    "totalLabel": "Total",
+    "buttons": {
+      "submit": "Complete Registration",
+      "submitting": "Submitting..."
+    },
+    "fields": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "birthday": "Birthday",
+      "address": "Address",
+      "idUpload": "Upload ID (JPEG/PNG/PDF)"
+    },
+    "errors": {
+      "fullName": "Full name is required",
+      "email": "Email is required",
+      "phone": "Phone number is required",
+      "birthday": "Birthday is required",
+      "address": "Address is required",
+      "idFile": "ID file is required"
+    },
+    "success": {
+      "title": "Order Submitted Successfully!",
+      "message": "We've received your order for the {plan} plan.",
+      "total": "Total Amount",
+      "contact": "Our team will contact you shortly at {email} or {phone} with payment instructions."
+    }
   }
+
 
   
 
