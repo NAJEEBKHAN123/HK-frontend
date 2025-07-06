@@ -14,9 +14,9 @@ import jean from "../assets/founder2.webp";
 import ludo from "../assets/Ludovic-Martinjpg.jpg";
 import sophie from "../assets/female.avif";
 import office from "../assets/office.webp";
-import pattern from "../assets/pattern.avif";
-import hkSkyline from "../assets/hkSkyline.avif";
-import hknight from "../assets/hongkong-night.avif";
+import pattern from "../assets/pattern.webp";
+import hkSkyline from "../assets/hkSkyline.webp";
+import hknight from "../assets/hongkong-night.webp";
 
 
 const team = [
