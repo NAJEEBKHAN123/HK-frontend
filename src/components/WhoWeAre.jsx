@@ -17,7 +17,6 @@ import office from "../assets/office.webp";
 import pattern from "../assets/pattern.webp";
 import hkSkyline from "../assets/hksky.webp";
 import hknight from "../assets/hongkong-night.webp";
-// const hkSkyline = "https://images.unsplash.com/photo-1536599424071-0b215a388ba7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80";
 
 
 const team = [
@@ -160,10 +159,10 @@ export default function WhoWeAre() {
     <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800 py-28 px-5 sm:px-10">
       {/* Decorative elements */}
       <div
-        className="absolute inset-0 opacity-10"
+        className="absolute inset-0 opacity-10 "
         style={{
           backgroundImage: `url(${hkSkyline})`,
-          backgroundSize: "800px",
+          backgroundSize: "auto ",
           backgroundBlendMode: "overlay",
         }}
       />
@@ -187,7 +186,7 @@ export default function WhoWeAre() {
         {/* Header with parallax effect */}
      <motion.div 
   // style={{ y: scrollY * 0.1 }} 
-  className="text-center mb-12 md:mb-20 px-4"  // Added horizontal padding
+  className="text-center mb-12 md:mb-20 px-2"  // Added horizontal padding
 >
   <motion.p
     initial={{ opacity: 0, y: 20 }}
@@ -216,7 +215,7 @@ export default function WhoWeAre() {
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ delay: 0.4 }}
-    className="max-w-4xl mx-auto text-base sm:text-lg md:text-xl text-gray-300 px-2"  // Responsive size + padding
+    className="max-w-4xl text-left px-2  mx-auto text-base sm:text-lg md:text-xl text-gray-300"  // Responsive size + padding
   >
     A team of seasoned professionals dedicated to your Hong Kong business success.
     We're a team of passionate experts helping European entrepreneurs <span className="text-blue-300 font-semibold">regain financial freedom </span>
@@ -337,7 +336,7 @@ export default function WhoWeAre() {
               <div className="relative">
                 <motion.div
                   className="absolute inset-0  bg-cover bg-center"
-                  style={{ backgroundImage: `url(${office})` }}
+                  style={{ backgroundImage: `url(${office}) ` }}
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
@@ -460,10 +459,10 @@ export default function WhoWeAre() {
           transition={{ delay: 0.2 }}
           className="relative rounded-xl overflow-hidden"
         >
-          <div className="absolute inset-0  bg-cover bg-center opacity-30"
+          <div className="absolute inset-0  bg-cover bg-center opacity-20"
           style={{backgroundImage: `url(${hknight})`}}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/70 to-gray-900/90" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/50 to-gray-900/90" />
 
           <div className="relative z-10 py-16 px-8 sm:px-16 text-center">
             <motion.h2
@@ -473,7 +472,7 @@ export default function WhoWeAre() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              Ready to Start Your <span className="text-blue-400">Hong Kong Journey</span>?
+              Ready to Start Your <span className="text-blue-400">Hong Kong</span> Journey?
             </motion.h2>
 
             <motion.p

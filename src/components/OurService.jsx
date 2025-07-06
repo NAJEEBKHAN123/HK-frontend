@@ -136,13 +136,13 @@ export default function OurServices() {
         >
           <motion.p 
             variants={itemVariants}
-            className="text-blue-600  font-semibold mb-2"
+            className="text-blue-600 font-semibold mb-2"
           >
             {translations.subtitle}
           </motion.p>
           <motion.h2 
             variants={itemVariants}
-            className="text-4xl px-1 font-extrabold text-gray-900 sm:text-5xl"
+            className="text-4xl font-extrabold text-gray-900 sm:text-5xl"
           >
             {translations.title}
           </motion.h2>

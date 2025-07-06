@@ -162,7 +162,7 @@ export default function PricingSection() {
                 },
               },
             }}
-            className="text-gray-400 max-w-4xl px-4 mt-4 lg:text-lg mx-auto"
+            className="text-gray-400 max-w-4xl text-left px-2 mt-4 lg:text-lg mx-auto"
             itemProp="description"
           >
             <span className="text-yellow-500">{translations?.subtitlePart1}</span>{" "} {translations?.subtitlePart2}{" "}
