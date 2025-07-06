@@ -15,9 +15,9 @@ import ludo from "../assets/Ludovic-Martinjpg.jpg";
 import sophie from "../assets/female.webp";
 import office from "../assets/office.webp";
 import pattern from "../assets/pattern.webp";
-// import hkSkyline from "../assets/hksky.webp";
+import hkSkyline from "../assets/hero2.jpg";
 import hknight from "../assets/hongkong-night.webp";
-const hkSkyline = "https://images.unsplash.com/photo-1536599424071-0b215a388ba7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80";
+// const hkSkyline = "https://images.unsplash.com/photo-1536599424071-0b215a388ba7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80";
 
 
 const team = [
@@ -219,7 +219,7 @@ export default function WhoWeAre() {
     className="max-w-4xl mx-auto text-base sm:text-lg md:text-xl text-gray-300 px-2"  // Responsive size + padding
   >
     A team of seasoned professionals dedicated to your Hong Kong business success.
-    We're a team of possionate experts helping European entreprendre <span className="text-blue-300 font-semibold">regain financial freedom </span>
+    We're a team of passionate experts helping European entrepreneurs <span className="text-blue-300 font-semibold">regain financial freedom </span>
       through Hong Kong business-friendly environment. With combined experience across <span className="text-blue-300 font-semibold">law, accounting and banking</span>, we provide end-to-end solutions.
     
   </motion.p>
