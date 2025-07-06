@@ -182,7 +182,7 @@ export default function WhoWeAre() {
         }}
       />
 
-      <div className="max-w-7xl lg:px-[70px] sm:-mx-5 mx-auto relative z-10">
+      <div className="max-w-7xl lg:px-[90px] sm:-mx-5 mx-auto relative z-10">
         {/* Header with parallax effect */}
      <motion.div 
   // style={{ y: scrollY * 0.1 }} 
@@ -215,12 +215,15 @@ export default function WhoWeAre() {
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ delay: 0.4 }}
-    className="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-gray-300 px-2"  // Responsive size + padding
+    className="max-w-4xl mx-auto text-base sm:text-lg md:text-xl text-gray-300 px-2"  // Responsive size + padding
   >
-    A team of seasoned professionals dedicated to your Hong Kong business success
+    A team of seasoned professionals dedicated to your Hong Kong business success.
+    We're a team of possionate experts helping European entreprendre <span className="text-blue-300 font-semibold">regain financial freedom </span>
+      through Hong Kong business-friendly environment. With combined experience across <span className="text-blue-300 font-semibold">law, accounting and banking</span>, we provide end-to-end solutions.
+    
   </motion.p>
 </motion.div>
-
+ 
         {/* Stats grid */}
         <motion.div
           initial="hidden"
@@ -256,7 +259,7 @@ export default function WhoWeAre() {
           variants={staggerContainer}
         >
           <div className="absolute -left-20 -top-20 w-48 h-48 bg-blue-600/10 rounded-full blur-xl" />
-          <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-cyan-600/10 rounded-full blur-xl" />
+          <div className="absolute -right-20 -bottom-20 w-64 h-28 bg-cyan-600/10 rounded-full blur-xl" />
 
           <motion.div
             variants={fadeIn}
@@ -267,7 +270,7 @@ export default function WhoWeAre() {
               style={{ backgroundImage: `url(${pattern})` }}
             />
             <div className="grid lg:grid-cols-2">
-              <div className="p-12 lg:p-16">
+              <div className="p-6 lg:p-10">
                 <motion.h2
                   className="text-3xl md:text-4xl font-bold text-white mb-6"
                   initial={{ opacity: 0, x: -20 }}
@@ -292,7 +295,7 @@ export default function WhoWeAre() {
                   </span>{" "}
                   that go far beyond simple incorporation. From banking
                   relationships to ongoing compliance, our team becomes your
-                  extended executive team in Asia.
+                  extended executive team in Hong Kong. <span span className="text-blue-400 font-medium">24/7 local support in HK</span > and <span span className="text-blue-400 font-medium">Native French-speakingteam</span>
                 </motion.p>
 
                 <motion.div
@@ -313,7 +316,7 @@ export default function WhoWeAre() {
                     },
                     {
                       icon: <FaChartLine className="text-2xl" />,
-                      text: "Growth Focused",
+                      text: "Growth-Focused",
                     },
                     {
                       icon: <FaShieldAlt className="text-2xl" />,
@@ -469,7 +472,7 @@ export default function WhoWeAre() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              Ready to <span className="text-blue-400">Expand to Asia</span>?
+              Ready to Start Your <span className="text-blue-400">Hong Kong Journey</span>?
             </motion.h2>
 
             <motion.p
