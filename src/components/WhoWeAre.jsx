@@ -12,7 +12,7 @@ import {
 } from "react-icons/fa";
 import jean from "../assets/founder2.webp";
 import ludo from "../assets/Ludovic-Martinjpg.jpg";
-import sophie from "../assets/female.avif";
+import sophie from "../assets/female.webp";
 import office from "../assets/office.webp";
 import pattern from "../assets/pattern.webp";
 import hkSkyline from "../assets/hkSkyline.webp";
