@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import jean from "../assets/founder2.webp";
 import ludo from "../assets/Ludovic-Martinjpg.jpg";
-import sophie from "../assets/female.avif";
+import sophie from "../assets/female.webp";
 import { Link, useNavigate } from "react-router-dom";
 
 const team = [
