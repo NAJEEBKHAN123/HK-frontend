@@ -64,7 +64,7 @@ const TopBar = () => {
   ];
 
   return (
-    <div className="hidden min-[720px]:block bg-[#1f2946] text-white sm:px-5 py-2 px-10">
+    <div className="hidden min-[720px]:block bg-[#1f2946] text-white sm:px-6 py-2 px-10">
       <div className="container mx-auto">
         <div className="flex flex-col md:flex-row justify-between items-center text-sm">
           {/* Contact Information - Keyword optimized */}

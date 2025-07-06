@@ -6,28 +6,34 @@ import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
 
 const OrderForm = () => {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
+
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const { language } = useContext(LanguageContext);
-  
+
   // Get translations based on current language
-  const t = language === 'fr' ? frTranslations.orderForm : enTranslations.orderForm;
+  const t =
+    language === "fr" ? frTranslations.orderForm : enTranslations.orderForm;
 
   // Plan prices (unchanged)
   const planPrices = {
-    'STARTER Pack': 3900,
-    'TURNKEY Pack': 4600,
-    'PREMIUM Pack': 9800
+    "STARTER Pack": 3900,
+    "TURNKEY Pack": 4600,
+    "PREMIUM Pack": 9800,
   };
 
   // Get plan/price from URL (unchanged)
   const planParam = queryParams.get("plan");
   const priceParam = queryParams.get("price");
   const validPlans = Object.keys(planPrices);
-  const plan = validPlans.includes(planParam) ? planParam : 'STARTER Pack';
-  const price = priceParam && !isNaN(Number(priceParam)) 
-    ? Number(priceParam) 
-    : planPrices[plan] || 0;
+  const plan = validPlans.includes(planParam) ? planParam : "STARTER Pack";
+  const price =
+    priceParam && !isNaN(Number(priceParam))
+      ? Number(priceParam)
+      : planPrices[plan] || 0;
 
   const [form, setForm] = useState({
     fullName: "",
@@ -37,12 +43,8 @@ const OrderForm = () => {
     email: "",
     idFile: null,
     plan: plan,
-    price: price
+    price: price,
   });
-
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
-  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -93,12 +95,11 @@ const OrderForm = () => {
         plan: form.plan,
         price: form.price,
         currency: "eur",
-        status: "Pending Payment Instructions"
+        status: "Pending Payment Instructions",
       };
 
       await axios.post("http://localhost:3000/api/orders", payload);
       setSuccess(true);
-
     } catch (err) {
       setError(err.response?.data?.message || err.message);
     } finally {
@@ -115,19 +116,24 @@ const OrderForm = () => {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5 py-20">
         <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5 text-center">
-          <h2 className="text-2xl font-bold text-green-600">{t.success.title}</h2>
+          <h2 className="text-2xl font-bold text-green-600">
+            {t.success.title}
+          </h2>
           <p className="text-lg">
-            {t.success.message.replace('{plan}', form.plan)}
+            {t.success.message.replace("{plan}", form.plan)}
           </p>
           <p>
-            {t.success.total}: <strong>{formatPrice(form.price)}</strong>
+            {t.success.totalLabel}: <strong>{formatPrice(form.price)}</strong>
           </p>
           <div className="pt-4">
-            <p className="text-gray-600">
-              {t.success.contact
-                .replace('{email}', form.email)
-                .replace('{phone}', form.phone)}
-            </p>
+            <p
+              className="text-gray-600"
+              dangerouslySetInnerHTML={{
+                __html: t.success.contact
+                  .replace(`{email}`, `<strong>${form.email}</strong>`)
+                  .replace("{phone}", `<strong>${form.phone}</strong>`),
+              }}
+            />
           </div>
         </div>
       </div>
@@ -136,12 +142,18 @@ const OrderForm = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5 sm:px-6 py-20">
-      <form onSubmit={handleSubmit} className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5">
-        <h2 className="text-2xl font-bold text-center text-gray-800">{t.title}</h2>
+      <form
+        onSubmit={handleSubmit}
+        className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5"
+      >
+        <h2 className="text-2xl font-bold text-center text-gray-800">
+          {t.title}
+        </h2>
 
         <div className="text-center">
           <p className="text-gray-600">
-            {t.planLabel}: <span className="font-semibold text-yellow-600">{form.plan}</span>
+            {t.planLabel}:{" "}
+            <span className="font-semibold text-yellow-600">{form.plan}</span>
           </p>
           <p className="text-lg font-medium text-black mt-1">
             {t.totalLabel}: {formatPrice(form.price)}
@@ -153,7 +165,7 @@ const OrderForm = () => {
           { name: "fullName", label: t.fields.fullName, type: "text" },
           { name: "email", label: t.fields.email, type: "email" },
           { name: "phone", label: t.fields.phone, type: "tel" },
-          { name: "birthday", label: t.fields.birthday, type: "date" }
+          { name: "birthday", label: t.fields.birthday, type: "date" },
         ].map((field) => (
           <div key={field.name}>
             <label className="block text-sm font-medium text-gray-700 mb-1">
