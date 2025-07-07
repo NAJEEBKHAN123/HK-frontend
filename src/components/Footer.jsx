@@ -444,27 +444,25 @@ const Footer = () => {
                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span className="hidden sm:inline-block">
-                    Admin Dashboard
-                  </span>
-                  <span className="inline-block sm:hidden">Admin</span>
+                  
+                  <span className="inline-block">Admin</span>
                 </Link>
 
-                <div className="group flex items-center gap-2 bg-gray-400 hover:bg-gray-200/60 transition-colors duration-200 rounded-full px-4 py-2 w-fit">
-                  <span className="text-sm font-medium text-gray-700">
+                <div className="group flex items-center bg-gray-100 hover:bg-gray-200/60 transition-colors duration-200 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 w-fit max-w-full">
+                  <span className="text-xs sm:text-sm font-medium text-gray-700 whitespace-nowrap">
                     Developed by
                   </span>
                   <a
                     href="https://wa.me/923088440190"
-                    className="flex items-center gap-1.5 group-hover:gap-2 transition-all duration-300"
-                    aria-label="Contact developer via WhatsApp"
+                    className="flex items-center gap-1 group-hover:gap-1.5 transition-all duration-300 ml-1"
+                    aria-label="Contact Najeeb Ullah via WhatsApp"
                   >
-                    <span className="text-sm font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
+                    <span className="text-xs sm:text-sm font-semibold text-gray-900 group-hover:text-green-600 transition-colors truncate max-w-[80px] xs:max-w-none">
                       Najeeb Ullah
                     </span>
                     <FaWhatsapp
-                      className="text-green-500 group-hover:text-green-600 transition-colors"
-                      size={18}
+                      className="flex-shrink-0 text-green-500 group-hover:text-green-600 transition-colors"
+                      size={16}
                     />
                   </a>
                 </div>
