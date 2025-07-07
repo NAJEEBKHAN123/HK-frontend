@@ -215,7 +215,7 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Nav */}
-      <div className="hidden xl1170:flex justify-between items-center text-sm px-8 h-20 uppercase">
+      <div className="hidden xl1170:flex justify-between items-center text-sm h-20 uppercase">
         {/* Left Nav */}
         <div className="flex gap-8 pl-20">
           <Link

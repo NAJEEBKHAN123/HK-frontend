@@ -92,7 +92,7 @@ const ContactInfo = ({
             </div>
             
             <a
-              href="tel:+85212345678"
+              href="tel:+33630258982"
               className="mt-4 inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-gradient-to-r from-cyan-600 to-cyan-700 hover:from-cyan-700 hover:to-cyan-800 transition-all duration-150"
             >
               {translations.callButton}

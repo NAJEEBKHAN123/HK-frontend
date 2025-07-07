@@ -132,7 +132,7 @@ const FAQPage = () => {
         </script>
       </Helmet>
 
-      <main className="max-w-6xl mx-auto py-20 sm:px-6 lg:px-8 xl:px-10 2xl:px-12" itemScope itemType="https://schema.org/FAQPage">
+      <main className="max-w-7xl lg:-mx-28  py-20 sm:px-6" itemScope itemType="https://schema.org/FAQPage">
         <motion.div
           initial="hidden"
           whileInView="visible"

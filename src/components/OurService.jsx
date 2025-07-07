@@ -126,7 +126,7 @@ export default function OurServices() {
 
   return (
     <section id="services" className="py-20 px-1 sm:px-3 lg:px-12 bg-gradient-to-b from-white to-gray-200">
-      <div className="max-w-7xl xl:px-[0] lg:px-[55px] mx-auto">
+      <div className="max-w-7xl xl:px-[0] lg:px-[55px] ">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -157,7 +157,7 @@ export default function OurServices() {
           whileInView="visible"
           variants={containerVariants}
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-5 px-4 sm:px-4 md:px-2 lg:px-2 xl:px-16"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-5 px-4 sm:px-4 md:px-2 lg:px-2 xl:px-8"
           style={{ gridAutoRows: '1fr' }}
         >
           {(translations?.serviceCategories || []).map((service, index) => (

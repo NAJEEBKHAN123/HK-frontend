@@ -12,7 +12,7 @@ import {
 const TopBar = () => {
   // Enhanced contact info with keywords
   const contactInfo = {
-    phone: "+852 XXXX XXXX", // Your actual number
+    phone: "+336 3025 8982",
     email: "bonjour@ouvrir-societe-hong-kong.fr",
     displayEmail: "bonjour@ouvrir-societe-hong-kong.fr",
     companyName: "Hong Kong Business Formation Experts",

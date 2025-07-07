@@ -18,7 +18,6 @@ import pattern from "../assets/pattern.webp";
 import hkSkyline from "../assets/hksky.webp";
 import hknight from "../assets/hongkong-night.webp";
 
-
 const team = [
   {
     name: "Jean Dubois",
@@ -122,25 +121,25 @@ export default function WhoWeAre() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-    const handleBookClick = (e) => {
+  const handleBookClick = (e) => {
     e.preventDefault();
-    
-    if (window.location.pathname === '/') {
-      const bookingSection = document.getElementById('booking-section');
+
+    if (window.location.pathname === "/") {
+      const bookingSection = document.getElementById("booking-section");
       if (bookingSection) {
-        const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
+        const navbarHeight = document.querySelector("nav")?.offsetHeight || 0;
         const sectionPosition = bookingSection.offsetTop - navbarHeight;
-        
+
         window.scrollTo({
           top: sectionPosition,
-          behavior: 'smooth'
+          behavior: "smooth",
         });
-        
-        window.history.replaceState(null, '', '/#booking-section');
+
+        window.history.replaceState(null, "", "/#booking-section");
       }
     } else {
-      navigate('/', {
-        state: { scrollToBooking: true }
+      navigate("/", {
+        state: { scrollToBooking: true },
       });
     }
   };
@@ -182,48 +181,56 @@ export default function WhoWeAre() {
         }}
       />
 
-      <div className="max-w-7xl lg:px-[90px] sm:-mx-5 mx-auto relative z-10">
+      <div className="max-w-7xl lg:px-[60px] sm:-mx-5 mx-auto relative z-10">
         {/* Header with parallax effect */}
-     <motion.div 
-  // style={{ y: scrollY * 0.1 }} 
-  className="text-center mb-12 md:mb-20 px-2"  // Added horizontal padding
->
-  <motion.p
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}  // Reduced margin for mobile
-    transition={{ delay: 0.2 }}
-    className="text-sm sm:text-lg font-medium text-blue-400 mb-3 sm:mb-4 tracking-widest" // Responsive size
-  >
-    EXPERTISE & EXCELLENCE
-  </motion.p>
+        <motion.div
+          // style={{ y: scrollY * 0.1 }}
+          className="text-center mb-12 md:mb-20 px-2" // Added horizontal padding
+        >
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }} // Reduced margin for mobile
+            transition={{ delay: 0.2 }}
+            className="text-sm sm:text-lg font-medium text-blue-400 mb-3 sm:mb-4 tracking-widest" // Responsive size
+          >
+            EXPERTISE & EXCELLENCE
+          </motion.p>
 
-  <motion.h1
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-50px" }}  // Reduced margin
-    transition={{ delay: 0.3 }}
-    className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white" // Responsive sizes
-  >
-    <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-      Your Trusted Partners
-    </span>
-  </motion.h1>
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-50px" }} // Reduced margin
+            transition={{ delay: 0.3 }}
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white" // Responsive sizes
+          >
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
+              Your Trusted Partners
+            </span>
+          </motion.h1>
 
-  <motion.p
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.4 }}
-    className="max-w-4xl text-left px-2  mx-auto text-base sm:text-lg md:text-xl text-gray-300"  // Responsive size + padding
-  >
-    A team of seasoned professionals dedicated to your Hong Kong business success.
-    We're a team of passionate experts helping European entrepreneurs <span className="text-blue-300 font-semibold">regain financial freedom </span>
-      through Hong Kong business-friendly environment. With combined experience across <span className="text-blue-300 font-semibold">law, accounting and banking</span>, we provide end-to-end solutions.
-    
-  </motion.p>
-</motion.div>
- 
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="max-w-4xl text-left px-2  mx-auto text-base sm:text-lg md:text-xl text-gray-300" // Responsive size + padding
+          >
+            A team of seasoned professionals dedicated to your Hong Kong
+            business success. We're a team of passionate experts helping
+            European entrepreneurs{" "}
+            <span className="text-blue-300 font-semibold">
+              regain financial freedom{" "}
+            </span>
+            through Hong Kong business-friendly environment. With combined
+            experience across{" "}
+            <span className="text-blue-300 font-semibold">
+              law, accounting and banking
+            </span>
+            , we provide end-to-end solutions.
+          </motion.p>
+        </motion.div>
+
         {/* Stats grid */}
         <motion.div
           initial="hidden"
@@ -295,7 +302,14 @@ export default function WhoWeAre() {
                   </span>{" "}
                   that go far beyond simple incorporation. From banking
                   relationships to ongoing compliance, our team becomes your
-                  extended executive team in Hong Kong. <span span className="text-blue-400 font-medium">24/7 local support in HK</span > and <span span className="text-blue-400 font-medium">Native French-speakingteam</span>
+                  extended executive team in Hong Kong.{" "}
+                  <span span className="text-blue-400 font-medium">
+                    24/7 local support in HK
+                  </span>{" "}
+                  and{" "}
+                  <span span className="text-blue-400 font-medium">
+                    Native French-speakingteam
+                  </span>
                 </motion.p>
 
                 <motion.div
@@ -459,8 +473,9 @@ export default function WhoWeAre() {
           transition={{ delay: 0.2 }}
           className="relative rounded-xl overflow-hidden"
         >
-          <div className="absolute inset-0  bg-cover bg-center opacity-20"
-          style={{backgroundImage: `url(${hknight})`}}
+          <div
+            className="absolute inset-0  bg-cover bg-center opacity-20"
+            style={{ backgroundImage: `url(${hknight})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/50 to-gray-900/90" />
 
@@ -472,7 +487,8 @@ export default function WhoWeAre() {
               viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
-              Ready to Start Your <span className="text-blue-400">Hong Kong</span> Journey?
+              Ready to Start Your{" "}
+              <span className="text-blue-400">Hong Kong</span> Journey?
             </motion.h2>
 
             <motion.p
@@ -501,15 +517,15 @@ export default function WhoWeAre() {
               >
                 Book Free Consultation
               </motion.button>
-            <Link to='/team'>
-              <motion.button
-                className="px-8 py-4 bg-transparent border-2 border-blue-400 hover:bg-blue-400/10 text-blue-400 font-bold rounded-xl shadow-lg transition-all hover:shadow-xl text-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Meet Full Team
-              </motion.button>
-            </Link>
+              <Link to="/team">
+                <motion.button
+                  className="px-8 py-4 bg-transparent border-2 border-blue-400 hover:bg-blue-400/10 text-blue-400 font-bold rounded-xl shadow-lg transition-all hover:shadow-xl text-lg"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  Meet Full Team
+                </motion.button>
+              </Link>
             </motion.div>
           </div>
         </motion.div>

@@ -238,7 +238,7 @@ const Footer = () => {
             </div>
           </div>
 
-           {/* Column 3: Contact */}
+           {/* Column 2: Contact */}
         
            <div className="">
             <h3 className="text-lg font-semibold sm:text-start mb-4  sm:mb-12 text-cyan-300">
@@ -251,7 +251,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <FiPhoneCall className="mt-1 mr-2 text-cyan-300" />
-                <span className="text-sm md:text-base">+852 1234 5678</span>
+                <span className="text-sm md:text-base">+33 6 30 25 89 82</span>
               </li>
               <li className="flex items-start">
                 <FiMail className="mt-1 mr-2 text-cyan-300" />
@@ -275,7 +275,7 @@ const Footer = () => {
           </div>
 
         
-           {/* Column 2: Quick Links */}
+           {/* Column 3: Quick Links */}
        
             <div className="legal-links">
             <h3 className="text-lg font-semibold mb-4 text-cyan-400">
