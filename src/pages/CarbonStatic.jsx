@@ -1,6 +1,6 @@
 const CarbonStatic = () => {
   return (
-    <div className="bg-gray-700 p-4 rounded-lg max-w-xs">
+    <div className="bg-gray-700   p-4 rounded-lg w-full">
       <h3 className="text-white font-semibold mb-2">Site CO₂ Footprint</h3>
       <p className="text-green-400 text-2xl font-bold">
         0.12g <span className=" text-2xl">of CO₂/View</span>

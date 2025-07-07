@@ -121,31 +121,26 @@ const Footer = () => {
             exit={{ opacity: 0, y: -20 }}
             className="bg-gradient-to-r from-purple-800 to-indigo-900 px-4 py-3 relative z-20"
           >
-            <div className="container mx-auto flex flex-wrap justify-between items-center">
-              <div className="flex items-center space-x-3">
+            <div className="container mx-auto flex flex-wrap justify-between items-center gap-3">
+              <div className="flex items-center space-x-3 min-w-[200px] flex-1">
                 <span
                   className={`inline-block w-3 h-3 rounded-full ${
                     isOnline ? "bg-green-400" : "bg-gray-400"
                   }`}
                 />
-                <span>
+                <span className="text-sm sm:text-base">
                   {isOnline
                     ? translations.contact.liveChat
                     : translations.contact.offline}
                 </span>
               </div>
-              <div className="flex items-center space-x-6">
-                <a
-                  href="tel:+85212345678"
-                  className="flex items-center hover:underline hover:text-cyan-300 transition"
-                >
-                  <FiPhoneCall className="mr-2" /> +852 1234 5678
-                </a>
+              <div className="flex flex-wrap items-center gap-4 md:gap-6 justify-center flex-1">
+               
                 <a
                   href={whatsappUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center hover:underline hover:text-cyan-300 transition"
+                  className="flex items-center hover:underline hover:text-cyan-300 transition text-sm sm:text-base"
                 >
                   <FaWhatsapp className="mr-2" />{" "}
                   {translations.contact.whatsapp}
@@ -153,7 +148,7 @@ const Footer = () => {
               </div>
               <button
                 onClick={() => setIsContactBarOpen(false)}
-                className="text-sm hover:bg-indigo-800 px-2 py-1 rounded transition"
+                className="ml-auto md:ml-0 text-sm hover:bg-indigo-800 px-2 py-1 rounded transition"
               >
                 ✕
               </button>
@@ -163,9 +158,9 @@ const Footer = () => {
       </AnimatePresence>
 
       {/* --- Main Footer Content --- */}
-      <div className="container mx-auto px-6 py-12 md:px-8 relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-7xl py-8 md:py-12 relative z-10">
         {/* Trust Badge Carousel */}
-        <div className="bg-gray-800 p-4 rounded-lg mb-8 text-center border-l-4 border-cyan-400">
+        <div className="bg-gray-800 p-4 rounded-lg mb-6 md:mb-8 text-center border-l-4 border-cyan-400">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentTrustBadge}
@@ -173,7 +168,7 @@ const Footer = () => {
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 10 }}
               transition={{ duration: 0.3 }}
-              className="text-lg font-medium"
+              className="text-base md:text-lg font-medium"
             >
               <span className="mr-2 text-cyan-300">
                 {trustBadges[currentTrustBadge].icon}
@@ -184,7 +179,7 @@ const Footer = () => {
         </div>
 
         {/* Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 lg:gap-10 px-1 mb-8 md:mb-10">
           {/* Column 1: Brand + Social */}
           <div>
             <motion.h1
@@ -193,11 +188,13 @@ const Footer = () => {
             >
               {translations.companyName}
             </motion.h1>
-            <p className="text-gray-400 mb-6">{translations.tagline}</p>
+            <p className="text-gray-400 mb-6 text-sm md:text-base">
+              {translations.tagline}
+            </p>
 
             {/* carbon website */}
             <CarbonStatic />
-            <div className="flex space-x-4 p-4 pt-6">
+            <div className="flex flex-wrap gap-4 w-full p-4 pt-6">
               <a
                 href="https://linkedin.com"
                 target="_blank"
@@ -241,113 +238,30 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="legal-links">
-            <h3 className="text-lg font-semibold mb-4 text-cyan-400">
-              <Link
-                to="/legal"
-                className="hover:text-cyan-500 transition-colors duration-200"
-              >
-                Legals
-              </Link>
-            </h3>
-            <ul className="space-y-1 flex flex-col">
-              <li>
-                <NavLink
-                  to="/legal/privacy"
-                  className={({ isActive }) =>
-                    `block px-3 py-2 rounded-lg transition-all duration-200
-             ${isActive ? "border-l-4  border-cyan-500 font-medium" : ""}
-             hover:text-cyan-500`
-                  }
-                >
-                  Privacy Statement
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/legal/notices"
-                  className={({ isActive }) =>
-                    `block px-3 py-2 rounded-lg transition-all duration-200
-             ${isActive ? "border-l-4  border-blue-500 font-medium" : ""}
-             hover:text-blue-500`
-                  }
-                >
-                  Legal Notices
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/legal/conditions"
-                  className={({ isActive }) =>
-                    `block px-3 py-2 rounded-lg transition-all duration-200
-             ${isActive ? "border-l-4  border-emerald-500 font-medium" : ""}
-             hover:text-emerald-500`
-                  }
-                >
-                  General Conditions
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/legal/cookies"
-                  className={({ isActive }) =>
-                    `block px-3 py-2 rounded-lg transition-all duration-200
-             ${isActive ? "border-l-4  border-amber-500 font-medium" : ""}
-             hover:text-amber-500`
-                  }
-                >
-                  Cookie Policy
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/legal/accessibility"
-                  className={({ isActive }) =>
-                    `block px-3 py-2 rounded-lg transition-all duration-200
-             ${isActive ? "border-l-4  border-purple-500 font-medium" : ""}
-             hover:text-purple-500`
-                  }
-                >
-                  Accessibility
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="/legal/choices"
-                  className={({ isActive }) =>
-                    `block px-3 py-2 rounded-lg transition-all duration-200
-             ${isActive ? "border-l-4  border-rose-500 font-medium" : ""}
-             hover:text-rose-500`
-                  }
-                >
-                  Your Choices for Privacy
-                </NavLink>
-              </li>
-            </ul>
-          </div>
-
-          {/* Column 3: Contact */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4 text-cyan-300">
+           {/* Column 3: Contact */}
+        
+           <div className="">
+            <h3 className="text-lg font-semibold sm:text-start mb-4  sm:mb-12 text-cyan-300">
               {translations.hkOffice}
             </h3>
-            <ul className="space-y-3 text-gray-400">
+            <ul className="space-y-5 text-gray-400 w-full flex flex-col ">
               <li className="flex items-start">
                 <FiMapPin className="mt-1 mr-2 text-cyan-300" />
-                <span>{formattedAddress}</span>
+                <span className="text md:text-base">{formattedAddress}</span>
               </li>
               <li className="flex items-start">
                 <FiPhoneCall className="mt-1 mr-2 text-cyan-300" />
-                <span>+852 1234 5678</span>
+                <span className="text-sm md:text-base">+852 1234 5678</span>
               </li>
               <li className="flex items-start">
                 <FiMail className="mt-1 mr-2 text-cyan-300" />
-                <span>bonjour@ouvrir-societe-hong-kong.fr</span>
+                <span className="text-sm md:text-base">
+                  bonjour@ouvrir-societe-hong-kong.fr
+                </span>
               </li>
               <li className="flex items-start">
                 <FiClock className="mt-1 mr-2 text-cyan-300" />
-                <span>
+                <span className="text-sm md:text-base">
                   {isOfficeOpen ? (
                     <span className="text-green-400">
                       {translations.openNow}
@@ -360,24 +274,112 @@ const Footer = () => {
             </ul>
           </div>
 
+        
+           {/* Column 2: Quick Links */}
+       
+            <div className="legal-links">
+            <h3 className="text-lg font-semibold mb-4 text-cyan-400">
+              <Link
+                to="/legal"
+                className="hover:text-cyan-500 transition-colors duration-200"
+              >
+                Legals
+              </Link>
+            </h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-1 gap-1">
+              <li>
+                <NavLink
+                  to="/legal/privacy"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-lg transition-all duration-200 text-sm md:text-base
+             ${isActive ? "border-l-4 border-cyan-500 font-medium" : ""}
+             hover:text-cyan-500`
+                  }
+                >
+                  Privacy Statement
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/legal/notices"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-lg transition-all duration-200 text-sm md:text-base
+             ${isActive ? "border-l-4 border-blue-500 font-medium" : ""}
+             hover:text-blue-500`
+                  }
+                >
+                  Legal Notices
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/legal/conditions"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-lg transition-all duration-200 text-sm md:text-base
+             ${isActive ? "border-l-4 border-emerald-500 font-medium" : ""}
+             hover:text-emerald-500`
+                  }
+                >
+                  General Conditions
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/legal/cookies"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-lg transition-all duration-200 text-sm md:text-base
+             ${isActive ? "border-l-4 border-amber-500 font-medium" : ""}
+             hover:text-amber-500`
+                  }
+                >
+                  Cookie Policy
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/legal/accessibility"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-lg transition-all duration-200 text-sm md:text-base
+             ${isActive ? "border-l-4 border-purple-500 font-medium" : ""}
+             hover:text-purple-500`
+                  }
+                >
+                  Accessibility
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/legal/choices"
+                  className={({ isActive }) =>
+                    `block px-3 py-2 rounded-lg transition-all duration-200 text-sm md:text-base
+             ${isActive ? "border-l-4 border-rose-500 font-medium" : ""}
+             hover:text-rose-500`
+                  }
+                >
+                  Your Choices for Privacy
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+
           {/* Column 4: Dynamic CTA + QR Code */}
-          <div className="bg-gray-800 p-5 rounded-xl border border-gray-700">
+          <div className="bg-gray-800 p-4 md:p-5 rounded-xl border border-gray-700">
             <h3 className="text-lg font-semibold mb-3 text-cyan-300">
               {translations.needHelp}
             </h3>
-            <p className="text-gray-400 mb-4">
+            <p className="text-gray-400 mb-4 text-sm md:text-base">
               {isOfficeOpen
                 ? translations.availableNow
                 : translations.bookCallback}
             </p>
-            <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white py-3 px-4 rounded-lg font-medium mb-4 transition-all transform hover:scale-[1.02]">
+            <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white py-3 px-4 rounded-lg font-medium mb-4 transition-all transform hover:scale-[1.02] text-sm md:text-base">
               {dynamicCTA}
             </button>
-            <div className="flex items-center justify-center flex-wrap gap-2 space-x-4">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <div className="bg-white p-2 rounded">
                 <QRCode value={whatsappUrl} size={80} fgColor="#0e7490" />
               </div>
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-400 text-center sm:text-left max-w-[180px]">
                 {translations.scanToChat.replace(
                   "{platform}",
                   translations.wechatWhatsapp
@@ -388,28 +390,24 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-700/50 pt-">
-          <div className="container mx-auto px-4">
-            {/* Animated gradient divider */}
-            <div className="relative mb-8 h-px w-full overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent animate-[shimmer_3s_infinite]"></div>
-            </div>
+        <div className="border-t border-gray-700/50 pt-6 md:pt-8 ">
+          <div className="mx-auto">
 
-            <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
               {/* Left side - Copyright with dynamic year animation */}
               <motion.div
                 whileHover={{ scale: 1.02 }}
-                className="flex items-center gap-2"
+                className="flex flex-col  sm:flex-row items-center gap-2   text-center sm:text-left"
               >
-                <span className="text-gray-400 text-sm">
+                <span className="text-gray-400 text-xs sm:text-sm">
                   ©{" "}
                   <span className="font-medium text-cyan-300">
                     {new Date().getFullYear()}
                   </span>{" "}
                   {translations.companyName}
                 </span>
-                <span className="hidden md:inline-block h-4 w-px bg-gray-600/50"></span>
-                <span className="text-gray-500 text-sm hidden md:block">
+                <span className="hidden sm:inline-block h-4 w-px bg-gray-600/50"></span>
+                <span className="text-gray-500 text-xs sm:text-sm">
                   {translations.copyright}
                 </span>
               </motion.div>
@@ -418,11 +416,11 @@ const Footer = () => {
               <motion.div
                 whileHover={{ x: 2 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="flex gap-6"
+                className="flex  xs:flex-row gap-6 items-center"
               >
                 <Link
                   to="/admin/login"
-                  className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-sm"
+                  className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-xs sm:text-sm"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -444,11 +442,11 @@ const Footer = () => {
                       d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  
-                  <span className="inline-block">Admin</span>
+                 <span className="hidden lg:inline-block">Admin Dashboard</span>
+                 <span className="inline-block lg:hidden">Admin</span>
                 </Link>
 
-                <div className="group flex items-center bg-gray-100 hover:bg-gray-200/60 transition-colors duration-200 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 w-fit max-w-full">
+                <div className="group flex items-center bg-gray-100 hover:bg-gray-200/60 transition-colors duration-200 rounded-full px-3  lg:py-1 sm:px-4 py-1.5 sm:py-1.5 w-fit max-w-full">
                   <span className="text-xs sm:text-sm font-medium text-gray-700 whitespace-nowrap">
                     Developed by
                   </span>
@@ -457,7 +455,7 @@ const Footer = () => {
                     className="flex items-center gap-1 group-hover:gap-1.5 transition-all duration-300 ml-1"
                     aria-label="Contact Najeeb Ullah via WhatsApp"
                   >
-                    <span className="text-xs sm:text-sm font-semibold text-gray-900 group-hover:text-green-600 transition-colors truncate max-w-[80px] xs:max-w-none">
+                    <span className="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-green-600 transition-colors truncate max-w-[80px] xs:max-w-none">
                       Najeeb Ullah
                     </span>
                     <FaWhatsapp
@@ -472,7 +470,7 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* --- Back to Top Button (Now Working) --- */}
+      {/* --- Back to Top Button --- */}
       <AnimatePresence>
         {isScrolled && (
           <motion.button
