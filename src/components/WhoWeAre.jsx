@@ -68,7 +68,7 @@ const team = [
 ];
 
 const stats = [
-  { value: "200+", label: "Companies Formed" },
+  { value: "200+", label: "Satisfied Clients" },
   { value: "98%", label: "Success Rate" },
   { value: "24h", label: "Average Response Time" },
   { value: "15+", label: "Banking Partners" },

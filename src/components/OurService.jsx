@@ -125,13 +125,13 @@ export default function OurServices() {
   };
 
   return (
-    <section id="services" className="py-20 px-1 sm:px-3 lg:px-12 bg-gradient-to-b from-gray-50 to-white">
+    <section id="services" className="py-20 px-1 sm:px-3 lg:px-12 bg-gradient-to-b from-white to-gray-200">
       <div className="max-w-7xl xl:px-[0] lg:px-[55px] mx-auto">
         <motion.div
           initial="hidden"
           whileInView="visible"
           variants={containerVariants}
-          viewport={{ once: true, margin: "-100px" }}
+          viewpocrt={{ once: true, margin: "-100px" }}
           className="text-center mb-16"
         >
           <motion.p 

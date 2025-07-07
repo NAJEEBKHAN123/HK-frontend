@@ -121,7 +121,7 @@ export default function PricingSection() {
         {seoContent[language]}
       </div>
 
-      <div className="max-w-7xl lg:px-20 w-full">
+      <div className="max-w-7xl lg:px-[75px] w-full">
         {/* Section Header */}
         <motion.div variants={container} className="text-center mb-16">
           <motion.h2
