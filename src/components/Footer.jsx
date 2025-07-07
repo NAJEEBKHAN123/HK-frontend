@@ -83,8 +83,8 @@ const Footer = () => {
       setIsScrolled(window.scrollY > 300);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const isOfficeOpen =
@@ -397,12 +397,16 @@ const Footer = () => {
 
             <div className="flex flex-col md:flex-row justify-between items-center gap-6">
               {/* Left side - Copyright with dynamic year animation */}
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.02 }}
                 className="flex items-center gap-2"
               >
                 <span className="text-gray-400 text-sm">
-                  © <span className="font-medium text-cyan-300">{new Date().getFullYear()}</span> {translations.companyName}
+                  ©{" "}
+                  <span className="font-medium text-cyan-300">
+                    {new Date().getFullYear()}
+                  </span>{" "}
+                  {translations.companyName}
                 </span>
                 <span className="hidden md:inline-block h-4 w-px bg-gray-600/50"></span>
                 <span className="text-gray-500 text-sm hidden md:block">
@@ -411,37 +415,59 @@ const Footer = () => {
               </motion.div>
 
               {/* Right side - Admin with subtle animation */}
-              <motion.div 
+              <motion.div
                 whileHover={{ x: 2 }}
                 transition={{ type: "spring", stiffness: 300 }}
+                className="flex gap-6"
               >
                 <Link
                   to="/admin/login"
                   className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-sm"
                 >
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-4 w-4 group-hover:rotate-12 transition-transform" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4 w-4 group-hover:rotate-12 transition-transform"
+                    fill="none"
+                    viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" 
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
                     />
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" 
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
                     />
                   </svg>
-                  <span className="hidden sm:inline-block">Admin Dashboard</span>
+                  <span className="hidden sm:inline-block">
+                    Admin Dashboard
+                  </span>
                   <span className="inline-block sm:hidden">Admin</span>
                 </Link>
+
+                <div className="group flex items-center gap-2 bg-gray-400 hover:bg-gray-200/60 transition-colors duration-200 rounded-full px-4 py-2 w-fit">
+                  <span className="text-sm font-medium text-gray-700">
+                    Developed by
+                  </span>
+                  <a
+                    href="https://wa.me/923088440190"
+                    className="flex items-center gap-1.5 group-hover:gap-2 transition-all duration-300"
+                    aria-label="Contact developer via WhatsApp"
+                  >
+                    <span className="text-sm font-semibold text-gray-900 group-hover:text-green-600 transition-colors">
+                      Najeeb Ullah
+                    </span>
+                    <FaWhatsapp
+                      className="text-green-500 group-hover:text-green-600 transition-colors"
+                      size={18}
+                    />
+                  </a>
+                </div>
               </motion.div>
             </div>
           </div>
