@@ -150,7 +150,7 @@ export default function TeamPage() {
       </section>
 
       {/* Team Members */}
-      <section className="py-16 px-5 lg:px-28 max-w-7xl mx-auto">
+      <section className="py-16 px-5 xl:px-20 lg:px-20 max-w-7xl mx-auto">
         <motion.div
           initial="hidden"
           whileInView="visible"

@@ -158,7 +158,7 @@ const Footer = () => {
       </AnimatePresence>
 
       {/* --- Main Footer Content --- */}
-      <div className="container mx-auto px-4 sm:px-6 md:px-8 max-w-7xl py-8 md:py-12 relative z-10">
+      <div className="container mx-auto px-4 max-w-7xl py-8 md:py-12 relative z-10">
         {/* Trust Badge Carousel */}
         <div className="bg-gray-800 p-4 rounded-lg mb-6 md:mb-8 text-center border-l-4 border-cyan-400">
           <AnimatePresence mode="wait">

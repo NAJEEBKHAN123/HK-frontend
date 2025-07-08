@@ -155,7 +155,7 @@ export default function WhoWeAre() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800 py-28 px-5 sm:px-10">
+    <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800 py-28 px-5 lg:px-20 sm:px-">
       {/* Decorative elements */}
       <div
         className="absolute inset-0 opacity-10 "
@@ -181,7 +181,7 @@ export default function WhoWeAre() {
         }}
       />
 
-      <div className="max-w-7xl lg:px-[60px] sm:-mx-5 mx-auto relative z-10">
+      <div className="max-w-7xl  mx-auto relative z-10">
         {/* Header with parallax effect */}
         <motion.div
           // style={{ y: scrollY * 0.1 }}
@@ -380,7 +380,7 @@ export default function WhoWeAre() {
             </span>
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
             {team.map((member, i) => (
               <motion.div
                 key={i}

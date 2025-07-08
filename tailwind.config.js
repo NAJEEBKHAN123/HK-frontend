@@ -6,6 +6,8 @@ export default {
     extend: {
       screens: {
         xl1170: "1170px",
+        xl1000: "xl1000",
+        md550 : '550px',
         md850: "850px", // Add this new breakpoint
         sm: "525px", // 👈 custom screen size
         md: "768px",

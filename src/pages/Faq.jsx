@@ -132,29 +132,29 @@ const FAQPage = () => {
         </script>
       </Helmet>
 
-      <main className="max-w-7xl lg:-mx-28  py-20 sm:px-6" itemScope itemType="https://schema.org/FAQPage">
+      <main className="max-w-[1500px] mx-auto py-20 sm:px-6 xl:-ml-52 ml-2 md:-ml-2 lg:-ml-1" itemScope itemType="https://schema.org/FAQPage">
         <motion.div
           initial="hidden"
           whileInView="visible"
           variants={containerVariants}
           viewport={{ once: true, margin: "-100px" }}
-          className="max-w-4xl mx-auto "
+          className="max-w-4xl mx-auto"
         >
           <motion.h1 
             variants={itemVariants}
-            className="text-3xl pl-7 lg:pl-0 font-bold text-gray-900 mb-8 md:mb-10"
+            className="text-3xl font-bold text-gray-900 mb-8 md:mb-10 pl-4 lg:pl-0"
             itemProp="name"
           >
             {translations.title}
           </motion.h1>
           <motion.p
             variants={itemVariants}
-            className="text-lg text-gray-600 mb-8 pl-7 lg:pl-0"
+            className="text-lg text-gray-600 mb-8 pl-4 lg:pl-0"
             itemProp="description"
           >
             {translations.subtitle}
           </motion.p>
-          <motion.div className='px-4 lg:px-0' variants={itemVariants} itemProp="mainEntity" itemScope itemType="https://schema.org/Question">
+          <motion.div className='px-0' variants={itemVariants} itemProp="mainEntity" itemScope itemType="https://schema.org/Question">
             <FAQAccordion faqs={translations.questions} />
           </motion.div>
         </motion.div>
