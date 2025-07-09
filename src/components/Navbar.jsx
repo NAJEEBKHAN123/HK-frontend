@@ -194,7 +194,7 @@ const Navbar = () => {
         </div>
 
         {/* Right Nav */}
-        <div className={`flex ${language === 'fr' ? 'gap-6' : 'gap-8'} items-center`}>
+        <div className={`flex ${language === 'fr' ? 'gap-4' : 'gap-8'} items-center`}>
           <Link
             to="/faq"
             className={`hover:text-white ${underlineClass} text-sm xl:text-base`}
@@ -213,54 +213,103 @@ const Navbar = () => {
 
           {/* Language Dropdown */}
 
-          <div
-            className="relative"
-            onMouseEnter={() => {
-              if (langTimeout) clearTimeout(langTimeout);
-              setIsLangOpen(true);
-            }}
-            onMouseLeave={() => {
-              const timeout = setTimeout(() => setIsLangOpen(false), 200);
-              setLangTimeout(timeout);
-            }}
-          >
-            <button
-              className={`hover:text-white ${underlineClass} focus:outline-none flex items-center text-sm xl:text-base`}
-              aria-haspopup="true"
-              aria-expanded={isLangOpen}
-            >
-                FR | EN
-              <svg
-                className={`ml-1 w-4 h-4 transition-transform duration-300 ${isLangOpen ? "rotate-180" : "rotate-0"}`}
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+       <div className="relative group" 
+     onMouseEnter={() => {
+       if (langTimeout) clearTimeout(langTimeout);
+       setIsLangOpen(true);
+     }}
+     onMouseLeave={() => {
+       const timeout = setTimeout(() => setIsLangOpen(false), 200);
+       setLangTimeout(timeout);
+     }}
+     onFocus={() => setIsLangOpen(true)}
+     onBlur={() => setTimeout(() => setIsLangOpen(false), 100)}>
+  <button
+    className={`flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition-colors ${
+      isLangOpen ? "bg-gray-800/50" : ""
+    }`}
+    aria-haspopup="true"
+    aria-expanded={isLangOpen}
+    aria-label={translations.language_selector || "Language selector"}
+  >
+    <div className="flex items-center">
+      <ReactCountryFlag
+        countryCode={language === "en" ? "GB" : "FR"}
+        svg
+        style={{ 
+          width: "1.1em", 
+          height: "1.1em",
+          borderRadius: "2px",
+          objectFit: "cover"
+        }}
+      />
+      <span className="ml-2 text-sm font-medium">
+        {language === "en" ? "EN" : "FR"}
+      </span>
+    </div>
+    <svg
+      className={`w-4 h-4 transition-transform duration-200 ${
+        isLangOpen ? "rotate-180" : ""
+      }`}
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeWidth={2}
+    >
+      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </button>
 
-            {isLangOpen && (
-              <div className="absolute mt-2 bg-white text-gray-900 shadow-lg rounded-md uppercase z-50 min-w-[120px] border border-gray-200">
-                {['en', 'fr'].map((lang) => (
-                  <button
-                    key={lang}
-                    onClick={() => handleLanguageChange(lang)}
-                    className={`flex items-center px-4 py-2 w-full text-left transition-colors ${
-                      language === lang ? "bg-gray-100 text-pink-500 font-medium" : "hover:bg-gray-50"
-                    }`}
-                  >
-                    <ReactCountryFlag
-                      countryCode={lang === "en" ? "GB" : "FR"}
-                      svg
-                      style={{ width: "1.2em", height: "1.2em", marginRight: "8px" }}
-                    />
-                    {translations.language_options[lang]}
-                  </button>
-                ))}
-              </div>
-            )}
-          </div>
+  {isLangOpen && (
+    <div 
+      className="absolute right-0 mt-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg z-50 min-w-[140px] border border-gray-200 dark:border-gray-700 overflow-hidden"
+      role="menu"
+    >
+      {['en', 'fr'].map((lang) => (
+        <button
+          key={lang}
+          onClick={() => handleLanguageChange(lang)}
+          onMouseDown={(e) => e.preventDefault()} // Prevents focus loss on click
+          className={`flex items-center w-full px-4 py-2.5 text-left transition-colors ${
+            language === lang 
+              ? "bg-pink-50 dark:bg-gray-700 text-pink-600 dark:text-pink-400 font-medium" 
+              : "hover:bg-gray-50 dark:hover:bg-gray-700/70"
+          }`}
+          role="menuitem"
+          aria-current={language === lang ? "true" : "false"}
+        >
+          <ReactCountryFlag
+            countryCode={lang === "en" ? "GB" : "FR"}
+            svg
+            style={{ 
+              width: "1.1em", 
+              height: "1.1em",
+              borderRadius: "2px",
+              marginRight: "10px",
+              objectFit: "cover"
+            }}
+            aria-hidden="true"
+          />
+          <span className="text-sm">
+            {translations.language_options[lang]}
+          </span>
+          {language === lang && (
+            <svg
+              className="w-4 h-4 ml-auto text-pink-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          )}
+        </button>
+      ))}
+    </div>
+  )}
+</div>
         </div>
       </div>
 
