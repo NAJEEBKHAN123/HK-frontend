@@ -137,62 +137,123 @@
     ]
   },
 
-   "faq": {
-    "title": "Questions Fréquemment Posées",
-    "subtitle": "Tout ce que vous devez savoir sur la création d'entreprise à Hong Kong",
-    "questions": [
-      {
-        "id": "q1",
-        "question": "Combien de temps prend l'incorporation d'une société à Hong Kong ?",
-        "answer": "Environ 5 jours ouvrables après soumission des documents. Aucune présence physique requise."
-      },
-      {
-        "id": "q2",
-        "question": "Dois-je me rendre à Hong Kong pour enregistrer une société ?",
-        "answer": "Non, le processus peut être complété 100% en ligne. Tous les documents peuvent être soumis numériquement."
-      },
-      {
-        "id": "q3",
-        "question": "Quel est le capital minimum requis ?",
-        "answer": "Aucun capital minimum n'est requis pour les sociétés standard. Vous pouvez commencer avec n'importe quel montant."
-      },
-      {
-        "id": "q4",
-        "question": "Les étrangers peuvent-ils posséder 100% d'une société à Hong Kong ?",
-        "answer": "Oui, Hong Kong autorise une propriété 100% étrangère. Il n'y a aucune restriction de nationalité."
-      },
-      {
-        "id": "q5",
-        "question": "Quelles sont les obligations de conformité continues ?",
-        "answer": "Le renouvellement annuel et la déclaration fiscale sont obligatoires. Les registres de la société doivent être correctement tenus."
-      },
-      {
-        "id": "q6",
-        "question": "Combien coûte l'incorporation ?",
-        "answer": "Notre forfait tout compris commence à partir de 4 600 €. Cela inclut tous les frais gouvernementaux et services."
-      },
-      {
-        "id": "q7",
-        "question": "Ai-je besoin d'une adresse locale ?",
-        "answer": "Oui, une adresse locale est requise. Nous proposons des solutions de bureau virtuel dans notre forfait."
-      },
-      {
-        "id": "q8",
-        "question": "Puis-je ouvrir un compte bancaire d'entreprise à distance ?",
-        "answer": "Oui, l'ouverture à distance est possible. Nous collaborons avec des solutions bancaires fintech."
-      },
-      {
-        "id": "q9",
-        "question": "Quels impôts ma société devra-t-elle payer ?",
-        "answer": "Seuls les revenus provenant de Hong Kong sont imposables. Le taux d'imposition sur les bénéfices est de 16,5 %."
-      },
-      {
-        "id": "q10",
-        "question": "Ce service est-il légal pour les non-résidents ?",
-        "answer": "Absolument, c'est 100% légal pour les non-résidents. Hong Kong accueille favorablement les entreprises internationales."
-      }
-    ]
-  },
+  "faq": {
+  "title": "Questions Fréquemment Posées",
+  "subtitle": "Tout ce que vous devez savoir sur la création d'entreprise à Hong Kong",
+  "questions": [
+    {
+      "id": "q1",
+      "question": "Combien de temps prend l'incorporation d'une société à Hong Kong ?",
+      "answer": "Le processus standard d'incorporation à Hong Kong prend généralement 5 jours ouvrables après la soumission et l'approbation de tous les documents requis. Cette rapidité est possible grâce à l'un des systèmes d'enregistrement d'entreprises les plus efficaces au monde. Le Registre des Sociétés traite généralement les demandes en 1-2 jours ouvrables après réception des documents complets, suivis de 2-3 jours pour l'émission du certificat. Notre équipe peut accélérer ce processus en veillant à ce que votre demande soit complète et exacte avant soumission.",
+      "category": "company",
+      "links": [
+        {
+           "text": "Voir plus..."
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "question": "Dois-je me rendre à Hong Kong pour enregistrer une société ?",
+      "answer": "Aucun déplacement n'est nécessaire. L'intégralité du processus d'enregistrement peut être effectuée 100% en ligne depuis n'importe quel pays. L'environnement commercial numérique de Hong Kong permet la soumission électronique de tous les documents via le système e-Registry. Nous gérons l'ensemble du processus à distance pour nos clients, y compris la notarisation, la certification des documents et les liaisons avec le gouvernement. La seule exigence physique est d'avoir une adresse de bureau enregistrée locale, que nous pouvons fournir dans le cadre de notre forfait de services.",
+      "category": "company",
+      "links": [
+        {
+           "text": "Voir plus..."
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "question": "Quel est le capital minimum requis ?",
+      "answer": "Hong Kong n'impose aucun capital minimum pour les sociétés à responsabilité limitée privées standard, offrant une flexibilité exceptionnelle aux entrepreneurs. Vous pouvez légalement constituer une société avec n'importe quel montant de capital, même aussi faible que 1 HKD. La pratique standard est de commencer avec 10 000 HKD, montant nominal pour de nombreux forfaits d'incorporation standard. Le capital peut être dans n'importe quelle devise et peut être augmenté à tout moment après l'incorporation. Bien qu'il n'y ait pas d'exigence minimale, votre capital déclaré devrait refléter de manière réaliste les besoins de votre entreprise.",
+      "category": "company",
+      "links": [
+        {
+           "text": "Voir plus..."
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "question": "Les étrangers peuvent-ils posséder 100% d'une société à Hong Kong ?",
+      "answer": "Oui, les lois commerciales de Hong Kong permettent une propriété 100% étrangère des sociétés sans restriction de nationalité. Il n'y a aucune exigence concernant des actionnaires ou administrateurs locaux, ce qui en fait une juridiction idéale pour les entrepreneurs internationaux. La société peut être entièrement détenue par des particuliers ou des entités corporatives de n'importe quel pays. Hong Kong maintient cette politique ouverte dans le cadre de ses principes de marché libre, et les sociétés détenues par des étrangers jouissent exactement des mêmes droits et privilèges que les entreprises locales, y compris l'accès aux mêmes avantages fiscaux et protections juridiques.",
+      "category": "legal",
+      "links": [
+        {
+           "text": "Voir plus..."
+        }
+      ]
+    },
+    {
+      "id": "q5",
+      "question": "Quelles sont les obligations de conformité continues ?",
+      "answer": "Les sociétés de Hong Kong doivent remplir plusieurs obligations annuelles : 1) Dépôt de déclaration annuelle au Registre des Sociétés (dû dans les 42 jours suivant l'anniversaire d'incorporation), 2) Dépôt de déclaration fiscale sur les bénéfices au Département des revenus, 3) Maintien de registres commerciaux et comptables appropriés pendant au moins 7 ans, et 4) Renouvellement annuel du certificat d'enregistrement commercial. Les sociétés doivent également mettre à jour tout changement concernant les administrateurs, actionnaires ou adresse enregistrée dans les délais spécifiés. Notre forfait conformité peut gérer toutes ces exigences en votre nom.",
+      "category": "tax",
+      "links": [
+        {
+           "text": "Voir plus..."
+        }
+      ]
+    },
+    {
+      "id": "q6",
+      "question": "Combien coûte l'incorporation ?",
+      "answer": "Notre forfait d'incorporation tout compris commence à partir de 4 600 €, couvrant tous les frais gouvernementaux essentiels et nos services professionnels. Cela inclut : 1) Recherche et enregistrement du nom de la société, 2) Préparation des documents d'incorporation, 3) Frais d'enregistrement gouvernementaux, 4) Certificat d'enregistrement commercial, 5) Sceau de la société, 6) Adresse de bureau enregistrée pour la première année, et 7) Service de secrétaire de société pour la première année. Des services supplémentaires comme le traitement accéléré, les services de nommage ou les certificats spéciaux peuvent entraîner des coûts supplémentaires. Comparé à d'autres centres financiers internationaux, Hong Kong offre une valeur exceptionnelle avec ses faibles coûts d'incorporation et de maintenance.",
+      "category": "tax",
+      "links": [
+        {
+           "text": "Voir plus..."
+        }
+      ]
+    },
+    {
+      "id": "q7",
+      "question": "Ai-je besoin d'une adresse locale ?",
+      "answer": "Oui, la loi exige que chaque société de Hong Kong maintienne une adresse physique enregistrée à Hong Kong où les communications officielles peuvent être envoyées. Cela ne peut pas être une boîte postale. Cependant, vous n'avez pas besoin de louer un espace de bureau physique - nous proposons des solutions de bureau virtuel abordables qui satisfont à cette exigence légale. Notre forfait de bureau virtuel comprend une adresse commerciale prestigieuse dans le centre de Hong Kong, des services de gestion et de réexpédition de courrier, et peut être combiné avec des services de réponse téléphonique si nécessaire. Cela vous permet de maintenir une présence professionnelle à Hong Kong sans les dépenses d'un espace de bureau physique.",
+      "category": "legal",
+      "links": [
+        {
+           "text": "Voir plus..."
+        }
+      ]
+    },
+    {
+      "id": "q8",
+      "question": "Puis-je ouvrir un compte bancaire d'entreprise à distance ?",
+      "answer": "Oui, l'ouverture à distance de comptes d'entreprise est possible grâce à nos institutions financières partenaires et solutions bancaires fintech. Alors que les banques traditionnelles de Hong Kong exigent généralement des réunions en personne, nous avons établi des relations avec plusieurs banques et plateformes bancaires numériques qui acceptent les demandes à distance. Le processus implique de soumettre des copies certifiées de vos documents, de compléter une vérification vidéo, et peut nécessiter une diligence raisonnable supplémentaire selon vos activités commerciales. L'approbation prend généralement 2-4 semaines. Nous vous guidons à chaque étape et vous aidons à préparer votre demande pour maximiser les chances d'approbation.",
+      "category": "banking",
+      "links": [
+        {
+           "text": "Voir plus..."
+        }
+      ]
+    },
+    {
+      "id": "q9",
+      "question": "Quels impôts ma société devra-t-elle payer ?",
+      "answer": "Hong Kong applique un système fiscal territorial où seuls les bénéfices tirés de Hong Kong sont imposables. Le taux actuel de l'impôt sur les bénéfices est de 16,5% pour les sociétés. Les caractéristiques principales incluent : 1) Pas de TVA ni de taxe sur les ventes, 2) Pas d'impôt sur les plus-values, 3) Pas d'impôt sur les dividendes, 4) Pas de retenue à la source sur les dividendes, et 5) Pas de droits de succession. Pour les bénéfices offshore (revenus gagnés en dehors de Hong Kong), vous pouvez bénéficier d'une exonération fiscale complète si correctement structuré. Hong Kong dispose également d'un vaste réseau de conventions de double imposition qui peuvent réduire les retenues à la source dans d'autres juridictions.",
+      "category": "tax",
+      "links": [
+        {
+           "text": "Voir plus..."
+        }
+      ]
+    },
+    {
+      "id": "q10",
+      "question": "Ce service est-il légal pour les non-résidents ?",
+      "answer": "Absolument. Il est parfaitement légal pour les non-résidents de créer et d'exploiter des sociétés à Hong Kong. Le gouvernement de Hong Kong encourage activement les affaires internationales et offre un traitement égal à toutes les sociétés, quelle que soit la nationalité ou le statut de résidence des propriétaires. Nos services sont pleinement conformes à toutes les réglementations de Hong Kong, et nous sommes spécialisés dans l'aide aux non-résidents pour naviguer en douceur dans le processus d'incorporation. Nombre de nos clients exploitent leurs sociétés de Hong Kong entièrement depuis l'étranger, profitant de l'environnement favorable aux entreprises de Hong Kong tout en minimisant leurs exigences de présence physique.",
+      "category": "legal",
+      "links": [
+        {
+          "text": "Voir plus..."
+          
+        }
+      ]
+    }
+  ]
+},
 
   "contact": {
     "title": "Contactez nos experts à Hong Kong",

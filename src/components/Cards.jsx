@@ -178,7 +178,7 @@ export default function PricingSection() {
                 },
               },
             }}
-            className="text-gray-300 max-w-4xl mx-auto text-lg md:text-xl px-4"
+            className="text-gray-300 text-left lg:text-center max-w-4xl mx-auto text-lg pt-4 md:text-xl px-"
             itemProp="description"
           >
             <span className="text-yellow-400">{translations?.subtitlePart1}</span>{" "}
