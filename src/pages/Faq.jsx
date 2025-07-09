@@ -6,6 +6,7 @@ import enTranslations from '../locales/en.json';
 import frTranslations from '../locales/fr.json';
 import { FiChevronDown, FiSearch } from 'react-icons/fi';
 import { FaQuestionCircle } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const FAQPage = () => {
   const { language } = useContext(LanguageContext);
@@ -238,9 +239,12 @@ const toggleItem = (id) => {
                 ? 'Notre équipe est disponible pour répondre à toutes vos questions.' 
                 : 'Our team is available to answer all your questions.'}
             </p>
-            <button className="px-8 py-3 bg-white text-blue-700 font-medium rounded-lg shadow-md hover:bg-gray-100 transition-colors">
+           <Link to="/contact">
+            <button className="px-8 py-3 bg-white text-blue-700 font-medium rounded-lg shadow-md hover:bg-gray-100 transition-colors"
+            >
               {language === 'fr' ? 'Contactez-nous' : 'Contact Us'}
             </button>
+           </Link>
           </motion.div>
         </div>
       </motion.main>
