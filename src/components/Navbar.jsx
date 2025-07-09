@@ -177,9 +177,10 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Nav (lg+) */}
+      
       <div className="hidden xl1170:flex justify-between items-center h-[90px] px-6 lg:px-20 ">
         {/* Left Nav */}
-        <div className="flex gap-5 ">
+        <div className={`flex ${language === 'fr' ? 'gap-5' : 'gap-9'}`}>
           {['home', 'services', 'who_we_are', 'contact' ].map((item) => (
             <Link
               key={item}
@@ -193,7 +194,7 @@ const Navbar = () => {
         </div>
 
         {/* Right Nav */}
-        <div className="flex gap-3 items-center">
+        <div className={`flex ${language === 'fr' ? 'gap-6' : 'gap-8'} items-center`}>
           <Link
             to="/faq"
             className={`hover:text-white ${underlineClass} text-sm xl:text-base`}
@@ -204,7 +205,7 @@ const Navbar = () => {
 
           <button
             onClick={handleBookingClick}
-            className="bg-gradient-to-r from-pink-600 to-pink-500 text-white px-4 xl:px-5 py-1.5 rounded hover:from-pink-700 hover:to-pink-600 transition-colors shadow-md hover:shadow-lg text-sm xl:text-base"
+            className="bg-gradient-to-r from-pink-600 to-pink-500 text-white px-4 xl:px-4 py-1.5 rounded hover:from-pink-700 hover:to-pink-600 transition-colors shadow-md hover:shadow-lg text-sm xl:text-base"
             aria-label={translations.book_appointment}
           >
             {translations.book_appointment}
