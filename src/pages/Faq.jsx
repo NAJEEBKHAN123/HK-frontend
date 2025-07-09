@@ -86,7 +86,7 @@ const toggleItem = (id) => {
         <div className="max-w-7xl mx-auto">
           {/* Hero Section */}
           <motion.div 
-            className="text-center mb-16 mt-6"
+            className="text-center mb-16 lg:mt-6"
             initial="hidden"
             animate="visible"
             variants={containerVariants}
@@ -190,8 +190,9 @@ const toggleItem = (id) => {
                       <div className="px-6 pb-6 pt-2 text-gray-600">
                         <p>{faq.answer}</p>
                         {faq.links.map(link =>(
-                              <a 
-                            href={link.url} 
+                            <a 
+                            key={link.id}
+                            href={link.url}
                             className="mt-3 inline-flex items-center text-blue-600 hover:underline"
                           >
                             {link.text}

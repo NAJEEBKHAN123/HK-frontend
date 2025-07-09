@@ -67,7 +67,7 @@ function HeroSec() {
   };
 
   return (
-    <div className="relative pt-12 pb-20 w-full overflow-hidden bg-gray-900">
+    <div className="relative pt-12 pb-16 w-full overflow-hidden bg-gray-900">
       {/* Background with WhoWeAre-style animation */}
       <motion.div
         initial={{ scale: 1 }}
@@ -126,17 +126,17 @@ function HeroSec() {
           {/* CTA Section - matches WhoWeAre button styling */}
           <motion.div
             variants={itemVariants}
-            className="pt-4 lg:pt-4 space-y-4 max-w-3xl"
+            className="pt-4 lg:pt-4  space-y-4 max-w-3xl"
           >
             <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
               {translations.description}
             </p>
-            <motion.div className="flex flex-col sm:flex-row gap-4">
+            <motion.div className="flex flex-col sm:flex-row pt-4 gap-4">
               <motion.button
                 variants={buttonVariants}
                 whileHover="hover"
                 onClick={handleBookClick}
-                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl shadow-lg transition-all hover:shadow-xl text-lg"
+                className="px-2 md:px-4 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl shadow-lg transition-all hover:shadow-xl text-lg"
               >
                 <CalendarIcon className="inline w-5 h-5 mr-2 -mt-1" />
                 {translations.cta_button}

@@ -179,8 +179,8 @@ const Navbar = () => {
       {/* Desktop Nav (lg+) */}
       <div className="hidden xl1170:flex justify-between items-center h-[90px] px-6 lg:px-20 ">
         {/* Left Nav */}
-        <div className="flex gap-8 ">
-          {['home', 'services', 'faq', 'who_we_are'].map((item) => (
+        <div className="flex gap-5 ">
+          {['home', 'services', 'who_we_are', 'contact' ].map((item) => (
             <Link
               key={item}
                to={`/${item === 'home' ? '' : item.replace(/_/g, '-')}`}
@@ -195,11 +195,11 @@ const Navbar = () => {
         {/* Right Nav */}
         <div className="flex gap-3 items-center">
           <Link
-            to="/contact"
+            to="/faq"
             className={`hover:text-white ${underlineClass} text-sm xl:text-base`}
-            aria-label={translations.contact}
+            aria-label={translations.faq}
           >
-            {translations.contact}
+            {translations.faq}
           </Link>
 
           <button
@@ -211,6 +211,7 @@ const Navbar = () => {
           </button>
 
           {/* Language Dropdown */}
+
           <div
             className="relative"
             onMouseEnter={() => {
@@ -227,7 +228,7 @@ const Navbar = () => {
               aria-haspopup="true"
               aria-expanded={isLangOpen}
             >
-              {translations.language}
+             FR | EN
               <svg
                 className={`ml-1 w-4 h-4 transition-transform duration-300 ${isLangOpen ? "rotate-180" : "rotate-0"}`}
                 fill="none"
