@@ -195,13 +195,13 @@ export default function PricingSection() {
           whileInView="visible"
           viewport={{ once: true }}
           className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 px-1 md:-mx-2 sm:-mx-2 lg:px-12 xl:px-2"
-        >
+        > 
           {pricingPlans.map((plan, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
               whileHover="hover"
-              className={`relative w-full rounded-xl border p-6 sm:p-8 grid grid-rows-[auto_1fr_auto] transition-all duration-300 backdrop-blur-sm ${
+              className={` relative w-full rounded-xl border p-6 sm:p-8 grid grid-rows-[auto_1fr_auto] transition-all duration-300 backdrop-blur-sm ${
                 plan.recommended
                   ? "border-yellow-400 bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg shadow-yellow-500/20"
                   : "border-gray-700 bg-gray-900/60 hover:border-gray-600"

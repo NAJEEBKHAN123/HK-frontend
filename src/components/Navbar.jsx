@@ -19,7 +19,7 @@ const Navbar = () => {
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isMobileLangOpen, setIsMobileLangOpen] = useState(false);
   const [langTimeout, setLangTimeout] = useState(null);
-
+  
   const navigate = useNavigate();
   const location = useLocation();
   const { language, changeLanguage } = useContext(LanguageContext);
@@ -27,10 +27,69 @@ const Navbar = () => {
   const translations =
     language === "fr" ? frTranslations.navbar : enTranslations.navbar;
 
-  const underlineClass =
-    "relative after:absolute after:left-0 after:bottom-0 after:w-full after:h-[2px] after:bg-pink-500 after:scale-x-0 hover:after:scale-x-100 after:transition-transform after:duration-300 after:origin-left";
+  // Active link detection (excludes home page)
+  const isActive = (path) => {
+    if (path === '') return false; // Never show active state for home
+    return location.pathname === `/${path}` || 
+           (path !== '' && location.pathname.includes(path));
+  };
 
- // Hidden SEO content with all 70 keywords
+  // Simplified nav link class - only text color change for active state
+  const navLinkClass = (path) => `
+    hover:text-white 
+    transition-colors 
+    duration-300
+    ${isActive(path) ? 'text-white font-bold ' : 'text-gray-200'}
+    text-sm xl:text-base
+  `;
+
+  const closeMobileMenu = () => setIsMenuOpen(false);
+
+  const handleHomeClick = () => {
+    if (window.location.pathname === "/") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const handleBookingClick = (e) => {
+    e.preventDefault();
+    if (location.pathname === "/") {
+      scrollToBookingSection();
+    } else {
+      navigate("/", { state: { scrollToBooking: true } });
+    }
+    closeMobileMenu();
+  };
+
+  const scrollToBookingSection = () => {
+    const bookingSection = document.getElementById("booking-section");
+    if (bookingSection) {
+      const navbarHeight = document.querySelector("nav")?.offsetHeight || 0;
+      const sectionPosition = bookingSection.offsetTop - navbarHeight;
+      window.scrollTo({ top: sectionPosition, behavior: "smooth" });
+      window.history.replaceState(null, "", "/#booking-section");
+    }
+  };
+
+  useEffect(() => {
+    if (location.state?.scrollToBooking || window.location.hash === "#booking-section") {
+      setTimeout(scrollToBookingSection, 100);
+    }
+  }, [location]);
+
+  const handleLanguageChange = (lang) => {
+    changeLanguage(lang);
+    setIsLangOpen(false);
+    if (isMenuOpen) closeMobileMenu();
+  };
+
+  const handleMobileLanguageChange = (lang) => {
+    changeLanguage(lang);
+    setIsMobileLangOpen(false);
+    closeMobileMenu();
+  };
+
+  // Hidden SEO content
   const seoContent = {
     fr: `
       Créer entreprise Hong Kong avec société offshore et création entreprise simplifiée. 
@@ -83,51 +142,6 @@ const Navbar = () => {
       Access our digital business portal for connected business.
     `,
   };
-  const closeMobileMenu = () => setIsMenuOpen(false);
-
-  const handleHomeClick = () => {
-    if (window.location.pathname === "/") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-  };
-
-  const handleBookingClick = (e) => {
-    e.preventDefault();
-    if (location.pathname === "/") {
-      scrollToBookingSection();
-    } else {
-      navigate("/", { state: { scrollToBooking: true } });
-    }
-    closeMobileMenu();
-  };
-
-  const scrollToBookingSection = () => {
-    const bookingSection = document.getElementById("booking-section");
-    if (bookingSection) {
-      const navbarHeight = document.querySelector("nav")?.offsetHeight || 0;
-      const sectionPosition = bookingSection.offsetTop - navbarHeight;
-      window.scrollTo({ top: sectionPosition, behavior: "smooth" });
-      window.history.replaceState(null, "", "/#booking-section");
-    }
-  };
-
-  useEffect(() => {
-    if (location.state?.scrollToBooking || window.location.hash === "#booking-section") {
-      setTimeout(scrollToBookingSection, 100);
-    }
-  }, [location]);
-
-  const handleLanguageChange = (lang) => {
-    changeLanguage(lang);
-    setIsLangOpen(false);
-    if (isMenuOpen) closeMobileMenu();
-  };
-
-  const handleMobileLanguageChange = (lang) => {
-    changeLanguage(lang);
-    setIsMobileLangOpen(false);
-    closeMobileMenu();
-  };
 
   return (
     <nav className="sticky top-0 z-50 bg-gray-900 text-white shadow-md">
@@ -137,7 +151,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Header (sm) */}
-      <div className="xl1170:hidden flex  justify-between items-center px-4 h-16">
+      <div className="xl1170:hidden flex justify-between items-center px-4 h-16">
         <div className="w-10 h-10 bg-gray-900 uppercase rotate-45 flex items-center justify-center">
           <Link
             to="/"
@@ -177,27 +191,29 @@ const Navbar = () => {
       </div>
 
       {/* Desktop Nav (lg+) */}
-      
-      <div className="hidden xl1170:flex justify-between items-center h-[90px] px-6 lg:px-20 ">
+      <div className="hidden xl1170:flex justify-between items-center h-[90px] px-6 lg:px-20">
         {/* Left Nav */}
         <div className={`flex ${language === 'fr' ? 'gap-5' : 'gap-9'}`}>
-          {['home', 'services', 'who_we_are', 'contact' ].map((item) => (
-            <Link
-              key={item}
-               to={`/${item === 'home' ? '' : item.replace(/_/g, '-')}`}
-              className={`hover:text-white ${underlineClass} text-sm xl:text-base`}
-              aria-label={translations[item]}
-            >
-              {translations[item]}
-            </Link>
-          ))}
+          {['home', 'services', 'who_we_are', 'contact'].map((item) => {
+            const path = item === 'home' ? '' : item.replace(/_/g, '-');
+            return (
+              <Link
+                key={item}
+                to={`/${path}`}
+                className={navLinkClass(path)}
+                aria-label={translations[item]}
+              >
+                {translations[item]}
+              </Link>
+            );
+          })}
         </div>
 
         {/* Right Nav */}
         <div className={`flex ${language === 'fr' ? 'gap-5' : 'gap-8'} items-center`}>
           <Link
             to="/faq"
-            className={`hover:text-white ${underlineClass} text-sm xl:text-base`}
+            className={navLinkClass('faq')}
             aria-label={translations.faq}
           >
             {translations.faq}
@@ -212,104 +228,103 @@ const Navbar = () => {
           </button>
 
           {/* Language Dropdown */}
-
-      <div className="relative group" 
-     onMouseEnter={() => {
-       if (langTimeout) clearTimeout(langTimeout);
-       setIsLangOpen(true);
-     }}
-     onMouseLeave={() => {
-       const timeout = setTimeout(() => setIsLangOpen(false), 200);
-       setLangTimeout(timeout);
-     }}
-     onFocus={() => setIsLangOpen(true)}
-     onBlur={() => setTimeout(() => setIsLangOpen(false), 100)}>
-  <button
-    className={`flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition-colors ${
-      isLangOpen ? "bg-gray-800/50" : ""
-    }`}
-    aria-haspopup="true"
-    aria-expanded={isLangOpen}
-    aria-label={translations.language_selector || "Language selector"}
-  >
-    <div className="flex items-center">
-      <ReactCountryFlag
-        countryCode={language === "en" ? "GB" : "FR"}
-        svg
-        style={{ 
-          width: "1.1em", 
-          height: "1.1em",
-          borderRadius: "2px",
-          objectFit: "cover"
-        }}
-      />
-      <span className="ml-2 text-sm font-medium">
-        {language === "en" ? "EN" : "FR"}
-      </span>
-    </div>
-    <svg
-      className={`w-4 h-4 transition-transform duration-200 ${
-        isLangOpen ? "rotate-180" : ""
-      }`}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={2}
-    >
-      <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-    </svg>
-  </button>
-
-  {isLangOpen && (
-    <div 
-      className="absolute right-0 mt-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg z-50 min-w-[140px] border border-gray-200 dark:border-gray-700 overflow-hidden"
-      role="menu"
-    >
-      {['en', 'fr'].map((lang) => (
-        <button
-          key={lang}
-          onClick={() => handleLanguageChange(lang)}
-          onMouseDown={(e) => e.preventDefault()} // Prevents focus loss on click
-          className={`flex items-center w-full px-4 py-2.5 text-left transition-colors ${
-            language === lang 
-              ? "bg-pink-50 dark:bg-gray-700 text-pink-600 dark:text-pink-400 font-medium" 
-              : "hover:bg-gray-50 dark:hover:bg-gray-700/70"
-          }`}
-          role="menuitem"
-          aria-current={language === lang ? "true" : "false"}
-        >
-          <ReactCountryFlag
-            countryCode={lang === "en" ? "GB" : "FR"}
-            svg
-            style={{ 
-              width: "1.1em", 
-              height: "1.1em",
-              borderRadius: "2px",
-              marginRight: "10px",
-              objectFit: "cover"
+          <div className="relative group" 
+            onMouseEnter={() => {
+              if (langTimeout) clearTimeout(langTimeout);
+              setIsLangOpen(true);
             }}
-            aria-hidden="true"
-          />
-          <span className="text-sm">
-            {translations.language_options[lang]}
-          </span>
-          {language === lang && (
-            <svg
-              className="w-4 h-4 ml-auto text-pink-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-              aria-hidden="true"
+            onMouseLeave={() => {
+              const timeout = setTimeout(() => setIsLangOpen(false), 200);
+              setLangTimeout(timeout);
+            }}
+            onFocus={() => setIsLangOpen(true)}
+            onBlur={() => setTimeout(() => setIsLangOpen(false), 100)}>
+            <button
+              className={`flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition-colors ${
+                isLangOpen ? "bg-gray-800/50" : ""
+              }`}
+              aria-haspopup="true"
+              aria-expanded={isLangOpen}
+              aria-label={translations.language_selector || "Language selector"}
             >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-            </svg>
-          )}
-        </button>
-      ))}
-    </div>
-  )}
-</div>
+              <div className="flex items-center">
+                <ReactCountryFlag
+                  countryCode={language === "en" ? "GB" : "FR"}
+                  svg
+                  style={{ 
+                    width: "1.1em", 
+                    height: "1.1em",
+                    borderRadius: "2px",
+                    objectFit: "cover"
+                  }}
+                />
+                <span className="ml-2 text-sm font-medium">
+                  {language === "en" ? "EN" : "FR"}
+                </span>
+              </div>
+              <svg
+                className={`w-4 h-4 transition-transform duration-200 ${
+                  isLangOpen ? "rotate-180" : ""
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+
+            {isLangOpen && (
+              <div 
+                className="absolute right-0 mt-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg z-50 min-w-[140px] border border-gray-200 dark:border-gray-700 overflow-hidden"
+                role="menu"
+              >
+                {['en', 'fr'].map((lang) => (
+                  <button
+                    key={lang}
+                    onClick={() => handleLanguageChange(lang)}
+                    onMouseDown={(e) => e.preventDefault()}
+                    className={`flex items-center w-full px-4 py-2.5 text-left transition-colors ${
+                      language === lang 
+                        ? "bg-pink-50 dark:bg-gray-700 text-pink-600 dark:text-pink-400 font-medium" 
+                        : "hover:bg-gray-50 dark:hover:bg-gray-700/70"
+                    }`}
+                    role="menuitem"
+                    aria-current={language === lang ? "true" : "false"}
+                  >
+                    <ReactCountryFlag
+                      countryCode={lang === "en" ? "GB" : "FR"}
+                      svg
+                      style={{ 
+                        width: "1.1em", 
+                        height: "1.1em",
+                        borderRadius: "2px",
+                        marginRight: "10px",
+                        objectFit: "cover"
+                      }}
+                      aria-hidden="true"
+                    />
+                    <span className="text-sm">
+                      {translations.language_options[lang]}
+                    </span>
+                    {language === lang && (
+                      <svg
+                        className="w-4 h-4 ml-auto text-pink-500"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        aria-hidden="true"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
@@ -372,19 +387,24 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="absolute right-0 top-full xl:hidden bg-white text-gray-900 w-64 py-4 px-6 shadow-inner animate-slideDown z-50">
           <div className="flex flex-col space-y-4">
-            {['home', 'services', 'faq', 'who_we_are', 'contact'].map((item) => (
-              <Link
-                key={item}
-                to={`/${item === 'home' ? '' : item.replace(/_/g, '-')}`}
-                onClick={item === 'home' ? () => { closeMobileMenu(); handleHomeClick(); } : closeMobileMenu}
-                className="py-2 hover:text-pink-500 transition-colors border-b border-gray-300"
-                aria-label={translations[item]}
-              >
-                {translations[item]}
-              </Link>
-            ))}
+            {['', 'services', 'faq', 'who_we_are', 'contact'].map((item) => {
+              const path = item === '' ? 'home' : item;
+              return (
+                <Link
+                  key={item || 'home'}
+                  to={`/${item === 'home' ? '' : item.replace(/_/g, '-')}`}
+                  onClick={item === '' ? () => { closeMobileMenu(); handleHomeClick(); } : closeMobileMenu}
+                  className={`py-2 transition-colors border-b border-gray-300 ${
+                    isActive(item) ? 'text-pink-500 font-medium' : 'hover:text-pink-500'
+                  }`}
+                  aria-label={translations[path]}
+                >
+                  {translations[path]}
+                </Link>
+              );
+            })}
 
-            <div className="flex space-x-4 p-4 justify-center">
+            {/* <div className="flex space-x-4 p-4 justify-center">
               {[
                 { icon: <FaLinkedin size={20} />, color: "text-cyan-600" },
                 { icon: <FaFacebook size={20} />, color: "text-blue-600" },
@@ -402,7 +422,7 @@ const Navbar = () => {
                   {social.icon}
                 </a>
               ))}
-            </div>
+            </div> */}
 
             <div className="pt-2">
               <div className="relative">

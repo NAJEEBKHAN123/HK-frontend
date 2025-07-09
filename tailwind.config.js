@@ -8,8 +8,9 @@ export default {
         xl1170: "1170px",
         xl1000: "xl1000",
         md550 : '550px',
-        md850: "850px", // Add this new breakpoint
-        sm: "525px", // 👈 custom screen size
+        naje: "850px", // Add this new breakpoint
+        sm650: "sm650",
+        sm: "640px", // 👈 custom screen size
         md: "768px",
         lg: "1024px",
         xl: "1280px",
