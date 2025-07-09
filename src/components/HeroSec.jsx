@@ -94,7 +94,7 @@ function HeroSec() {
         <div className="w-full text-left text-white space-y-6 lg:space-y-8">
           {/* Tagline & Heading */}
           <motion.div variants={itemVariants} className="space-y-4">
-           <span className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 px-3 py-1 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white rounded-full mb-3 lg:mb-3 sm:mb-6 shadow-lg">
+           <span className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 px-3 py-2 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white rounded-full mb-3 lg:mb-3 sm:mb-6 shadow-lg">
               {translations.tagline}
             </span>
             <h1 className="max-w-[800px] text-2xl md:text-5xl lg:text-5xl sm:text-4xl font-bold tracking-tight bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent leading-snug sm:leading-[2.5rem] md:leading-[3rem] lg:leading-[3.8rem]">
