@@ -194,7 +194,7 @@ const Navbar = () => {
         </div>
 
         {/* Right Nav */}
-        <div className={`flex ${language === 'fr' ? 'gap-4' : 'gap-8'} items-center`}>
+        <div className={`flex ${language === 'fr' ? 'gap-5' : 'gap-8'} items-center`}>
           <Link
             to="/faq"
             className={`hover:text-white ${underlineClass} text-sm xl:text-base`}
@@ -213,7 +213,7 @@ const Navbar = () => {
 
           {/* Language Dropdown */}
 
-       <div className="relative group" 
+      <div className="relative group" 
      onMouseEnter={() => {
        if (langTimeout) clearTimeout(langTimeout);
        setIsLangOpen(true);
