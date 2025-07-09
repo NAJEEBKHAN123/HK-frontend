@@ -25,7 +25,8 @@
       "Documents in English and French"
     ],
     "description": "Opening your company in Hong Kong has never been easier: without unnecessary paperwork, with professional support from A to Z.",
-    "cta_button": "Book Free Appointment"
+    "cta_button": "Book Free Appointment",
+    "secondary_cta" : "Learn More"
   },
 
    "pricing": {
@@ -136,129 +137,80 @@
       }
     ]
   },
-"faq": {
+
+ "faq": {
   "title": "Frequently Asked Questions",
   "subtitle": "Everything you need to know about company formation in Hong Kong",
   "questions": [
     {
       "id": "q1",
       "question": "How long does Hong Kong company incorporation take?",
-      "answer": "The standard incorporation process in Hong Kong typically takes 5 business days after all required documents are submitted and approved. This efficient timeline is possible because Hong Kong has one of the world's most streamlined business registration systems. The Companies Registry usually processes applications within 1-2 working days after receiving complete documentation, followed by 2-3 days for certificate issuance. Our team can help expedite this process by ensuring your application is complete and accurate before submission.",
+      "answer": "Standard incorporation takes 5 business days after document submission. This includes 1-2 days for Companies Registry processing and 2-3 days for certificate issuance. Expedited options are available for faster service.",
       "category": "company",
-      "links": [
-        {
-          "id": 1,
-          "text": "See more..."
-        }
-      ]
+      "links": [{ "id": 1, "text": "See more..." }]
     },
     {
       "id": "q2",
       "question": "Do I need to travel to Hong Kong to register a company?",
-      "answer": "No travel is required whatsoever. The entire company registration process can be completed 100% online from anywhere in the world. Hong Kong's digital-friendly business environment allows for electronic submission of all documents through the e-Registry system. We handle the entire process remotely for our clients, including notarization, document certification, and government liaison. The only physical requirement is having a local registered office address, which we can provide as part of our service package.",
+      "answer": "No physical presence is required. The entire process is handled online through Hong Kong's e-Registry system. We manage document notarization and government submissions remotely for international clients.",
       "category": "company",
-      "links": [
-        {
-          "id": 2,
-          "text": "See more..." 
-        }
-      ]
+      "links": [{ "id": 2, "text": "See more..." }]
     },
     {
       "id": "q3",
       "question": "What is the minimum capital requirement?",
-      "answer": "Hong Kong imposes no minimum capital requirement for standard private limited companies, offering exceptional flexibility for entrepreneurs. You can legally incorporate with any amount of capital, even as low as HKD 1. The standard practice is to start with HKD 10,000 as this is the nominal amount for many standard incorporation packages. The capital can be in any currency and can be increased at any time after incorporation. It's important to note that while there's no minimum requirement, your stated capital should realistically reflect your business needs.",
+      "answer": "Hong Kong has no minimum capital requirement - you can incorporate with just HKD 1. Most businesses start with HKD 10,000 as it's practical for banking and operations.",
       "category": "company",
-      "links": [
-        {
-          "id": 3,
-         "text": "See more..." 
-        }
-      ]
+      "links": [{ "id": 3, "text": "See more..." }]
     },
     {
       "id": "q4",
       "question": "Can foreigners own 100% of a Hong Kong company?",
-      "answer": "Yes, Hong Kong's business laws allow 100% foreign ownership of companies with no restrictions on nationality. There are no requirements for local shareholders or directors, making it an ideal jurisdiction for international entrepreneurs. The company can be wholly owned by individuals or corporate entities from any country. Hong Kong maintains this open policy as part of its free market principles, and foreign-owned companies enjoy exactly the same rights and privileges as locally-owned businesses, including access to the same tax benefits and legal protections.",
+      "answer": "Yes, Hong Kong allows 100% foreign ownership with no restrictions. Both individuals and corporate entities from any country can be sole shareholders with equal rights.",
       "category": "legal",
-      "links": [
-        {
-        "id": 4,
-       "text": "See more..." 
-        }
-      ]
+      "links": [{ "id": 4, "text": "See more..." }]
     },
     {
       "id": "q5",
       "question": "What are the ongoing compliance requirements?",
-      "answer": "Hong Kong companies must fulfill several annual compliance obligations: 1) Annual return filing with the Companies Registry (due within 42 days of the incorporation anniversary), 2) Profits tax return filing with the Inland Revenue Department, 3) Maintenance of proper business records and accounting books for at least 7 years, and 4) Renewal of business registration certificate annually. Companies must also update any changes in directors, shareholders, or registered address within specified timeframes. Our compliance package can handle all these requirements on your behalf.",
+      "answer": "Key requirements include: annual return filing within 42 days of incorporation date, profits tax return submission, proper accounting records maintenance, and annual business registration renewal.",
       "category": "tax",
-      "links": [
-        {
-          "id": 5,
-          "text": "See more..." 
-        }
-      ]
+      "links": [{ "id": 5, "text": "See more..." }]
     },
     {
       "id": "q6",
       "question": "How much does incorporation cost?",
-      "answer": "Our all-inclusive incorporation package starts from €4,600, which covers all essential government fees and our professional services. This includes: 1) Company name search and registration, 2) Preparation of incorporation documents, 3) Government registration fees, 4) Business registration certificate, 5) Company seal, 6) First year registered office address, and 7) First year company secretary service. Additional services like expedited processing, nominee services, or special certificates may incur extra costs. Compared to other international financial centers, Hong Kong offers exceptional value with its low incorporation and maintenance costs.",
+      "answer": "Our complete package starts from €4,600 including government fees, company documents, official seal, 1-year registered address, and secretary service. Additional services available for complex structures.",
       "category": "tax",
-      "links": [
-        {
-          "id": 6,
-          "text": "See more..." 
-        }
-      ]
+      "links": [{ "id": 6, "text": "See more..." }]
     },
     {
       "id": "q7",
       "question": "Do I need a local office address?",
-      "answer": "Yes, by law every Hong Kong company must maintain a physical registered office address in Hong Kong where official communications can be sent. This cannot be a PO Box. However, you don't need to rent physical office space - we provide affordable virtual office solutions that satisfy this legal requirement. Our virtual office package includes a prestigious business address in central Hong Kong, mail handling and forwarding services, and can be bundled with telephone answering services if needed. This allows you to maintain a professional Hong Kong presence without the expense of physical office space.",
+      "answer": "Yes, a physical Hong Kong address (not PO Box) is legally required. We provide professional virtual office solutions in central locations that satisfy this requirement affordably.",
       "category": "legal",
-      "links": [
-        {
-          "id": 7,
-          "text": "See more..." 
-        }
-      ]
+      "links": [{ "id": 7, "text": "See more..." }]
     },
     {
       "id": "q8",
       "question": "Can I open a corporate bank account remotely?",
-      "answer": "Yes, remote corporate account opening is possible through our partnered financial institutions and fintech banking solutions. While traditional Hong Kong banks typically require in-person meetings, we've established relationships with several banks and digital banking platforms that accept remote applications. The process involves submitting certified copies of your documents, completing video verification, and may require additional due diligence depending on your business activities. Approval typically takes 2-4 weeks. We guide you through every step and help prepare your application to maximize approval chances.",
+      "answer": "Yes, through our partnered banks and fintech platforms that accept remote applications. Process includes video verification and typically takes 2-4 weeks for approval.",
       "category": "banking",
-      "links": [
-        {
-          "id": 8,
-          "text": "See more..." 
-        }
-      ]
+      "links": [{ "id": 8, "text": "See more..." }]
     },
     {
       "id": "q9",
       "question": "What taxes will my company pay?",
-      "answer": "Hong Kong operates a territorial tax system where only profits derived from Hong Kong are taxable. The current profits tax rate is 16.5% for corporations. Key features include: 1) No VAT/GST or sales tax, 2) No capital gains tax, 3) No dividend tax, 4) No withholding tax on dividends, and 5) No estate/inheritance tax. For offshore profits (income earned outside Hong Kong), you may qualify for complete tax exemption if properly structured. Hong Kong also has an extensive network of double taxation agreements that may reduce withholding taxes in other jurisdictions.",
+      "answer": "Only Hong Kong-sourced profits are taxed at 16.5%. No VAT, capital gains or dividend taxes. Offshore income may qualify for full exemption if properly structured.",
       "category": "tax",
-      "links": [
-        {
-          "id": 9,
-         "text": "See more..." 
-        }
-      ]
+      "links": [{ "id": 9, "text": "See more..." }]
     },
     {
       "id": "q10",
       "question": "Is this service legal for non-residents?",
-      "answer": "Absolutely. It is completely legal for non-residents to establish and operate companies in Hong Kong. The Hong Kong government actively encourages international business and provides equal treatment to all companies regardless of the owners' nationality or residence status. Our services are fully compliant with all Hong Kong regulations, and we specialize in helping non-residents navigate the incorporation process smoothly. Many of our clients operate their Hong Kong companies entirely from overseas, taking advantage of Hong Kong's business-friendly environment while minimizing their physical presence requirements.",
+      "answer": "Completely legal. Hong Kong encourages international business and grants equal rights to foreign-owned companies. Our services ensure full compliance with all local regulations for non-residents.",
       "category": "legal",
-      "links": [
-        {
-          "id": 10,
-          "text": "See more..."
-        }
-      ]
+      "links": [{ "id": 10, "text": "See more..." }]
     }
   ]
 },

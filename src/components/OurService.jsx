@@ -170,7 +170,7 @@ export default function OurServices() {
           whileInView="visible"
           variants={containerVariants}
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
         >
           {(translations?.serviceCategories || []).map((service, index) => (
             <motion.div 

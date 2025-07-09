@@ -5,13 +5,6 @@ import { LanguageContext } from "../context/LanguageContext.jsx";
 import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
 import { motion } from "framer-motion";
-import {
-  FaLinkedin,
-  FaFacebook,
-  FaInstagram,
-  FaYoutube,
-  FaTiktok,
-} from "react-icons/fa";
 import ReactCountryFlag from "react-country-flag";
 
 const Navbar = () => {
@@ -34,7 +27,7 @@ const Navbar = () => {
            (path !== '' && location.pathname.includes(path));
   };
 
-  // Simplified nav link class - only text color change for active state
+ 
   const navLinkClass = (path) => `
     hover:text-white 
     transition-colors 
@@ -193,7 +186,7 @@ const Navbar = () => {
       {/* Desktop Nav (lg+) */}
       <div className="hidden xl1170:flex justify-between items-center h-[90px] px-6 lg:px-20">
         {/* Left Nav */}
-        <div className={`flex ${language === 'fr' ? 'gap-5' : 'gap-9'}`}>
+        <div className={`flex ${language === 'fr' ? 'gap-5 ' : 'gap-9'}`}>
           {['home', 'services', 'who_we_are', 'contact'].map((item) => {
             const path = item === 'home' ? '' : item.replace(/_/g, '-');
             return (
@@ -202,6 +195,7 @@ const Navbar = () => {
                 to={`/${path}`}
                 className={navLinkClass(path)}
                 aria-label={translations[item]}
+                onClick={handleHomeClick}
               >
                 {translations[item]}
               </Link>

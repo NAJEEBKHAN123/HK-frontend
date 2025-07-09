@@ -27,6 +27,7 @@ import Cookies from "./pages/legal/Cookies";
 import Accessibility from "./pages/legal/Accessibility";
 import Choices from "./pages/legal/Choices";
 import TeamMember from "./pages/TeamMember";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -47,6 +48,8 @@ function App() {
           <Route path="/order-form" element={<OrderForm />} />
           <Route path="/success" element={<SuccessPage />} />
           <Route path="/cancel" element={<CancelPage />} />
+          <Route path="*" element={<NotFound />} />
+
 
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />

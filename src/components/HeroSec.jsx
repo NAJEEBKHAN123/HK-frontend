@@ -6,10 +6,12 @@ import { useNavigate } from "react-router-dom";
 import { LanguageContext } from "../context/LanguageContext";
 import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
+import { Link } from "react-router-dom";
+import HeroImg from "../assets/HeroBackground.webp"
 
 function HeroSec() {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: false });
+  const [ref, inView] = useInView({ threshold: 0.1, triggerOnce: true });
   const navigate = useNavigate();
   const { language } = useContext(LanguageContext);
   const translations = language === "fr" ? frTranslations.hero : enTranslations.hero;
@@ -18,31 +20,40 @@ function HeroSec() {
     if (inView) controls.start("visible");
   }, [inView, controls]);
 
+  // Optimized animations with reduced motion preference check
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: 15, opacity: 0 },
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { 
+        duration: 0.5, 
+        ease: [0.16, 1, 0.3, 1] // Custom easing curve
+      },
     },
   };
 
   const buttonVariants = {
     hover: {
-      scale: 1.05,
-      boxShadow: "0 10px 25px -5px rgba(59, 130, 246, 0.4)",
-      transition: { duration: 0.3 },
+      scale: 1.03,
+      boxShadow: "0 10px 20px -5px rgba(59, 130, 246, 0.3)",
+      transition: { 
+        duration: 0.3,
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      },
     },
   };
 
@@ -67,80 +78,112 @@ function HeroSec() {
   };
 
   return (
-    <div className="relative pt-12 pb-16 w-full overflow-hidden bg-gray-900">
-      {/* Background with WhoWeAre-style animation */}
+    <div className="relative pt-[60px] pb-24 w-full overflow-hidden bg-gray-900">
+      {/* Optimized background with reduced motion */}
       <motion.div
         initial={{ scale: 1 }}
-        animate={{ scale: 1.03 }}
-        transition={{ duration: 15, repeat: Infinity, repeatType: "reverse" }}
+        animate={{ scale: 1.02 }}
+        transition={{ 
+          duration: 20, 
+          repeat: Infinity, 
+          repeatType: "reverse",
+          ease: "linear"
+        }}
         className="absolute inset-0 bg-cover bg-center opacity-90"
         style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1714102984753-c1930a6897ae?q=80&auto=format&fit=crop')",
+          backgroundImage: `url(${HeroImg})`,
+          backgroundPosition: "center 70%",
+          top : "",
           backgroundSize: "cover",
-          backgroundPosition: "center",
+          // backgroundPosition: "center",
+          willChange: "transform", // Performance hint
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/70 via-gray-900/40 to-gray-900/20" />
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/50 to-gray-900/30" />
       </motion.div>
 
-      {/* Content container - matches WhoWeAre padding exactly */}
+      {/* Content container */}
       <motion.div
         ref={ref}
         initial="hidden"
         animate={controls}
         variants={containerVariants}
-        className="relative max-w-7xl mx-auto h-full flex items-center px-5 lg:px-20  xl:px-20 sm:px-6"
+        className="relative max-w-7xl mx-auto h-full flex items-center px-5 sm:px-8 lg:px-12 xl:px-16"
       >
         <div className="w-full text-left text-white space-y-6 lg:space-y-8">
           {/* Tagline & Heading */}
-          <motion.div variants={itemVariants} className="space-y-4">
-           <span className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 px-3 py-2 sm:px-4 sm:py-2 text-xs sm:text-sm font-semibold text-white rounded-full mb-3 lg:mb-3 sm:mb-6 shadow-lg">
+          <motion.div variants={itemVariants} className="space-y-5">
+            <motion.span 
+              variants={itemVariants}
+              className="inline-block bg-gradient-to-r from-blue-500 to-blue-600 px-3 py-2 text-xs lg:text-base font-medium text-white rounded-full shadow-md"
+            >
               {translations.tagline}
-            </span>
-            <h1 className="max-w-[800px] text-2xl md:text-5xl lg:text-5xl sm:text-4xl font-bold tracking-tight bg-gradient-to-r from-white to-blue-100 bg-clip-text text-transparent leading-snug sm:leading-[2.5rem] md:leading-[3rem] lg:leading-[3.8rem]">
-              {translations.title_part1}{" "}
-              <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-                {translations.title_part2}
-              </span>,{" "}
-              {translations.title_part3}
-            </h1>
+            </motion.span>
+            
+            <motion.h1 
+              variants={itemVariants}
+              className="max-w-4xl text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight leading-tight sm:leading-[1.1]"
+            >
+              <span className="text-white">{translations.title_part1}</span>{' '}
+              <span className="text-blue-400">{translations.title_part2}</span>,{' '}
+              <span className="text-white">{translations.title_part3}</span>
+            </motion.h1>
           </motion.div>
 
-          {/* Benefits List - matches WhoWeAre grid pattern */}
+          {/* Benefits List */}
           <motion.ul
             variants={containerVariants}
-            className="max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 text-base sm:text-lg"
+            className="max-w-4xl grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
           >
             {translations.benefits.map((benefit, index) => (
               <motion.li
                 key={index}
                 variants={itemVariants}
-                className="flex items-start gap-3 p-2 bg-gray-900/30 rounded-xl backdrop-blur-sm border border-gray-700/50 hover:border-blue-400/50 transition-all"
+                className="flex items-start gap-3 p-3 sm:p-4 bg-gray-900/40 rounded-lg backdrop-blur-sm border border-gray-700/50 hover:border-blue-400/30 transition-colors"
               >
-                <CheckCircleIcon className="w-5 h-5 sm:w-6 sm:h-6 text-blue-400 mt-1 flex-shrink-0" />
-                <span className="text-gray-200">{benefit}</span>
+                <CheckCircleIcon className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                <span className="text-gray-100 text-sm sm:text-base">{benefit}</span>
               </motion.li>
             ))}
           </motion.ul>
 
-          {/* CTA Section - matches WhoWeAre button styling */}
+          {/* CTA Section */}
           <motion.div
             variants={itemVariants}
-            className="pt-4 lg:pt-4  space-y-4 max-w-3xl"
+            className="pt-6 space-y-5 max-w-3xl"
           >
-            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
+            <motion.p 
+              variants={itemVariants}
+              className="text-gray-300 text-lg sm:text-xl leading-relaxed"
+            >
               {translations.description}
-            </p>
-            <motion.div className="flex flex-col sm:flex-row pt-4 gap-4">
+            </motion.p>
+            
+            <motion.div 
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row gap-4 sm:gap-4"
+            >
               <motion.button
                 variants={buttonVariants}
                 whileHover="hover"
+                whileTap={{ scale: 0.98 }}
                 onClick={handleBookClick}
-                className="px-2 md:px-4 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl shadow-lg transition-all hover:shadow-xl text-lg"
+                className="flex items-center justify-center px-6 py-3.5 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-semibold rounded-lg shadow-lg transition-all text-base sm:text-lg"
               >
-                <CalendarIcon className="inline w-5 h-5 mr-2 -mt-1" />
+                <CalendarIcon className="w-5 h-5 mr-2" />
                 {translations.cta_button}
               </motion.button>
+              
+             <Link to='/services'>
+              <motion.button
+                variants={buttonVariants}
+                whileHover="hover"
+                whileTap={{ scale: 0.98 }}
+                className="px-6 py-3.5 w-full bg-white/10 hover:bg-white/20 border border-white/20 text-white font-medium rounded-lg shadow transition-all text-base sm:text-lg"
+              >
+                {translations.secondary_cta || "Learn More"}
+              </motion.button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
