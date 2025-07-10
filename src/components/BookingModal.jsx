@@ -1,5 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { LanguageContext } from "../context/LanguageContext";
+import enTranslations from "../locales/en.json";
+import frTranslations from "../locales/fr.json";
 
 const BookingSection = ({ id }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -8,15 +11,33 @@ const BookingSection = ({ id }) => {
   const [showCalendly, setShowCalendly] = useState(false);
   const calendlyRef = useRef(null);
 
+  
+ 
+  const { language } = useContext(LanguageContext);
+  const translations =
+    language === "fr" ? frTranslations.appointment : enTranslations.appointment;
+
   useEffect(() => {
-    // Load Calendly immediately but keep it hidden
     const timer = setTimeout(() => {
       setIsLoading(false);
       setShowCalendly(true);
-    }, 800); // Reduced from 1000ms to 800ms
+    }, 800);
 
     return () => clearTimeout(timer);
   }, [activeTab]);
+
+   const calendlyUrl = `https://calendly.com/najeebkhanlaku/free-consultant?timezone=Europe/Paris&primary_color=6366f1${
+    language === 'fr' ? '&locale=fr' : '&locale=en'
+  }`;
+
+
+    useEffect(() => {
+    if (showCalendly) {
+      setShowCalendly(false);
+      const timer = setTimeout(() => setShowCalendly(true), 100);
+      return () => clearTimeout(timer);
+    }
+  }, [language]);
 
   const variants = {
     hidden: { opacity: 0, y: 20 },
@@ -30,13 +51,14 @@ const BookingSection = ({ id }) => {
       className="relative py-28 min-h-screen bg-gradient-to-br from-slate-50 via-white to-indigo-50/50 flex items-center overflow-hidden"
       style={{ zIndex: 10 }}
     >
-      {/* Premium decorative elements */}
+      {/* Premium 3D background elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-indigo-300/20 via-transparent to-transparent"></div>
           <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-purple-300/20 via-transparent to-transparent"></div>
         </div>
 
+        {/* Floating gradient orbs */}
         <motion.div
           initial={{ x: -100, y: -100, rotate: 0 }}
           animate={{ x: [0, 80, 0], y: [0, 80, 0], rotate: [0, 5, 0] }}
@@ -67,8 +89,8 @@ const BookingSection = ({ id }) => {
         />
       </div>
 
-      <div className="w-full max-w-7xl mx-auto px-5 md:px-5  sm:px-5 lg:px-20 relative z-10">
-        {/* Luxurious header section */}
+      <div className="w-full max-w-7xl mx-auto px-5 md:px-5 sm:px-5 lg:px-20 relative z-10">
+        {/* Luxury header */}
         <motion.div
           initial="hidden"
           animate="visible"
@@ -88,43 +110,46 @@ const BookingSection = ({ id }) => {
                   clipRule="evenodd"
                 />
               </svg>
-              Exclusive Scheduling
+              {translations.badge.text}
             </span>
           </motion.div>
+
           <motion.h2
             variants={variants}
             className="text-5xl md:text-6xl font-light text-slate-900 mb-6 tracking-tight"
           >
-            Reserve Your{" "}
+            {translations.header.title.split(" ")[0]}{" "}
             <span className="font-medium bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600">
-              Private Session
+              {translations.header.titleGradient ||
+                translations.header.title.split(" ").slice(1).join(" ")}
             </span>
           </motion.h2>
+
           <motion.div variants={variants} className="flex justify-center">
             <div className="w-40 h-1 bg-gradient-to-r from-indigo-300/0 via-indigo-400 to-indigo-300/0 rounded-full mb-8" />
           </motion.div>
+
           <motion.p
             variants={variants}
             className="text-xl text-slate-600/90 max-w-2xl mx-auto leading-relaxed font-light"
           >
-            Select from our curated availability for a personalized consultation
-            experience.
+            {translations.header.subtitle}
           </motion.p>
         </motion.div>
 
-        {/* Premium booking container */}
+        {/* Premium booking card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="bg-white rounded-[2rem]  shadow-2xl overflow-hidden border border-white/20 backdrop-blur-sm relative z-20"
+          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-white/20 backdrop-blur-sm relative z-20"
           style={{
             boxShadow: "0 25px 50px -12px rgba(79, 70, 229, 0.15)",
             background:
               "linear-gradient(to bottom, rgba(255,255,255,0.95) 0%, rgba(248,250,252,0.95) 100%)",
           }}
         >
-          {/* Premium consultation header */}
+          {/* Consultation header */}
           <div className="bg-gradient-to-r from-indigo-50/80 to-violet-50/80 px-10 py-8 border-b border-indigo-100/30">
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -142,10 +167,10 @@ const BookingSection = ({ id }) => {
                       d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
                     />
                   </svg>
-                  Schedule Your Consultation
+                  {translations.booking.title}
                 </h3>
                 <p className="text-indigo-600/90 mt-2 font-light">
-                  Choose your preferred session type
+                  {translations.booking.subtitle}
                 </p>
               </div>
               <div className="mt-6 sm:mt-0">
@@ -158,14 +183,14 @@ const BookingSection = ({ id }) => {
                         : "text-slate-600 hover:text-indigo-700 hover:bg-slate-100/50"
                     }`}
                   >
-                    30-min Discovery
+                    {translations.booking.options["30min"]}
                   </button>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Calendar container with premium loading state */}
+          {/* Calendar container */}
           <div
             className="relative min-h-[750px] w-full"
             style={{ transform: "translateZ(0)" }}
@@ -202,16 +227,13 @@ const BookingSection = ({ id }) => {
                     </svg>
                   </motion.div>
                   <p className="text-lg text-slate-500 font-medium mb-6">
-                    Preparing your booking experience...
+                    {translations.loading.text}
                   </p>
                   <div className="w-64 h-1.5 bg-slate-100 rounded-full overflow-hidden">
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: "100%" }}
-                      transition={{
-                        duration: 2,
-                        ease: "easeInOut",
-                      }}
+                      transition={{ duration: 2, ease: "easeInOut" }}
                       className="h-full bg-gradient-to-r from-indigo-300 to-violet-400 rounded-full"
                     />
                   </div>
@@ -223,37 +245,36 @@ const BookingSection = ({ id }) => {
                 onMouseEnter={() => setIsHovering(true)}
                 onMouseLeave={() => setIsHovering(false)}
               >
-                {/* Optimized Calendly integration */}
+                {/* Calendly integration */}
                 <div
                   id="calendly-inline-widget"
                   ref={calendlyRef}
-                  className="relative w-full max-w-7xl mx-auto h-[950px] lg:h-[750px] overflow-hidden z-30"
+                  className="relative w-full mx-auto h-[950px] lg:h-[750px] overflow-hidden z-30"
                   style={{
+                    minWidth: "100%", 
+                    maxWidth: "none",
                     background:
                       "linear-gradient(to bottom, rgba(249,250,251,0.8) 0%, rgba(255,255,255,0.9) 100%)",
                     isolation: "isolate",
                     display: showCalendly ? "block" : "none",
                   }}
                 >
+
+                  <div className="w-full h-full" style={{ minWidth: '1200px' }}>
+
                   <iframe
                     src="https://calendly.com/najeebkhanlaku/free-consultant?timezone=Europe/Paris"
                     width="100%"
                     height="100%"
                     className="absolute inset-0"
                     frameBorder="0"
-                  title="Booking Calendar"
-                    
-                  />
+                    title="Booking Calendar"
+                    loading="lazy"
+                    />
                 </div>
+                    </div>
 
-                {/* Show loading state until Calendly is fully ready */}
-                {!showCalendly && (
-                  <div className="absolute inset-0 flex items-center justify-center bg-white/50">
-                    <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
-                  </div>
-                )}
-
-                {/* Premium hover indicator */}
+                {/* Hover indicator */}
                 <AnimatePresence>
                   {isHovering && showCalendly && (
                     <motion.div
@@ -264,7 +285,7 @@ const BookingSection = ({ id }) => {
                     >
                       <div className="bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-full shadow-lg text-sm font-medium text-indigo-600 border border-indigo-100/50 flex items-center">
                         <div className="w-2.5 h-2.5 mr-2 bg-green-400 rounded-full animate-pulse"></div>
-                        Real-Time Availability
+                        {translations.status.realTime}
                       </div>
                     </motion.div>
                   )}
@@ -273,7 +294,7 @@ const BookingSection = ({ id }) => {
             )}
           </div>
 
-          {/* Premium footer section */}
+          {/* Premium footer */}
           <div
             className="bg-gradient-to-r from-indigo-50/80 to-violet-50/80 px-10 py-8 border-t border-indigo-100/30"
             style={{ position: "relative", zIndex: 20 }}
@@ -297,10 +318,10 @@ const BookingSection = ({ id }) => {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-slate-700">
-                    End-to-End Encrypted
+                    {translations.footer.security.title}
                   </p>
                   <p className="text-xs text-slate-500/80 font-light">
-                    Your privacy is our priority
+                    {translations.footer.security.description}
                   </p>
                 </div>
               </div>
@@ -324,7 +345,7 @@ const BookingSection = ({ id }) => {
                       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                     />
                   </svg>
-                  Request Custom Arrangement
+                  {translations.footer.cta}
                 </span>
                 <span className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0" />
               </motion.a>
@@ -332,7 +353,7 @@ const BookingSection = ({ id }) => {
           </div>
         </motion.div>
 
-        {/* Premium trust indicators */}
+        {/* Trust indicators */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -348,7 +369,7 @@ const BookingSection = ({ id }) => {
             </div>
             <div className="relative flex justify-center">
               <span className="px-5 bg-white/80 backdrop-blur-sm text-sm font-medium text-slate-500 rounded-full border border-slate-200/50 shadow-sm">
-                Trusted by elite professionals at
+                {translations.trust.text}
               </span>
             </div>
           </div>
@@ -359,7 +380,7 @@ const BookingSection = ({ id }) => {
         </motion.div>
       </div>
 
-      {/* Premium decorative corner elements */}
+      {/* Decorative corners */}
       <div className="absolute top-0 left-0 w-32 h-32 border-t-2 border-l-2 border-indigo-200/50 rounded-tl-3xl"></div>
       <div className="absolute bottom-0 right-0 w-32 h-32 border-b-2 border-r-2 border-violet-200/50 rounded-br-3xl"></div>
     </section>

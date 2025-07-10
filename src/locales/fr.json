@@ -12,8 +12,8 @@
       "fr": "Français"
     }
   },
-  
-   "hero": {
+
+  "hero": {
     "tagline": "Créez votre entreprise à Hong Kong 100% en ligne",
     "title_part1": "Lancez votre entreprise",
     "title_part2": "rapidement",
@@ -26,12 +26,12 @@
     ],
     "description": "Créer votre entreprise à Hong Kong n'a jamais été aussi simple : sans paperasse inutile, avec un accompagnement professionnel de A à Z.",
     "cta_button": "Réserver rendez-vous gratuit",
-    "secondary_cta" : "Apprendre encore plus"
+    "secondary_cta": "Apprendre encore plus"
   },
 
-   "pricing": {
+  "pricing": {
     "title": "Pourquoi Choisir Hong Kong pour Votre Entreprise ?",
-     "subtitlePart1": "Le taux d'imposition des sociétés de 0% à Hong Kong est attractif,",
+    "subtitlePart1": "Le taux d'imposition des sociétés de 0% à Hong Kong est attractif,",
     "subtitlePart2": " sans TVA ni taxes cachées. C'est simple : moins de taxes, plus de profits pour vous ! De plus, Hong Kong n'est pas un paradis fiscal douteux. Sa réputation mondiale est solide grâce à des règles claires et une transparence exemplaire. Votre argent est en sécurité, et le cadre juridique vous protège.",
     "subtitlePart3": "Pour un Européen, cela offre une tranquillité d'esprit avec moins de soucis fiscaux.",
     "subtitlePart4": "Faire des affaires ici est efficace et fiable.",
@@ -75,7 +75,7 @@
     ]
   },
 
- "services": {
+  "services": {
     "subtitle": "NOS SERVICES",
     "title": "Nos Services Complets",
     "ctaButton": "Démarrer avec Nos Services",
@@ -138,82 +138,82 @@
     ]
   },
 
- "faq": {
-  "title": "Foire Aux Questions",
-  "subtitle": "Tout ce que vous devez savoir sur la création d'entreprise à Hong Kong",
-  "questions": [
-    {
-      "id": "q1",
-      "question": "Combien de temps prend l'immatriculation d'une société à Hong Kong ?",
-      "answer": "L'immatriculation standard prend 5 jours ouvrables après soumission des documents. Cela comprend 1-2 jours de traitement par le Registre des Sociétés et 2-3 jours pour l'émission des certificats. Des options accélérées sont disponibles.",
-      "category": "company",
-      "links": [{ "id": 1, "text": "Voir plus..." }]
-    },
-    {
-      "id": "q2",
-      "question": "Dois-je me rendre à Hong Kong pour enregistrer une société ?",
-      "answer": "Aucune présence physique n'est requise. Tout le processus se fait en ligne via le système e-Registry de Hong Kong. Nous gérons la notarisation et les démarches administratives à distance.",
-      "category": "company",
-      "links": [{ "id": 2, "text": "Voir plus..." }]
-    },
-    {
-      "id": "q3",
-      "question": "Quel est le capital minimum requis ?",
-      "answer": "Hong Kong n'impose aucun capital minimum - vous pouvez créer une société avec seulement 1 HKD. La plupart des entreprises commencent avec 10 000 HKD pour des raisons pratiques.",
-      "category": "company",
-      "links": [{ "id": 3, "text": "Voir plus..." }]
-    },
-    {
-      "id": "q4",
-      "question": "Les étrangers peuvent-ils posséder 100% d'une société à Hong Kong ?",
-      "answer": "Oui, Hong Kong autorise une propriété étrangère à 100% sans restrictions. Particuliers et entités de tout pays peuvent être actionnaires uniques avec les mêmes droits.",
-      "category": "legal",
-      "links": [{ "id": 4, "text": "Voir plus..." }]
-    },
-    {
-      "id": "q5",
-      "question": "Quelles sont les obligations légales continues ?",
-      "answer": "Les obligations incluent : dépôt annuel sous 42 jours après la création, déclaration fiscale, tenue de comptabilité régulière et renouvellement annuel de l'enregistrement commercial.",
-      "category": "tax",
-      "links": [{ "id": 5, "text": "Voir plus..." }]
-    },
-    {
-      "id": "q6",
-      "question": "Combien coûte l'immatriculation ?",
-      "answer": "Notre forfait complet commence à 4 600€, incluant frais gouvernementaux, documents officiels, sceau, adresse enregistrée pour 1 an et service de secrétariat. Options supplémentaires disponibles.",
-      "category": "tax",
-      "links": [{ "id": 6, "text": "Voir plus..." }]
-    },
-    {
-      "id": "q7",
-      "question": "Ai-je besoin d'une adresse locale à Hong Kong ?",
-      "answer": "Oui, une adresse physique (pas une boîte postale) est obligatoire. Nous proposons des solutions de bureaux virtuels professionnels à des tarifs abordables.",
-      "category": "legal",
-      "links": [{ "id": 7, "text": "Voir plus..." }]
-    },
-    {
-      "id": "q8",
-      "question": "Puis-je ouvrir un compte bancaire d'entreprise à distance ?",
-      "answer": "Oui, via nos banques partenaires et plateformes fintech acceptant les demandes à distance. Le processus inclut une vérification vidéo et prend généralement 2-4 semaines.",
-      "category": "banking",
-      "links": [{ "id": 8, "text": "Voir plus..." }]
-    },
-    {
-      "id": "q9",
-      "question": "Quels impôts ma société devra-t-elle payer ?",
-      "answer": "Seuls les bénéfices réalisés à Hong Kong sont imposés à 16.5%. Pas de TVA, ni d'impôt sur les plus-values ou dividendes. Les revenus offshore peuvent être exonérés.",
-      "category": "tax",
-      "links": [{ "id": 9, "text": "Voir plus..." }]
-    },
-    {
-      "id": "q10",
-      "question": "Ce service est-il légal pour les non-résidents ?",
-      "answer": "Absolument légal. Hong Kong encourage les affaires internationales et accorde les mêmes droits aux sociétés étrangères. Nos services garantissent une conformité totale avec la réglementation locale.",
-      "category": "legal",
-      "links": [{ "id": 10, "text": "Voir plus..." }]
-    }
-  ]
-},
+  "faq": {
+    "title": "Foire Aux Questions",
+    "subtitle": "Tout ce que vous devez savoir sur la création d'entreprise à Hong Kong",
+    "questions": [
+      {
+        "id": "q1",
+        "question": "Combien de temps prend l'immatriculation d'une société à Hong Kong ?",
+        "answer": "L'immatriculation standard prend 5 jours ouvrables après soumission des documents. Cela comprend 1-2 jours de traitement par le Registre des Sociétés et 2-3 jours pour l'émission des certificats. Des options accélérées sont disponibles.",
+        "category": "company",
+        "links": [{ "id": 1, "text": "Voir plus..." }]
+      },
+      {
+        "id": "q2",
+        "question": "Dois-je me rendre à Hong Kong pour enregistrer une société ?",
+        "answer": "Aucune présence physique n'est requise. Tout le processus se fait en ligne via le système e-Registry de Hong Kong. Nous gérons la notarisation et les démarches administratives à distance.",
+        "category": "company",
+        "links": [{ "id": 2, "text": "Voir plus..." }]
+      },
+      {
+        "id": "q3",
+        "question": "Quel est le capital minimum requis ?",
+        "answer": "Hong Kong n'impose aucun capital minimum - vous pouvez créer une société avec seulement 1 HKD. La plupart des entreprises commencent avec 10 000 HKD pour des raisons pratiques.",
+        "category": "company",
+        "links": [{ "id": 3, "text": "Voir plus..." }]
+      },
+      {
+        "id": "q4",
+        "question": "Les étrangers peuvent-ils posséder 100% d'une société à Hong Kong ?",
+        "answer": "Oui, Hong Kong autorise une propriété étrangère à 100% sans restrictions. Particuliers et entités de tout pays peuvent être actionnaires uniques avec les mêmes droits.",
+        "category": "legal",
+        "links": [{ "id": 4, "text": "Voir plus..." }]
+      },
+      {
+        "id": "q5",
+        "question": "Quelles sont les obligations légales continues ?",
+        "answer": "Les obligations incluent : dépôt annuel sous 42 jours après la création, déclaration fiscale, tenue de comptabilité régulière et renouvellement annuel de l'enregistrement commercial.",
+        "category": "tax",
+        "links": [{ "id": 5, "text": "Voir plus..." }]
+      },
+      {
+        "id": "q6",
+        "question": "Combien coûte l'immatriculation ?",
+        "answer": "Notre forfait complet commence à 4 600€, incluant frais gouvernementaux, documents officiels, sceau, adresse enregistrée pour 1 an et service de secrétariat. Options supplémentaires disponibles.",
+        "category": "tax",
+        "links": [{ "id": 6, "text": "Voir plus..." }]
+      },
+      {
+        "id": "q7",
+        "question": "Ai-je besoin d'une adresse locale à Hong Kong ?",
+        "answer": "Oui, une adresse physique (pas une boîte postale) est obligatoire. Nous proposons des solutions de bureaux virtuels professionnels à des tarifs abordables.",
+        "category": "legal",
+        "links": [{ "id": 7, "text": "Voir plus..." }]
+      },
+      {
+        "id": "q8",
+        "question": "Puis-je ouvrir un compte bancaire d'entreprise à distance ?",
+        "answer": "Oui, via nos banques partenaires et plateformes fintech acceptant les demandes à distance. Le processus inclut une vérification vidéo et prend généralement 2-4 semaines.",
+        "category": "banking",
+        "links": [{ "id": 8, "text": "Voir plus..." }]
+      },
+      {
+        "id": "q9",
+        "question": "Quels impôts ma société devra-t-elle payer ?",
+        "answer": "Seuls les bénéfices réalisés à Hong Kong sont imposés à 16.5%. Pas de TVA, ni d'impôt sur les plus-values ou dividendes. Les revenus offshore peuvent être exonérés.",
+        "category": "tax",
+        "links": [{ "id": 9, "text": "Voir plus..." }]
+      },
+      {
+        "id": "q10",
+        "question": "Ce service est-il légal pour les non-résidents ?",
+        "answer": "Absolument légal. Hong Kong encourage les affaires internationales et accorde les mêmes droits aux sociétés étrangères. Nos services garantissent une conformité totale avec la réglementation locale.",
+        "category": "legal",
+        "links": [{ "id": 10, "text": "Voir plus..." }]
+      }
+    ]
+  },
 
   "contact": {
     "title": "Contactez nos experts à Hong Kong",
@@ -236,7 +236,7 @@
     },
     "officeLocation": {
       "title": "Notre bureau à Hong Kong",
-     "address1": "203 - 2/F, UPPER OFFICES HANKOW CTR",
+      "address1": "203 - 2/F, UPPER OFFICES HANKOW CTR",
       "address2": "5-15 HANKOW RD TSIM SHA TSUI"
     },
     "viewOnMap": "Voir sur Google Maps",
@@ -312,7 +312,7 @@
     },
     "address": "203 - 2/F, UPPER OFFICES HANKOW CTR\n5-15 HANKOW RD TSIM SHA TSUI\nHONG KONG"
   },
- 
+
   "orderForm": {
     "title": "Enregistrement de commande",
     "planLabel": "Forfait",
@@ -343,9 +343,43 @@
       "total": "Montant total",
       "contact": "Notre équipe vous contactera bientôt à {email} ou {phone} avec les instructions de paiement."
     }
+  },
+
+  "appointment": {
+    "badge": {
+      "text": "Réservation Exclusive",
+      "iconAlt": "Icône horloge"
+    },
+    "header": {
+      "title": "Réservez Votre Session Privée",
+      "titleGradient": "Session Privée",
+      "subtitle": "Choisissez parmi nos disponibilités sélectionnées pour une consultation personnalisée"
+    },
+    "booking": {
+      "title": "Planifiez Votre Consultation",
+      "subtitle": "Choisissez votre type de session préféré",
+      "options": {
+        "30min": "Découverte 30-min",
+        "60min": "Stratégie 60-min"
+      }
+    },
+    "loading": {
+      "text": "Préparation de votre expérience de réservation...",
+      "iconAlt": "Chargement du calendrier"
+    },
+    "status": {
+      "realTime": "Disponibilité en Temps Réel"
+    },
+    "footer": {
+      "security": {
+        "title": "Chiffrement de Bout en Bout",
+        "description": "Votre confidentialité est notre priorité"
+      },
+      "cta": "Demande d'Arrangement Personnalisé",
+      "iconAlt": "Icône enveloppe"
+    },
+    "trust": {
+      "text": "Recommandé par des professionnels d'élite chez"
+    }
   }
-
-
-
-
 }

@@ -364,6 +364,49 @@
       "total": "Total Amount",
       "contact": "Our team will contact you shortly at {email} or {phone} with payment instructions."
     }
+  },
+
+
+  "appointment": {
+    "book": {
+    "title": "Schedule Your Consultation",
+    "timezone": "Timezone: Europe/Paris"
+  },
+    "badge": {
+      "text": "Exclusive Scheduling",
+      "iconAlt": "Clock icon"
+    },
+    "header": {
+      "title": "Reserve Your Private Session",
+      "titleGradient": "Private Session",
+      "subtitle": "Select from our curated availability for a personalized consultation experience"
+    },
+    "booking": {
+      "title": "Schedule Your Consultation",
+      "subtitle": "Choose your preferred session type",
+      "options": {
+        "30min": "30-min Discovery",
+        "60min": "60-min Strategy"
+      }
+    },
+    "loading": {
+      "text": "Preparing your booking experience...",
+      "iconAlt": "Loading calendar"
+    },
+    "status": {
+      "realTime": "Real-Time Availability"
+    },
+    "footer": {
+      "security": {
+        "title": "End-to-End Encrypted",
+        "description": "Your privacy is our priority"
+      },
+      "cta": "Request Custom Arrangement",
+      "iconAlt": "Envelope icon"
+    },
+    "trust": {
+      "text": "Trusted by elite professionals at"
+    }
   }
 
 

@@ -43,7 +43,7 @@ function App() {
           <Route path="/services" element={<OurServices />} />
           <Route path="/who-we-are" element={<WhoWeAre />} />
           <Route path="/faq" element={<Faq />} />
-          <Route path="/book-consultation" element={<BookingModal />} />
+          <Route path="/booking-section" id="booking-section" element={<BookingModal />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/order-form" element={<OrderForm />} />
           <Route path="/success" element={<SuccessPage />} />

@@ -9,6 +9,7 @@ import {
   FaHandshake,
   FaChartLine,
   FaShieldAlt,
+  FaCheck,
 } from "react-icons/fa";
 import jean from "../assets/founder2.webp";
 import ludo from "../assets/Ludovic-Martinjpg.jpg";
@@ -22,7 +23,7 @@ const team = [
   {
     name: "Jean Dubois",
     role: "Head of Accounting",
-    bio: "12+ years in Hong Kong corporate law. Fluent in French, English, and Cantonese.",
+    bio: "12+ years in Hong Kong corporate law. Fluent in French, English, and Cantonese. Specializes in helping European SMEs establish tax-efficient structures in Asia.",
     photo: jean,
     specialty: ["Company Formation", "Bank Compliance", "Tax Structuring"],
     contact: "jean@hongkongbusiness.com",
@@ -34,7 +35,7 @@ const team = [
   {
     name: "Ludovic Martin",
     role: "Founder & Legal Expert",
-    bio: "Former Big 4 tax consultant with 15+ years experience in international tax optimization.",
+    bio: "Former Big 4 tax consultant with 15+ years experience in international tax optimization. Has helped 150+ clients expand into Asia.",
     photo: ludo,
     specialty: [
       "Financial Reporting",
@@ -50,7 +51,7 @@ const team = [
   {
     name: "Sophie Chen",
     role: "Banking Relations Director",
-    bio: "15 years facilitating international banking solutions for foreign entrepreneurs in Asia.",
+    bio: "15 years facilitating international banking solutions for foreign entrepreneurs in Asia. Speaks fluent English, French, and Mandarin.",
     photo: sophie,
     specialty: [
       "Account Opening",
@@ -96,52 +97,20 @@ const staggerContainer = {
   },
 };
 
-const floatingVariants = {
-  float: {
-    y: [0, -15, 0],
-    transition: {
-      duration: 4,
-      repeat: Infinity,
-      ease: "easeInOut",
-    },
-  },
-};
-
 export default function WhoWeAre() {
   const [activeMember, setActiveMember] = useState(null);
-  const [isHovering, setIsHovering] = useState(false);
   const [scrollY, setScrollY] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
+    const handleScroll = () => setScrollY(window.scrollY);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleBookClick = (e) => {
     e.preventDefault();
-
-    if (window.location.pathname === "/") {
-      const bookingSection = document.getElementById("booking-section");
-      if (bookingSection) {
-        const navbarHeight = document.querySelector("nav")?.offsetHeight || 0;
-        const sectionPosition = bookingSection.offsetTop - navbarHeight;
-
-        window.scrollTo({
-          top: sectionPosition,
-          behavior: "smooth",
-        });
-
-        window.history.replaceState(null, "", "/#booking-section");
-      }
-    } else {
-      navigate("/", {
-        state: { scrollToBooking: true },
-      });
-    }
+    navigate("/contact", { state: { scrollToForm: true } });
   };
 
   const openModal = (member) => {
@@ -155,19 +124,17 @@ export default function WhoWeAre() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800 py-28 px-5 lg:px-20 sm:px-">
-      {/* Decorative elements */}
+    <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800 py-28 px-5 lg:px-20">
+      {/* Background Elements */}
       <div
-        className="absolute inset-0 opacity-10 "
+        className="absolute inset-0 opacity-10"
         style={{
           backgroundImage: `url(${hkSkyline})`,
-          backgroundSize: "auto ",
-          backgroundBlendMode: "overlay",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
         }}
       />
-
-      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-blue-900/30 to-transparent" />
-
+      
       <motion.div
         className="absolute top-1/4 right-10 w-40 h-40 rounded-full bg-blue-600/20 blur-3xl"
         animate={{
@@ -181,57 +148,61 @@ export default function WhoWeAre() {
         }}
       />
 
-      <div className="max-w-7xl  mx-auto relative z-10">
-        {/* Header with parallax effect */}
-        <motion.div
-          // style={{ y: scrollY * 0.1 }}
-          className="text-center mb-12 md:mb-20 px-2" // Added horizontal padding
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Hero Section */}
+        <motion.div 
+          className="text-center mb-16 md:mb-24 px-2"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
           <motion.p
+            className="text-sm sm:text-lg font-medium text-blue-400 mb-4 tracking-widest"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }} // Reduced margin for mobile
             transition={{ delay: 0.2 }}
-            className="text-sm sm:text-lg font-medium text-blue-400 mb-3 sm:mb-4 tracking-widest" // Responsive size
           >
-            EXPERTISE & EXCELLENCE
+            YOUR GATEWAY TO ASIA
           </motion.p>
 
           <motion.h1
+            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }} // Reduced margin
             transition={{ delay: 0.3 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-white" // Responsive sizes
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-              Your Trusted Partners
+              Hong Kong Business Experts for{" "}
+              <motion.span 
+                className="inline-block"
+                animate={{ color: ["#3b82f6", "#06b6d4", "#3b82f6"] }}
+                transition={{ duration: 8, repeat: Infinity }}
+              >
+                European Entrepreneurs
+              </motion.span>
             </span>
           </motion.h1>
 
           <motion.p
+            className="max-w-4xl mx-auto text-lg md:text-xl text-gray-300 leading-relaxed"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            className="max-w-4xl text-left px-2  mx-auto text-base sm:text-lg md:text-xl text-gray-300" // Responsive size + padding
           >
-            A team of seasoned professionals dedicated to your Hong Kong
-            business success. We're a team of passionate experts helping
-            European entrepreneurs{" "}
+            We're a team of passionate experts helping businesses{" "}
             <span className="text-blue-300 font-semibold">
-              regain financial freedom{" "}
-            </span>
-            through Hong Kong business-friendly environment. With combined
-            experience across{" "}
+              establish and grow
+            </span>{" "}
+            in Hong Kong. With combined expertise across{" "}
             <span className="text-blue-300 font-semibold">
-              law, accounting and banking
+              law, accounting, and banking
             </span>
-            , we provide end-to-end solutions.
+            , we provide end-to-end solutions tailored for European companies.
           </motion.p>
         </motion.div>
 
-        {/* Stats grid */}
+        {/* Stats Grid */}
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -243,127 +214,105 @@ export default function WhoWeAre() {
             <motion.div
               key={index}
               variants={fadeIn}
-              className="bg-gradient-to-br from-gray-800/50 to-gray-900/70 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm"
-              whileHover={{
-                y: -5,
-                transition: { type: "spring", stiffness: 300 },
-              }}
+              className="bg-gradient-to-br from-gray-800/50 to-gray-900/70 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm hover:border-cyan-400/30 transition-all"
+              whileHover={{ y: -5 }}
             >
-              <p className="text-4xl font-bold text-blue-400 mb-2">
+              <motion.p 
+                className="text-4xl font-bold text-blue-400 mb-2"
+                initial={{ scale: 0 }}
+                whileInView={{ scale: 1 }}
+                transition={{ type: "spring" }}
+              >
                 {stat.value}
-              </p>
+              </motion.p>
               <p className="text-gray-400">{stat.label}</p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* Mission statement with floating elements */}
+        {/* Mission Section */}
         <motion.div
-          className="relative mb-28"
-          initial="hidden"
-          whileInView="visible"
+          className="relative mb-28 bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700/50 rounded-xl overflow-hidden"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          variants={staggerContainer}
         >
-          <div className="absolute -left-20 -top-20 w-48 h-48 bg-blue-600/10 rounded-full blur-xl" />
-          <div className="absolute -right-20 -bottom-20 w-64 h-28 bg-cyan-600/10 rounded-full blur-xl" />
+          <div className="absolute inset-0 bg-[length:300px] opacity-10" style={{ backgroundImage: `url(${pattern})` }} />
+          
+          <div className="grid lg:grid-cols-2">
+            <div className="p-8 lg:p-12">
+              <motion.h2
+                className="text-3xl md:text-4xl font-bold text-white mb-6"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2 }}
+              >
+                Beyond <span className="text-blue-400">Company Formation</span>
+              </motion.h2>
 
-          <motion.div
-            variants={fadeIn}
-            className="relative bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700/50 lg:rounded-xl rounded-md overflow-hidden"
-          >
-            <div
-              className="absolute inset-0  bg-[length:300px] opacity-10"
-              style={{ backgroundImage: `url(${pattern})` }}
-            />
-            <div className="grid lg:grid-cols-2">
-              <div className="p-6 lg:p-10">
-                <motion.h2
-                  className="text-3xl md:text-4xl font-bold text-white mb-6"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                >
-                  Beyond{" "}
-                  <span className="text-blue-400">Company Formation</span>
-                </motion.h2>
+              <motion.p
+                className="text-lg text-gray-300 mb-8 leading-relaxed"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                We provide <span className="text-blue-400 font-medium">end-to-end solutions</span> that go far beyond simple incorporation:
+              </motion.p>
 
-                <motion.p
-                  className="text-lg text-gray-300 mb-8 leading-relaxed"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                >
-                  We provide{" "}
-                  <span className="text-blue-400 font-medium">
-                    end-to-end solutions
-                  </span>{" "}
-                  that go far beyond simple incorporation. From banking
-                  relationships to ongoing compliance, our team becomes your
-                  extended executive team in Hong Kong.{" "}
-                  <span span className="text-blue-400 font-medium">
-                    24/7 local support in HK
-                  </span>{" "}
-                  and{" "}
-                  <span span className="text-blue-400 font-medium">
-                    Native French-speakingteam
-                  </span>
-                </motion.p>
+              <motion.ul 
+                className="space-y-4 mb-8"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.4 }}
+              >
+                {[
+                  "24/7 Local Support in Hong Kong",
+                  "Native French-Speaking Team",
+                  "Bank Account Opening Guarantee",
+                  "Ongoing Compliance Management"
+                ].map((item, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <FaCheck className="text-blue-400 mt-1 flex-shrink-0" />
+                    <span className="text-gray-300">{item}</span>
+                  </li>
+                ))}
+              </motion.ul>
 
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 }}
-                  className="grid grid-cols-2 gap-4"
-                >
-                  {[
-                    {
-                      icon: <FaGlobeAsia className="text-2xl" />,
-                      text: "Global Expertise",
-                    },
-                    {
-                      icon: <FaHandshake className="text-2xl" />,
-                      text: "Trusted Partners",
-                    },
-                    {
-                      icon: <FaChartLine className="text-2xl" />,
-                      text: "Growth-Focused",
-                    },
-                    {
-                      icon: <FaShieldAlt className="text-2xl" />,
-                      text: "Full Compliance",
-                    },
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-center gap-3">
-                      <div className="bg-blue-900/30 p-2 rounded-lg text-blue-400">
-                        {item.icon}
-                      </div>
-                      <span className="text-gray-300">{item.text}</span>
+              <motion.div
+                className="grid grid-cols-2 gap-4"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                {[
+                  { icon: <FaGlobeAsia />, text: "Global Expertise" },
+                  { icon: <FaHandshake />, text: "Trusted Partners" },
+                  { icon: <FaChartLine />, text: "Growth Focused" },
+                  { icon: <FaShieldAlt />, text: "Full Compliance" },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3">
+                    <div className="bg-blue-900/30 p-2 rounded-lg text-blue-400">
+                      {item.icon}
                     </div>
-                  ))}
-                </motion.div>
-              </div>
-
-              <div className="relative">
-                <motion.div
-                  className="absolute inset-0  bg-cover bg-center"
-                  style={{ backgroundImage: `url(${office}) ` }}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.5, duration: 0.8 }}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/70 to-transparent" />
-                </motion.div>
-              </div>
+                    <span className="text-gray-300">{item.text}</span>
+                  </div>
+                ))}
+              </motion.div>
             </div>
-          </motion.div>
+
+            <div className="relative min-h-[400px]">
+              <img
+                src={office}
+                alt="Our Hong Kong office"
+                className="absolute inset-0 w-full h-full object-cover"
+                loading="eager"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-900/70 to-transparent" />
+            </div>
+          </div>
         </motion.div>
 
-        {/* Team section */}
+        {/* Team Section */}
         <motion.div
           className="mb-28"
           initial="hidden"
@@ -380,41 +329,32 @@ export default function WhoWeAre() {
             </span>
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {team.map((member, i) => (
               <motion.div
                 key={i}
                 variants={fadeIn}
-                className="relative group"
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
+                className="group cursor-pointer"
                 onClick={() => openModal(member)}
               >
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-2xl opacity-0 group-hover:opacity-50 blur-md transition-all duration-300" />
-
-                <div className="relative h-full bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700/50 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-cyan-400/30 group-hover:shadow-xl group-hover:shadow-blue-500/10">
-                  {/* Image Container - Fixed Aspect Ratio */}
+                <div className="relative h-full bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700/50 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-cyan-400/30 group-hover:shadow-lg">
                   <div className="relative h-64 w-full overflow-hidden">
-                    {" "}
-                    {/* Fixed height */}
-                    <motion.img
+                    <img
                       src={member.photo}
-                      alt={member.name}
-                      className="absolute inset-0 w-full h-full object-cover object-center" /* Added object-center */
-                      initial={{ scale: 1 }}
-                      whileHover={{ scale: 1.05 }}
-                      transition={{ duration: 0.5 }}
+                      alt={`${member.name}, ${member.role}`}
+                      className="w-full h-full object-cover object-top"
+                      loading="lazy"
                     />
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />{" "}
-                    {/* Stronger gradient */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                    <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                      {member.years}+ Years
+                    </div>
                     <div className="absolute bottom-0 left-0 p-6">
                       <h3 className="text-2xl font-bold text-white">
                         {member.name}
                       </h3>
                       <p className="text-blue-400">{member.role}</p>
                     </div>
-                    {/* Social Icons */}
                     <div className="absolute top-4 right-4 flex gap-2">
                       <a
                         href={`mailto:${member.contact}`}
@@ -427,36 +367,25 @@ export default function WhoWeAre() {
                         href={member.linkedin}
                         className="p-2 bg-gray-800/80 hover:bg-blue-700/90 rounded-full text-white transition-all"
                         onClick={(e) => e.stopPropagation()}
-                        target="_blank"
-                        rel="noopener noreferrer"
                       >
                         <FaLinkedin />
                       </a>
                     </div>
                   </div>
 
-                  {/* Text Content */}
                   <div className="p-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <div>
-                        <p className="text-gray-400 text-sm mb-2">
-                          {member.years}+ years experience
-                        </p>
-                        <p className="text-gray-300">{member.bio}</p>
-                      </div>
-                    </div>
-
-                    <div className="mt-6 pt-6 border-t border-gray-700/50">
-                      <div className="flex flex-wrap gap-2">
-                        {member.specialty.map((skill, j) => (
-                          <span
-                            key={j}
-                            className="px-3 py-1 bg-gray-800 text-sm text-blue-400 rounded-full"
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
+                    <p className="text-gray-300 mb-4 line-clamp-3">
+                      {member.bio}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {member.specialty.map((skill, j) => (
+                        <span
+                          key={j}
+                          className="px-3 py-1 bg-blue-900/30 text-sm text-blue-400 rounded-full"
+                        >
+                          {skill}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -470,11 +399,10 @@ export default function WhoWeAre() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.2 }}
           className="relative rounded-xl overflow-hidden"
         >
           <div
-            className="absolute inset-0  bg-cover bg-center opacity-20"
+            className="absolute inset-0 bg-cover bg-center opacity-20"
             style={{ backgroundImage: `url(${hknight})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/50 to-gray-900/90" />
@@ -484,7 +412,6 @@ export default function WhoWeAre() {
               className="text-3xl md:text-4xl font-bold text-white mb-6"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ delay: 0.3 }}
             >
               Ready to Start Your{" "}
@@ -495,7 +422,6 @@ export default function WhoWeAre() {
               className="text-xl text-gray-300 max-w-3xl mx-auto mb-10"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ delay: 0.4 }}
             >
               Schedule a free consultation with our experts to discuss your
@@ -506,22 +432,24 @@ export default function WhoWeAre() {
               className="flex flex-col sm:flex-row justify-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
               transition={{ delay: 0.5 }}
             >
               <motion.button
                 onClick={handleBookClick}
-                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl shadow-lg transition-all hover:shadow-xl text-lg"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl text-lg transition-all"
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
+                }}
+                whileTap={{ scale: 0.98 }}
               >
                 Book Free Consultation
               </motion.button>
               <Link to="/team">
                 <motion.button
-                  className="px-8 py-4 bg-transparent border-2 border-blue-400 hover:bg-blue-400/10 text-blue-400 font-bold rounded-xl shadow-lg transition-all hover:shadow-xl text-lg"
+                  className="px-8 py-4 bg-transparent border-2 border-blue-400 hover:bg-blue-400/10 text-blue-400 font-bold rounded-xl shadow-lg hover:shadow-xl text-lg transition-all"
                   whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
+                  whileTap={{ scale: 0.98 }}
                 >
                   Meet Full Team
                 </motion.button>
@@ -531,7 +459,7 @@ export default function WhoWeAre() {
         </motion.div>
       </div>
 
-      {/* Member Modal */}
+      {/* Team Member Modal */}
       <AnimatePresence>
         {activeMember && (
           <motion.div
@@ -583,7 +511,10 @@ export default function WhoWeAre() {
                         "{activeMember.quote}"
                       </p>
                     </div>
-                    <p className="text-gray-300">{activeMember.bio}</p>
+                    <div className="text-right text-blue-400">
+                      — {activeMember.name.split(" ")[0]}
+                    </div>
+                    <p className="text-gray-300 mt-6">{activeMember.bio}</p>
                   </div>
 
                   <div className="mb-8">

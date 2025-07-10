@@ -204,7 +204,7 @@ const Navbar = () => {
         </div>
 
         {/* Right Nav */}
-        <div className={`flex ${language === 'fr' ? 'gap-5' : 'gap-8'} items-center`}>
+        <div className={`flex ${language === 'fr' ? 'gap-3' : 'gap-7'} items-center`}>
           <Link
             to="/faq"
             className={navLinkClass('faq')}
