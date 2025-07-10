@@ -7,7 +7,6 @@ import ContactUs from '../components/Contact';
 import Faq from '../pages/Faq';
 import BookingModal from '../components/BookingModal';
 import CookieConsent from './legal/Choices';
-import TopBar from '../components/TopBar';
 
 const Home = () => {
   return (
