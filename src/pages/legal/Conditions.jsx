@@ -5,24 +5,25 @@ import frTranslations from '../../locales/fr.json';
 import enTranslations from '../../locales/en.json';
 import { LanguageContext } from "../../context/LanguageContext";
 
+// Utility function moved outside component since it doesn't depend on component state
+function extractTextFromJSX(node) {
+  if (typeof node === 'string') return node;
+  if (React.isValidElement(node)) {
+    return React.Children.map(node.props.children, child => 
+      extractTextFromJSX(child)
+    ).join(' ');
+  }
+  if (Array.isArray(node)) {
+    return node.map(child => extractTextFromJSX(child)).join(' ');
+  }
+  return '';
+}
+
 function Conditions() {
   const { language } = useContext(LanguageContext);
   const translations = language === 'fr' ? frTranslations.Conditions_legal : enTranslations.Conditions_legal;
 
-  const generalConditions = {
-    sections: translations.sections.map(section => ({
-      ...section,
-      content: renderTranslatedContent(section.content, section.id)
-    }))
-  };
-
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+  // PDF handler defined first
   const handleDownloadPdf = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
@@ -38,13 +39,19 @@ function Conditions() {
 
     let yPosition = 20;
 
-    generalConditions.sections.forEach((section) => {
+    // Create a simplified version for PDF
+    const pdfSections = translations.sections.map(section => ({
+      title: section.title,
+      content: prepareContentForPdf(section.content, section.id)
+    }));
+
+    pdfSections.forEach((section) => {
       doc.setFontSize(14);
       doc.setFont(undefined, "bold");
       doc.text(section.title, 15, yPosition);
       yPosition += 10;
 
-      const cleanContent = extractTextFromJSX(section.content)
+      const cleanContent = section.content
         .replace(/<br\s*\/?>/gi, "\n")
         .replace(/<[^>]+>/g, "")
         .replace(/&nbsp;/g, " ");
@@ -69,20 +76,26 @@ function Conditions() {
     );
   };
 
-  function extractTextFromJSX(node) {
-    if (typeof node === 'string') return node;
-    if (React.isValidElement(node)) {
-      return React.Children.map(node.props.children, child => 
-        extractTextFromJSX(child)
-      ).join(' ');
+  // Helper for PDF content preparation
+  const prepareContentForPdf = (content, sectionId) => {
+    if (typeof content === 'string') return content;
+    if (typeof content === 'object' && content !== null) {
+      switch(sectionId) {
+        case 'property':
+          return `${content.paragraph1}\n${content.subsection.title}\n${content.subsection.content}`;
+        case 'contact':
+          return `${content.company}\n${content.address}\n${content.email.label}: ${content.email.text}`;
+        case 'download':
+          return content.paragraph;
+        default:
+          return JSON.stringify(content);
+      }
     }
-    if (Array.isArray(node)) {
-      return node.map(child => extractTextFromJSX(child)).join(' ');
-    }
-    return '';
-  }
+    return String(content);
+  };
 
-  function renderTranslatedContent(content, sectionId) {
+  // Content renderer - now can safely use handleDownloadPdf
+  const renderTranslatedContent = (content, sectionId) => {
     switch(sectionId) {
       case 'property':
         return (
@@ -123,12 +136,24 @@ function Conditions() {
           </div>
         );
       default:
-        if (typeof content === 'object' && content !== null) {
-          return <p>{content}</p>;
-        }
-        return <p>{content}</p>;
+        return <p>{typeof content === 'object' ? JSON.stringify(content) : content}</p>;
     }
-  }
+  };
+
+  // Now safely initialize sections with content
+  const generalConditions = {
+    sections: translations.sections.map(section => ({
+      ...section,
+      content: renderTranslatedContent(section.content, section.id)
+    }))
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const renderSection = (section) => {
     return (

@@ -989,7 +989,99 @@
         }
       }
     ]
+  },
+
+  
+  "LegalNotices": {
+    "table_of_contents": "TABLE DES MATIÈRES",
+    "sections": {
+      "company_info": {
+        "title": "1. Informations sur la société",
+        "content": {
+          "company_name": {
+            "label": "Nom de la société",
+            "text": "Create Company Hongkong LCLS LIMITED"
+          },
+          "address": {
+            "label": "Adresse",
+            "text": "203 - 2/F, UPPER OFFICES HANKOW CTR, 5-15 HANKOW RD TSIM SHA TSUI, HONG KONG"
+          },
+          "phone": {
+            "label": "Numéro de téléphone",
+            "text": "+40 364 566 777"
+          },
+          "email": {
+            "label": "Adresse email",
+            "text": "bonjour@ouvrir-societe-hong-kong.fr"
+          },
+          "registration": {
+            "label": "Numéro d'enregistrement",
+            "text": "78164472-000-05-25-0"
+          }
+        }
+      },
+      "publication_director": {
+        "title": "2. Directeur de publication",
+        "content": {
+          "name": {
+            "label": "Nom",
+            "text": "Najeeb Ullah"
+          },
+          "address": {
+            "label": "Adresse",
+            "text": "Str. Forest bazar near agriculture University, Peshawar, Pakistan"
+          },
+          "phone": {
+            "label": "Numéro de téléphone",
+            "text": "+92 308 8440 190"
+          }
+        }
+      },
+      "hosting_provider": {
+        "title": "3. Hébergeur",
+        "content": {
+          "name": {
+            "label": "Nom de l'hébergeur",
+            "text": "Hosterion"
+          },
+          "address": {
+            "label": "Adresse",
+            "text": "Str. Eugen Ionesco 49 F, Cluj-Napoca, Romania"
+          },
+          "phone": {
+            "label": "Numéro de téléphone",
+            "text": "+40 364 566 777"
+          }
+        }
+      },
+      "intellectual_property": {
+        "title": "4. Propriété intellectuelle",
+        "content": "Tout le contenu de ce site est protégé par les lois sur la propriété intellectuelle de Hong Kong. La reproduction, la distribution ou l'utilisation du contenu sans autorisation préalable est interdite."
+      },
+      "data_protection": {
+        "title": "5. Protection des données",
+        "content": "Les informations collectées via ce site peuvent inclure le nom, l'adresse e-mail et d'autres coordonnées nécessaires au service client. Nous nous engageons à respecter la confidentialité des données conformément à l'Ordonnance sur les données personnelles (vie privée) de Hong Kong."
+      },
+      "cookies_usage": {
+        "title": "6. Utilisation des cookies",
+        "content": "Ce site utilise des cookies pour améliorer l'expérience utilisateur. En continuant à naviguer, vous acceptez l'utilisation des cookies. Vous pouvez gérer les préférences des cookies via votre navigateur."
+      },
+      "liability_limitations": {
+        "title": "7. Limitations de responsabilité",
+        "content": "Ce site peut contenir des liens vers des sites externes. Nous ne sommes pas responsables du contenu ou des pratiques de ces sites."
+      },
+      "applicable_law": {
+        "title": "8. Droit applicable et juridiction",
+        "content": "Ces mentions légales sont régies par les lois de Hong Kong. En cas de litige, les tribunaux de Hong Kong auront compétence exclusive."
+      },
+      "download": {
+        "title": "9. Téléchargement",
+        "content": "Ces conditions peuvent être téléchargées au format PDF depuis notre site web.",
+        "button": "Télécharger la version PDF"
+      }
+    }
   }
+
 
 
 

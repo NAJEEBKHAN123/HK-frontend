@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { jsPDF } from "jspdf";
 import CommonLegalInfo from "./CommonLegalInfo";
+import frTranslations from '../../locales/fr.json';
+import enTranslations from '../../locales/en.json';
+import { LanguageContext } from "../../context/LanguageContext";
 
 function LegalNotices({ documentType = "legal_notices" }) {
+  const { language } = useContext(LanguageContext);
+  const t = language === 'fr' ? frTranslations.LegalNotices : enTranslations.LegalNotices;
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -13,7 +19,7 @@ function LegalNotices({ documentType = "legal_notices" }) {
   const handleDownloadPdf = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
-    doc.text("Legal Notices", 105, 30, { align: "center" });
+    doc.text(language === 'fr' ? "Mentions Légales" : "Legal Notices", 105, 30, { align: "center" });
     doc.setFontSize(16);
     doc.text("OSHK Legal Information", 105, 45, { align: "center" });
     doc.addPage();
@@ -26,24 +32,12 @@ function LegalNotices({ documentType = "legal_notices" }) {
       doc.text(section.title, 15, yPosition);
       yPosition += 10;
 
-      // Extract text content from JSX elements
-      let cleanContent = "";
-      if (typeof section.content === "string") {
-        cleanContent = section.content;
-      } else if (section.content.props.children) {
-        if (Array.isArray(section.content.props.children)) {
-          cleanContent = section.content.props.children
-            .map(child => typeof child === 'string' ? child : '')
-            .join(' ');
-        } else {
-          cleanContent = section.content.props.children;
-        }
-      }
-
-      cleanContent = cleanContent
-        .replace(/<br\s*\/?>/gi, "\n")
-        .replace(/<[^>]+>/g, "")
-        .replace(/&nbsp;/g, " ");
+      const cleanContent = typeof section.content === 'string' 
+        ? section.content 
+        : extractTextFromJSX(section.content)
+          .replace(/<br\s*\/?>/gi, "\n")
+          .replace(/<[^>]+>/g, "")
+          .replace(/&nbsp;/g, " ");
 
       doc.setFontSize(11);
       const contentLines = doc.splitTextToSize(cleanContent, 180);
@@ -60,195 +54,119 @@ function LegalNotices({ documentType = "legal_notices" }) {
       yPosition += 10;
     });
 
-    doc.save("OSCHK-Legal-Notices.pdf");
+    doc.save(`OSCHK-${language === 'fr' ? 'Mentions-Legales' : 'Legal-Notices'}.pdf`);
   };
 
- const sections = [
+  const extractTextFromJSX = (node) => {
+    if (typeof node === 'string') return node;
+    if (React.isValidElement(node)) {
+      return React.Children.map(node.props.children, child => 
+        extractTextFromJSX(child)
+      ).join(' ');
+    }
+    if (Array.isArray(node)) {
+      return node.map(child => extractTextFromJSX(child)).join(' ');
+    }
+    return '';
+  };
+
+  const sections = [
     {
       id: "company-info",
-      title: "1. Company Information",
+      title: t.sections.company_info.title,
       content: (
         <ul className="space-y-3 text-gray-700 mt-10">
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
-              Company Name:
-            </strong>
-            <span>Create Company Hongkong LCLS LIMITED</span>
-          </li>
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
-              Address:
-            </strong>
-            <span>
-              203 - 2/F, UPPER OFFICES HANKOW CTR, 5-15 HANKOW RD TSIM SHA TSUI,
-              HONG KONG
-            </span>
-          </li>
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
-              Phone Number:
-            </strong>
-            <span>+40 364 566 777</span>
-          </li>
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
-              Email Address:
-            </strong>
-            <span>bonjour@ouvrir-societe-hong-kong.fr</span>
-          </li>
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
-              Company Reg No:
-            </strong>
-            <span>78164472-000-05-25-0</span>
-          </li>
+          {Object.entries(t.sections.company_info.content).map(([key, value]) => (
+            <li key={key} className="flex items-start">
+              <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
+                {value.label}:
+              </strong>
+              <span>{value.text}</span>
+            </li>
+          ))}
         </ul>
       ),
     },
     {
       id: "publication-director",
-      title: "2. Publication Director",
+      title: t.sections.publication_director.title,
       content: (
         <ul className="space-y-3 text-gray-700">
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
-              Name:
-            </strong>
-            <span>Najeeb Ullah</span>
-          </li>
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
-              Address:
-            </strong>
-            <span>
-              Str. Forest bazar near agriculture University, Peshawar, Pakistan
-            </span>
-          </li>
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
-              Phone Number:
-            </strong>
-            <span>+92 308 8440 190</span>
-          </li>
+          {Object.entries(t.sections.publication_director.content).map(([key, value]) => (
+            <li key={key} className="flex items-start">
+              <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
+                {value.label}:
+              </strong>
+              <span>{value.text}</span>
+            </li>
+          ))}
         </ul>
       ),
     },
     {
       id: "hosting-provider",
-      title: "3. Hosting Provider",
+      title: t.sections.hosting_provider.title,
       content: (
         <ul className="space-y-3 text-gray-700">
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
-              Hosting Provider Name:
-            </strong>
-            <span>Hosterion</span>
-          </li>
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
-              Address:
-            </strong>
-            <span>Str. Eugen Ionesco 49 F, Cluj-Napoca, Romania</span>
-          </li>
-          <li className="flex items-start">
-            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
-              Phone Number:
-            </strong>
-            <span>+40 364 566 777</span>
-          </li>
+          {Object.entries(t.sections.hosting_provider.content).map(([key, value]) => (
+            <li key={key} className="flex items-start">
+              <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
+                {value.label}:
+              </strong>
+              <span>{value.text}</span>
+            </li>
+          ))}
         </ul>
       ),
     },
     {
       id: "intellectual-property",
-      title: "4. Intellectual Property",
-      content: (
-        <p className="text-gray-700">
-          All content on this site is protected by Hong Kong's intellectual
-          property laws. Reproduction, distribution, or use of the content
-          without prior permission is prohibited.
-        </p>
-      ),
+      title: t.sections.intellectual_property.title,
+      content: <p className="text-gray-700">{t.sections.intellectual_property.content}</p>,
     },
     {
       id: "data-protection",
-      title: "5. Data Protection",
-      content: (
-        <p className="text-gray-700">
-          Information collected via this site may include name, email address, and
-          other contact details necessary for customer service. We are committed
-          to respecting data privacy in accordance with Hong Kong's Personal Data
-          (Privacy) Ordinance.
-        </p>
-      ),
+      title: t.sections.data_protection.title,
+      content: <p className="text-gray-700">{t.sections.data_protection.content}</p>,
     },
     {
       id: "cookies-usage",
-      title: "6. Cookies Usage",
-      content: (
-        <p className="text-gray-700">
-          This site uses cookies to enhance user experience. By continuing to
-          browse, you accept the use of cookies. You can manage cookie
-          preferences through your browser.
-        </p>
-      ),
+      title: t.sections.cookies_usage.title,
+      content: <p className="text-gray-700">{t.sections.cookies_usage.content}</p>,
     },
     {
       id: "liability-limitations",
-      title: "7. Liability Limitations",
-      content: (
-        <p className="text-gray-700">
-          This site may contain links to external websites. We are not responsible
-          for the content or practices of these sites.
-        </p>
-      ),
+      title: t.sections.liability_limitations.title,
+      content: <p className="text-gray-700">{t.sections.liability_limitations.content}</p>,
     },
     {
       id: "applicable-law",
-      title: "8. Applicable Law and Jurisdiction",
-      content: (
-        <p className="text-gray-700">
-          This legal notice is governed by the laws of Hong Kong. In case of
-          disputes, the courts of Hong Kong will have exclusive jurisdiction.
-        </p>
-      ),
+      title: t.sections.applicable_law.title,
+      content: <p className="text-gray-700">{t.sections.applicable_law.content}</p>,
     },
     {
       id: "download",
-      title: "9. Download",
+      title: t.sections.download.title,
       content: (
         <div className="bg-gray-50 p-6 rounded-lg">
-          <p className="mb-4">
-            These terms can be downloaded in PDF format from our website.
-          </p>
+          <p className="mb-4">{t.sections.download.content}</p>
           <button
             onClick={handleDownloadPdf}
             className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
           >
-            Download PDF Version
+            {t.sections.download.button}
           </button>
         </div>
       ),
     },
   ];
 
-  const renderSection = (section) => {
-    if (section.id === "download") {
-      return (
-        <section id={section.id} className="mb-12 w-full" key={section.id}>
-          <h2 className="text-2xl font-bold mb-4 w-full">{section.title}</h2>
-          {section.content}
-        </section>
-      );
-    }
-
-    return (
-      <section id={section.id} className="mb-12 w-full" key={section.id}>
-        <h2 className="text-2xl font-bold mb-4 w-full">{section.title}</h2>
-        <div className="w-full">{section.content}</div>
-      </section>
-    );
-  };
+  const renderSection = (section) => (
+    <section id={section.id} className="mb-12 w-full" key={section.id}>
+      <h2 className="text-2xl font-bold mb-4 w-full">{section.title}</h2>
+      <div className="w-full">{section.content}</div>
+    </section>
+  );
 
   return (
     <div className="bg-white">
@@ -261,7 +179,7 @@ function LegalNotices({ documentType = "legal_notices" }) {
           <aside className="max-80 sm:w-1/2 md:w-1/3 lg:w-2/6">
             <section className="sticky top-4 bg-gray-100 px-6 pt-4 rounded-lg border border-gray-200 mb-12">
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
-                TABLE OF CONTENTS
+                {t.table_of_contents}
               </h2>
               <ul className="mb-6">
                 {sections.map((section) => (
