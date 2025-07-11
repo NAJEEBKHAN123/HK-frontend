@@ -12,8 +12,8 @@
       "fr": "Français"
     }
   },
-  
-   "hero": {
+
+  "hero": {
     "tagline": "Open Your Company in Hong Kong 100% Online",
     "title_part1": "Launch your business",
     "title_part2": "quickly",
@@ -26,15 +26,15 @@
     ],
     "description": "Opening your company in Hong Kong has never been easier: without unnecessary paperwork, with professional support from A to Z.",
     "cta_button": "Book Free Appointment",
-    "secondary_cta" : "Learn More"
+    "secondary_cta": "Learn More"
   },
 
-   "pricing": {
+  "pricing": {
     "title": "Why Choose Hong Kong for Your Business?",
-    "subtitlePart1" : "Hong Kong's 0% corporate tax rate is attractive,",
-    "subtitlePart2" : " with no VAT or hidden taxes. It's simple: lower taxes, more profits for you! What's more, Hong Kong isn't a dubious tax haven. Its global reputation is solid thanks to clear rules and exemplary transparency. Your money is safe, and the legal framework protects you.",
-    "subtitlePart3" : "For a European, it offers peace of mind with fewer tax worries.",
-    "subtitlePart4" : "Doing business here is efficient and reliable.",
+    "subtitlePart1": "Hong Kong's 0% corporate tax rate is attractive,",
+    "subtitlePart2": " with no VAT or hidden taxes. It's simple: lower taxes, more profits for you! What's more, Hong Kong isn't a dubious tax haven. Its global reputation is solid thanks to clear rules and exemplary transparency. Your money is safe, and the legal framework protects you.",
+    "subtitlePart3": "For a European, it offers peace of mind with fewer tax worries.",
+    "subtitlePart4": "Doing business here is efficient and reliable.",
     "plans": [
       {
         "title": "STARTER Pack",
@@ -76,7 +76,7 @@
   },
 
   "services": {
-     "seoTitle": "Hong Kong Company Formation Services | Business Registration Experts",
+    "seoTitle": "Hong Kong Company Formation Services | Business Registration Experts",
     "seoDescription": "Professional Hong Kong company registration services with tax advantages. Fast incorporation, offshore company setup, and business consulting for Asia expansion.",
     "description": "From Hong Kong company formation to offshore business setup, we provide end-to-end solutions with tax advantages and simplified regulations.",
     "subtitle": "WHAT WE OFFER",
@@ -141,82 +141,82 @@
     ]
   },
 
- "faq": {
-  "title": "Frequently Asked Questions",
-  "subtitle": "Everything you need to know about company formation in Hong Kong",
-  "questions": [
-    {
-      "id": "q1",
-      "question": "How long does Hong Kong company incorporation take?",
-      "answer": "Standard incorporation takes 5 business days after document submission. This includes 1-2 days for Companies Registry processing and 2-3 days for certificate issuance. Expedited options are available for faster service.",
-      "category": "company",
-      "links": [{ "id": 1, "text": "See more..." }]
-    },
-    {
-      "id": "q2",
-      "question": "Do I need to travel to Hong Kong to register a company?",
-      "answer": "No physical presence is required. The entire process is handled online through Hong Kong's e-Registry system. We manage document notarization and government submissions remotely for international clients.",
-      "category": "company",
-      "links": [{ "id": 2, "text": "See more..." }]
-    },
-    {
-      "id": "q3",
-      "question": "What is the minimum capital requirement?",
-      "answer": "Hong Kong has no minimum capital requirement - you can incorporate with just HKD 1. Most businesses start with HKD 10,000 as it's practical for banking and operations.",
-      "category": "company",
-      "links": [{ "id": 3, "text": "See more..." }]
-    },
-    {
-      "id": "q4",
-      "question": "Can foreigners own 100% of a Hong Kong company?",
-      "answer": "Yes, Hong Kong allows 100% foreign ownership with no restrictions. Both individuals and corporate entities from any country can be sole shareholders with equal rights.",
-      "category": "legal",
-      "links": [{ "id": 4, "text": "See more..." }]
-    },
-    {
-      "id": "q5",
-      "question": "What are the ongoing compliance requirements?",
-      "answer": "Key requirements include: annual return filing within 42 days of incorporation date, profits tax return submission, proper accounting records maintenance, and annual business registration renewal.",
-      "category": "tax",
-      "links": [{ "id": 5, "text": "See more..." }]
-    },
-    {
-      "id": "q6",
-      "question": "How much does incorporation cost?",
-      "answer": "Our complete package starts from €4,600 including government fees, company documents, official seal, 1-year registered address, and secretary service. Additional services available for complex structures.",
-      "category": "tax",
-      "links": [{ "id": 6, "text": "See more..." }]
-    },
-    {
-      "id": "q7",
-      "question": "Do I need a local office address?",
-      "answer": "Yes, a physical Hong Kong address (not PO Box) is legally required. We provide professional virtual office solutions in central locations that satisfy this requirement affordably.",
-      "category": "legal",
-      "links": [{ "id": 7, "text": "See more..." }]
-    },
-    {
-      "id": "q8",
-      "question": "Can I open a corporate bank account remotely?",
-      "answer": "Yes, through our partnered banks and fintech platforms that accept remote applications. Process includes video verification and typically takes 2-4 weeks for approval.",
-      "category": "banking",
-      "links": [{ "id": 8, "text": "See more..." }]
-    },
-    {
-      "id": "q9",
-      "question": "What taxes will my company pay?",
-      "answer": "Only Hong Kong-sourced profits are taxed at 16.5%. No VAT, capital gains or dividend taxes. Offshore income may qualify for full exemption if properly structured.",
-      "category": "tax",
-      "links": [{ "id": 9, "text": "See more..." }]
-    },
-    {
-      "id": "q10",
-      "question": "Is this service legal for non-residents?",
-      "answer": "Completely legal. Hong Kong encourages international business and grants equal rights to foreign-owned companies. Our services ensure full compliance with all local regulations for non-residents.",
-      "category": "legal",
-      "links": [{ "id": 10, "text": "See more..." }]
-    }
-  ]
-},
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "subtitle": "Everything you need to know about company formation in Hong Kong",
+    "questions": [
+      {
+        "id": "q1",
+        "question": "How long does Hong Kong company incorporation take?",
+        "answer": "Standard incorporation takes 5 business days after document submission. This includes 1-2 days for Companies Registry processing and 2-3 days for certificate issuance. Expedited options are available for faster service.",
+        "category": "company",
+        "links": [{ "id": 1, "text": "See more..." }]
+      },
+      {
+        "id": "q2",
+        "question": "Do I need to travel to Hong Kong to register a company?",
+        "answer": "No physical presence is required. The entire process is handled online through Hong Kong's e-Registry system. We manage document notarization and government submissions remotely for international clients.",
+        "category": "company",
+        "links": [{ "id": 2, "text": "See more..." }]
+      },
+      {
+        "id": "q3",
+        "question": "What is the minimum capital requirement?",
+        "answer": "Hong Kong has no minimum capital requirement - you can incorporate with just HKD 1. Most businesses start with HKD 10,000 as it's practical for banking and operations.",
+        "category": "company",
+        "links": [{ "id": 3, "text": "See more..." }]
+      },
+      {
+        "id": "q4",
+        "question": "Can foreigners own 100% of a Hong Kong company?",
+        "answer": "Yes, Hong Kong allows 100% foreign ownership with no restrictions. Both individuals and corporate entities from any country can be sole shareholders with equal rights.",
+        "category": "legal",
+        "links": [{ "id": 4, "text": "See more..." }]
+      },
+      {
+        "id": "q5",
+        "question": "What are the ongoing compliance requirements?",
+        "answer": "Key requirements include: annual return filing within 42 days of incorporation date, profits tax return submission, proper accounting records maintenance, and annual business registration renewal.",
+        "category": "tax",
+        "links": [{ "id": 5, "text": "See more..." }]
+      },
+      {
+        "id": "q6",
+        "question": "How much does incorporation cost?",
+        "answer": "Our complete package starts from €4,600 including government fees, company documents, official seal, 1-year registered address, and secretary service. Additional services available for complex structures.",
+        "category": "tax",
+        "links": [{ "id": 6, "text": "See more..." }]
+      },
+      {
+        "id": "q7",
+        "question": "Do I need a local office address?",
+        "answer": "Yes, a physical Hong Kong address (not PO Box) is legally required. We provide professional virtual office solutions in central locations that satisfy this requirement affordably.",
+        "category": "legal",
+        "links": [{ "id": 7, "text": "See more..." }]
+      },
+      {
+        "id": "q8",
+        "question": "Can I open a corporate bank account remotely?",
+        "answer": "Yes, through our partnered banks and fintech platforms that accept remote applications. Process includes video verification and typically takes 2-4 weeks for approval.",
+        "category": "banking",
+        "links": [{ "id": 8, "text": "See more..." }]
+      },
+      {
+        "id": "q9",
+        "question": "What taxes will my company pay?",
+        "answer": "Only Hong Kong-sourced profits are taxed at 16.5%. No VAT, capital gains or dividend taxes. Offshore income may qualify for full exemption if properly structured.",
+        "category": "tax",
+        "links": [{ "id": 9, "text": "See more..." }]
+      },
+      {
+        "id": "q10",
+        "question": "Is this service legal for non-residents?",
+        "answer": "Completely legal. Hong Kong encourages international business and grants equal rights to foreign-owned companies. Our services ensure full compliance with all local regulations for non-residents.",
+        "category": "legal",
+        "links": [{ "id": 10, "text": "See more..." }]
+      }
+    ]
+  },
 
   "contact": {
     "title": "Contact Our Hong Kong Experts",
@@ -313,28 +313,28 @@
       "whatsapp": "WhatsApp"
     },
     "address": "203 - 2/F, UPPER OFFICES HANKOW CTR\n5-15 HANKOW RD TSIM SHA TSUI\nHONG KONG",
-   "actionLinks": [
-    {
-      "text": "Free Consultation",
-      "path": "/consultation",
-      "icon": "FiCalendar"
-    },
-    {
-      "text": "Download Brochure",
-      "path": "/brochure",
-      "icon": "FiDownload"
-    },
-    {
-      "text": "Client Portal",
-      "path": "/login",
-      "icon": "FiUser"
-    },
-    {
-      "text": "FAQ",
-      "path": "/faq",
-      "icon": "FiHelpCircle"
-    }
-  ]
+    "actionLinks": [
+      {
+        "text": "Free Consultation",
+        "path": "/consultation",
+        "icon": "FiCalendar"
+      },
+      {
+        "text": "Download Brochure",
+        "path": "/brochure",
+        "icon": "FiDownload"
+      },
+      {
+        "text": "Client Portal",
+        "path": "/login",
+        "icon": "FiUser"
+      },
+      {
+        "text": "FAQ",
+        "path": "/faq",
+        "icon": "FiHelpCircle"
+      }
+    ]
   },
 
   "orderForm": {
@@ -369,12 +369,11 @@
     }
   },
 
-
   "appointment": {
     "book": {
-    "title": "Schedule Your Consultation",
-    "timezone": "Timezone: Europe/Paris"
-  },
+      "title": "Schedule Your Consultation",
+      "timezone": "Timezone: Europe/Paris"
+    },
     "badge": {
       "text": "Exclusive Scheduling",
       "iconAlt": "Clock icon"
@@ -410,9 +409,615 @@
     "trust": {
       "text": "Trusted by elite professionals at"
     }
+  },
+
+  "LegalInfo": {
+    "privacy": "Privacy OSCHK",
+    "notices": "Legal Notices",
+    "conditions": "General Conditions",
+    "cookies": "Cookies",
+    "accessibility": "Accessibility",
+    "choices": "Your Choices for Privacy",
+    "backButton": "← Back to All Legal Documents",
+    "pageTitle": "Legal Information"
+  },
+
+  "commonLegalInfo": {
+    "siteEditor": {
+      "title": "I - SITE EDITOR",
+      "intro": "This website, accessible from the URL address {link} (hereinafter the Website) is published by:",
+      "linkText": "https://ouvrir-societe-hong-kong.fr",
+      "contactTitle": "OSCHK CONTACT",
+      "developer": "Programmer & Website Developer : Najeeb Ullah",
+      "whatsapp": {
+        "label": "WhatsApp Business",
+        "cta": "Chat with us on WhatsApp"
+      },
+      "nif": "NIF"
+    },
+    "siteOwner": {
+      "title": "II – OWNER OF THE SITE",
+      "intro": "The owner is Create Company {company} Legal entity.",
+      "company": "MARIA WORLD TRADING LIMITED",
+      "legalInfo": "OSCHK Legal Information",
+      "taxNumber": "Tax Number:",
+      "headOffice": "Head Office:",
+      "email": "Email:"
+    }
+  },
+
+  "cookieConsent": {
+    "banner": {
+      "title": "Your Privacy Matters",
+      "description": "We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. By clicking \"Accept All\", you consent to our use of cookies.",
+      "acceptAll": "Accept All",
+      "settings": "Settings",
+      "rejectAll": "Reject All",
+      "showDetails": "Show details",
+      "showLess": "Show less",
+      "details": {
+        "essential": "Essential cookies are necessary for the website to function and cannot be switched off.",
+        "analytics": "Analytics cookies help us understand how visitors interact with our website.",
+        "marketing": "Marketing cookies are used to personalize ads and content."
+      }
+    },
+    "preferences": {
+      "title": "Cookie Preferences",
+      "save": "Save Preferences",
+      "cancel": "Cancel",
+      "essential": {
+        "title": "Essential Cookies",
+        "status": "Always Active",
+        "description": "Necessary for the website to function and cannot be switched off. They are usually only set in response to actions made by you."
+      },
+      "analytics": {
+        "title": "Analytics Cookies",
+        "status": "Optional",
+        "description": "Allow us to collect data about how you interact with our website. This helps us improve our services."
+      },
+      "marketing": {
+        "title": "Marketing Cookies",
+        "status": "Optional",
+        "description": "Used to track visitors across websites. The intention is to display ads that are relevant and engaging."
+      },
+      "links": {
+        "privacy": "Privacy Policy",
+        "cookie": "Cookie Policy",
+        "terms": "Terms of Service"
+      }
+    }
+  },
+
+  "Privacy_legal": {
+    "sections": [
+      {
+        "id": "Data-Sharing-with-Third-Parties",
+        "title": "1. Sharing with Third Parties",
+        "content": {
+          "paragraph1": "We only share your personal information with third parties when absolutely necessary. These parties typically act as service providers working on our behalf and are bound by confidentiality agreements. We ensure that any partner we work with complies with data protection laws and uses your information solely for agreed purposes.",
+          "paragraph2": "For example, we may collaborate with trusted agencies or developers to maintain and improve our website and services.",
+          "listItems": [
+            "Service providers for technical support, marketing, or analytics",
+            "Cloud hosting providers for secure data storage",
+            "Consultants or contractors assisting with system improvements"
+          ],
+          "exampleTitle": "Example: Web Partner",
+          "exampleItems": [
+            { "label": "Name:", "value": "Najeeb Ullah" },
+            { "label": "Country:", "value": "Pakistan" },
+            { "label": "Purpose:", "value": "Web Development Services" }
+          ]
+        }
+      },
+      {
+        "id": "Use-Cookies",
+        "title": "2. Use of Cookies",
+        "content": {
+          "paragraph1": "Our website uses cookies and similar technologies to enhance your browsing experience, analyze usage patterns, and offer personalized content and advertisements.",
+          "listItems": [
+            "Essential cookies for site functionality",
+            "Analytics cookies to understand user behavior",
+            "Preference cookies to remember your settings",
+            "Marketing cookies to tailor promotions"
+          ],
+          "paragraph2": "You can manage or disable cookies through your browser settings at any time. Please refer to our {cookiePolicyLink} for more detailed information.",
+          "cookiePolicyLink": "Cookie Policy"
+        }
+      },
+      {
+        "id": "Legal-Disclosures",
+        "title": "3. Legal Disclosures",
+        "content": {
+          "paragraph1": "We may disclose your personal data when legally required to do so. This includes court orders, legal processes, or requests from regulatory or government authorities. Additionally, in the case of a merger, acquisition, or sale of our business, personal data may be shared with legal advisors or the acquiring organization under strict confidentiality agreements.",
+          "listItems": [
+            "Disclosures for compliance with legal obligations",
+            "Transfers due to business restructuring",
+            "Data shared with legal authorities or courts"
+          ],
+          "exampleTitle": "Hosting Provider",
+          "exampleItems": [
+            { "label": "Name:", "value": "OVH Cloud" },
+            {
+              "label": "Address:",
+              "value": "2 rue Kellermann, 59100 Roubaix, France"
+            },
+            { "label": "Phone:", "value": "+33 9 72 10 10 07" }
+          ]
+        }
+      },
+      {
+        "id": "Data-Security",
+        "title": "4. Data Security",
+        "content": {
+          "paragraph1": "We are committed to ensuring the security of your personal data. Our security framework includes both technical and organizational measures to prevent unauthorized access, alteration, loss, or disclosure of information.",
+          "listItems": [
+            "End-to-end encrypted communication (SSL/TLS)",
+            "DNS authentication protocols (SPF, DKIM, DMARC)",
+            "Use of HTTP security headers",
+            "Firewall and server hardening techniques",
+            "Advanced threat monitoring tools",
+            "Access restricted to authorized personnel only",
+            "Regular security audits and risk assessments"
+          ]
+        }
+      },
+      {
+        "id": "External-Links",
+        "title": "5. External Links",
+        "content": {
+          "paragraph1": "Our website may contain links to external sites that are not operated by us. Please note that we are not responsible for the privacy practices of these third-party websites. Once you leave our site, we encourage you to review the privacy statements of any other website you visit before submitting any personal data.",
+          "listItems": [
+            "Check third-party policies for clarity on data use",
+            "Be cautious about sharing personal information externally",
+            "We do not endorse external content or policies"
+          ]
+        }
+      },
+      {
+        "id": "Policy-Updates",
+        "title": "6. Updates to This Policy",
+        "content": {
+          "paragraph1": "We may revise our Privacy Policy from time to time to reflect changes in legal requirements or our data practices. The updated version will always be posted on our website. In case of significant changes, we will make reasonable efforts to inform you through notices or direct communication, where applicable.",
+          "listItems": [
+            "Changes are effective upon posting",
+            "You are encouraged to review this page periodically",
+            "We aim for transparency in all policy updates"
+          ]
+        }
+      },
+      {
+        "id": "Your-Rights",
+        "title": "7. Your Data Rights",
+        "content": {
+          "paragraph1": "You have certain rights regarding the personal data we hold about you. These rights allow you to control how your information is used and ensure transparency in our data practices.",
+          "listItems": [
+            "Right to know why and how we use your data",
+            "Right to access your personal information",
+            "Right to request correction of inaccurate data",
+            "Right to request deletion of data no longer needed",
+            "Right to withdraw previously given consent",
+            "Right to object to certain types of processing",
+            "Right to request data portability, if feasible"
+          ],
+          "paragraph2": "To exercise your rights, please contact us with valid identification. We take privacy seriously and will process your request securely and promptly."
+        }
+      },
+      {
+        "id": "Complaints",
+        "title": "8. Complaints",
+        "content": {
+          "paragraph1": "If you believe your personal data has been mishandled or you have a privacy-related concern, you have the right to lodge a formal complaint. We aim to resolve all issues promptly and fairly. You can contact us directly, or if unsatisfied, escalate the matter to your local data protection authority.",
+          "listItems": [
+            "We handle all complaints confidentially",
+            "We aim to respond within a reasonable time",
+            "Contact your data authority if concerns remain unresolved"
+          ]
+        }
+      }
+    ],
+    "tableOfContents": "TABLE OF CONTENTS"
+  },
+
+  "Cookies_legal": {
+    "last_updated": "July 2, 2025",
+    "applies_to": "Residents and legal permanent residents of the European Economic Area and Switzerland.",
+    "table_of_contents": "TABLE OF CONTENTS",
+    "sections": [
+      {
+        "id": "Introduction",
+        "title": "1. Introduction",
+        "content": {
+          "paragraph1": "Welcome to our website, {websiteLink} (referred to as \"the website\"). We use cookies and similar technologies to enhance your browsing experience. These technologies may also be used by third parties we collaborate with. This policy outlines how cookies are used on our website.",
+          "websiteLink": "Ouvrir-société-hong-Kong.fr"
+        }
+      },
+      {
+        "id": "what-cookies",
+        "title": "2. What Are Cookies?",
+        "content": {
+          "paragraph1": "Cookies are small data files sent along with web pages and stored on your device via your browser. These files allow data to be retrieved during future visits either by our servers or those of third-party providers."
+        }
+      },
+      {
+        "id": "scripts",
+        "title": "3. What Are Scripts?",
+        "content": {
+          "paragraph1": "Scripts are lines of code that ensure our website functions correctly and interactively. These scripts may run on our server or directly on your device."
+        }
+      },
+      {
+        "id": "web-beacon",
+        "title": "4. What Is a Web Beacon?",
+        "content": {
+          "paragraph1": "Web beacons (or pixel tags) are invisible images or text snippets used to monitor user activity on a site. Through them, various user data can be collected and analyzed."
+        }
+      },
+      {
+        "id": "Use-Cookies",
+        "title": "5. Use of Cookies",
+        "content": {
+          "section5_1": {
+            "title": "5.1 Functional (Technical) Cookies:",
+            "text": "These cookies are essential for the proper operation of our website. They store your preferences, making your experience smoother—for instance, remembering what's in your shopping cart. These cookies may be placed without requiring your consent."
+          },
+          "section5_2": {
+            "title": "5.2 Marketing and Tracking Cookies:",
+            "text": "Used to create user profiles and deliver personalized advertising, these cookies track your behavior across this and other websites for marketing purposes."
+          },
+          "section5_3": {
+            "title": "5.3 Social Media Integration:",
+            "text": "Our website features content from platforms like Facebook, Twitter, and WhatsApp to allow you to like, share, or interact with content. These platforms may place cookies through embedded code and collect data for advertising purposes. We recommend reviewing their privacy policies, which may change over time, to understand how your data is used. The data collected is anonymized whenever possible. Note that Facebook, Twitter, and WhatsApp are headquartered in the United States."
+          }
+        }
+      },
+      {
+        "id": "Consent",
+        "title": "6. Consent",
+        "content": {
+          "paragraph1": "Upon your first visit, a cookie consent banner will appear. By clicking \"Save preferences,\" you agree to the use of the selected categories of cookies and plug-ins described in this policy. You can disable cookies in your browser, but some site functions may not work properly.",
+          "section6_1": {
+            "title": "6.1 Managing Your Consent:",
+            "text": "Functional: Always active – required for the website to work as intended. Marketing: Needed to build profiles, show ads, and track user behavior across websites."
+          }
+        }
+      },
+      {
+        "id": "managing-and-delete-cookies",
+        "title": "7. Managing and Deleting Cookies",
+        "content": {
+          "paragraph1": "You can manage or remove cookies through your browser settings—either automatically or manually. You can also choose to block specific cookies or receive alerts when cookies are placed. For details, consult your browser's Help section.",
+          "paragraph2": "Disabling all cookies may affect website functionality. If cookies are deleted, they will reappear after you provide consent during your next visit."
+        }
+      },
+      {
+        "id": "data-rights",
+        "title": "8. Your Data Rights",
+        "content": {
+          "rights": [
+            {
+              "title": "Right to be informed:",
+              "text": "Know why and how your data is processed, and for how long."
+            },
+            {
+              "title": "Right of access:",
+              "text": "Request access to the personal data we store about you."
+            },
+            {
+              "title": "Right to correction:",
+              "text": "Request to update, correct, delete, or block your personal data."
+            },
+            {
+              "title": "Right to withdraw consent:",
+              "text": "Withdraw your permission and request deletion of your data."
+            },
+            {
+              "title": "Right to data portability:",
+              "text": "Receive your data and transfer it to another service provider."
+            },
+            {
+              "title": "Right to object:",
+              "text": "Oppose data processing unless we have legitimate grounds."
+            }
+          ],
+          "paragraph": "To exercise these rights, contact us using the information provided below. If you believe your data is not being handled appropriately, you also have the right to file a complaint with the Data Protection Authority."
+        }
+      },
+      {
+        "id": "Contact-Information",
+        "title": "9. Contact Information",
+        "content": {
+          "paragraph1": "For questions or comments about this Cookie Policy, you may contact us:",
+          "company": "MARIA WORLD TRADING LIMITED",
+          "address": "203 - 2/F, Upper Offices, Hankow Centre, 5-15 Hankow Rd, Tsim Sha Tsui, Hong Kong",
+          "website": {
+            "label": "Website:",
+            "text": "Ouvrir-société-hong-Kong.fr"
+          },
+          "email": {
+            "label": "Email:",
+            "text": "bonjour@ouvrir-societe-hong-kong.fr"
+          },
+          "phone": {
+            "label": "Phone:",
+            "text": "+33 630 258 982"
+          },
+          "update_note": "This Cookie Policy was last updated and synchronized with cookiedatabase.org on July 2, 2025."
+        }
+      }
+    ]
+  },
+
+  
+  "Accessibility": {
+    "toc_title": "TABLE OF CONTENTS",
+    "sections": {
+      "Introduction": {
+        "title": "1. Introduction",
+        "content": {
+          "paragraph1": "At {companyName}, we are deeply committed to ensuring that our services are accessible to everyone, including individuals with disabilities. This dedication aligns with {lawReference}, which guarantees equal rights, opportunities, and participation for all.",
+          "paragraph2": "This accessibility statement applies to our official website: {websiteLink}.",
+          "replacements": {
+            "companyName": "RentFlex",
+            "lawReference": "Article 47 of Law No. 2005-102 of February 11, 2005",
+            "websiteLink": {
+              "text": "ouvrir-societe-hong-kong.fr",
+              "href": "/"
+            }
+          }
+        }
+      },
+      "Accessibility-Status": {
+        "title": "2. Accessibility Status",
+        "content": {
+          "status": "Partially Compliant (85% of WCAG 2.1 AA criteria met)",
+          "auditDate": "April 26, 2025",
+          "description": "The RentFlex website currently meets many of the criteria defined in {rgaaReference}. We conducted a thorough evaluation of key pages (homepage, services, and contact) and identified a few accessibility concerns (e.g., color contrast and HTML structure). However, these do not hinder users from accessing the main content.",
+          "replacements": {
+            "rgaaReference": "RGAA 4.1.2 (Référentiel Général d'Amélioration de l'Accessibilité)"
+          }
+        }
+      },
+      "Dark-Mode": {
+        "title": "3. Dark Mode Available",
+        "content": {
+          "paragraph1": "To enhance usability for users who are sensitive to brightness, we offer a {featureName} version of our website. This can be triggered automatically based on your device's system settings or manually activated from the site menu.",
+          "replacements": {
+            "featureName": "Dark Mode"
+          }
+        }
+      },
+      "Accessibility-Tools": {
+        "title": "4. Accessibility Testing Tools",
+        "content": {
+          "toolsTitle": "Tools Used:",
+          "toolsList": [
+            "WAVE Evaluation Tool",
+            "ARC Toolkit",
+            "AXE DevTools (Deque Systems)",
+            "Web Developer Toolbar",
+            "HeadingsMap",
+            "Adobe Color Contrast Checker"
+          ],
+          "techTitle": "Browsers & Assistive Technology:",
+          "techList": [
+            "Chrome + VoiceOver (macOS)",
+            "Firefox + NVDA (Windows)",
+            "Safari + VoiceOver (iOS)"
+          ]
+        }
+      },
+      "Non-Conformities": {
+        "title": "5. Known Accessibility Issues",
+        "content": {
+          "intro": "During our audit, we found these accessibility issues that we are actively working to fix (target completion: Q3 2025):",
+          "issues": [
+            "Some images are missing descriptive alt attributes",
+            "Minor issues with color contrast (meeting AA but not AAA standards)",
+            "Tab order on specific pages needs refinement",
+            "Text labels for some buttons and forms can be improved for clarity"
+          ]
+        }
+      },
+      "Exemptions": {
+        "title": "6. Exempted Content",
+        "content": {
+          "paragraph1": "As per {lawReference}, certain third-party content may be partially exempt from accessibility compliance. These include:",
+          "exemptionsList": [
+            "Embedded maps (e.g., Google Maps)",
+            "YouTube videos",
+            "Third-party payment modules or iframe integrations",
+            "Social media widgets and plugins"
+          ],
+          "replacements": {
+            "lawReference": "Article 5 of the decree dated September 20, 2019"
+          }
+        }
+      },
+      "Feedback-Contact": {
+        "title": "7. Feedback and Contact",
+        "content": {
+          "paragraph1": "If you experience any accessibility issues or are unable to access part of the site, please reach out to us. We will provide you with an alternative accessible version of the content.",
+          "emailLabel": "Email:",
+          "email": "bonjour@ouvrir-societe-hong-kong.fr",
+          "phoneLabel": "Phone:",
+          "phone": "+33 630 258 982 (Monday-Friday, 9AM-5PM Paris Time)",
+          "responseTime": "Response time: We aim to respond within 5 business days"
+        }
+      },
+      "Future-Improvements": {
+        "title": "8. Future Improvements",
+        "content": {
+          "intro": "We are committed to ongoing accessibility improvements, including:",
+          "improvements": [
+            "Full WCAG 2.1 AA compliance by December 2025",
+            "Regular quarterly accessibility audits",
+            "User testing with people with disabilities",
+            "Implementation of a dedicated accessibility feedback widget"
+          ],
+          "lastUpdated": "Last Updated: June 15, 2025"
+        }
+      }
+    }
+  },
+
+  
+  "Conditions_legal": {
+    "table_of_contents": "TABLE OF CONTENTS",
+    "sections": [
+      {
+        "id": "scope",
+        "title": "1. Scope",
+        "content": "These terms apply to the entire website as well as any transaction, service, or offering provided through it. They may be supplemented by specific agreements between you and our company. In case of contradiction, the provisions of such specific agreements shall prevail."
+      },
+      {
+        "id": "acceptance",
+        "title": "2. Acceptance of Terms",
+        "content": "By accessing, registering, or using this website in any way, you acknowledge that you have read and fully accept these terms. In some cases, explicit validation may be required."
+      },
+      {
+        "id": "communication",
+        "title": "3. Digital Communications",
+        "content": "By interacting with us electronically, you consent to receive information in digital form (email or website notifications), which fulfills any legal requirement for written communication."
+      },
+      {
+        "id": "property",
+        "title": "4. Intellectual Property Rights",
+        "content": {
+          "paragraph1": "All content on this website—texts, visuals, logos, documents, or data—is protected by copyright or other intellectual property rights. These rights belong exclusively to our company or its partners.",
+          "subsection": {
+            "title": "4.1 Unauthorized Use Prohibited",
+            "content": "Unless expressly stated otherwise, it is strictly forbidden to reproduce, copy, modify, exploit, or distribute any content from this site without prior written authorization, except as permitted by mandatory legal provisions."
+          }
+        }
+      },
+      {
+        "id": "newsletter",
+        "title": "5. Newsletter",
+        "content": "You may forward our newsletters to potentially interested third parties, provided this is done in a non-commercial manner."
+      },
+      {
+        "id": "third-party",
+        "title": "6. Third-Party Content",
+        "content": "The site may contain links to external websites. We are not responsible for their content or privacy policies. Use of these platforms is at your own risk."
+      },
+      {
+        "id": "responsible-use",
+        "title": "7. Proper Use of the Site",
+        "content": "Users agree to use this site only for lawful purposes, in compliance with applicable laws and digital etiquette. Any attempt to disrupt the site's functionality or accessibility is strictly prohibited."
+      },
+      {
+        "id": "registration",
+        "title": "8. Account Creation",
+        "content": "By creating an account, you agree to keep your credentials confidential. Any activity conducted through your account is your responsibility. Re-registering after account deletion requires our authorization."
+      },
+      {
+        "id": "idea-submission",
+        "title": "10. Unsolicited Proposals",
+        "content": "No ideas, projects, or creations should be submitted without prior agreement. Otherwise, any contribution will be deemed transferred under a free, irrevocable, worldwide, and non-exclusive license."
+      },
+      {
+        "id": "termination",
+        "title": "11. Service Suspension or Termination",
+        "content": "We reserve the right to modify, restrict, or discontinue access to the site or its services without notice or compensation. Bypassing access restrictions is prohibited."
+      },
+      {
+        "id": "guarantees",
+        "title": "12. Liability and Warranties",
+        "content": "The site is provided \"as is.\" No guarantees are made regarding continuous availability, accuracy, or suitability for your needs. Our liability is limited to the amount you have paid us."
+      },
+      {
+        "id": "confidentiality",
+        "title": "13. Personal Data",
+        "content": "All registration data must be accurate. Our privacy policy details our commitments regarding data protection."
+      },
+      {
+        "id": "accessibility",
+        "title": "14. Site Accessibility",
+        "content": "We strive to make the site accessible to all. If you encounter difficulties due to a disability, please notify us so we can assist where possible."
+      },
+      {
+        "id": "export",
+        "title": "15. Compliance with Export Laws",
+        "content": "Accessing the site from a country where its services are illegal is prohibited. You agree to comply with Hong Kong export laws."
+      },
+      {
+        "id": "affiliate",
+        "title": "16. Commercial Partnerships",
+        "content": "We may earn revenue through affiliate links, sponsorships, or sponsored content. These collaborations comply with applicable laws, including French regulations."
+      },
+      {
+        "id": "assignment",
+        "title": "17. Prohibition of Rights Transfer",
+        "content": "Any assignment or transfer of your rights and obligations without our written consent is void."
+      },
+      {
+        "id": "breach",
+        "title": "18. Violation of Terms",
+        "content": "Any breach of these terms may result in sanctions, including account suspension, legal action, or other appropriate measures."
+      },
+      {
+        "id": "force-majeure",
+        "title": "19. Force Majeure",
+        "content": "Any unforeseeable event beyond our control that prevents fulfillment of an obligation shall not be considered a breach."
+      },
+      {
+        "id": "compensation",
+        "title": "20. Indemnification",
+        "content": "You agree to compensate us for any claims arising from your misuse of the site or violation of these terms."
+      },
+      {
+        "id": "exemption",
+        "title": "21. No Waiver",
+        "content": "Failure to enforce a clause does not waive our right to do so later."
+      },
+      {
+        "id": "language",
+        "title": "22. Contractual Language",
+        "content": "All contractual documents are exclusively written in French."
+      },
+      {
+        "id": "agreement",
+        "title": "23. Entire Agreement",
+        "content": "These terms, along with our privacy policy, constitute the full agreement between you and our company."
+      },
+      {
+        "id": "revisions",
+        "title": "24. Revisions",
+        "content": "We reserve the right to modify these terms at any time. Updates will be clearly communicated. Continued use constitutes acceptance."
+      },
+      {
+        "id": "governing",
+        "title": "25. Governing Law & Disputes",
+        "content": "These terms are governed by Hong Kong law. Any dispute shall be submitted to Hong Kong's competent courts. If a clause is deemed unenforceable, it will be adjusted without affecting the rest."
+      },
+      {
+        "id": "contact",
+        "title": "26. Contact Information",
+        "content": {
+          "company": "MWT LIMITED",
+          "address": "203 - 2/F, UPPER OFFICES HANKOW CTR\n5-15 HANKOW RD TSIM SHA TSUI\nHONG KONG",
+          "email": {
+            "label": "✉️",
+            "text": "bonjour@ouvrir-societe-hong-kong.fr"
+          }
+        }
+      },
+      {
+        "id": "download",
+        "title": "27. Download",
+        "content": {
+          "paragraph": "These terms can be downloaded in PDF format from our website.",
+          "button": "Download PDF Version"
+        }
+      }
+    ]
   }
 
 
-  
+
+
+
+
+
 
 }

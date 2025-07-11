@@ -1,32 +1,8 @@
 import React from "react";
-import legalContent from "../../StaticData/legal-content.json";
 import { jsPDF } from "jspdf";
+import CommonLegalInfo from "./CommonLegalInfo";
 
-// Convert HTML to clean plain text, including anchor text + URLs
-function stripHtml(htmlString) {
-  const tempElement = document.createElement("div");
-  tempElement.innerHTML = htmlString;
-
-  const anchors = tempElement.querySelectorAll("a");
-  anchors.forEach((a) => {
-    const text = a.textContent;
-    const href = a.getAttribute("href");
-    const replacement = `${text} (${href})`;
-    a.replaceWith(replacement);
-  });
-
-  return tempElement.textContent || "";
-}
-
-function LegalNotices() {
-  const documentData = {
-    sections: [
-      legalContent.common_sections.site_editor,
-      legalContent.common_sections.site_owner,
-      ...legalContent.legal_notices.sections,
-    ],
-  };
-
+function LegalNotices({ documentType = "legal_notices" }) {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -44,30 +20,34 @@ function LegalNotices() {
 
     let yPosition = 20;
 
-    documentData.sections.forEach((section) => {
+    sections.forEach((section) => {
       doc.setFontSize(14);
       doc.setFont(undefined, "bold");
       doc.text(section.title, 15, yPosition);
       yPosition += 10;
 
-      if (section.intro) {
-        doc.setFontSize(11);
-        doc.setFont(undefined, "normal");
-        const introLines = doc.splitTextToSize(stripHtml(section.intro), 180);
-        introLines.forEach((line) => {
-          if (yPosition > 280) {
-            doc.addPage();
-            yPosition = 20;
-          }
-          doc.text(line, 15, yPosition);
-          yPosition += 7;
-        });
-        yPosition += 5;
+      // Extract text content from JSX elements
+      let cleanContent = "";
+      if (typeof section.content === "string") {
+        cleanContent = section.content;
+      } else if (section.content.props.children) {
+        if (Array.isArray(section.content.props.children)) {
+          cleanContent = section.content.props.children
+            .map(child => typeof child === 'string' ? child : '')
+            .join(' ');
+        } else {
+          cleanContent = section.content.props.children;
+        }
       }
 
-      const cleanContent = stripHtml(section.content);
+      cleanContent = cleanContent
+        .replace(/<br\s*\/?>/gi, "\n")
+        .replace(/<[^>]+>/g, "")
+        .replace(/&nbsp;/g, " ");
+
       doc.setFontSize(11);
       const contentLines = doc.splitTextToSize(cleanContent, 180);
+
       contentLines.forEach((line) => {
         if (yPosition > 280) {
           doc.addPage();
@@ -80,148 +60,227 @@ function LegalNotices() {
       yPosition += 10;
     });
 
-    doc.save("OSHK-Legal-Notices.pdf");
+    doc.save("OSCHK-Legal-Notices.pdf");
   };
 
-  const renderSection = (section, index) => {
-    if (index === 0 || index === 1) {
+ const sections = [
+    {
+      id: "company-info",
+      title: "1. Company Information",
+      content: (
+        <ul className="space-y-3 text-gray-700 mt-10">
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
+              Company Name:
+            </strong>
+            <span>Create Company Hongkong LCLS LIMITED</span>
+          </li>
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
+              Address:
+            </strong>
+            <span>
+              203 - 2/F, UPPER OFFICES HANKOW CTR, 5-15 HANKOW RD TSIM SHA TSUI,
+              HONG KONG
+            </span>
+          </li>
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
+              Phone Number:
+            </strong>
+            <span>+40 364 566 777</span>
+          </li>
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
+              Email Address:
+            </strong>
+            <span>bonjour@ouvrir-societe-hong-kong.fr</span>
+          </li>
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-40 flex-shrink-0">
+              Company Reg No:
+            </strong>
+            <span>78164472-000-05-25-0</span>
+          </li>
+        </ul>
+      ),
+    },
+    {
+      id: "publication-director",
+      title: "2. Publication Director",
+      content: (
+        <ul className="space-y-3 text-gray-700">
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
+              Name:
+            </strong>
+            <span>Najeeb Ullah</span>
+          </li>
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
+              Address:
+            </strong>
+            <span>
+              Str. Forest bazar near agriculture University, Peshawar, Pakistan
+            </span>
+          </li>
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
+              Phone Number:
+            </strong>
+            <span>+92 308 8440 190</span>
+          </li>
+        </ul>
+      ),
+    },
+    {
+      id: "hosting-provider",
+      title: "3. Hosting Provider",
+      content: (
+        <ul className="space-y-3 text-gray-700">
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
+              Hosting Provider Name:
+            </strong>
+            <span>Hosterion</span>
+          </li>
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
+              Address:
+            </strong>
+            <span>Str. Eugen Ionesco 49 F, Cluj-Napoca, Romania</span>
+          </li>
+          <li className="flex items-start">
+            <strong className="text-gray-900 font-medium w-48 mr-2 flex-shrink-0">
+              Phone Number:
+            </strong>
+            <span>+40 364 566 777</span>
+          </li>
+        </ul>
+      ),
+    },
+    {
+      id: "intellectual-property",
+      title: "4. Intellectual Property",
+      content: (
+        <p className="text-gray-700">
+          All content on this site is protected by Hong Kong's intellectual
+          property laws. Reproduction, distribution, or use of the content
+          without prior permission is prohibited.
+        </p>
+      ),
+    },
+    {
+      id: "data-protection",
+      title: "5. Data Protection",
+      content: (
+        <p className="text-gray-700">
+          Information collected via this site may include name, email address, and
+          other contact details necessary for customer service. We are committed
+          to respecting data privacy in accordance with Hong Kong's Personal Data
+          (Privacy) Ordinance.
+        </p>
+      ),
+    },
+    {
+      id: "cookies-usage",
+      title: "6. Cookies Usage",
+      content: (
+        <p className="text-gray-700">
+          This site uses cookies to enhance user experience. By continuing to
+          browse, you accept the use of cookies. You can manage cookie
+          preferences through your browser.
+        </p>
+      ),
+    },
+    {
+      id: "liability-limitations",
+      title: "7. Liability Limitations",
+      content: (
+        <p className="text-gray-700">
+          This site may contain links to external websites. We are not responsible
+          for the content or practices of these sites.
+        </p>
+      ),
+    },
+    {
+      id: "applicable-law",
+      title: "8. Applicable Law and Jurisdiction",
+      content: (
+        <p className="text-gray-700">
+          This legal notice is governed by the laws of Hong Kong. In case of
+          disputes, the courts of Hong Kong will have exclusive jurisdiction.
+        </p>
+      ),
+    },
+    {
+      id: "download",
+      title: "9. Download",
+      content: (
+        <div className="bg-gray-50 p-6 rounded-lg">
+          <p className="mb-4">
+            These terms can be downloaded in PDF format from our website.
+          </p>
+          <button
+            onClick={handleDownloadPdf}
+            className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
+          >
+            Download PDF Version
+          </button>
+        </div>
+      ),
+    },
+  ];
+
+  const renderSection = (section) => {
+    if (section.id === "download") {
       return (
-        <section
-          id={section.id}
-          className="mb-12 max-w-4xl ml-[-10px] mr-[-10px] lg:px-4 mx-auto"
-          key={section.id}
-        >
-          <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">
-            {section.title}
-          </h2>
-          {section.intro && (
-          <p
-            className="mb-6 text-gray-700 leading-relaxed"
-            dangerouslySetInnerHTML={{ __html: section.intro }}
-          />
-        )}
-          <div
-            className={
-              index === 0
-                ? "editor-info bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all"
-                : "owner-info bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300"
-            }
-            dangerouslySetInnerHTML={{ __html: section.content }}
-          />
+        <section id={section.id} className="mb-12 w-full" key={section.id}>
+          <h2 className="text-2xl font-bold mb-4 w-full">{section.title}</h2>
+          {section.content}
         </section>
       );
     }
 
     return (
-      <section
-        id={section.id}
-        className="mb-12 max-w-4xl mx-auto"
-        key={section.id}
-      >
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">
-          {section.title}
-        </h2>
-        {section.intro && (
-          <p className="mb-6 text-gray-700 leading-relaxed">{section.intro}</p>
-        )}
-        <div
-          className="prose max-w-none"
-          dangerouslySetInnerHTML={{ __html: section.content }}
-        />
+      <section id={section.id} className="mb-12 w-full" key={section.id}>
+        <h2 className="text-2xl font-bold mb-4 w-full">{section.title}</h2>
+        <div className="w-full">{section.content}</div>
       </section>
     );
   };
 
   return (
-    <div className="bg-white -mx-4 ">
-      <div className="min-h-screen">
-        <div className="container mx-auto px-3 py-12">
-          {/* Mobile TOC */}
-          <div className="lg:hidden mb-8 bg-white shadow-md p-6 rounded-lg">
-            <h2 className="text-xl font-bold mb-4 text-gray-800 border-b pb-2">
-              Table of Contents
-            </h2>
-            <ul className="space-y-2">
-              {documentData.sections.map((section) => (
-                <li
-                  key={section.id}
-                  className="cursor-pointer hover:text-blue-600 transition-colors py-1"
-                  onClick={() => scrollToSection(section.id)}
-                >
-                  {section.title}
-                </li>
-              ))}
-            </ul>
-            <button
-              onClick={handleDownloadPdf}
-              className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg shadow transition-colors flex items-center justify-center gap-2"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              Download as PDF
-            </button>
+    <div className="bg-white">
+      <div className="w-full">
+        <div className="flex flex-col md:flex-row gap-10">
+          <div className="flex-1 max-w-[1040px] mx-auto">
+            <CommonLegalInfo />
           </div>
 
-          <div className="flex flex-col lg:flex-row gap-10 lg:px-2">
-            {/* Main content */}
-            <div className="lg:w-2/3 order-2 lg:order-1 px-2">
-              {documentData.sections.map((section, index) =>
-                renderSection(section, index)
-              )}
-            </div>
-
-            {/* Desktop TOC */}
-            <div className="lg:w-1/3 order-1 lg:order-2">
-              <div className="sticky top-4 hidden lg:block">
-                <div className="bg-white rounded-lg shadow-md p-6 mb-6">
-                  <h2 className="text-xl font-bold mb-4 text-gray-800 border-b pb-2">
-                    Table of Contents
-                  </h2>
-                  <ul className="space-y-2">
-                    {documentData.sections.map((section) => (
-                      <li
-                        key={section.id}
-                        className="cursor-pointer hover:text-blue-600 transition-colors py-1"
-                        onClick={() => scrollToSection(section.id)}
-                      >
-                        {section.title}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <button
-                  onClick={handleDownloadPdf}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg shadow transition-colors flex items-center justify-center gap-2"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-5 w-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
+          <aside className="max-80 sm:w-1/2 md:w-1/3 lg:w-2/6">
+            <section className="sticky top-4 bg-gray-100 px-6 pt-4 rounded-lg border border-gray-200 mb-12">
+              <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
+                TABLE OF CONTENTS
+              </h2>
+              <ul className="mb-6">
+                {sections.map((section) => (
+                  <li
+                    key={section.id}
+                    className="cursor-pointer hover:text-blue-600 py-1"
+                    onClick={() => scrollToSection(section.id)}
                   >
-                    <path
-                      fillRule="evenodd"
-                      d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  Download as PDF
-                </button>
-              </div>
-            </div>
-          </div>
+                    {section.title}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          </aside>
         </div>
+      </div>
+
+      <div className="w-full px-2">
+        {sections.map(renderSection)}
       </div>
     </div>
   );

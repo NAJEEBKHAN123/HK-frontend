@@ -1,15 +1,64 @@
-import React from "react";
-import legalContent from "../../StaticData/legal-content.json";
+import React, { useContext } from "react";
+import CommonLegalInfo from "./CommonLegalInfo";
+import frTranslations from '../../locales/fr.json';
+import enTranslations from '../../locales/en.json';
+import { LanguageContext } from "../../context/LanguageContext";
 
 function Privacy() {
+  const { language } = useContext(LanguageContext);
+  const translations = language === 'fr' ? frTranslations.Privacy_legal : enTranslations.Privacy_legal;
 
-  // Get the appropriate document content
-   const documentData = {
-    sections: [
-      legalContent.common_sections.site_editor,
-      legalContent.common_sections.site_owner,
-      ...legalContent.privacy_OSCHK.sections
-    ]
+  const privacyPolicy = {
+    sections: translations.sections.map(section => ({
+      ...section,
+      content: renderTranslatedContent(section.content)
+    }))
+  };
+
+  function renderTranslatedContent(content) {
+    if (content.paragraph1) {
+      return (
+        <div className="text-gray-700 space-y-4">
+          <p>{content.paragraph1}</p>
+          {content.paragraph2 && (
+            <p>
+              {content.paragraph2.includes('{cookiePolicyLink}') ? (
+                <>
+                  {content.paragraph2.split('{cookiePolicyLink}')[0]}
+                  <a href="/legal/cookies" className="text-blue-600 hover:underline font-medium">
+                    {content.cookiePolicyLink}
+                  </a>
+                  {content.paragraph2.split('{cookiePolicyLink}')[1]}
+                </>
+              ) : (
+                content.paragraph2
+              )}
+            </p>
+          )}
+          {content.listItems && (
+            <ul className="list-disc list-inside space-y-2">
+              {content.listItems.map((item, index) => (
+                <li key={index}>{item}</li>
+              ))}
+            </ul>
+          )}
+          {content.exampleTitle && (
+            <div className="border rounded-lg p-4 bg-gray-50">
+              <h4 className="font-semibold text-gray-900 mb-2">{content.exampleTitle}</h4>
+              <ul className="space-y-2">
+                {content.exampleItems.map((item, index) => (
+                  <li key={index}>
+                    <strong className="inline-block w-28">{item.label}</strong>
+                    {item.value}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </div>
+      );
+    }
+    return null;
   }
 
   // Function to handle navigation to sections
@@ -20,87 +69,33 @@ function Privacy() {
     }
   };
 
-  // Function to handle PDF download
- 
-
   // Render section content dynamically
   const renderSection = (section) => {
-    // Special handling for download section to add our button
-    
-
     return (
       <section id={section.id} className="mb-12 w-full" key={section.id}>
         <h2 className="text-2xl font-bold mb-4 w-full">{section.title}</h2>
-        {section.intro && <p className="mb-6 text-gray-700 leading-relaxed">{section.intro}</p>}
-        {section.content && (
-          <div
-            className="w-full"
-            dangerouslySetInnerHTML={{ __html: section.content }}
-          />
-        )}
+        {section.content}
       </section>
     );
   };
 
   return (
-    <div className="bg-white -mx-1.5 ">
-      <div className="w-full   px-[-20px] lg:px-0">
+    <div className="bg-white -mx-1.5">
+      <div className="w-full px-[-20px] lg:px-0">
         <div className="flex w-full flex-col md:flex-row gap-20">
           {/* Left column - Content sections */}
           <div className="flex-1">
-            <div className="max-w-[1040px] px-1 mx-auto">
-              <section id={documentData.sections[0].id} className="mb-12">
-                <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">
-                  {documentData.sections[0].title}
-                </h2>
-                {documentData.sections[0].intro && (
-                  <p
-                    className="mb-6 text-gray-700 leading-relaxed"
-                    dangerouslySetInnerHTML={{
-                      __html: documentData.sections[0].intro,
-                    }}
-                  />
-                )}
-                <div
-                  className="editor-info bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all"
-                  dangerouslySetInnerHTML={{
-                    __html: documentData.sections[0].content,
-                  }}
-                />
-              </section>
-
-              <section id={documentData.sections[1].id} className="mb-12">
-                <h2 className="text-2xl font-bold mb-4 text-gray-800 border-b pb-2">
-                  {documentData.sections[1].title}
-                </h2>
-                {documentData.sections[1].intro && (
-                  <p
-                    className="mb-6 text-gray-700 leading-relaxed"
-                    dangerouslySetInnerHTML={{
-                      __html: documentData.sections[1].intro,
-                    }}
-                  />
-                )}
-                <div
-                  className="owner-info bg-gradient-to-br from-gray-50 to-gray-100 mt-10 p-7 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300"
-                  dangerouslySetInnerHTML={{
-                    __html: documentData.sections[1].content,
-                  }}
-                />
-              </section>
-            </div>
-
-            {/* Render all other sections with full width */}
+            <CommonLegalInfo />
           </div>
 
-          {/* Right column - Table of Contents (keeps original width) */}
-          <div className="md:w-1/3 lg:w-2/5">
+          {/* Right column - Table of Contents */}
+          <div className="max-80 sm:w-1/2 md:w-1/3 lg:w-2/6">
             <section className="top-4 mb-12 bg-gray-100 px-6 pt-4 rounded-lg border border-gray-200">
               <h2 className="text-2xl font-bold mb-6 text-gray-800 border-b pb-2">
-                TABLE OF CONTENTS
+                {translations.tableOfContents}
               </h2>
-              <ul className="">
-                {documentData.sections.map((section) => (
+              <ul className="mb-6">
+                {privacyPolicy.sections.map((section) => (
                   <li
                     key={section.id}
                     className="cursor-pointer hover:text-blue-600 py-1"
@@ -114,8 +109,8 @@ function Privacy() {
           </div>
         </div>
       </div>
-      <div className="w-full  lg:px-4">
-        {documentData.sections.slice(2).map(renderSection)}
+      <div className="w-full lg:px-4">
+        {privacyPolicy.sections.map(renderSection)}
       </div>
     </div>
   );

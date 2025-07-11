@@ -384,5 +384,617 @@
     "trust": {
       "text": "Recommandé par des professionnels d'élite chez"
     }
+  },
+
+  "LegalInfo": {
+    "privacy": "Confidentialité OSCHK",
+    "notices": "Mentions Légales",
+    "conditions": "Conditions Générales",
+    "cookies": "Cookies",
+    "accessibility": "Accessibilité",
+    "choices": "Vos Choix de Confidentialité",
+    "backButton": "← Retour aux documents légaux",
+    "pageTitle": "Informations Légales"
+  },
+
+  
+  "commonLegalInfo": {
+    "siteEditor": {
+      "title": "I - ÉDITEUR DU SITE",
+      "intro": "Ce site web, accessible à l'adresse URL {link} (ci-après le Site) est publié par :",
+      "linkText": "https://ouvrir-societe-hong-kong.fr",
+      "contactTitle": "CONTACT OSCHK",
+      "developer": "Programmeur & Développeur du site web : Najeeb Ullah",
+      "whatsapp": {
+        "label": "WhatsApp Business",
+        "cta": "Discutez avec nous sur WhatsApp"
+      },
+      "nif": "NIF"
+    },
+    "siteOwner": {
+      "title": "II – PROPRIÉTAIRE DU SITE",
+      "intro": "Le propriétaire est Create Company {company} Entité légale.",
+      "company": "MARIA WORLD TRADING LIMITED",
+      "legalInfo": "Informations Légales OSCHK",
+      "taxNumber": "Numéro fiscal :",
+      "headOffice": "Siège social :",
+      "email": "Email :"
+    }
+  },
+
+  
+  "cookieConsent": {
+    "banner": {
+      "title": "Votre vie privée compte",
+      "description": "Nous utilisons des cookies pour améliorer votre expérience de navigation, diffuser du contenu personnalisé et analyser notre trafic. En cliquant sur \"Tout accepter\", vous consentez à l'utilisation de nos cookies.",
+      "acceptAll": "Tout accepter",
+      "settings": "Paramètres",
+      "rejectAll": "Tout refuser",
+      "showDetails": "Afficher les détails",
+      "showLess": "Afficher moins",
+      "details": {
+        "essential": "Les cookies essentiels sont nécessaires au fonctionnement du site et ne peuvent pas être désactivés.",
+        "analytics": "Les cookies d'analyse nous aident à comprendre comment les visiteurs interagissent avec notre site web.",
+        "marketing": "Les cookies marketing sont utilisés pour personnaliser les publicités et le contenu."
+      }
+    },
+    "preferences": {
+      "title": "Préférences des cookies",
+      "save": "Enregistrer les préférences",
+      "cancel": "Annuler",
+      "essential": {
+        "title": "Cookies essentiels",
+        "status": "Toujours actif",
+        "description": "Nécessaires au fonctionnement du site et ne peuvent pas être désactivés. Ils sont généralement définis en réponse à des actions que vous effectuez."
+      },
+      "analytics": {
+        "title": "Cookies d'analyse",
+        "status": "Optionnel",
+        "description": "Nous permettent de collecter des données sur votre interaction avec notre site web. Cela nous aide à améliorer nos services."
+      },
+      "marketing": {
+        "title": "Cookies marketing",
+        "status": "Optionnel",
+        "description": "Utilisés pour suivre les visiteurs sur différents sites web. L'objectif est d'afficher des publicités pertinentes et engageantes."
+      },
+      "links": {
+        "privacy": "Politique de confidentialité",
+        "cookie": "Politique des cookies",
+        "terms": "Conditions d'utilisation"
+      }
+    }
+  },
+
+  
+  "Privacy_legal": {
+    "sections": [
+      {
+        "id": "Data-Sharing-with-Third-Parties",
+        "title": "1. Partage avec des tiers",
+        "content": {
+          "paragraph1": "Nous ne partageons vos informations personnelles avec des tiers qu'en cas de nécessité absolue. Ces parties agissent généralement en tant que prestataires de services travaillant pour notre compte et sont liées par des accords de confidentialité. Nous nous assurons que tout partenaire avec lequel nous travaillons respecte les lois sur la protection des données et utilise vos informations uniquement aux fins convenues.",
+          "paragraph2": "Par exemple, nous pouvons collaborer avec des agences ou des développeurs de confiance pour maintenir et améliorer notre site web et nos services.",
+          "listItems": [
+            "Prestataires de services pour le support technique, le marketing ou l'analyse",
+            "Fournisseurs d'hébergement cloud pour le stockage sécurisé des données",
+            "Consultants ou entrepreneurs aidant à l'amélioration des systèmes"
+          ],
+          "exampleTitle": "Exemple : Partenaire Web",
+          "exampleItems": [
+            {"label": "Nom :", "value": "Najeeb Ullah"},
+            {"label": "Pays :", "value": "Pakistan"},
+            {"label": "Objectif :", "value": "Services de développement web"}
+          ]
+        }
+      },
+      {
+        "id": "Use-Cookies",
+        "title": "2. Utilisation des cookies",
+        "content": {
+          "paragraph1": "Notre site web utilise des cookies et des technologies similaires pour améliorer votre expérience de navigation, analyser les modèles d'utilisation et proposer du contenu et des publicités personnalisés.",
+          "listItems": [
+            "Cookies essentiels pour la fonctionnalité du site",
+            "Cookies d'analyse pour comprendre le comportement des utilisateurs",
+            "Cookies de préférence pour mémoriser vos paramètres",
+            "Cookies marketing pour personnaliser les promotions"
+          ],
+          "paragraph2": "Vous pouvez gérer ou désactiver les cookies à tout moment via les paramètres de votre navigateur. Veuillez consulter notre {cookiePolicyLink} pour plus d'informations détaillées.",
+          "cookiePolicyLink": "Politique relative aux cookies"
+        }
+      },
+      {
+        "id": "Legal-Disclosures",
+        "title": "3. Divulgations légales",
+        "content": {
+          "paragraph1": "Nous pouvons divulguer vos données personnelles lorsque la loi l'exige. Cela inclut les ordonnances du tribunal, les procédures judiciaires ou les demandes des autorités réglementaires ou gouvernementales. De plus, en cas de fusion, d'acquisition ou de vente de notre entreprise, les données personnelles peuvent être partagées avec des conseillers juridiques ou l'organisation acquéreuse sous des accords de confidentialité stricts.",
+          "listItems": [
+            "Divulgations pour se conformer aux obligations légales",
+            "Transferts dus à une restructuration commerciale",
+            "Données partagées avec les autorités légales ou les tribunaux"
+          ],
+          "exampleTitle": "Fournisseur d'hébergement",
+          "exampleItems": [
+            {"label": "Nom :", "value": "OVH Cloud"},
+            {"label": "Adresse :", "value": "2 rue Kellermann, 59100 Roubaix, France"},
+            {"label": "Téléphone :", "value": "+33 9 72 10 10 07"}
+          ]
+        }
+      },
+      {
+        "id": "Data-Security",
+        "title": "4. Sécurité des données",
+        "content": {
+          "paragraph1": "Nous nous engageons à assurer la sécurité de vos données personnelles. Notre cadre de sécurité comprend des mesures techniques et organisationnelles pour empêcher tout accès non autorisé, altération, perte ou divulgation d'informations.",
+          "listItems": [
+            "Communication chiffrée de bout en bout (SSL/TLS)",
+            "Protocoles d'authentification DNS (SPF, DKIM, DMARC)",
+            "Utilisation d'en-têtes de sécurité HTTP",
+            "Techniques de pare-feu et de durcissement des serveurs",
+            "Outils avancés de surveillance des menaces",
+            "Accès restreint au personnel autorisé uniquement",
+            "Audits de sécurité et évaluations des risques réguliers"
+          ]
+        }
+      },
+      {
+        "id": "External-Links",
+        "title": "5. Liens externes",
+        "content": {
+          "paragraph1": "Notre site web peut contenir des liens vers des sites externes qui ne sont pas exploités par nous. Veuillez noter que nous ne sommes pas responsables des pratiques de confidentialité de ces sites web tiers. Une fois que vous quittez notre site, nous vous encourageons à consulter les déclarations de confidentialité de tout autre site web que vous visitez avant de soumettre des données personnelles.",
+          "listItems": [
+            "Vérifiez les politiques des tiers pour comprendre l'utilisation des données",
+            "Soyez prudent lorsque vous partagez des informations personnelles à l'extérieur",
+            "Nous n'approuvons pas le contenu ou les politiques externes"
+          ]
+        }
+      },
+      {
+        "id": "Policy-Updates",
+        "title": "6. Mises à jour de cette politique",
+        "content": {
+          "paragraph1": "Nous pouvons réviser notre politique de confidentialité de temps à autre pour refléter les changements dans les exigences légales ou nos pratiques en matière de données. La version mise à jour sera toujours publiée sur notre site web. En cas de changements importants, nous ferons des efforts raisonnables pour vous informer par des avis ou une communication directe, le cas échéant.",
+          "listItems": [
+            "Les modifications prennent effet lors de leur publication",
+            "Nous vous encourageons à consulter cette page périodiquement",
+            "Nous visons la transparence dans toutes les mises à jour de la politique"
+          ]
+        }
+      },
+      {
+        "id": "Your-Rights",
+        "title": "7. Vos droits sur les données",
+        "content": {
+          "paragraph1": "Vous avez certains droits concernant les données personnelles que nous détenons à votre sujet. Ces droits vous permettent de contrôler la manière dont vos informations sont utilisées et d'assurer la transparence dans nos pratiques en matière de données.",
+          "listItems": [
+            "Droit de savoir pourquoi et comment nous utilisons vos données",
+            "Droit d'accéder à vos informations personnelles",
+            "Droit de demander la correction de données inexactes",
+            "Droit de demander la suppression de données non nécessaires",
+            "Droit de retirer un consentement précédemment donné",
+            "Droit de vous opposer à certains types de traitement",
+            "Droit de demander la portabilité des données, si possible"
+          ],
+          "paragraph2": "Pour exercer vos droits, veuillez nous contacter avec une pièce d'identité valide. Nous prenons la confidentialité au sérieux et traiterons votre demande de manière sécurisée et rapide."
+        }
+      },
+      {
+        "id": "Complaints",
+        "title": "8. Plaintes",
+        "content": {
+          "paragraph1": "Si vous pensez que vos données personnelles ont été mal gérées ou si vous avez une préoccupation liée à la confidentialité, vous avez le droit de déposer une plainte formelle. Nous visons à résoudre tous les problèmes rapidement et équitablement. Vous pouvez nous contacter directement ou, si vous n'êtes pas satisfait, escalader le problème auprès de votre autorité locale de protection des données.",
+          "listItems": [
+            "Nous traitons toutes les plaintes de manière confidentielle",
+            "Nous visons à répondre dans un délai raisonnable",
+            "Contactez votre autorité de protection des données si les préoccupations restent non résolues"
+          ]
+        }
+      }
+    ],
+    "tableOfContents": "TABLE DES MATIÈRES"
+  },
+
+  
+  "Cookies_legal": {
+    "last_updated": "2 juillet 2025",
+    "applies_to": "Résidents et résidents permanents légaux de l'Espace économique européen et de la Suisse.",
+    "table_of_contents": "TABLE DES MATIÈRES",
+    "sections": [
+      {
+        "id": "Introduction",
+        "title": "1. Introduction",
+        "content": {
+          "paragraph1": "Bienvenue sur notre site web, {websiteLink} (appelé \"le site web\"). Nous utilisons des cookies et des technologies similaires pour améliorer votre expérience de navigation. Ces technologies peuvent également être utilisées par des tiers avec lesquels nous collaborons. Cette politique décrit comment les cookies sont utilisés sur notre site web.",
+          "websiteLink": "Ouvrir-société-hong-Kong.fr"
+        }
+      },
+      {
+        "id": "what-cookies",
+        "title": "2. Que sont les cookies ?",
+        "content": {
+          "paragraph1": "Les cookies sont de petits fichiers de données envoyés avec les pages web et stockés sur votre appareil via votre navigateur. Ces fichiers permettent de récupérer des données lors de visites ultérieures, soit par nos serveurs, soit par ceux de fournisseurs tiers."
+        }
+      },
+      {
+        "id": "scripts",
+        "title": "3. Que sont les scripts ?",
+        "content": {
+          "paragraph1": "Les scripts sont des lignes de code qui assurent le bon fonctionnement et l'interactivité de notre site web. Ces scripts peuvent s'exécuter sur notre serveur ou directement sur votre appareil."
+        }
+      },
+      {
+        "id": "web-beacon",
+        "title": "4. Qu'est-ce qu'un web beacon ?",
+        "content": {
+          "paragraph1": "Les web beacons (ou balises pixel) sont des images invisibles ou des extraits de texte utilisés pour surveiller l'activité des utilisateurs sur un site. Grâce à eux, diverses données utilisateur peuvent être collectées et analysées."
+        }
+      },
+      {
+        "id": "Use-Cookies",
+        "title": "5. Utilisation des cookies",
+        "content": {
+          "section5_1": {
+            "title": "5.1 Cookies fonctionnels (techniques) :",
+            "text": "Ces cookies sont essentiels au bon fonctionnement de notre site web. Ils stockent vos préférences, rendant votre expérience plus fluide - par exemple, en se souvenant du contenu de votre panier. Ces cookies peuvent être placés sans nécessiter votre consentement."
+          },
+          "section5_2": {
+            "title": "5.2 Cookies marketing et de suivi :",
+            "text": "Utilisés pour créer des profils utilisateur et diffuser des publicités personnalisées, ces cookies suivent votre comportement sur ce site et d'autres sites web à des fins marketing."
+          },
+          "section5_3": {
+            "title": "5.3 Intégration des réseaux sociaux :",
+            "text": "Notre site web propose du contenu provenant de plateformes comme Facebook, Twitter et WhatsApp pour vous permettre d'aimer, partager ou interagir avec le contenu. Ces plateformes peuvent placer des cookies via du code intégré et collecter des données à des fins publicitaires. Nous vous recommandons de consulter leurs politiques de confidentialité, qui peuvent changer avec le temps, pour comprendre comment vos données sont utilisées. Les données collectées sont anonymisées dans la mesure du possible. Notez que Facebook, Twitter et WhatsApp ont leur siège aux États-Unis."
+          }
+        }
+      },
+      {
+        "id": "Consent",
+        "title": "6. Consentement",
+        "content": {
+          "paragraph1": "Lors de votre première visite, une bannière de consentement aux cookies apparaîtra. En cliquant sur \"Enregistrer les préférences\", vous acceptez l'utilisation des catégories de cookies et plug-ins sélectionnés décrits dans cette politique. Vous pouvez désactiver les cookies dans votre navigateur, mais certaines fonctionnalités du site peuvent ne pas fonctionner correctement.",
+          "section6_1": {
+            "title": "6.1 Gestion de votre consentement :",
+            "text": "Fonctionnels : Toujours actifs - nécessaires au bon fonctionnement du site. Marketing : Nécessaires pour créer des profils, afficher des publicités et suivre le comportement des utilisateurs sur les sites web."
+          }
+        }
+      },
+      {
+        "id": "managing-and-delete-cookies",
+        "title": "7. Gestion et suppression des cookies",
+        "content": {
+          "paragraph1": "Vous pouvez gérer ou supprimer les cookies via les paramètres de votre navigateur - automatiquement ou manuellement. Vous pouvez également choisir de bloquer des cookies spécifiques ou de recevoir des alertes lorsque des cookies sont placés. Pour plus de détails, consultez la section Aide de votre navigateur.",
+          "paragraph2": "La désactivation de tous les cookies peut affecter la fonctionnalité du site web. Si les cookies sont supprimés, ils réapparaîtront après que vous aurez donné votre consentement lors de votre prochaine visite."
+        }
+      },
+      {
+        "id": "data-rights",
+        "title": "8. Vos droits sur les données",
+        "content": {
+          "rights": [
+            {
+              "title": "Droit d'être informé :",
+              "text": "Savoir pourquoi et comment vos données sont traitées, et pendant combien de temps."
+            },
+            {
+              "title": "Droit d'accès :",
+              "text": "Demander accès aux données personnelles que nous stockons vous concernant."
+            },
+            {
+              "title": "Droit de rectification :",
+              "text": "Demander la mise à jour, la correction, la suppression ou le blocage de vos données personnelles."
+            },
+            {
+              "title": "Droit de retirer votre consentement :",
+              "text": "Retirer votre permission et demander la suppression de vos données."
+            },
+            {
+              "title": "Droit à la portabilité des données :",
+              "text": "Recevoir vos données et les transférer à un autre fournisseur de services."
+            },
+            {
+              "title": "Droit d'opposition :",
+              "text": "Vous opposer au traitement des données à moins que nous n'ayons des motifs légitimes."
+            }
+          ],
+          "paragraph": "Pour exercer ces droits, contactez-nous en utilisant les informations fournies ci-dessous. Si vous pensez que vos données ne sont pas traitées correctement, vous avez également le droit de déposer une plainte auprès de l'Autorité de protection des données."
+        }
+      },
+      {
+        "id": "Contact-Information",
+        "title": "9. Informations de contact",
+        "content": {
+          "paragraph1": "Pour toute question ou commentaire concernant cette Politique relative aux cookies, vous pouvez nous contacter :",
+          "company": "MARIA WORLD TRADING LIMITED",
+          "address": "203 - 2/F, Upper Offices, Hankow Centre, 5-15 Hankow Rd, Tsim Sha Tsui, Hong Kong",
+          "website": {
+            "label": "Site web :",
+            "text": "Ouvrir-société-hong-Kong.fr"
+          },
+          "email": {
+            "label": "Email :",
+            "text": "bonjour@ouvrir-societe-hong-kong.fr"
+          },
+          "phone": {
+            "label": "Téléphone :",
+            "text": "+33 630 258 982"
+          },
+          "update_note": "Cette Politique relative aux cookies a été mise à jour et synchronisée avec cookiedatabase.org le 2 juillet 2025."
+        }
+      }
+    ]
+  
+
+},
+
+
+  "Accessibility": {
+    "toc_title": "TABLE DES MATIÈRES",
+    "sections": {
+      "Introduction": {
+        "title": "1. Introduction",
+        "content": {
+          "paragraph1": "Chez {companyName}, nous nous engageons profondément à garantir que nos services soient accessibles à tous, y compris aux personnes en situation de handicap. Cet engagement s'aligne sur {lawReference}, qui garantit des droits, des opportunités et une participation égales pour tous.",
+          "paragraph2": "Cette déclaration d'accessibilité s'applique à notre site web officiel : {websiteLink}.",
+          "replacements": {
+            "companyName": "RentFlex",
+            "lawReference": "l'article 47 de la loi n°2005-102 du 11 février 2005",
+            "websiteLink": {
+              "text": "ouvrir-societe-hong-kong.fr",
+              "href": "/"
+            }
+          }
+        }
+      },
+      "Accessibility-Status": {
+        "title": "2. État de l'accessibilité",
+        "content": {
+          "status": "Partiellement conforme (85% des critères WCAG 2.1 AA satisfaits)",
+          "auditDate": "26 avril 2025",
+          "description": "Le site web de RentFlex répond actuellement à de nombreux critères définis dans le {rgaaReference}. Nous avons réalisé une évaluation approfondie des pages clés (accueil, services et contact) et identifié quelques problèmes d'accessibilité (par exemple, le contraste des couleurs et la structure HTML). Cependant, ceux-ci n'empêchent pas les utilisateurs d'accéder au contenu principal.",
+          "replacements": {
+            "rgaaReference": "RGAA 4.1.2 (Référentiel Général d'Amélioration de l'Accessibilité)"
+          }
+        }
+      },
+      "Dark-Mode": {
+        "title": "3. Mode sombre disponible",
+        "content": {
+          "paragraph1": "Pour améliorer l'utilisabilité pour les utilisateurs sensibles à la luminosité, nous proposons une version {featureName} de notre site web. Cela peut être déclenché automatiquement en fonction des paramètres système de votre appareil ou activé manuellement depuis le menu du site.",
+          "replacements": {
+            "featureName": "Mode sombre"
+          }
+        }
+      },
+      "Accessibility-Tools": {
+        "title": "4. Outils de test d'accessibilité",
+        "content": {
+          "toolsTitle": "Outils utilisés :",
+          "toolsList": [
+            "Outil d'évaluation WAVE",
+            "ARC Toolkit",
+            "AXE DevTools (Deque Systems)",
+            "Barre d'outils Web Developer",
+            "HeadingsMap",
+            "Vérificateur de contraste des couleurs Adobe"
+          ],
+          "techTitle": "Navigateurs & technologies d'assistance :",
+          "techList": [
+            "Chrome + VoiceOver (macOS)",
+            "Firefox + NVDA (Windows)",
+            "Safari + VoiceOver (iOS)"
+          ]
+        }
+      },
+      "Non-Conformities": {
+        "title": "5. Problèmes d'accessibilité connus",
+        "content": {
+          "intro": "Lors de notre audit, nous avons identifié ces problèmes d'accessibilité que nous nous efforçons de corriger (date cible de résolution : Q3 2025) :",
+          "issues": [
+            "Certaines images manquent d'attributs alt descriptifs",
+            "Problèmes mineurs de contraste des couleurs (respectant AA mais pas AAA)",
+            "L'ordre de tabulation sur certaines pages doit être amélioré",
+            "Les étiquettes de certains boutons et formulaires peuvent être clarifiées"
+          ]
+        }
+      },
+      "Exemptions": {
+        "title": "6. Contenu exempté",
+        "content": {
+          "paragraph1": "Conformément à {lawReference}, certains contenus tiers peuvent être partiellement exemptés de conformité en matière d'accessibilité. Ceux-ci incluent :",
+          "exemptionsList": [
+            "Cartes intégrées (par exemple, Google Maps)",
+            "Vidéos YouTube",
+            "Modules de paiement tiers ou intégrations en iframe",
+            "Widgets et plugins de réseaux sociaux"
+          ],
+          "replacements": {
+            "lawReference": "l'article 5 du décret du 20 septembre 2019"
+          }
+        }
+      },
+      "Feedback-Contact": {
+        "title": "7. Retour et contact",
+        "content": {
+          "paragraph1": "Si vous rencontrez des problèmes d'accessibilité ou ne parvenez pas à accéder à une partie du site, veuillez nous contacter. Nous vous fournirons une version accessible alternative du contenu.",
+          "emailLabel": "Email :",
+          "email": "bonjour@ouvrir-societe-hong-kong.fr",
+          "phoneLabel": "Téléphone :",
+          "phone": "+33 630 258 982 (du lundi au vendredi, 9h-17h heure de Paris)",
+          "responseTime": "Délai de réponse : Nous visons à répondre dans les 5 jours ouvrables"
+        }
+      },
+      "Future-Improvements": {
+        "title": "8. Améliorations futures",
+        "content": {
+          "intro": "Nous nous engageons à des améliorations continues en matière d'accessibilité, notamment :",
+          "improvements": [
+            "Conformité totale avec WCAG 2.1 AA d'ici décembre 2025",
+            "Audits trimestriels réguliers d'accessibilité",
+            "Tests utilisateurs avec des personnes en situation de handicap",
+            "Mise en œuvre d'un widget dédié aux retours d'accessibilité"
+          ],
+          "lastUpdated": "Dernière mise à jour : 15 juin 2025"
+        }
+      }
+    }
+  },
+
+  
+  "Conditions_legal": {
+    "table_of_contents": "TABLE DES MATIÈRES",
+    "sections": [
+      {
+        "id": "scope",
+        "title": "1. Champ d'application",
+        "content": "Ces conditions s'appliquent à l'ensemble du site web ainsi qu'à toute transaction, service ou offre fournie par son intermédiaire. Elles peuvent être complétées par des accords spécifiques entre vous et notre société. En cas de contradiction, les dispositions de ces accords spécifiques prévaudront."
+      },
+      {
+        "id": "acceptance",
+        "title": "2. Acceptation des conditions",
+        "content": "En accédant, en vous inscrivant ou en utilisant ce site web de quelque manière que ce soit, vous reconnaissez avoir lu et accepté pleinement ces conditions. Dans certains cas, une validation explicite peut être requise."
+      },
+      {
+        "id": "communication",
+        "title": "3. Communications numériques",
+        "content": "En interagissant avec nous électroniquement, vous consentez à recevoir des informations sous forme numérique (e-mail ou notifications sur le site), ce qui satisfait à toute exigence légale de communication écrite."
+      },
+      {
+        "id": "property",
+        "title": "4. Droits de propriété intellectuelle",
+        "content": {
+          "paragraph1": "Tout le contenu de ce site web - textes, visuels, logos, documents ou données - est protégé par des droits d'auteur ou d'autres droits de propriété intellectuelle. Ces droits appartiennent exclusivement à notre société ou à ses partenaires.",
+          "subsection": {
+            "title": "4.1 Utilisation non autorisée interdite",
+            "content": "Sauf indication contraire expresse, il est strictement interdit de reproduire, copier, modifier, exploiter ou distribuer tout contenu de ce site sans autorisation écrite préalable, sauf dans les cas prévus par les dispositions légales impératives."
+          }
+        }
+      },
+      {
+        "id": "newsletter",
+        "title": "5. Newsletter",
+        "content": "Vous pouvez transférer nos newsletters à des tiers potentiellement intéressés, à condition que cela se fasse de manière non commerciale."
+      },
+      {
+        "id": "third-party",
+        "title": "6. Contenu tiers",
+        "content": "Le site peut contenir des liens vers des sites web externes. Nous ne sommes pas responsables de leur contenu ou de leurs politiques de confidentialité. L'utilisation de ces plateformes se fait à vos risques et périls."
+      },
+      {
+        "id": "responsible-use",
+        "title": "7. Utilisation appropriée du site",
+        "content": "Les utilisateurs s'engagent à n'utiliser ce site qu'à des fins légales, conformément aux lois applicables et à la netiquette. Toute tentative de perturber la fonctionnalité ou l'accessibilité du site est strictement interdite."
+      },
+      {
+        "id": "registration",
+        "title": "8. Création de compte",
+        "content": "En créant un compte, vous acceptez de garder vos identifiants confidentiels. Toute activité menée via votre compte est de votre responsabilité. Une nouvelle inscription après suppression de compte nécessite notre autorisation."
+      },
+      {
+        "id": "idea-submission",
+        "title": "10. Propositions non sollicitées",
+        "content": "Aucune idée, projet ou création ne doit être soumis sans accord préalable. Dans le cas contraire, toute contribution sera considérée comme transférée sous une licence gratuite, irrévocable, mondiale et non exclusive."
+      },
+      {
+        "id": "termination",
+        "title": "11. Suspension ou résiliation du service",
+        "content": "Nous nous réservons le droit de modifier, restreindre ou interrompre l'accès au site ou à ses services sans préavis ni indemnisation. Contourner les restrictions d'accès est interdit."
+      },
+      {
+        "id": "guarantees",
+        "title": "12. Responsabilité et garanties",
+        "content": "Le site est fourni \"tel quel\". Aucune garantie n'est donnée quant à sa disponibilité continue, son exactitude ou son adéquation à vos besoins. Notre responsabilité est limitée au montant que vous nous avez payé."
+      },
+      {
+        "id": "confidentiality",
+        "title": "13. Données personnelles",
+        "content": "Toutes les données d'inscription doivent être exactes. Notre politique de confidentialité détaille nos engagements en matière de protection des données."
+      },
+      {
+        "id": "accessibility",
+        "title": "14. Accessibilité du site",
+        "content": "Nous nous efforçons de rendre le site accessible à tous. Si vous rencontrez des difficultés liées à un handicap, veuillez nous en informer afin que nous puissions vous aider dans la mesure du possible."
+      },
+      {
+        "id": "export",
+        "title": "15. Conformité aux lois sur l'exportation",
+        "content": "L'accès au site depuis un pays où ses services sont illégaux est interdit. Vous acceptez de vous conformer aux lois hongkongaises sur l'exportation."
+      },
+      {
+        "id": "affiliate",
+        "title": "16. Partenariats commerciaux",
+        "content": "Nous pouvons générer des revenus via des liens d'affiliation, des sponsorships ou du contenu sponsorisé. Ces collaborations sont conformes aux lois applicables, y compris la réglementation française."
+      },
+      {
+        "id": "assignment",
+        "title": "17. Interdiction de transfert de droits",
+        "content": "Toute cession ou transfert de vos droits et obligations sans notre consentement écrit est nulle."
+      },
+      {
+        "id": "breach",
+        "title": "18. Violation des conditions",
+        "content": "Toute violation de ces conditions peut entraîner des sanctions, y compris la suspension du compte, des poursuites judiciaires ou d'autres mesures appropriées."
+      },
+      {
+        "id": "force-majeure",
+        "title": "19. Force majeure",
+        "content": "Tout événement imprévisible échappant à notre contrôle empêchant l'exécution d'une obligation ne sera pas considéré comme une violation."
+      },
+      {
+        "id": "compensation",
+        "title": "20. Indemnisation",
+        "content": "Vous acceptez de nous indemniser pour toute réclamation résultant de votre mauvaise utilisation du site ou de la violation de ces conditions."
+      },
+      {
+        "id": "exemption",
+        "title": "21. Non-renonciation",
+        "content": "Le fait de ne pas faire appliquer une clause ne constitue pas une renonciation à notre droit de le faire ultérieurement."
+      },
+      {
+        "id": "language",
+        "title": "22. Langue contractuelle",
+        "content": "Tous les documents contractuels sont exclusivement rédigés en français."
+      },
+      {
+        "id": "agreement",
+        "title": "23. Accord complet",
+        "content": "Ces conditions, ainsi que notre politique de confidentialité, constituent l'accord complet entre vous et notre société."
+      },
+      {
+        "id": "revisions",
+        "title": "24. Révisions",
+        "content": "Nous nous réservons le droit de modifier ces conditions à tout moment. Les mises à jour seront clairement communiquées. Une utilisation continue constitue une acceptation."
+      },
+      {
+        "id": "governing",
+        "title": "25. Droit applicable et litiges",
+        "content": "Ces conditions sont régies par le droit hongkongais. Tout litige sera soumis aux tribunaux compétents de Hong Kong. Si une clause est jugée inapplicable, elle sera ajustée sans affecter le reste."
+      },
+      {
+        "id": "contact",
+        "title": "26. Informations de contact",
+        "content": {
+          "company": "MWT LIMITED",
+          "address": "203 - 2/F, UPPER OFFICES HANKOW CTR\n5-15 HANKOW RD TSIM SHA TSUI\nHONG KONG",
+          "email": {
+            "label": "✉️",
+            "text": "bonjour@ouvrir-societe-hong-kong.fr"
+          }
+        }
+      },
+      {
+        "id": "download",
+        "title": "27. Téléchargement",
+        "content": {
+          "paragraph": "Ces conditions peuvent être téléchargées au format PDF depuis notre site web.",
+          "button": "Télécharger la version PDF"
+        }
+      }
+    ]
   }
+
+
+
+
+
+
+
 }

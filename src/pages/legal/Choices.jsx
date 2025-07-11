@@ -1,20 +1,25 @@
-// CookieConsent.js
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FaCookieBite, FaTimes, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import { LanguageContext } from '../../context/LanguageContext';
+import frTranslations from '../../locales/fr.json';
+import enTranslations from '../../locales/en.json';
 
 const CookieConsent = ({ 
   showInitially = false,
   hideSettingsButton = false,
   onClose 
 }) => {
+  const { language } = useContext(LanguageContext);
+  const t = language === 'fr' ? frTranslations.cookieConsent : enTranslations.cookieConsent;
+  
   const [showConsent, setShowConsent] = useState(showInitially);
   const [showPreferences, setShowPreferences] = useState(false);
   const [expandedDetails, setExpandedDetails] = useState(false);
 
   useEffect(() => {
     if (!showInitially && !getCookie('cookie_consent')) {
-      setTimeout(() => setShowConsent(true), 1000); // Small delay for better UX
+      setTimeout(() => setShowConsent(true), 1000);
     }
   }, [showInitially]);
 
@@ -80,7 +85,7 @@ const CookieConsent = ({
                 <div className="flex-grow">
                   <div className="flex justify-between items-start">
                     <h2 id="cookie-consent-heading" className="text-lg font-bold text-gray-900 dark:text-white">
-                      Your Privacy Matters
+                      {t.banner.title}
                     </h2>
                     <button 
                       onClick={closeConsent}
@@ -92,23 +97,16 @@ const CookieConsent = ({
                   </div>
                   
                   <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                    We use cookies to enhance your browsing experience, serve personalized content, and analyze our traffic. 
-                    By clicking "Accept All", you consent to our use of cookies.
+                    {t.banner.description}
                   </p>
                   
                   <div 
                     className={`mt-2 overflow-hidden transition-all duration-300 ${expandedDetails ? 'max-h-96' : 'max-h-0'}`}
                   >
                     <div className="pt-2 text-sm text-gray-600 dark:text-gray-400 space-y-2">
-                      <p>
-                        <strong>Essential cookies</strong> are necessary for the website to function and cannot be switched off.
-                      </p>
-                      <p>
-                        <strong>Analytics cookies</strong> help us understand how visitors interact with our website.
-                      </p>
-                      <p>
-                        <strong>Marketing cookies</strong> are used to personalize ads and content.
-                      </p>
+                      <p><strong>{t.preferences.essential.title}</strong> {t.banner.details.essential}</p>
+                      <p><strong>{t.preferences.analytics.title}</strong> {t.banner.details.analytics}</p>
+                      <p><strong>{t.preferences.marketing.title}</strong> {t.banner.details.marketing}</p>
                     </div>
                   </div>
                   
@@ -118,12 +116,12 @@ const CookieConsent = ({
                   >
                     {expandedDetails ? (
                       <>
-                        <span>Show less</span>
+                        <span>{t.banner.showLess}</span>
                         <FaChevronUp className="ml-1" size={12} />
                       </>
                     ) : (
                       <>
-                        <span>Show details</span>
+                        <span>{t.banner.showDetails}</span>
                         <FaChevronDown className="ml-1" size={12} />
                       </>
                     )}
@@ -135,26 +133,27 @@ const CookieConsent = ({
                     onClick={handleAccept}
                     className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
                   >
-                    Accept All
+                    {t.banner.acceptAll}
                   </button>
                   {!hideSettingsButton && (
                     <button
                       onClick={() => setShowPreferences(true)}
                       className="px-4 py-2 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
                     >
-                      Settings
+                      {t.banner.settings}
                     </button>
                   )}
                   <button
                     onClick={handleReject}
                     className="px-4 py-2 text-gray-700 dark:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
                   >
-                    Reject All
+                    {t.banner.rejectAll}
                   </button>
                 </div>
               </div>
             ) : (
               <CookiePreferences 
+                t={t.preferences}
                 onSave={(prefs) => {
                   setCookie('cookie_consent', 'custom');
                   setCookie('analytics_cookies', prefs.analytics ? 'true' : 'false');
@@ -175,7 +174,7 @@ const CookieConsent = ({
   );
 };
 
-const CookiePreferences = ({ onSave, onCancel, initialPreferences }) => {
+const CookiePreferences = ({ t, onSave, onCancel, initialPreferences }) => {
   const [preferences, setPreferences] = useState({
     essential: true,
     analytics: initialPreferences.analytics,
@@ -190,7 +189,7 @@ const CookiePreferences = ({ onSave, onCancel, initialPreferences }) => {
       className="bg-white dark:bg-gray-800 rounded-lg p-4"
     >
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-bold text-gray-900 dark:text-white">Cookie Preferences</h2>
+        <h2 className="text-xl font-bold text-gray-900 dark:text-white">{t.title}</h2>
         <button 
           onClick={onCancel}
           className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors p-1"
@@ -204,21 +203,21 @@ const CookiePreferences = ({ onSave, onCancel, initialPreferences }) => {
         <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700">
           <div className="flex justify-between items-center mb-2">
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white">Essential Cookies</h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Always Active</p>
+              <h3 className="font-semibold text-gray-900 dark:text-white">{t.essential.title}</h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{t.essential.status}</p>
             </div>
             <span className="text-xs bg-gray-200 dark:bg-gray-600 px-2 py-1 rounded">Required</span>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-300">
-            Necessary for the website to function and cannot be switched off. They are usually only set in response to actions made by you.
+            {t.essential.description}
           </p>
         </div>
 
         <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700">
           <div className="flex justify-between items-center mb-2">
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white">Analytics Cookies</h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Optional</p>
+              <h3 className="font-semibold text-gray-900 dark:text-white">{t.analytics.title}</h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{t.analytics.status}</p>
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input 
@@ -226,21 +225,21 @@ const CookiePreferences = ({ onSave, onCancel, initialPreferences }) => {
                 checked={preferences.analytics}
                 onChange={() => setPreferences({...preferences, analytics: !preferences.analytics})}
                 className="sr-only peer"
-                aria-label="Toggle analytics cookies"
+                aria-label={`Toggle ${t.analytics.title}`}
               />
               <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
             </label>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-300">
-            Allow us to collect data about how you interact with our website. This helps us improve our services.
+            {t.analytics.description}
           </p>
         </div>
 
         <div className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-700">
           <div className="flex justify-between items-center mb-2">
             <div>
-              <h3 className="font-semibold text-gray-900 dark:text-white">Marketing Cookies</h3>
-              <p className="text-xs text-gray-500 dark:text-gray-400">Optional</p>
+              <h3 className="font-semibold text-gray-900 dark:text-white">{t.marketing.title}</h3>
+              <p className="text-xs text-gray-500 dark:text-gray-400">{t.marketing.status}</p>
             </div>
             <label className="relative inline-flex items-center cursor-pointer">
               <input 
@@ -248,13 +247,13 @@ const CookiePreferences = ({ onSave, onCancel, initialPreferences }) => {
                 checked={preferences.marketing}
                 onChange={() => setPreferences({...preferences, marketing: !preferences.marketing})}
                 className="sr-only peer"
-                aria-label="Toggle marketing cookies"
+                aria-label={`Toggle ${t.marketing.title}`}
               />
               <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"></div>
             </label>
           </div>
           <p className="text-sm text-gray-600 dark:text-gray-300">
-            Used to track visitors across websites. The intention is to display ads that are relevant and engaging.
+            {t.marketing.description}
           </p>
         </div>
       </div>
@@ -264,13 +263,13 @@ const CookiePreferences = ({ onSave, onCancel, initialPreferences }) => {
           onClick={() => onSave(preferences)}
           className="flex-1 px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
         >
-          Save Preferences
+          {t.save}
         </button>
         <button
           onClick={onCancel}
           className="flex-1 px-6 py-2 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg transition-colors focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2"
         >
-          Cancel
+          {t.cancel}
         </button>
       </div>
       
@@ -282,7 +281,7 @@ const CookiePreferences = ({ onSave, onCancel, initialPreferences }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Privacy Policy
+            {t.links.privacy}
           </a>
           <a 
             href="/cookie-policy" 
@@ -290,7 +289,7 @@ const CookiePreferences = ({ onSave, onCancel, initialPreferences }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Cookie Policy
+            {t.links.cookie}
           </a>
           <a 
             href="/terms" 
@@ -298,7 +297,7 @@ const CookiePreferences = ({ onSave, onCancel, initialPreferences }) => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Terms of Service
+            {t.links.terms}
           </a>
         </div>
       </div>

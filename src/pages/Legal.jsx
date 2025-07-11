@@ -1,5 +1,4 @@
-// Legal.js
-import React from "react";
+import React, { useContext } from "react";
 import { Outlet, useNavigate, useLocation } from "react-router-dom";
 import {
   HiShieldCheck,
@@ -10,33 +9,39 @@ import {
   HiOutlinePuzzlePiece,
 } from "react-icons/hi2";
 import CookieConsent from "../pages/legal/Choices";
-
-const legalItems = [
-  { icon: <HiShieldCheck size={42} />, label: "Privacy OSCHK", route: "privacy" },
-  { icon: <HiScale size={42} />, label: "Legal Notices", route: "notices" },
-  { icon: <HiDocumentText size={42} />, label: "General Conditions", route: "conditions" },
-  { icon: <HiOutlinePuzzlePiece size={42} />, label: "Cookies", route: "cookies" },
-  { icon: <HiOutlineGlobeAlt size={42} />, label: "Accessibility", route: "accessibility" },
-  { icon: <HiAdjustmentsHorizontal size={42} />, label: "Your Choices for Privacy", route: "choices" },
-];
-
-const PrivacyChoices = () => {
-  return (
-    <div className="space-y-6">
-      <CookieConsent 
-        showInitially={true}
-        hideSettingsButton={true}
-      />
-    </div>
-  );
-};
+import enTranslations from "../locales/en.json";
+import frTranslations from "../locales/fr.json";
+import { LanguageContext } from "../context/LanguageContext";
 
 const Legal = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { language } = useContext(LanguageContext);
+
+  const translations = language === 'fr' ? frTranslations.LegalInfo : enTranslations.LegalInfo;
+
+  const legalItems = [
+    { icon: <HiShieldCheck size={42} />, label: translations.privacy, route: "privacy" },
+    { icon: <HiScale size={42} />, label: translations.notices, route: "notices" },
+    { icon: <HiDocumentText size={42} />, label: translations.conditions, route: "conditions" },
+    { icon: <HiOutlinePuzzlePiece size={42} />, label: translations.cookies, route: "cookies" },
+    { icon: <HiOutlineGlobeAlt size={42} />, label: translations.accessibility, route: "accessibility" },
+    { icon: <HiAdjustmentsHorizontal size={42} />, label: translations.choices, route: "choices" },
+  ];
+
+  const PrivacyChoices = () => {
+    return (
+      <div className="space-y-6">
+        <CookieConsent 
+          showInitially={true}
+          hideSettingsButton={true}
+        />
+      </div>
+    );
+  };
 
   const isDocumentView = location.pathname !== "/legal";
-  const currentLabel = legalItems.find(item => location.pathname.includes(item.route))?.label || "Legal Information";
+  const currentLabel = legalItems.find(item => location.pathname.includes(item.route))?.label || translations.pageTitle;
 
   return (
     <div className="lg:px-[74px] max-w-7xl mx-auto">
@@ -77,7 +82,7 @@ const Legal = () => {
             onClick={() => navigate("/legal")}
             className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded hover:bg-gray-300 dark:hover:bg-gray-600 transition"
           >
-            ← Back to All Legal Documents
+            {translations.backButton}
           </button>
         </div>
       )}
