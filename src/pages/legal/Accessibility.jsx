@@ -2,15 +2,14 @@ import React from "react";
 import legalContent from "../../StaticData/legal-content.json";
 
 function Privacy() {
-
   // Get the appropriate document content
-   const documentData = {
+  const documentData = {
     sections: [
       legalContent.common_sections.site_editor,
       legalContent.common_sections.site_owner,
-      ...legalContent.Accessibility_Statement.sections
-    ]
-  }
+      ...legalContent.Accessibility_Statement.sections,
+    ],
+  };
 
   // Function to handle navigation to sections
   const scrollToSection = (sectionId) => {
@@ -20,17 +19,20 @@ function Privacy() {
     }
   };
 
- 
-
   // Render section content dynamically
   const renderSection = (section) => {
     // Special handling for download section to add our button
-    
 
     return (
       <section id={section.id} className="mb-12 w-full" key={section.id}>
         <h2 className="text-2xl font-bold mb-4 w-full">{section.title}</h2>
-        {section.intro && <p className="mb-6 text-gray-700 leading-relaxed">{section.intro}</p>}
+        {section.intro && (
+          <p
+            className="mb-6 text-gray-700 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: section.intro }}
+          />
+        )}
+
         {section.content && (
           <div
             className="w-full"
@@ -53,10 +55,14 @@ function Privacy() {
                   {documentData.sections[0].title}
                 </h2>
                 {documentData.sections[0].intro && (
-                  <p className="mb-6 text-gray-700 leading-relaxed">
-                    {documentData.sections[0].intro}
-                  </p>
+                  <p
+                    className="mb-6 text-gray-700 leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: documentData.sections[0].intro,
+                    }}
+                  />
                 )}
+
                 <div
                   className="editor-info bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all"
                   dangerouslySetInnerHTML={{
@@ -70,9 +76,12 @@ function Privacy() {
                   {documentData.sections[1].title}
                 </h2>
                 {documentData.sections[1].intro && (
-                  <p className="mb-6 text-gray-700 leading-relaxed">
-                    {documentData.sections[1].intro}
-                  </p>
+                  <p
+                    className="mb-6 text-gray-700 leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: documentData.sections[1].intro,
+                    }}
+                  />
                 )}
                 <div
                   className="owner-info bg-gradient-to-br from-gray-50 to-gray-100 mt-10 p-7  rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300"

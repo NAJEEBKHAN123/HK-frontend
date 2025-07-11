@@ -53,9 +53,12 @@ function Cookies() {
                   {documentData.sections[0].title}
                 </h2>
                 {documentData.sections[0].intro && (
-                  <p className="mb-6 text-gray-700 leading-relaxed">
-                    {documentData.sections[0].intro}
-                  </p>
+                  <p
+                    className="mb-6 text-gray-700 leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: documentData.sections[0].intro,
+                    }}
+                  />
                 )}
                 <div
                   className="editor-info bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-all"
@@ -70,9 +73,12 @@ function Cookies() {
                   {documentData.sections[1].title}
                 </h2>
                 {documentData.sections[1].intro && (
-                  <p className="mb-6 text-gray-700 leading-relaxed">
-                    {documentData.sections[1].intro}
-                  </p>
+                  <p
+                    className="mb-6 text-gray-700 leading-relaxed"
+                    dangerouslySetInnerHTML={{
+                      __html: documentData.sections[1].intro,
+                    }}
+                  />
                 )}
                 <div
                   className="owner-info bg-gradient-to-br from-gray-50 to-gray-100 mt-10 p-7  rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow duration-300"

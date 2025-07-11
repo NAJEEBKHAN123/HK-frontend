@@ -198,7 +198,7 @@ export default function WhoWeAre() {
             <span className="text-blue-300 font-semibold">
               law, accounting, and banking
             </span>
-            , we provide end-to-end solutions tailored for European companies.
+            , we provide end-to-end solutions tailored for European companies and from completely different horizons.
           </motion.p>
         </motion.div>
 

@@ -131,9 +131,7 @@ const ContactUs = () => {
     }
   };
 
-  const whatsappUrl = `https://wa.me/85212345678?text=${encodeURIComponent(
-    `New Contact Inquiry\n\nName: ${formData.name || 'Not provided'}\nEmail: ${formData.email || 'Not provided'}\nPhone: ${formData.phone || 'Not provided'}\n\nMessage:\n${formData.message || 'No message provided'}`
-  )}`;
+  const whatsappUrl = 'https://wa.me/message/RFR3KU2NCMIKJ1';
 
   const getOfficeStatusInfo = () => {
     const parisWeekday = currentTime.toLocaleString("en-US", { 

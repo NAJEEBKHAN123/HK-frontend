@@ -100,7 +100,7 @@ const Footer = () => {
     : translations.scheduleConsultation;
 
   // WhatsApp URL
-  const whatsappUrl = "https://wa.me/85212345678";
+  const whatsappUrl = "https://wa.me/message/RFR3KU2NCMIKJ1";
 
   // Format address with line breaks
   const formattedAddress = translations.address.split("\n").map((line, i) => (

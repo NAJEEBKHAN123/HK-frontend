@@ -12,7 +12,7 @@ import {
 import CookieConsent from "../pages/legal/Choices";
 
 const legalItems = [
-  { icon: <HiShieldCheck size={42} />, label: "Privacy OSHK", route: "privacy" },
+  { icon: <HiShieldCheck size={42} />, label: "Privacy OSCHK", route: "privacy" },
   { icon: <HiScale size={42} />, label: "Legal Notices", route: "notices" },
   { icon: <HiDocumentText size={42} />, label: "General Conditions", route: "conditions" },
   { icon: <HiOutlinePuzzlePiece size={42} />, label: "Cookies", route: "cookies" },

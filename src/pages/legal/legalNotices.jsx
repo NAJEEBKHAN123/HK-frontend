@@ -2,6 +2,22 @@ import React from "react";
 import legalContent from "../../StaticData/legal-content.json";
 import { jsPDF } from "jspdf";
 
+// Convert HTML to clean plain text, including anchor text + URLs
+function stripHtml(htmlString) {
+  const tempElement = document.createElement("div");
+  tempElement.innerHTML = htmlString;
+
+  const anchors = tempElement.querySelectorAll("a");
+  anchors.forEach((a) => {
+    const text = a.textContent;
+    const href = a.getAttribute("href");
+    const replacement = `${text} (${href})`;
+    a.replaceWith(replacement);
+  });
+
+  return tempElement.textContent || "";
+}
+
 function LegalNotices() {
   const documentData = {
     sections: [
@@ -11,7 +27,6 @@ function LegalNotices() {
     ],
   };
 
-  // Function to handle navigation to sections
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -19,7 +34,6 @@ function LegalNotices() {
     }
   };
 
-  // Function to handle PDF download
   const handleDownloadPdf = () => {
     const doc = new jsPDF();
     doc.setFontSize(22);
@@ -39,7 +53,7 @@ function LegalNotices() {
       if (section.intro) {
         doc.setFontSize(11);
         doc.setFont(undefined, "normal");
-        const introLines = doc.splitTextToSize(section.intro, 180);
+        const introLines = doc.splitTextToSize(stripHtml(section.intro), 180);
         introLines.forEach((line) => {
           if (yPosition > 280) {
             doc.addPage();
@@ -51,14 +65,9 @@ function LegalNotices() {
         yPosition += 5;
       }
 
-      const cleanContent = section.content
-        .replace(/<br\s*\/?>/gi, "\n")
-        .replace(/<[^>]+>/g, "")
-        .replace(/&nbsp;/g, " ");
-
+      const cleanContent = stripHtml(section.content);
       doc.setFontSize(11);
       const contentLines = doc.splitTextToSize(cleanContent, 180);
-
       contentLines.forEach((line) => {
         if (yPosition > 280) {
           doc.addPage();
@@ -86,10 +95,11 @@ function LegalNotices() {
             {section.title}
           </h2>
           {section.intro && (
-            <p className="mb-6 text-gray-700 leading-relaxed">
-              {section.intro}
-            </p>
-          )}
+          <p
+            className="mb-6 text-gray-700 leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: section.intro }}
+          />
+        )}
           <div
             className={
               index === 0
@@ -126,8 +136,8 @@ function LegalNotices() {
     <div className="bg-white -mx-4 ">
       <div className="min-h-screen">
         <div className="container mx-auto px-3 py-12">
-          {/* Mobile TOC - Shows before content on small screens */}
-          <div className="lg:hidden mb-8  bg-white shadow-md p-6   rounded-lg">
+          {/* Mobile TOC */}
+          <div className="lg:hidden mb-8 bg-white shadow-md p-6 rounded-lg">
             <h2 className="text-xl font-bold mb-4 text-gray-800 border-b pb-2">
               Table of Contents
             </h2>
@@ -163,15 +173,15 @@ function LegalNotices() {
           </div>
 
           <div className="flex flex-col lg:flex-row gap-10 lg:px-2">
-            {/* Main content - comes first in DOM for mobile */}
+            {/* Main content */}
             <div className="lg:w-2/3 order-2 lg:order-1 px-2">
               {documentData.sections.map((section, index) =>
                 renderSection(section, index)
               )}
             </div>
 
-            {/* Desktop TOC - Shows on right side on larger screens */}
-            <div className="lg:w-1/3  order-1 lg:order-2">
+            {/* Desktop TOC */}
+            <div className="lg:w-1/3 order-1 lg:order-2">
               <div className="sticky top-4 hidden lg:block">
                 <div className="bg-white rounded-lg shadow-md p-6 mb-6">
                   <h2 className="text-xl font-bold mb-4 text-gray-800 border-b pb-2">
