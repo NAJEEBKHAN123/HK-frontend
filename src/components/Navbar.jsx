@@ -22,7 +22,7 @@ const Navbar = () => {
 
   // Active link detection (excludes home page)
   const isActive = (path) => {
-    if (path === '') return false; // Never show active state for home
+    if (path === '') return false; 
     return location.pathname === `/${path}` || 
            (path !== '' && location.pathname.includes(path));
   };
@@ -32,7 +32,7 @@ const Navbar = () => {
     hover:text-white 
     transition-colors 
     duration-300
-    ${isActive(path) ? 'text-white font-bold ' : 'text-gray-200'}
+    ${isActive(path) ? 'text-gray-300' : 'text-gray-100'}
     text-sm xl:text-base
   `;
 

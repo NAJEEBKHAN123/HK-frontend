@@ -273,7 +273,7 @@ function HeroSec() {
                       "Voir nos services de création d'entreprise" : 
                       "View our company formation services"}
                   >
-                    {translations.secondary_cta || (language === 'fr' ? "Nos Services" : "Our Services")}
+                    {translations.secondary_cta}
                   </motion.button>
                 </Link>
               </motion.div>
