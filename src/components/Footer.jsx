@@ -196,7 +196,7 @@ const Footer = () => {
             <CarbonStatic />
             <div className="flex flex-wrap gap-4 w-full p-4 pt-6">
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/ouvrir-societehk/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-cyan-400 transition transform hover:-translate-y-1"
@@ -204,7 +204,7 @@ const Footer = () => {
                 <FaLinkedin size={20} />
               </a>
               <a
-                href="https://facebook.com"
+                href="https://www.facebook.com/profile.php?id=61578182555199"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-blue-500 transition transform hover:-translate-y-1"
@@ -212,7 +212,7 @@ const Footer = () => {
                 <FaFacebook size={20} />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/ouvrirsocietehk?igsh=MWoyZ21tdHZ6N2xrcA=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-pink-500 transition transform hover:-translate-y-1"
@@ -228,7 +228,7 @@ const Footer = () => {
                 <FaYoutube size={20} />
               </a>
               <a
-                href="https://tiktok.com"
+                href="https://www.tiktok.com/@ouvrirsocietehk?is_from_webapp=1&sender_device=pc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-black dark:hover:text-white transition transform hover:-translate-y-1"

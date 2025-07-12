@@ -23,7 +23,7 @@
     const socialLinks = [
       {
         icon: <FaFacebook />,
-        url: "#",
+        url: "https://www.facebook.com/profile.php?id=61578182555199",
         label: "Conseils pour créer entreprise Hong Kong - Avantages fiscaux",
         title: "Régime fiscal avantageux Hong Kong | Société offshore experts",
         bgColor: "bg-[#3b5998]",
@@ -31,7 +31,7 @@
       },
       {
         icon: <FaLinkedin />,
-        url: "#",
+        url: "https://www.linkedin.com/in/ouvrir-societehk/",
         label: "Réseau professionnel pour entreprise internationale en Asie",
         title: "Business expansion Asie | Fiscalité favorable Hong Kong vs Dubaï",
         bgColor: "bg-[#0077b5]",
@@ -47,7 +47,7 @@
       },
       {
         icon: <FaInstagram />,
-        url: "#",
+        url: "https://www.instagram.com/ouvrirsocietehk?igsh=MWoyZ21tdHZ6N2xrcA==",
         label: "Success stories: Entreprise prospère en Asie business hub",
         title: "Business growth Hong Kong | Zéro impôt stratégies",
         bgColor: "bg-gradient-to-r from-[#f09433] via-[#e6683c] to-[#dc2743]",
@@ -55,7 +55,7 @@
       },
       {
         icon: <FaTiktok />,
-        url: "#",
+        url: "https://www.tiktok.com/@ouvrirsocietehk?is_from_webapp=1&sender_device=pc",
         label: "Astuces: Entreprendre Hong Kong avec coûts réduits",
         title: "Low cost incorporation | Digital transformation Hong Kong",
         bgColor: "bg-[#010101]",
