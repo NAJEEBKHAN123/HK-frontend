@@ -346,7 +346,7 @@ export default function WhoWeAre() {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    <div className="absolute top-4 left-4 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    <div className="absolute top-4 left-4 bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-bold">
                       {member.years}+ Years
                     </div>
                     <div className="absolute bottom-0 left-0 p-6">

@@ -293,6 +293,15 @@
     "compliance": "Compliance",
     "sitemap": "Sitemap",
     "copyright": "Licensed by Hong Kong SAR Government",
+    "Legals" : "Legals",
+    "PrivacyStatement": "Privacy Statement",
+    "LegalNotices": "Legal Notices",
+    "GeneralConditions": "General Conditions",
+    "CookiePolicy": "Cookie Policy",
+    "Accessibility": "Accessibility",
+    "YourChoices": "Your Choices for Privacy",
+    "Developedby" : "Developed by",
+
     "trustBadges": [
       {
         "text": "500+ Companies Incorporated in HK",

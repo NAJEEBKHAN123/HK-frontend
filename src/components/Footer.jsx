@@ -283,7 +283,7 @@ const Footer = () => {
                 to="/legal"
                 className="hover:text-cyan-500 transition-colors duration-200"
               >
-                Legals
+                {translations.Legals}
               </Link>
             </h3>
             <ul className="grid grid-cols-1 sm:grid-cols-1 gap-1">
@@ -296,7 +296,7 @@ const Footer = () => {
              hover:text-cyan-500`
                   }
                 >
-                  Privacy Statement
+                  {translations.PrivacyStatement}
                 </NavLink>
               </li>
               <li>
@@ -308,7 +308,7 @@ const Footer = () => {
              hover:text-blue-500`
                   }
                 >
-                  Legal Notices
+                  {translations.LegalNotices}
                 </NavLink>
               </li>
               <li>
@@ -320,7 +320,7 @@ const Footer = () => {
              hover:text-emerald-500`
                   }
                 >
-                  General Conditions
+                  {translations.GeneralConditions}
                 </NavLink>
               </li>
               <li>
@@ -332,7 +332,7 @@ const Footer = () => {
              hover:text-amber-500`
                   }
                 >
-                  Cookie Policy
+                  {translations.CookiePolicy}
                 </NavLink>
               </li>
               <li>
@@ -344,7 +344,7 @@ const Footer = () => {
              hover:text-purple-500`
                   }
                 >
-                  Accessibility
+                  {translations.Accessibility}
                 </NavLink>
               </li>
               <li>
@@ -356,7 +356,7 @@ const Footer = () => {
              hover:text-rose-500`
                   }
                 >
-                  Your Choices for Privacy
+                  {translations.YourChoices}
                 </NavLink>
               </li>
             </ul>
@@ -448,7 +448,7 @@ const Footer = () => {
 
                 <div className="group flex items-center bg-gray-100 hover:bg-gray-200/60 transition-colors duration-200 rounded-full px-3  lg:py-1 sm:px-4 py-1.5 sm:py-1.5 w-fit max-w-full">
                   <span className="text-xs sm:text-sm font-medium text-gray-700 whitespace-nowrap">
-                    Developed by
+                    {translations.Developedby}
                   </span>
                   <a
                     href="https://wa.me/923088440190"

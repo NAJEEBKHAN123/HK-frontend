@@ -77,8 +77,8 @@
 
   "services": {
     "seoTitle": "Services de création d'entreprise à Hong Kong | Experts en enregistrement commercial",
-   "seoDescription": "Services professionnels d’enregistrement d’entreprise à Hong Kong avec avantages fiscaux. Incorporation rapide, création de sociétés offshore et conseil aux entreprises pour l’expansion en Asie.",
-   "description": "De la création d’entreprise à Hong Kong à la mise en place d’une activité offshore, nous fournissons des solutions complètes avec des avantages fiscaux et une réglementation simplifiée.",
+    "seoDescription": "Services professionnels d’enregistrement d’entreprise à Hong Kong avec avantages fiscaux. Incorporation rapide, création de sociétés offshore et conseil aux entreprises pour l’expansion en Asie.",
+    "description": "De la création d’entreprise à Hong Kong à la mise en place d’une activité offshore, nous fournissons des solutions complètes avec des avantages fiscaux et une réglementation simplifiée.",
     "subtitle": "NOS SERVICES",
     "title": "Nos Services Complets",
     "ctaButton": "Démarrer avec Nos Services",
@@ -294,6 +294,14 @@
     "compliance": "Conformité",
     "sitemap": "Plan du Site",
     "copyright": "Agréé par le Gouvernement de Hong Kong",
+    "Legals": "Mentions légales",
+    "PrivacyStatement": "Politique de confidentialité",
+    "LegalNotices": "Avis juridiques",
+    "GeneralConditions": "Conditions générales",
+    "CookiePolicy": "Politique relative aux cookies",
+    "Accessibility": "Accessibilité",
+    "YourChoices": "Vos choix en matière de confidentialité",
+    "Developedby": "Développé par",
     "trustBadges": [
       {
         "text": "500+ Sociétés enregistrées à HK",
@@ -397,7 +405,6 @@
     "pageTitle": "Informations Légales"
   },
 
-  
   "commonLegalInfo": {
     "siteEditor": {
       "title": "I - ÉDITEUR DU SITE",
@@ -422,7 +429,6 @@
     }
   },
 
-  
   "cookieConsent": {
     "banner": {
       "title": "Votre vie privée compte",
@@ -465,7 +471,6 @@
     }
   },
 
-  
   "Privacy_legal": {
     "sections": [
       {
@@ -481,9 +486,9 @@
           ],
           "exampleTitle": "Exemple : Partenaire Web",
           "exampleItems": [
-            {"label": "Nom :", "value": "Najeeb Ullah"},
-            {"label": "Pays :", "value": "Pakistan"},
-            {"label": "Objectif :", "value": "Services de développement web"}
+            { "label": "Nom :", "value": "Najeeb Ullah" },
+            { "label": "Pays :", "value": "Pakistan" },
+            { "label": "Objectif :", "value": "Services de développement web" }
           ]
         }
       },
@@ -514,9 +519,12 @@
           ],
           "exampleTitle": "Fournisseur d'hébergement",
           "exampleItems": [
-            {"label": "Nom :", "value": "OVH Cloud"},
-            {"label": "Adresse :", "value": "2 rue Kellermann, 59100 Roubaix, France"},
-            {"label": "Téléphone :", "value": "+33 9 72 10 10 07"}
+            { "label": "Nom :", "value": "OVH Cloud" },
+            {
+              "label": "Adresse :",
+              "value": "2 rue Kellermann, 59100 Roubaix, France"
+            },
+            { "label": "Téléphone :", "value": "+33 9 72 10 10 07" }
           ]
         }
       },
@@ -593,7 +601,6 @@
     "tableOfContents": "TABLE DES MATIÈRES"
   },
 
-  
   "Cookies_legal": {
     "last_updated": "2 juillet 2025",
     "applies_to": "Résidents et résidents permanents légaux de l'Espace économique européen et de la Suisse.",
@@ -721,10 +728,7 @@
         }
       }
     ]
-  
-
-},
-
+  },
 
   "Accessibility": {
     "toc_title": "TABLE DES MATIÈRES",
@@ -838,7 +842,6 @@
     }
   },
 
-  
   "Conditions_legal": {
     "table_of_contents": "TABLE DES MATIÈRES",
     "sections": [
@@ -991,7 +994,6 @@
     ]
   },
 
-  
   "LegalNotices": {
     "table_of_contents": "TABLE DES MATIÈRES",
     "sections": {
@@ -1081,12 +1083,4 @@
       }
     }
   }
-
-
-
-
-
-
-
-
 }
