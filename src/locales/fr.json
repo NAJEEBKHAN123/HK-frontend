@@ -43,7 +43,8 @@
           "Création de société à Hong Kong.",
           "Inclus: 1 an de domiciliation.",
           "Non inclus: Ouverture de compte bancaire, services de secrétariat, comptabilité.",
-          "Adresse du bureau virtuel incluse."
+          "Adresse du bureau virtuel incluse.",
+          "Frais et documents gouvernementaux fournis."
         ],
         "recommended_text": "RECOMMANDÉ",
         "cta_button": "Commander"
@@ -55,7 +56,8 @@
           "Société avec compte bancaire.",
           "Inclus: Services de secrétariat, support prioritaire.",
           "Option comptabilité disponible.",
-          "Idéal pour: Consultants, entreprises en croissance."
+          "Idéal pour: Consultants, entreprises en croissance.",
+          "Traitement accéléré."
         ],
         "recommended_text": "RECOMMANDÉ",
         "cta_button": "Commander"
@@ -256,7 +258,7 @@
     "formPlaceholders": {
       "name": "Votre nom complet",
       "email": "votre@email.com",
-      "phone": "+852 1234 5678",
+      "phone": "+336 3025 8982",
       "message": "Comment pouvons-nous vous aider à créer votre entreprise à Hong Kong ?"
     },
     "formSending": "Envoi...",

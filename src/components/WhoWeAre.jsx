@@ -110,7 +110,7 @@ export default function WhoWeAre() {
 
   const handleBookClick = (e) => {
     e.preventDefault();
-    navigate("/contact", { state: { scrollToForm: true } });
+    navigate("/#booking-section", { state: { scrollToForm: true } });
   };
 
   const openModal = (member) => {

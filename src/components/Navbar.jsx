@@ -29,14 +29,19 @@ const Navbar = () => {
 
  
   const navLinkClass = (path) => `
-    hover:text-white 
+    hover:text-white
+    transition-all
+    duration-400
+    ease-in-out
+    hover:decoration-pink-500
+    hover:underline
     transition-colors 
-    duration-300
     ${isActive(path) ? 'text-gray-300' : 'text-gray-100'}
     text-sm xl:text-base
   `;
 
   const closeMobileMenu = () => setIsMenuOpen(false);
+
 
   const handleHomeClick = () => {
     if (window.location.pathname === "/") {
@@ -215,7 +220,7 @@ const Navbar = () => {
 
           <button
             onClick={handleBookingClick}
-            className="bg-gradient-to-r from-pink-600 to-pink-500 text-white px-4 xl:px-4 py-1.5 rounded hover:from-pink-700 hover:to-pink-600 transition-colors shadow-md hover:shadow-lg text-sm xl:text-base"
+            className="bg-gradient-to-r from-pink-600  to-pink-500 text-white px-4 xl:px-4 py-1.5 rounded hover:from-pink-700 hover:to-pink-600 transition-colors shadow-md hover:shadow-lg text-sm xl:text-base"
             aria-label={translations.book_appointment}
           >
             {translations.book_appointment}
