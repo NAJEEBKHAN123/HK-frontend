@@ -85,26 +85,44 @@ export default function PricingSection() {
   const translations =
     language === "fr" ? frTranslations.pricing : enTranslations.pricing;
 
-  // SEO-optimized hidden content
-  const seoContent = {
-    fr: `
-      Création entreprise Hong Kong à partir de ${translations?.plans?.[0]?.price || 'XXX'}€. 
-      Société offshore avec avantages fiscaux et zéro impôt. Services en ligne pour incorporation rapide. 
-      Comparez Hong Kong vs Dubaï pour votre entreprise internationale. Structure sociétaire optimale 
-      avec compliance Hong Kong. Solutions pour start-up Asie et business expansion Asie.
-    `,
-    en: `
-      Hong Kong company formation from ${translations?.plans?.[0]?.price || 'XXX'}€. 
-      Offshore company with tax advantages and zero tax. Online services for fast incorporation. 
-      Compare Hong Kong vs Dubai for your international business. Optimal corporate structure 
-      with Hong Kong compliance. Solutions for Asia start-up and business expansion in Asia.
-    `
+  // Define consistent plan keys and base prices
+  const planData = {
+    STARTER: {
+      en: "STARTER Pack",
+      fr: "Pack STARTER",
+      price: 3900
+    },
+    TURNKEY: {
+      en: "TURNKEY Pack",
+      fr: "Pack TURNKEY",
+      price: 4600
+    },
+    PREMIUM: {
+      en: "PREMIUM Pack",
+      fr: "Pack PREMIUM",
+      price: 9800
+    }
   };
 
-  const pricingPlans = (translations?.plans || []).map((plan, index) => ({
-    ...plan,
-    recommended: index === 1,
-  }));
+  // Create pricing plans with consistent keys
+  const pricingPlans = Object.keys(planData).map((key, index) => {
+    const isRecommended = index === 1;
+    return {
+      key,
+      title: planData[key][language] || planData[key].en,
+      price: `€${planData[key].price.toLocaleString()}`,
+      priceValue: planData[key].price,
+      features: translations?.plans?.[index]?.features || [],
+      recommended: isRecommended,
+      recommended_text: isRecommended ? (language === 'fr' ? 'RECOMMANDÉ' : 'RECOMMENDED') : ''
+    };
+  });
+
+  // SEO-optimized hidden content
+  const seoContent = {
+    fr: `Création entreprise Hong Kong à partir de ${planData.STARTER.price}€. Société offshore avec avantages fiscaux.`,
+    en: `Hong Kong company formation from ${planData.STARTER.price}€. Offshore company with tax advantages.`
+  };
 
   return (
     <motion.section
@@ -116,7 +134,7 @@ export default function PricingSection() {
       itemScope
       itemType="https://schema.org/Product"
     >
-      {/* Decorative elements matching Who We Are */}
+      {/* Decorative elements */}
       <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url(pattern.webp)" }} />
       <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-yellow-900/30 to-transparent" />
       <motion.div
@@ -178,7 +196,7 @@ export default function PricingSection() {
                 },
               },
             }}
-            className="text-gray-300  lg:text-center max-w-4xl mx-auto text-lg pt-4 md:text-xl px-"
+            className="text-gray-300 lg:text-center max-w-4xl mx-auto text-lg pt-4 md:text-xl"
             itemProp="description"
           >
             <span className="text-yellow-400">{translations?.subtitlePart1}</span>{" "}
@@ -201,7 +219,7 @@ export default function PricingSection() {
               key={index}
               variants={cardVariants}
               whileHover="hover"
-              className={` relative w-full rounded-xl border p-6 sm:p-8 grid grid-rows-[auto_1fr_auto] transition-all duration-300 backdrop-blur-sm ${
+              className={`relative w-full rounded-xl border p-6 sm:p-8 grid grid-rows-[auto_1fr_auto] transition-all duration-300 backdrop-blur-sm ${
                 plan.recommended
                   ? "border-yellow-400 bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg shadow-yellow-500/20"
                   : "border-gray-700 bg-gray-900/60 hover:border-gray-600"
@@ -209,11 +227,10 @@ export default function PricingSection() {
               itemScope
               itemType="https://schema.org/Offer"
             >
-              {/* Schema.org metadata */}
-              <meta itemProp="price" content={plan.price.replace(/[^0-9]/g, '')} />
+              <meta itemProp="price" content={plan.priceValue} />
               <meta itemProp="priceCurrency" content="EUR" />
               <link itemProp="availability" href="https://schema.org/InStock" />
-              <meta itemProp="url" content={`${window.location.origin}/order-form?plan=${encodeURIComponent(plan.title)}`} />
+              <meta itemProp="url" content={`${window.location.origin}/order-form?plan=${plan.key}&price=${plan.priceValue}`} />
 
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl" />
 
@@ -224,7 +241,7 @@ export default function PricingSection() {
                   className="absolute -top-3 left-1/2 -translate-x-1/2 bg-yellow-400 text-black px-4 py-1 rounded-full text-xs font-bold shadow"
                   {...pulseAnimation}
                 >
-                  {plan.recommended_text || "RECOMMENDED"}
+                  {plan.recommended_text}
                 </motion.div>
               )}
 
@@ -260,7 +277,7 @@ export default function PricingSection() {
                   className="text-3xl sm:text-4xl text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 mt-2"
                   itemProp="price"
                 >
-                  {plan.price || "€0"}
+                  {plan.price}
                 </motion.div>
               </div>
 
@@ -278,7 +295,7 @@ export default function PricingSection() {
               />
 
               <ul className="space-y-1 text-left text-base" itemProp="description">
-                {(plan.features || []).map((feature, idx) => (
+                {plan.features.map((feature, idx) => (
                   <motion.li
                     key={idx}
                     variants={listItemVariants}
@@ -306,7 +323,7 @@ export default function PricingSection() {
 
               <motion.button
                 onClick={() =>
-                  navigate(`/order-form?plan=${plan.title}&price=${plan.price}`)
+                  navigate(`/order-form?plan=${plan.key}&price=${plan.priceValue}`)
                 }
                 initial={{ opacity: 0, y: 20 }}
                 animate={{
@@ -340,7 +357,7 @@ export default function PricingSection() {
                     : `Select ${plan.title} plan for Hong Kong company formation`
                 }
               >
-                {plan.cta_button || "Get Started"}
+                {translations?.cta_button || "Get Started"}
               </motion.button>
             </motion.div>
           ))}

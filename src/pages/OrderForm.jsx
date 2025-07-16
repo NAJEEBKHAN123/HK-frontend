@@ -18,22 +18,40 @@ const OrderForm = () => {
   const t =
     language === "fr" ? frTranslations.orderForm : enTranslations.orderForm;
 
-  // Plan prices (unchanged)
+  // Plan prices with consistent keys
   const planPrices = {
-    "STARTER Pack": 3900,
-    "TURNKEY Pack": 4600,
-    "PREMIUM Pack": 9800,
+    STARTER: 3900,
+    TURNKEY: 4600,
+    PREMIUM: 9800,
   };
 
-  // Get plan/price from URL (unchanged)
-  const planParam = queryParams.get("plan");
+  // Plan display names by language
+  const planDisplayNames = {
+    en: {
+      STARTER: "STARTER Pack",
+      TURNKEY: "TURNKEY Pack",
+      PREMIUM: "PREMIUM Pack",
+    },
+    fr: {
+      STARTER: "Pack STARTER",
+      TURNKEY: "Pack TURNKEY",
+      PREMIUM: "Pack PREMIUM",
+    }
+  };
+
+  // Get plan/price from URL
+  const planKey = queryParams.get("plan");
   const priceParam = queryParams.get("price");
-  const validPlans = Object.keys(planPrices);
-  const plan = validPlans.includes(planParam) ? planParam : "STARTER Pack";
-  const price =
-    priceParam && !isNaN(Number(priceParam))
-      ? Number(priceParam)
-      : planPrices[plan] || 0;
+
+  // Validate plan key
+  const validPlan = Object.keys(planPrices).includes(planKey) 
+    ? planKey 
+    : "STARTER";
+
+  // Get price - use URL param if valid, otherwise fall back to plan price
+  const price = priceParam && !isNaN(Number(priceParam))
+    ? Number(priceParam)
+    : planPrices[validPlan];
 
   const [form, setForm] = useState({
     fullName: "",
@@ -42,7 +60,7 @@ const OrderForm = () => {
     phone: "",
     email: "",
     idFile: null,
-    plan: plan,
+    plan: validPlan,
     price: price,
   });
 
@@ -74,7 +92,7 @@ const OrderForm = () => {
         throw new Error(validationErrors.join(", "));
       }
 
-      // Upload ID to Cloudinary (unchanged)
+      // Upload ID to Cloudinary
       const cloudinaryForm = new FormData();
       cloudinaryForm.append("file", form.idFile);
       cloudinaryForm.append("upload_preset", "id_uploads");
@@ -107,9 +125,14 @@ const OrderForm = () => {
     }
   };
 
-  // Price formatter (unchanged)
+  // Price formatter
   const formatPrice = (amount) => {
-    return `€${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+    return `€${amount.toLocaleString()}`;
+  };
+
+  // Get display name for current plan based on language
+  const getDisplayPlanName = () => {
+    return planDisplayNames[language][form.plan] || planDisplayNames.en[form.plan];
   };
 
   if (success) {
@@ -120,7 +143,7 @@ const OrderForm = () => {
             {t.success.title}
           </h2>
           <p className="text-lg">
-            {t.success.message.replace("{plan}", form.plan)}
+            {t.success.message.replace("{plan}", getDisplayPlanName())}
           </p>
           <p>
             {t.success.totalLabel}: <strong>{formatPrice(form.price)}</strong>
@@ -153,7 +176,9 @@ const OrderForm = () => {
         <div className="text-center">
           <p className="text-gray-600">
             {t.planLabel}:{" "}
-            <span className="font-semibold text-yellow-600">{form.plan}</span>
+            <span className="font-semibold text-yellow-600">
+              {getDisplayPlanName()}
+            </span>
           </p>
           <p className="text-lg font-medium text-black mt-1">
             {t.totalLabel}: {formatPrice(form.price)}
