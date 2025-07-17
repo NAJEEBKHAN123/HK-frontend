@@ -1,31 +1,37 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
 import { LanguageContext } from "../context/LanguageContext";
 import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
+
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+const stripePromise = loadStripe(
+  "pk_test_51RcrVXRszf61FaWlatvMzc8iR5uDQPrI9fJ0TC2c3uekoMp6I3ClIl5VJnkVbQamDOY6dsB35K2e2gq0OlGKH8k000lgfpXzvh"
+);
 
 const OrderForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
+  const [paymentProcessing, setPaymentProcessing] = useState(false);
+  const [paymentStatus, setPaymentStatus] = useState(null);
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const { language } = useContext(LanguageContext);
 
-  // Get translations based on current language
   const t =
     language === "fr" ? frTranslations.orderForm : enTranslations.orderForm;
 
-  // Plan prices with consistent keys
   const planPrices = {
     STARTER: 3900,
     TURNKEY: 4600,
     PREMIUM: 9800,
   };
 
-  // Plan display names by language
   const planDisplayNames = {
     en: {
       STARTER: "STARTER Pack",
@@ -36,22 +42,20 @@ const OrderForm = () => {
       STARTER: "Pack STARTER",
       TURNKEY: "Pack TURNKEY",
       PREMIUM: "Pack PREMIUM",
-    }
+    },
   };
 
-  // Get plan/price from URL
   const planKey = queryParams.get("plan");
   const priceParam = queryParams.get("price");
 
-  // Validate plan key
-  const validPlan = Object.keys(planPrices).includes(planKey) 
-    ? planKey 
+  const validPlan = Object.keys(planPrices).includes(planKey)
+    ? planKey
     : "STARTER";
 
-  // Get price - use URL param if valid, otherwise fall back to plan price
-  const price = priceParam && !isNaN(Number(priceParam))
-    ? Number(priceParam)
-    : planPrices[validPlan];
+  const price =
+    priceParam && !isNaN(Number(priceParam))
+      ? Number(priceParam)
+      : planPrices[validPlan];
 
   const [form, setForm] = useState({
     fullName: "",
@@ -62,7 +66,20 @@ const OrderForm = () => {
     idFile: null,
     plan: validPlan,
     price: price,
+    currency: "eur",
+    status: "Pending Payment",
   });
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    if (query.get("success")) {
+      setPaymentStatus("success");
+      setSuccess(true);
+    }
+    if (query.get("cancelled")) {
+      setPaymentStatus("cancelled");
+    }
+  }, []);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -73,26 +90,109 @@ const OrderForm = () => {
     }
   };
 
+  const handlePayment = async (orderId) => {
+    setPaymentProcessing(true);
+    setError("");
+
+    try {
+      // Validate orderId exists
+      if (!orderId) {
+        throw new Error("Missing order ID for payment processing");
+      }
+
+      const orderDetails = {
+        orderId,
+        amount: form.price,
+        currency: form.currency,
+        customerEmail: form.email,
+        customerPhone: form.phone,
+        plan: form.plan,
+      };
+
+      // Store order details temporarily
+      sessionStorage.setItem("currentOrder", JSON.stringify(orderDetails));
+
+      // Create payment session with error handling
+      const response = await axios.post(
+        `${API_BASE_URL}/api/payments/sessions`,
+        {
+          ...orderDetails,
+          successUrl: `${window.location.origin}/success?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`,
+          cancelUrl: `${window.location.origin}/payment-cancelled?order_id=${orderId}`,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          timeout: 15000, // 15 second timeout
+        }
+      );
+
+      if (!response.data) {
+        throw new Error("Empty response from payment server");
+      }
+
+      // Handle different payment provider responses
+      if (response.data.url) {
+        // Direct URL redirect
+        window.location.href = response.data.url;
+      } else if (response.data.sessionId || response.data.id) {
+        // Stripe.js redirect
+        const stripe = await stripePromise;
+        const { error } = await stripe.redirectToCheckout({
+          sessionId: response.data.sessionId || response.data.id,
+        });
+        if (error) throw error;
+      } else {
+        throw new Error("Unexpected payment session response format");
+      }
+    } catch (err) {
+      let errorMessage = "Payment processing failed. Please try again.";
+
+      if (err.response) {
+        // Handle specific HTTP error codes
+        if (err.response.status === 500) {
+          errorMessage =
+            "Payment service is currently unavailable. Please try again later.";
+        } else if (err.response.data?.message) {
+          errorMessage = err.response.data.message;
+        }
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+
+      setError(errorMessage);
+      setPaymentProcessing(false);
+
+      // Optional: Add retry logic here if needed
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setError("");
 
     try {
-      // Validation with translated error messages
-      const validationErrors = [];
-      if (!form.fullName?.trim()) validationErrors.push(t.errors.fullName);
-      if (!form.email?.trim()) validationErrors.push(t.errors.email);
-      if (!form.phone?.trim()) validationErrors.push(t.errors.phone);
-      if (!form.birthday) validationErrors.push(t.errors.birthday);
-      if (!form.address?.trim()) validationErrors.push(t.errors.address);
-      if (!form.idFile) validationErrors.push(t.errors.idFile);
+      // Validate all required fields
+      const requiredFields = {
+        fullName: t.errors.fullName,
+        email: t.errors.email,
+        phone: t.errors.phone,
+        birthday: t.errors.birthday,
+        address: t.errors.address,
+        idFile: t.errors.idFile,
+      };
 
-      if (validationErrors.length > 0) {
-        throw new Error(validationErrors.join(", "));
+      const missingFields = Object.entries(requiredFields)
+        .filter(([field]) => !form[field]?.toString().trim())
+        .map(([_, message]) => message);
+
+      if (missingFields.length > 0) {
+        throw new Error(missingFields.join(", "));
       }
 
-      // Upload ID to Cloudinary
+      // Upload ID document to Cloudinary
       const cloudinaryForm = new FormData();
       cloudinaryForm.append("file", form.idFile);
       cloudinaryForm.append("upload_preset", "id_uploads");
@@ -102,37 +202,77 @@ const OrderForm = () => {
         cloudinaryForm
       );
 
-      // Create order payload
+      if (!cloudinaryRes.data.secure_url) {
+        throw new Error("ID document upload failed - no secure URL returned");
+      }
+
+      // Prepare order payload
       const payload = {
         fullName: form.fullName.trim(),
-        email: form.email.trim(),
+        email: form.email.trim().toLowerCase(),
         phone: form.phone.trim(),
-        birthday: new Date(form.birthday).toISOString(),
+        birthday: form.birthday,
         address: form.address.trim(),
         idImage: cloudinaryRes.data.secure_url,
-        plan: form.plan,
+        plan: form.plan.toUpperCase(),
         price: form.price,
-        currency: "eur",
-        status: "Pending Payment Instructions",
+        currency: form.currency,
+        metadata: {
+          source: "web-form",
+          campaign: "hong-kong-company",
+        },
       };
 
-      await axios.post("http://localhost:3000/api/orders", payload);
-      setSuccess(true);
+      const orderResponse = await axios.post(
+        `${API_BASE_URL}/api/orders`,
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      // Extract order ID from various possible response structures
+      const orderId =
+        orderResponse.data?._id ||
+        orderResponse.data?.id ||
+        orderResponse.data?.orderId ||
+        orderResponse.data?.order?._id ||
+        orderResponse.data?.order?.id ||
+        orderResponse.data?.data?._id;
+
+      if (!orderId) {
+        throw new Error(
+          "Order created successfully but no ID returned. Please contact support."
+        );
+      }
+
+      await handlePayment(orderId);
     } catch (err) {
-      setError(err.response?.data?.message || err.message);
-    } finally {
+      let errorMessage = err.response?.data?.message || err.message;
+
+      // Handle specific error cases
+      if (err.response?.status === 409) {
+        errorMessage = "An order with this email already exists";
+      } else if (err.response?.status === 400) {
+        errorMessage = "Invalid data submitted. Please check your information.";
+      }
+
+      setError(errorMessage || "Failed to submit order. Please try again.");
       setLoading(false);
+
+      // Optional: Re-enable the form for correction
     }
   };
-
-  // Price formatter
   const formatPrice = (amount) => {
-    return `€${amount.toLocaleString()}`;
+    return `€${amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
   };
 
-  // Get display name for current plan based on language
   const getDisplayPlanName = () => {
-    return planDisplayNames[language][form.plan] || planDisplayNames.en[form.plan];
+    return (
+      planDisplayNames[language][form.plan] || planDisplayNames.en[form.plan]
+    );
   };
 
   if (success) {
@@ -140,10 +280,14 @@ const OrderForm = () => {
       <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5 py-20">
         <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5 text-center">
           <h2 className="text-2xl font-bold text-green-600">
-            {t.success.title}
+            {paymentStatus === "success"
+              ? t.paymentSuccess.title
+              : t.success.title}
           </h2>
           <p className="text-lg">
-            {t.success.message.replace("{plan}", getDisplayPlanName())}
+            {paymentStatus === "success"
+              ? t.paymentSuccess.message.replace("{plan}", getDisplayPlanName())
+              : t.success.message.replace("{plan}", getDisplayPlanName())}
           </p>
           <p>
             {t.success.totalLabel}: <strong>{formatPrice(form.price)}</strong>
@@ -158,6 +302,28 @@ const OrderForm = () => {
               }}
             />
           </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (paymentStatus === "cancelled") {
+    return (
+      <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5 py-20">
+        <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5 text-center">
+          <h2 className="text-2xl font-bold text-red-600">
+            {t.paymentCanceled.title}
+          </h2>
+          <p className="text-lg">{t.paymentCanceled.message}</p>
+          <button
+            onClick={() => {
+              setPaymentStatus(null);
+              setError("");
+            }}
+            className="mt-4 px-6 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600"
+          >
+            {t.paymentCanceled.tryAgain}
+          </button>
         </div>
       </div>
     );
@@ -185,7 +351,6 @@ const OrderForm = () => {
           </p>
         </div>
 
-        {/* Form Fields */}
         {[
           { name: "fullName", label: t.fields.fullName, type: "text" },
           { name: "email", label: t.fields.email, type: "email" },
@@ -243,12 +408,18 @@ const OrderForm = () => {
 
         <button
           type="submit"
-          disabled={loading}
+          disabled={loading || paymentProcessing}
           className={`w-full py-3 px-6 rounded-md font-semibold text-white ${
-            loading ? "bg-gray-400" : "bg-yellow-500 hover:bg-yellow-600"
+            loading || paymentProcessing
+              ? "bg-gray-400"
+              : "bg-yellow-500 hover:bg-yellow-600"
           }`}
         >
-          {loading ? t.buttons.submitting : t.buttons.submit}
+          {loading
+            ? t.buttons.submitting
+            : paymentProcessing
+            ? t.buttons.processingPayment
+            : `${formatPrice(form.price)} ${t.pay}`}
         </button>
       </form>
     </div>

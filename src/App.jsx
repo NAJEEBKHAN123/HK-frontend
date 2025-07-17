@@ -50,8 +50,8 @@ function App() {
           />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/order-form" element={<OrderForm />} />
-          <Route path="/success" element={<SuccessPage />} />
-          <Route path="/cancel" element={<CancelPage />} />
+          <Route path="/payment-success" element={<SuccessPage />} />
+          <Route path="/payment-cancelled" element={<CancelPage />} />
 
           {/* No fonud route  */}
           <Route path="*" element={<NotFound />} />

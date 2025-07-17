@@ -356,6 +356,7 @@
       "submit": "Complete Registration",
       "submitting": "Submitting..."
     },
+    "pay" : "Pay Now",
     "fields": {
       "fullName": "Full Name",
       "email": "Email",
@@ -376,7 +377,7 @@
       "title": "Order Submitted Successfully!",
       "message": "We've received your order for the {plan} plan.",
       "total": "Total Amount",
-      "contact": "Our team will contact you shortly at {email} or {phone} with payment instructions."
+      "contact": "Our team _ contact you shortly at {email} or {phone} with payment instructions."
     }
   },
 
@@ -1113,14 +1114,42 @@
         "button": "Download PDF Version"
       }
     }
+  },
+
+  "paymentSuccess": {
+    "title": "Payment Successful!",
+    "message": "Thank you for your purchase. Your payment has been processed successfully.",
+    "download": "Download Receipt",
+    "downloading": "Generating Receipt...",
+    "downloadFailed": "Failed to download receipt",
+    "missingSessionId": "Session ID is missing",
+    "paymentVerificationFailed": "Payment verification failed",
+    "errorProcessingPayment": "Error processing your payment",
+    "date": "Date",
+    "contactSupport": "Contact Support",
+    "returnHome": "Return Home"
+  },
+
+  "paymentCanceled": {
+    "title": "Payment Canceled",
+    "message": "Your payment was not completed. Your cart has been saved.",
+    "retryPayment": "Retry Payment",
+    "returnHome": "Return to Home",
+    "contactSupport": "Need help? Contact support"
   }
 
 
-
-
-
-
-
-
-
 }
+  
+ 
+
+
+
+
+
+
+
+
+
+
+

@@ -334,6 +334,7 @@
       "submit": "Finaliser l'inscription",
       "submitting": "Envoi en cours..."
     },
+    "pay": "Payez maintenant",
     "fields": {
       "fullName": "Nom complet",
       "email": "E-mail",
@@ -1084,5 +1085,28 @@
         "button": "Télécharger la version PDF"
       }
     }
+  },
+
+   "paymentSuccess": {
+    "title": "Paiement réussi !",
+    "message": "Merci pour votre achat. Votre paiement a été traité avec succès.",
+    "download": "Télécharger le reçu",
+    "downloading": "Génération du reçu...",
+    "downloadFailed": "Échec du téléchargement du reçu",
+    "missingSessionId": "ID de session manquant",
+    "paymentVerificationFailed": "Échec de la vérification du paiement",
+    "errorProcessingPayment": "Erreur lors du traitement de votre paiement",
+    "date": "Date",
+    "contactSupport": "Contacter le support",
+    "returnHome": "Retour à l'accueil"
+  },
+
+  "paymentCanceled": {
+    "title": "Paiement Annulé",
+    "message": "Votre paiement n'a pas abouti. Votre panier a été sauvegardé.",
+    "retryPayment": "Réessayer le Paiement",
+    "returnHome": "Retour à l'Accueil",
+    "contactSupport": "Besoin d'aide ? Contactez le support"
   }
+
 }
