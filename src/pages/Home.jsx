@@ -7,6 +7,7 @@ import ContactUs from '../components/Contact';
 import Faq from '../pages/Faq';
 import BookingModal from '../components/BookingModal';
 import CookieConsent from './legal/Choices';
+import ServicePricing from '../components/servicePricing';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <Hero />
       <Cards />
       <OurServices />
+      <ServicePricing />
       <Faq />
       <WhoWeAre />
       <BookingModal  id="booking-section" />
