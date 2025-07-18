@@ -22,10 +22,7 @@ const SuccessPage = () => {
   const sessionId = searchParams.get('session_id');
 
   const formatPrice = (price) => {
-    return new Intl.NumberFormat(language === 'fr' ? 'fr-FR' : 'en-US', {
-      style: 'currency',
-      currency: 'EUR'
-    }).format(price);
+    return `€${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
   };
 
   const formatDateTime = (dateString) => {
