@@ -39,6 +39,9 @@ const AdminSidebar = () => {
           <Link to="/admin/orders" className="hover:text-cyan-200" onClick={() => setIsOpen(false)}>
             Order
           </Link>
+          <Link to="/admin/create-partner" className="hover:text-cyan-200" onClick={() => setIsOpen(false)}>
+            Create Partner 
+          </Link>
           <Link to="/admin/contacts" className="hover:text-cyan-200" onClick={() => setIsOpen(false)}>
             View Contacts
           </Link>

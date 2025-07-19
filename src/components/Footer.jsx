@@ -7,6 +7,8 @@ import {
   FaLinkedin,
   FaYoutube,
   FaTiktok,
+  FaCog,
+  FaUser
 } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import {
@@ -15,6 +17,7 @@ import {
   FiArrowUp,
   FiMapPin,
   FiPhoneCall,
+    
 } from "react-icons/fi";
 import QRCode from "react-qr-code";
 import { LanguageContext } from "../context/LanguageContext";
@@ -135,7 +138,6 @@ const Footer = () => {
                 </span>
               </div>
               <div className="flex flex-wrap items-center gap-4 md:gap-6 justify-center flex-1">
-               
                 <a
                   href={whatsappUrl}
                   target="_blank"
@@ -238,9 +240,9 @@ const Footer = () => {
             </div>
           </div>
 
-           {/* Column 2: Contact */}
-        
-           <div className="">
+          {/* Column 2: Contact */}
+
+          <div className="">
             <h3 className="text-lg font-semibold sm:text-start mb-4  sm:mb-12 text-cyan-300">
               {translations.hkOffice}
             </h3>
@@ -274,10 +276,9 @@ const Footer = () => {
             </ul>
           </div>
 
-        
-           {/* Column 3: Quick Links */}
-       
-            <div className="legal-links">
+          {/* Column 3: Quick Links */}
+
+          <div className="legal-links">
             <h3 className="text-lg font-semibold mb-4 text-cyan-400">
               <Link
                 to="/legal"
@@ -392,7 +393,6 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-gray-700/50 pt-6 md:pt-8 ">
           <div className="mx-auto">
-
             <div className="flex flex-col md:flex-row justify-between items-center gap-4 md:gap-6">
               {/* Left side - Copyright with dynamic year animation */}
               <motion.div
@@ -418,32 +418,20 @@ const Footer = () => {
                 transition={{ type: "spring", stiffness: 300 }}
                 className="flex  xs:flex-row gap-6 items-center"
               >
+               <Link to='/partner-signup'>
+                 <button className="flex items-center gap-2  py-2 text-white rounded hover:bg-blue-700">
+                  <FaUser /> 
+                </button>
+               </Link>
                 <Link
                   to="/admin/login"
                   className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-xs sm:text-sm"
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4 w-4 group-hover:rotate-12 transition-transform"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                 <span className="hidden lg:inline-block">Admin Dashboard</span>
-                 <span className="inline-block lg:hidden">Admin</span>
+                  <FaCog className="h-4 w-4 group-hover:rotate-12 transition-transform" />
+                  <span className="hidden lg:inline-block">
+                    Admin Dashboard
+                  </span>
+                  <span className="inline-block lg:hidden">Admin</span>
                 </Link>
 
                 <div className="group flex items-center bg-gray-100 hover:bg-gray-200/60 transition-colors duration-200 rounded-full px-3  lg:py-1 sm:px-4 py-1.5 sm:py-1.5 w-fit max-w-full">

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import AdminLayout from "../components/AdminLayout";
+import AdminLayout from "../../components/admin/AdminLayout";
 import axios from "axios";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
 
 Modal.setAppElement("#root");
@@ -21,7 +21,7 @@ const AdminOrders = () => {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const res = await axios.get("http://localhost:3000/api/orders");
+        const res = await axios.get(`${API_BASE_URL}/api/orders`);
         setOrders(res.data.data);
       } catch (err) {
         console.error("Failed to fetch orders:", err);
@@ -57,7 +57,7 @@ const AdminOrders = () => {
       };
 
       const { data } = await axios.patch(
-        `${"http://localhost:3000/api"}/orders/${selectedOrder._id}`,
+        `${API_BASE_URL}/orders/${selectedOrder._id}`,
         updateData,
         {
           headers: {

@@ -6,6 +6,7 @@ import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
 import { useNavigate } from "react-router-dom";
 
+
 // Animation Configs (unchanged)
 const container = {
   hidden: { opacity: 0 },

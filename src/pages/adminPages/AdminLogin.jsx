@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"; // Install via: npm install axios
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -12,13 +14,13 @@ const AdminLogin = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:3000/api/admin/login", {
+      const res = await axios.post(`${API_BASE_URL}/api/admin/login`, {
         email,
         password,
       });
 
       // Save token and user data in localStorage
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("adminToken", res.data.token);
       localStorage.setItem("isAdmin", "true");
       localStorage.setItem("adminInfo", JSON.stringify(res.data.admin));
 

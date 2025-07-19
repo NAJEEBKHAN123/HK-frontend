@@ -1,13 +1,13 @@
-import React from 'react';
-import Hero from '../components/HeroSec';
-import Cards from '../components/Cards';
-import OurServices from '../components/OurService';
-import WhoWeAre from '../components/WhoWeAre';
-import ContactUs from '../components/Contact';
-import Faq from '../pages/Faq';
-import BookingModal from '../components/BookingModal';
-import CookieConsent from './legal/Choices';
-import ServicePricing from '../components/servicePricing';
+import React from "react";
+import Hero from "../components/HeroSec";
+import Cards from "../components/Cards";
+import OurServices from "../components/OurService";
+import WhoWeAre from "../components/WhoWeAre";
+import ContactUs from "../components/Contact";
+import Faq from "../pages/Faq";
+import BookingModal from "../components/BookingModal";
+import CookieConsent from "./legal/Choices";
+import ServicePricing from "../components/servicePricing";
 
 const Home = () => {
   return (
@@ -18,9 +18,9 @@ const Home = () => {
       <ServicePricing />
       <Faq />
       <WhoWeAre />
-      <BookingModal  id="booking-section" />
+      <BookingModal id="booking-section" />
       <ContactUs />
-       <CookieConsent onlyShowOnHomePage={true} />
+      <CookieConsent onlyShowOnHomePage={true} />
     </div>
   );
 };

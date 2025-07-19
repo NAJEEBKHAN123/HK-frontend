@@ -231,7 +231,7 @@ const ServicePricing = () => {
               backgroundColor: "#1f2937" // darker gray
             }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-gray-800"
+            className="inline-flex items-center text-lg px-6 py-3 border border-transparent font-medium rounded-lg shadow-sm text-white bg-gray-800"
           >
             Contact Enterprise Team
           </motion.button>

@@ -14,11 +14,11 @@ import BookingModal from "./components/BookingModal";
 import OrderForm from "./pages/OrderForm";
 import SuccessPage from "./pages/SuccessPage";
 import CancelPage from "./pages/CancelPage";
-import AdminDashboard from "./pages/AdminDashboard";
+import AdminDashboard from "./pages/adminPages/AdminDashboard";
 import { Navigate } from "react-router-dom";
-import AdminLogin from "./pages/AdminLogin";
-import AdminProtectedRoute from "./pages/AdminProtectedRoute";
-import AllOrders from "./pages/AllOrders";
+import AdminLogin from "./pages/adminPages/AdminLogin";
+import AdminProtectedRoute from "./pages/adminPages/AdminProtectedRoute";
+import AllOrders from "./pages/adminPages/AllOrders";
 import Legal from "./pages/Legal";
 import Privacy from "./pages/legal/Privacy";
 import LegalNotices from "./pages/legal/legalNotices";
@@ -28,6 +28,9 @@ import Accessibility from "./pages/legal/Accessibility";
 import Choices from "./pages/legal/Choices";
 import TeamMember from "./pages/TeamMember";
 import NotFound from "./pages/NotFound";
+import GenerateInvite from "./components/admin/GenerateInvite";
+import Contacts from "./pages/adminPages/Contacts";
+import PartnerSignup from "./components/auth/PartnerSignup";
 
 function App() {
   return (
@@ -56,9 +59,18 @@ function App() {
           {/* No fonud route  */}
           <Route path="*" element={<NotFound />} />
 
+          {/* Partner sign up  */}
+          <Route path="/partner-signup" element={<PartnerSignup />} />
+
+
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/orders" element={<AllOrders />} />
+          <Route path="/admin/create-partner" element={<GenerateInvite />} />
+          <Route path="/admin/contacts" element={<Contacts />} />
+
+
+
 
           {/* Legal Routes */}
           <Route path="/legal" element={<Legal />}>
