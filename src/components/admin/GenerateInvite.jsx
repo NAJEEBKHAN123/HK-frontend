@@ -80,7 +80,7 @@ export default function GenerateInvite() {
   };
 
   return (
-    <AdminLayout>
+
       <div className="max-w-2xl mx-auto p-6 lg:mt-24 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-gray-800 mb-6">Generate Partner Credentials</h2>
       
@@ -175,6 +175,6 @@ export default function GenerateInvite() {
         </div>
       )}
     </div>
-    </AdminLayout>
+    
   );
 }

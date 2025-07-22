@@ -1107,6 +1107,40 @@
     "retryPayment": "Réessayer le Paiement",
     "returnHome": "Retour à l'Accueil",
     "contactSupport": "Besoin d'aide ? Contactez le support"
+  },
+
+  
+  "clientSignup": {
+    "title": "Créez votre compte",
+    "subtitle": "Vous avez déjà un compte?",
+    "loginLink": "Connectez-vous",
+    "buttons": {
+      "signup": "S'inscrire",
+      "loading": "Création du compte..."
+    },
+    "fields": {
+      "name": "Nom complet",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "passwordHint": "Doit contenir au moins 8 caractères",
+      "confirmPassword": "Confirmez le mot de passe",
+      "referralCode": "Code de parrainage",
+      "optional": "Optionnel"
+    },
+    "errors": {
+      "general": "Une erreur est survenue lors de l'inscription",
+      "passwordMatch": "Les mots de passe ne correspondent pas",
+      "passwordLength": "Le mot de passe doit contenir au moins 8 caractères",
+      "emailExists": "Cet email est déjà enregistré",
+      "invalidReferral": "Le code de parrainage est invalide",
+      "missingFields": "Veuillez remplir tous les champs obligatoires"
+    },
+    "referralNote": "Vous vous inscrivez avec le code de parrainage: {code}",
+    "success": {
+      "title": "Compte créé!",
+      "message": "Vous êtes redirigé vers votre tableau de bord..."
+    }
   }
+
 
 }

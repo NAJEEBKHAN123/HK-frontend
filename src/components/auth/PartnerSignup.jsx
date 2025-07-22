@@ -188,12 +188,14 @@ export default function PartnerSignup() {
               </button>
             </div>
             
+          
             <a 
               href={partnerData.dashboardLink || '/partner/dashboard'} 
               className="inline-block mt-4 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
             >
               Go to Dashboard
             </a>
+            
           </div>
         </div>
       )}

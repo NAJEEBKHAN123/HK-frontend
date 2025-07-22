@@ -1136,7 +1136,40 @@
     "retryPayment": "Retry Payment",
     "returnHome": "Return to Home",
     "contactSupport": "Need help? Contact support"
+  },
+
+  "clientSignup": {
+    "title": "Create Your Account",
+    "subtitle": "Already have an account?",
+    "loginLink": "Sign in",
+    "buttons": {
+      "signup": "Sign Up",
+      "loading": "Creating Account..."
+    },
+    "fields": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "password": "Password",
+      "passwordHint": "Must be at least 8 characters",
+      "confirmPassword": "Confirm Password",
+      "referralCode": "Referral Code",
+      "optional": "Optional"
+    },
+    "errors": {
+      "general": "An error occurred during signup",
+      "passwordMatch": "Passwords do not match",
+      "passwordLength": "Password must be at least 8 characters",
+      "emailExists": "This email is already registered",
+      "invalidReferral": "The referral code is invalid",
+      "missingFields": "Please fill in all required fields"
+    },
+    "referralNote": "You're signing up with referral code: {code}",
+    "success": {
+      "title": "Account Created!",
+      "message": "You're being redirected to your dashboard..."
+    }
   }
+
 
 
 }

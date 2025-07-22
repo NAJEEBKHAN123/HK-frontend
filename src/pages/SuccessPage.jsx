@@ -17,58 +17,39 @@ const SuccessPage = () => {
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [downloading, setDownloading] = useState(false);
-  const [downloadError, setDownloadError] = useState(null);
   const sessionId = searchParams.get('session_id');
+  const orderId = searchParams.get('order_id');
+  
 
   const formatPrice = (price) => {
-    return `€${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+    return new Intl.NumberFormat(language === 'fr' ? 'fr-FR' : 'en-US', {
+      style: 'currency',
+      currency: 'EUR',
+    }).format(price / 100);
   };
 
   const formatDateTime = (dateString) => {
     const date = new Date(dateString);
     return date.toLocaleString(language === 'fr' ? 'fr-FR' : 'en-US', {
       day: 'numeric',
-      month: 'numeric',
+      month: 'long',
       year: 'numeric',
       hour: '2-digit',
-      minute: '2-digit',
-      second: '2-digit'
+      minute: '2-digit'
     });
   };
 
-  const transformOrderData = (apiResponse) => {
-    if (!apiResponse?.success || !apiResponse.data) {
-      console.error('Invalid order data structure:', apiResponse);
-      throw new Error(t.invalidOrderData || 'Invalid order data received');
-    }
-    
-    const orderData = apiResponse.data;
-    const currentTime = new Date().toISOString();
-
-    return {
-      ...orderData,
-      price: orderData.price || orderData.amount || 0,
-      plan: orderData.plan || orderData.product?.name || 'Standard Plan',
-      status: (orderData.status || 'completed').toLowerCase(),
-      _id: orderData._id || orderData.id || 'N/A',
-      createdAt: orderData.createdAt || currentTime,
-      email: orderData.email || orderData.customer?.email || '',
-      // Add exact timestamp for token generation
-      timestamp: currentTime
-    };
-  };
-
-  useEffect(() => {
+   useEffect(() => {
     const verifyPayment = async () => {
       try {
         setError(null);
         setLoading(true);
 
-        if (!sessionId) {
-          throw new Error(t.missingSessionId || 'Missing session ID');
+        if (!sessionId || !orderId) {
+          throw new Error(t.missingSessionId || 'Missing payment information');
         }
 
+        // First verify the payment session
         const verificationResponse = await axios.get(
           `${API_BASE_URL}/api/payments/verify/${sessionId}`,
           { 
@@ -81,54 +62,63 @@ const SuccessPage = () => {
           throw new Error(t.paymentVerificationFailed || 'Payment verification failed');
         }
 
+        // Then get order details using the public endpoint
         const orderResponse = await axios.get(
-          `${API_BASE_URL}/api/orders/${verificationResponse.data.orderId}`,
+          `${API_BASE_URL}/api/orders/${orderId}/public`,
           { 
             headers: { 'Accept': 'application/json' },
             timeout: 10000
           }
         );
 
-        const transformedOrder = transformOrderData(orderResponse.data);
-        setOrder(transformedOrder);
+        if (!orderResponse.data?.success) {
+          throw new Error('Order details not found');
+        }
+
+        setOrder({
+          ...orderResponse.data.data,
+          price: orderResponse.data.data.price || orderResponse.data.data.amount,
+          plan: orderResponse.data.data.plan || 'Standard Plan',
+          status: 'completed'
+        });
 
       } catch (error) {
         console.error("Payment verification failed:", error);
-        setError(
-          error.response?.data?.message || 
-          error.message || 
-          t.errorProcessingPayment || 
-          'Error processing payment'
-        );
+        let errorMessage = t.errorProcessingPayment || 'Error processing payment';
+        
+        if (error.response) {
+          // Handle HTTP error responses
+          if (error.response.status === 401) {
+            errorMessage = 'Session expired. Please log in again.';
+          } else if (error.response.status === 404) {
+            errorMessage = 'Order not found';
+          } else if (error.response.data?.message) {
+            errorMessage = error.response.data.message;
+          }
+        } else if (error.message) {
+          errorMessage = error.message;
+        }
+        
+        setError(errorMessage);
       } finally {
         setLoading(false);
       }
     };
 
     verifyPayment();
-  }, [sessionId, t]);
+  }, [sessionId, orderId, t]);
 
-  const handleDownload = async () => {
+  const handleDownloadReceipt = async () => {
     try {
       if (!order?._id) {
-        throw new Error(t.noOrderAvailable || 'No order available for download');
+        throw new Error(t.noOrderAvailable || 'No order available');
       }
-      
-      setDownloading(true);
-      setDownloadError(null);
-      
-      // Include exact timestamp in token request
+
       const tokenResponse = await axios.post(
         `${API_BASE_URL}/api/payments/orders/${order._id}/download-token`,
+        {},
         {
-          timestamp: order.timestamp
-        },
-        { 
-          headers: { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-          },
-          timeout: 15000
+          headers: { 'Content-Type': 'application/json' }
         }
       );
 
@@ -136,27 +126,18 @@ const SuccessPage = () => {
         throw new Error(t.tokenGenerationFailed || 'Failed to generate download token');
       }
 
-      // Create download URL with exact timestamp
-      const downloadUrl = `${API_BASE_URL}/api/payments/orders/${order._id}/receipt?token=${tokenResponse.data.token}&timestamp=${encodeURIComponent(order.timestamp)}`;
-      
-      // Trigger download
-      const link = document.createElement('a');
-      link.href = downloadUrl;
-      link.setAttribute('download', `receipt-${order._id}-${new Date(order.timestamp).getTime()}.pdf`);
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-
+      window.open(
+        `${API_BASE_URL}/api/payments/orders/${order._id}/receipt?token=${tokenResponse.data.token}`,
+        '_blank'
+      );
     } catch (error) {
       console.error('Download failed:', error);
-      setDownloadError(
+      setError(
         error.response?.data?.message || 
-        (process.env.NODE_ENV === 'development' ? error.message : '') || 
+        error.message || 
         t.downloadFailed || 
         'Failed to download receipt'
       );
-    } finally {
-      setDownloading(false);
     }
   };
 
@@ -164,7 +145,7 @@ const SuccessPage = () => {
     navigate('/contact', {
       state: {
         prefilledData: {
-          email: order?.email || '',
+          email: order?.customerDetails?.email || '',
           subject: language === 'fr' ? 'Confirmation de paiement' : 'Payment confirmation',
           message: language === 'fr' 
             ? `J'ai une question concernant ma commande payée (référence: ${order?._id || 'inconnue'})`
@@ -195,19 +176,19 @@ const SuccessPage = () => {
             <ExclamationTriangleIcon className="h-6 w-6 text-red-600" />
           </div>
           <h2 className="mt-3 text-2xl font-bold text-gray-900">
-            {t.errorTitle || 'Error'}
+            {t.errorTitle || 'Payment Issue'}
           </h2>
           <p className="mt-2 text-gray-600">{error}</p>
           <div className="mt-6 space-y-3">
             <button
               onClick={() => navigate('/')}
-              className="w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+              className="w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
             >
               {t.returnHome || 'Return home'}
             </button>
             <button
               onClick={handleContactSupport}
-              className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50"
             >
               {t.contactSupport || 'Contact Support'}
             </button>
@@ -225,90 +206,61 @@ const SuccessPage = () => {
             <CheckCircleIcon className="h-6 w-6 text-green-600" />
           </div>
           
-          <h2 className="mt-3 text-2xl font-bold text-gray-900">{t.title}</h2>
-          <p className="mt-2 text-gray-600">{t.message}</p>
+          <h2 className="mt-3 text-2xl font-bold text-gray-900">
+            {t.title || 'Payment Successful!'}
+          </h2>
+          <p className="mt-2 text-gray-600">
+            {t.message || 'Thank you for your purchase. Your order has been confirmed.'}
+          </p>
           
-          {order ? (
-            <div className="mt-4 bg-gray-50 p-4 rounded-lg text-left">
-              <div className="grid grid-cols-2 gap-2">
-                <p className="text-sm font-medium text-gray-700">
-                  {t.reference || 'Reference'}:
-                </p>
-                <p className="text-sm text-gray-900 break-all">{order._id}</p>
-                
-                <p className="text-sm font-medium text-gray-700">
-                  {t.plan || 'Plan'}:
-                </p>
-                <p className="text-sm text-gray-900">{order.plan}</p>
-                
-                <p className="text-sm font-medium text-gray-700">
-                  {t.amount || 'Amount'}:
-                </p>
-                <p className="text-sm text-gray-900">
-                  {formatPrice(order.price)}
-                </p>
-                
-                <p className="text-sm font-medium text-gray-700">
-                  {t.status || 'Status'}:
-                </p>
-                <p className="text-sm text-gray-900 capitalize">
-                  {order.status}
-                </p>
-
-                <p className="text-sm font-medium text-gray-700">
-                  {t.date || 'Date'}:
-                </p>
-                <p className="text-sm text-gray-900">
-                  {formatDateTime(order.createdAt)}
-                </p>
+          {order && (
+            <div className="mt-6 bg-gray-50 p-4 rounded-lg text-left space-y-3">
+              <div className="flex justify-between">
+                <span className="text-gray-600">{t.orderNumber || 'Order Number'}:</span>
+                <span className="font-medium">{order._id}</span>
               </div>
-            </div>
-          ) : (
-            <div className="mt-4 p-4 bg-yellow-50 rounded-lg">
-              <p className="text-yellow-700">
-                {t.noOrderDetails || 'Order details not available'}
-              </p>
-            </div>
-          )}
-
-          {downloadError && (
-            <div className="mt-4 p-3 bg-red-50 rounded-lg">
-              <p className="text-red-600 text-sm">{downloadError}</p>
+              <div className="flex justify-between">
+                <span className="text-gray-600">{t.plan || 'Plan'}:</span>
+                <span className="font-medium">{order.plan}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">{t.amount || 'Amount'}:</span>
+                <span className="font-medium">{formatPrice(order.price)}</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-gray-600">{t.date || 'Date'}:</span>
+                <span className="font-medium">{formatDateTime(order.createdAt)}</span>
+              </div>
+              {order.customerDetails && (
+                <>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Customer:</span>
+                    <span className="font-medium">{order.customerDetails.fullName}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-gray-600">Email:</span>
+                    <span className="font-medium">{order.customerDetails.email}</span>
+                  </div>
+                </>
+              )}
             </div>
           )}
 
           <div className="mt-6 grid grid-cols-1 gap-3">
             <button
-              onClick={handleDownload}
-              disabled={downloading || !order}
-              className={`w-full px-4 py-2 rounded-md transition-colors flex items-center justify-center ${
-                downloading
-                  ? 'bg-gray-400 text-white cursor-not-allowed'
-                  : order
-                    ? 'bg-green-600 text-white hover:bg-green-700'
-                    : 'bg-gray-300 text-gray-500 cursor-not-allowed'
-              }`}
+              onClick={handleDownloadReceipt}
+              className="w-full px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
             >
-              {downloading ? (
-                <>
-                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                  </svg>
-                  {t.downloading || 'Preparing download...'}
-                </>
-              ) : (
-                t.download || 'Download Receipt'
-              )}
+              {t.downloadReceipt || 'Download Receipt'}
             </button>
             <button
               onClick={() => navigate('/')}
-              className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
+              className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50"
             >
               {t.returnHome || 'Return Home'}
             </button>
           </div>
-
+          
           <div className="mt-6 pt-4 border-t border-gray-200">
             <button
               onClick={handleContactSupport}

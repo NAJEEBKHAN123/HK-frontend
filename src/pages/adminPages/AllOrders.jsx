@@ -3,10 +3,37 @@ import AdminLayout from "../../components/admin/AdminLayout";
 import axios from "axios";
 import Modal from "react-modal";
 import { toast } from "react-toastify";
+
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
+// Create axios instance with auth interceptor
+const api = axios.create({
+  baseURL: API_BASE_URL
+});
+
+// Add request interceptor to include token
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('adminToken');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+}, (error) => {
+  return Promise.reject(error);
+});
+
+// Add response interceptor to handle 401 errors
+api.interceptors.response.use((response) => response, (error) => {
+  if (error.response?.status === 401) {
+    localStorage.removeItem('adminToken');
+    window.location.href = '/admin/login';
+  }
+  return Promise.reject(error);
+});
 
 Modal.setAppElement("#root");
+
+
 
 const AdminOrders = () => {
   const [orders, setOrders] = useState([]);
@@ -19,17 +46,23 @@ const AdminOrders = () => {
   const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
+    const token = localStorage.getItem('adminToken');
+    if (!token) {
+      window.location.href = '/admin/login';
+      return;
+    }
+
     const fetchOrders = async () => {
       try {
-        const res = await axios.get(`${API_BASE_URL}/api/orders`);
+        const res = await api.get('/api/orders');
         setOrders(res.data.data);
       } catch (err) {
-        console.error("Failed to fetch orders:", err);
-        toast.error("Failed to load orders");
+        toast.error(err.response?.data?.error || "Failed to load orders");
       } finally {
         setIsLoading(false);
       }
     };
+
     fetchOrders();
   }, []);
 
@@ -42,12 +75,10 @@ const AdminOrders = () => {
   };
 
   const handleStatusUpdate = async () => {
+    if (!selectedOrder?._id) return toast.error("No order selected");
+
     setIsUpdating(true);
     try {
-      if (!selectedOrder?._id) {
-        throw new Error("No order selected");
-      }
-
       const updateData = {
         status,
         ...(status === "Completed" && {
@@ -56,27 +87,17 @@ const AdminOrders = () => {
         }),
       };
 
-      const { data } = await axios.patch(
-        `${API_BASE_URL}/orders/${selectedOrder._id}`,
-        updateData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            // Add authorization header if needed
-            // 'Authorization': `Bearer ${localStorage.getItem('token')}`
-          },
-          withCredentials: true,
-        }
+      const { data } = await api.patch(
+        `/api/orders/${selectedOrder._id}`,
+        updateData
       );
 
-      setOrders(orders.map((o) => (o._id === data.data._id ? data.data : o)));
-      setIsModalOpen(false);
+      setOrders((orders) =>
+        orders.map((o) => (o._id === data.data._id ? data.data : o))
+      );
       toast.success(`Status updated to ${status}`);
+      setIsModalOpen(false);
     } catch (err) {
-      console.error("Update error:", {
-        config: err.config,
-        response: err.response?.data,
-      });
       toast.error(
         err.response?.data?.message || err.message || "Update failed"
       );
@@ -86,216 +107,181 @@ const AdminOrders = () => {
   };
 
   return (
-    <AdminLayout>
-      <div className="p-1 lg:-mx-2 grid sm:-mx-2 gap-4">
-        <h1 className="text-2xl font-bold mb-6">Orders Management</h1>
+    <div className="p-1 lg:-mx-2 grid sm:-mx-2 gap-4">
+      <h1 className="text-2xl font-bold mb-6">Orders Management</h1>
 
-        {isLoading ? (
-          <div className="flex justify-center items-center h-64">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-          </div>
-        ) : (
-          <div className="overflow-x-auto bg-white rounded-lg shadow">
-            <table className="min-w-full divide-y divide-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Customer
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Plan
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Amount
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Status
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    ID
-                  </th>
-                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Actions
-                  </th>
+      {isLoading ? (
+        <div className="flex justify-center items-center h-64">
+          <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+        </div>
+      ) : (
+        <div className="overflow-x-auto bg-white rounded-lg shadow">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Customer
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Plan
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Amount
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Status
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  ID
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {orders.map((order) => (
+                <tr key={order._id}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="font-medium text-gray-900">
+                      {order.customerDetails?.fullName}
+                    </div>
+                    <div className="text-sm text-gray-500">
+                      {order.customerDetails?.email}
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    {order.plan}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                    €{order.finalPrice || order.price}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span
+                      className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                        order.status === "Completed"
+                          ? "bg-green-100 text-green-800"
+                          : order.status === "Processing"
+                          ? "bg-blue-100 text-blue-800"
+                          : order.status === "Cancelled"
+                          ? "bg-red-100 text-red-800"
+                          : "bg-yellow-100 text-yellow-800"
+                      }`}
+                    >
+                      {order.status}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <a
+                      href={order.customerDetails?.idImage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-blue-500 hover:text-blue-700 text-sm"
+                    >
+                      View ID
+                    </a>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                    <button
+                      onClick={() => openOrderDetail(order)}
+                      className="text-indigo-600 hover:text-indigo-900 mr-4"
+                    >
+                      Manage
+                    </button>
+                  </td>
                 </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-gray-200">
-                {orders.map((order) => (
-                  <tr key={order._id}>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <div className="font-medium text-gray-900">
-                        {order.fullName}
-                      </div>
-                      <div className="text-sm text-gray-500">{order.email}</div>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      {order.plan}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                      €{order.price}
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <span
-                        className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-                          order.status === "Completed"
-                            ? "bg-green-100 text-green-800"
-                            : order.status === "Processing"
-                            ? "bg-blue-100 text-blue-800"
-                            : order.status === "Cancelled"
-                            ? "bg-red-100 text-red-800"
-                            : "bg-yellow-100 text-yellow-800"
-                        }`}
-                      >
-                        {order.status}
-                      </span>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
-                      <a
-                        href={order.idImage}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-500 hover:text-blue-700 text-sm"
-                      >
-                        View ID
-                      </a>
-                    </td>
-                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                      <button
-                        onClick={() => openOrderDetail(order)}
-                        className="text-indigo-600 hover:text-indigo-900 mr-4"
-                      >
-                        Manage
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        )}
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
 
-        {/* Order Detail Modal */}
-        <Modal
-          isOpen={isModalOpen}
-          onRequestClose={() => setIsModalOpen(false)}
-          style={{
-            overlay: {
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
-              zIndex: 1000,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "1rem",
-            },
-            content: {
-              position: "relative",
-              inset: "auto",
-              border: "none",
-              background: "white",
-              borderRadius: "0.5rem",
-              padding: "1.5rem",
-              width: "100%",
-              maxWidth: "600px",
-              maxHeight: "90vh",
-              overflowY: "auto",
-              boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            },
-          }}
-          ariaHideApp={false}
-        >
-          {selectedOrder && (
-            <div className="space-y-4">
-              <div className="flex justify-between items-start">
-                <h2 className="text-xl font-bold text-gray-800">
-                  Order #{selectedOrder._id.slice(-6)}
-                </h2>
-                <button
-                  onClick={() => setIsModalOpen(false)}
-                  className="text-gray-500 hover:text-gray-700"
-                >
-                  <svg
-                    className="h-6 w-6"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  </svg>
-                </button>
+      <Modal
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        style={{
+          overlay: {
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 1000,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "1rem",
+          },
+          content: {
+            position: "relative",
+            inset: "auto",
+            border: "none",
+            background: "white",
+            borderRadius: "0.5rem",
+            padding: "1.5rem",
+            width: "100%",
+            maxWidth: "600px",
+            maxHeight: "90vh",
+            overflowY: "auto",
+            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          },
+        }}
+        ariaHideApp={false}
+      >
+        {selectedOrder && selectedOrder.customerDetails && (
+          <div className="space-y-4">
+            <div className="flex justify-between items-start">
+              <h2 className="text-xl font-bold text-gray-800">
+                Order #{selectedOrder._id.slice(-6)}
+              </h2>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="text-gray-500 hover:text-gray-700"
+              >
+                ✕
+              </button>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* Customer Info */}
+              <div className="md:col-span-2">
+                <h3 className="text-lg font-medium text-gray-900 mb-2">
+                  Customer Information
+                </h3>
+                <div className="bg-gray-50 p-4 rounded-lg grid gap-4 md:grid-cols-2">
+                  <div>
+                    <p className="text-sm text-gray-500">Full Name</p>
+                    <p className="font-medium">
+                      {selectedOrder.customerDetails.fullName}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Email</p>
+                    <p className="font-medium break-all">
+                      {selectedOrder.customerDetails.email}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Phone</p>
+                    <p className="font-medium">
+                      {selectedOrder.customerDetails.phone}
+                    </p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Birthday</p>
+                    <p className="font-medium">
+                      {new Date(
+                        selectedOrder.customerDetails.birthday
+                      ).toLocaleDateString()}
+                    </p>
+                  </div>
+                  <div className="md:col-span-2">
+                    <p className="text-sm text-gray-500">Address</p>
+                    <p className="font-medium">
+                      {selectedOrder.customerDetails.address}
+                    </p>
+                  </div>
+                </div>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* Order Details */}
-                <div className="md:col-span-2">
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">
-                    Customer Information
-                  </h3>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div>
-                        <p className="text-sm text-gray-500">Full Name</p>
-                        <p className="font-medium">{selectedOrder.fullName}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">Email</p>
-                        <p className="font-medium break-all">
-                          {selectedOrder.email}
-                        </p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">Phone</p>
-                        <p className="font-medium">{selectedOrder.phone}</p>
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">Birthday</p>
-                        <p className="font-medium">
-                          {new Date(
-                            selectedOrder.birthday
-                          ).toLocaleDateString()}
-                        </p>
-                      </div>
-                      <div className="md:col-span-2">
-                        <p className="text-sm text-gray-500">Address</p>
-                        <p className="font-medium">{selectedOrder.address}</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Order Summary */}
-                <div>
-                  <h3 className="text-lg font-medium text-gray-900 mb-2">
-                    Order Summary
-                  </h3>
-                  <div className="bg-gray-50 p-4 rounded-lg">
-                    <div className="space-y-2">
-                      <div className="flex justify-between">
-                        <p className="text-sm text-gray-500">Plan</p>
-                        <p className="font-medium">{selectedOrder.plan}</p>
-                      </div>
-                      <div className="flex justify-between">
-                        <p className="text-sm text-gray-500">Amount</p>
-                        <p className="font-medium">€{selectedOrder.price}</p>
-                      </div>
-                      <div className="flex justify-between">
-                        <p className="text-sm text-gray-500">Order Date</p>
-                        <p className="font-medium">
-                          {new Date(
-                            selectedOrder.createdAt
-                          ).toLocaleDateString()}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* ID Verification */}
-                <div>
+              {/* ID Verification */}
+            <div>
                   <h3 className="text-lg font-medium text-gray-900 mb-2">
                     ID Verification
                   </h3>
@@ -434,13 +420,14 @@ const AdminOrders = () => {
                     </div>
                   </div>
                 </div>
-              </div>
             </div>
-          )}
-        </Modal>
-      </div>
-    </AdminLayout>
+          </div>
+        )}
+      </Modal>
+    </div>
   );
 };
 
 export default AdminOrders;
+
+
