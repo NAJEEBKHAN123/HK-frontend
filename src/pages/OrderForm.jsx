@@ -5,7 +5,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { LanguageContext } from "../context/LanguageContext";
 import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
-import useReferralTracker from "../hook/useReferralTracker";
+import useReferralTracker from "../hook/useReferralTracker"
 
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
@@ -23,7 +23,7 @@ const OrderForm = () => {
   const queryParams = new URLSearchParams(location.search);
   const navigate = useNavigate();
   const { language } = useContext(LanguageContext);
-  const { getReferralCode } = useReferralTracker();
+ const { getReferralCode, clearReferralCode } = useReferralTracker();
 
   const t =
     language === "fr" ? frTranslations.orderForm : enTranslations.orderForm;
@@ -181,15 +181,15 @@ const handleSubmit = async (e) => {
     // Upload ID image
     const idImageUrl = await uploadIdImage(form.idFile);
 
-    // Get referral code from URL or client data
-    const urlParams = new URLSearchParams(window.location.search);
-    const urlReferralCode = urlParams.get('ref');
-    const clientData = JSON.parse(localStorage.getItem("client")) || {};
-    const clientReferralCode = clientData.referralCode;
-    
-    // Determine active referral code (URL takes precedence)
-    const activeReferralCode = urlReferralCode || clientReferralCode;
-    const referredBy = clientData.referredBy;
+    // Get and validate referral code
+    const referralCode = getReferralCode();
+    const isReferral = !!referralCode;
+
+    console.log("Referral code check:", {
+      referralCode,
+      isValid: isReferral,
+      source: referralCode ? "URL/session" : "none"
+    });
 
     // Prepare payload
     const payload = {
@@ -203,16 +203,10 @@ const handleSubmit = async (e) => {
         idImage: idImageUrl,
       },
       clientId: localStorage.getItem("clientId") || undefined,
-      referralCode: activeReferralCode || null,
-      referredBy: referredBy || null
+      referralCode: isReferral ? referralCode : null // Explicit null if no referral
     };
 
-    console.log("Submitting order with:", {
-      plan: payload.plan,
-      referralCode: payload.referralCode,
-      referredBy: payload.referredBy,
-      hasClientId: !!payload.clientId
-    });
+    console.log("Order payload being sent:", payload);
 
     // Create order
     const orderResponse = await axios.post(
@@ -231,13 +225,25 @@ const handleSubmit = async (e) => {
       throw new Error("Order created but no ID returned");
     }
 
+    // Clear referral tracking if this was a referral
+    if (isReferral) {
+      clearReferralCode();
+      console.log("Cleared referral code after order creation");
+    }
+
     await handlePayment(orderResponse.data.orderId);
+
   } catch (err) {
-    console.error("Order submission error:", err);
+    console.error("Order submission error:", {
+      error: err.response?.data || err.message,
+      stack: err.stack
+    });
+    
     setError(err.response?.data?.message || err.message || "Order submission failed");
     setLoading(false);
   }
 };
+
   const formatPrice = (price) => {
     return `€${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
   };
