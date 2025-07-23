@@ -5,10 +5,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import { LanguageContext } from "../context/LanguageContext";
 import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
-import useReferralTracker from "../hook/useReferralTracker"
+import useReferralTracker from "../hook/useReferralTracker";
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const OrderForm = () => {
@@ -23,16 +22,16 @@ const OrderForm = () => {
   const queryParams = new URLSearchParams(location.search);
   const navigate = useNavigate();
   const { language } = useContext(LanguageContext);
- const { getReferralCode, clearReferralCode } = useReferralTracker();
+  const { getReferralCode, clearReferralCode } = useReferralTracker();
 
-  const t =
-    language === "fr" ? frTranslations.orderForm : enTranslations.orderForm;
+  const t = language === "fr" ? frTranslations.orderForm : enTranslations.orderForm;
 
-  const planPrices = {
-    STARTER: 3900,
-    TURNKEY: 4600,
-    PREMIUM: 9800,
-  };
+const planPrices = {
+  STARTER: 3900, // 3,900 EUR
+  TURNKEY: 4600, // 4,600 EUR
+  PREMIUM: 9800, // 9,800 EUR
+};
+
 
   const planDisplayNames = {
     en: {
@@ -50,14 +49,8 @@ const OrderForm = () => {
   const planKey = queryParams.get("plan");
   const priceParam = queryParams.get("price");
 
-  const validPlan = Object.keys(planPrices).includes(planKey)
-    ? planKey
-    : "STARTER";
-
-  const price =
-    priceParam && !isNaN(Number(priceParam))
-      ? Number(priceParam)
-      : planPrices[validPlan];
+  const validPlan = Object.keys(planPrices).includes(planKey) ? planKey : "STARTER";
+  const price = priceParam && !isNaN(Number(priceParam)) ? Number(priceParam) : planPrices[validPlan];
 
   const [form, setForm] = useState({
     fullName: "",
@@ -88,7 +81,6 @@ const OrderForm = () => {
     if (name === "idFile") {
       const file = files[0];
       if (file) {
-        // Create preview for ID image
         const reader = new FileReader();
         reader.onloadend = () => {
           setIdPreview(reader.result);
@@ -101,6 +93,16 @@ const OrderForm = () => {
     }
   };
 
+const formatPrice = (priceInEuros) => {
+  return priceInEuros.toLocaleString("fr-FR", {
+    style: "currency",
+    currency: "EUR",
+    minimumFractionDigits: 0,
+  });
+};
+
+
+
   const handlePayment = async (orderId) => {
     setPaymentProcessing(true);
     setError("");
@@ -110,10 +112,13 @@ const OrderForm = () => {
         throw new Error("Missing order ID for payment processing");
       }
 
+      
+
       const response = await axios.post(
         `${API_BASE_URL}/api/payments/sessions`,
         {
           orderId,
+          amount: form.price * 100, // Already in cents
           successUrl: `${window.location.origin}/payment-success?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`,
           cancelUrl: `${window.location.origin}/payment-cancelled?plan=${form.plan}`,
         },
@@ -165,93 +170,72 @@ const OrderForm = () => {
     return response.data.secure_url;
   };
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-  setLoading(true);
-  setError("");
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
 
-  try {
-    // Validate required fields
-    const requiredFields = ["fullName", "email", "phone", "address", "birthday", "idFile"];
-    const missingFields = requiredFields.filter((field) => !form[field]);
-    if (missingFields.length > 0) {
-      throw new Error(`Missing required fields: ${missingFields.join(", ")}`);
-    }
-
-    // Upload ID image
-    const idImageUrl = await uploadIdImage(form.idFile);
-
-    // Get and validate referral code
-    const referralCode = getReferralCode();
-    const isReferral = !!referralCode;
-
-    console.log("Referral code check:", {
-      referralCode,
-      isValid: isReferral,
-      source: referralCode ? "URL/session" : "none"
-    });
-
-    // Prepare payload
-    const payload = {
-      plan: form.plan,
-      customerDetails: {
-        fullName: form.fullName.trim(),
-        email: form.email.trim().toLowerCase(),
-        phone: form.phone.trim(),
-        address: form.address.trim(),
-        birthday: form.birthday,
-        idImage: idImageUrl,
-      },
-      clientId: localStorage.getItem("clientId") || undefined,
-      referralCode: isReferral ? referralCode : null // Explicit null if no referral
-    };
-
-    console.log("Order payload being sent:", payload);
-
-    // Create order
-    const orderResponse = await axios.post(
-      `${API_BASE_URL}/api/orders`,
-      payload,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-        timeout: 15000,
+    try {
+      const requiredFields = ["fullName", "email", "phone", "address", "birthday", "idFile"];
+      const missingFields = requiredFields.filter((field) => !form[field]);
+      if (missingFields.length > 0) {
+        throw new Error(`Missing required fields: ${missingFields.join(", ")}`);
       }
-    );
 
-    if (!orderResponse.data?.orderId) {
-      throw new Error("Order created but no ID returned");
+      const idImageUrl = await uploadIdImage(form.idFile);
+      const referralCode = getReferralCode();
+      const isReferral = !!referralCode;
+
+      const payload = {
+        plan: form.plan,
+        customerDetails: {
+          fullName: form.fullName.trim(),
+          email: form.email.trim().toLowerCase(),
+          phone: form.phone.trim(),
+          address: form.address.trim(),
+          birthday: form.birthday,
+          idImage: idImageUrl,
+        },
+        clientId: localStorage.getItem("clientId") || undefined,
+        referralCode: isReferral ? referralCode : null
+      };
+
+      const orderResponse = await axios.post(
+        `${API_BASE_URL}/api/orders`,
+        payload,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+          timeout: 15000,
+        }
+      );
+
+      if (!orderResponse.data?.orderId) {
+        throw new Error("Order created but no ID returned");
+      }
+
+      if (isReferral) {
+        clearReferralCode();
+      }
+
+      await handlePayment(orderResponse.data.orderId);
+
+    } catch (err) {
+      console.error("Order submission error:", {
+        error: err.response?.data || err.message,
+        stack: err.stack
+      });
+      setError(err.response?.data?.message || err.message || "Order submission failed");
+      setLoading(false);
     }
-
-    // Clear referral tracking if this was a referral
-    if (isReferral) {
-      clearReferralCode();
-      console.log("Cleared referral code after order creation");
-    }
-
-    await handlePayment(orderResponse.data.orderId);
-
-  } catch (err) {
-    console.error("Order submission error:", {
-      error: err.response?.data || err.message,
-      stack: err.stack
-    });
-    
-    setError(err.response?.data?.message || err.message || "Order submission failed");
-    setLoading(false);
-  }
-};
-
-  const formatPrice = (price) => {
-    return `€${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
   };
 
+
+
   const getDisplayPlanName = () => {
-    return (
-      planDisplayNames[language][form.plan] || planDisplayNames.en[form.plan]
-    );
+    return planDisplayNames[language][form.plan] || planDisplayNames.en[form.plan];
   };
 
   if (success) {
@@ -259,9 +243,7 @@ const handleSubmit = async (e) => {
       <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5 py-20">
         <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5 text-center">
           <h2 className="text-2xl font-bold text-green-600">
-            {paymentStatus === "success"
-              ? t.paymentSuccess.title
-              : t.success.title}
+            {paymentStatus === "success" ? t.paymentSuccess.title : t.success.title}
           </h2>
           <p className="text-lg">
             {paymentStatus === "success"
@@ -290,9 +272,7 @@ const handleSubmit = async (e) => {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5 py-20">
         <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5 text-center">
-          <h2 className="text-2xl font-bold text-red-600">
-            {t.paymentCanceled.title}
-          </h2>
+          <h2 className="text-2xl font-bold text-red-600">{t.paymentCanceled.title}</h2>
           <p className="text-lg">{t.paymentCanceled.message}</p>
           <button
             onClick={() => navigate(`/order?plan=${form.plan}`)}
@@ -311,16 +291,12 @@ const handleSubmit = async (e) => {
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5"
       >
-        <h2 className="text-2xl font-bold text-center text-gray-800">
-          {t.title}
-        </h2>
+        <h2 className="text-2xl font-bold text-center text-gray-800">{t.title}</h2>
 
         <div className="text-center">
           <p className="text-gray-600">
             {t.planLabel}:{" "}
-            <span className="font-semibold text-yellow-600">
-              {getDisplayPlanName()}
-            </span>
+            <span className="font-semibold text-yellow-600">{getDisplayPlanName()}</span>
           </p>
           <p className="text-lg font-medium text-black mt-1">
             {t.totalLabel}: {formatPrice(form.price)}

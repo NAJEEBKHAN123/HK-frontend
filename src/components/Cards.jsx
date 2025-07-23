@@ -1,11 +1,10 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import { CheckCircleIcon } from "@heroicons/react/24/solid";
 import { LanguageContext } from "../context/LanguageContext";
 import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
 import { useNavigate } from "react-router-dom";
-
 
 // Animation Configs (unchanged)
 const container = {
@@ -91,18 +90,18 @@ export default function PricingSection() {
     STARTER: {
       en: "STARTER Pack",
       fr: "Pack STARTER",
-      price: 3900
+      price: 3900,
     },
     TURNKEY: {
       en: "TURNKEY Pack",
       fr: "Pack TURNKEY",
-      price: 4600
+      price: 4600,
     },
     PREMIUM: {
       en: "PREMIUM Pack",
       fr: "Pack PREMIUM",
-      price: 9800
-    }
+      price: 9800,
+    },
   };
 
   // Create pricing plans with consistent keys
@@ -111,18 +110,29 @@ export default function PricingSection() {
     return {
       key,
       title: planData[key][language] || planData[key].en,
-      price: `€${planData[key].price.toLocaleString()}`,
+      price: planData[key].price.toLocaleString("en-EU", {
+        style: "currency",
+        currency: "EUR",
+        minimumFractionDigits: 0,
+      }),
+
       priceValue: planData[key].price,
       features: translations?.plans?.[index]?.features || [],
       recommended: isRecommended,
-      recommended_text: isRecommended ? (language === 'fr' ? 'RECOMMANDÉ' : 'RECOMMENDED') : ''
+      recommended_text: isRecommended
+        ? language === "fr"
+          ? "RECOMMANDÉ"
+          : "RECOMMENDED"
+        : "",
     };
   });
+
+  
 
   // SEO-optimized hidden content
   const seoContent = {
     fr: `Création entreprise Hong Kong à partir de ${planData.STARTER.price}€. Société offshore avec avantages fiscaux.`,
-    en: `Hong Kong company formation from ${planData.STARTER.price}€. Offshore company with tax advantages.`
+    en: `Hong Kong company formation from ${planData.STARTER.price}€. Offshore company with tax advantages.`,
   };
 
   return (
@@ -136,7 +146,10 @@ export default function PricingSection() {
       itemType="https://schema.org/Product"
     >
       {/* Decorative elements */}
-      <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "url(pattern.webp)" }} />
+      <div
+        className="absolute inset-0 opacity-10"
+        style={{ backgroundImage: "url(pattern.webp)" }}
+      />
       <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-yellow-900/30 to-transparent" />
       <motion.div
         className="absolute top-1/4 right-10 w-40 h-40 rounded-full bg-yellow-600/20 blur-3xl"
@@ -200,9 +213,13 @@ export default function PricingSection() {
             className="text-gray-300 lg:text-center max-w-4xl mx-auto text-lg pt-4 md:text-xl"
             itemProp="description"
           >
-            <span className="text-yellow-400">{translations?.subtitlePart1}</span>{" "}
+            <span className="text-yellow-400">
+              {translations?.subtitlePart1}
+            </span>{" "}
             {translations?.subtitlePart2}{" "}
-            <span className="text-yellow-400">{translations?.subtitlePart3}</span>{" "}
+            <span className="text-yellow-400">
+              {translations?.subtitlePart3}
+            </span>{" "}
             {translations?.subtitlePart4}
           </motion.p>
         </motion.div>
@@ -214,7 +231,7 @@ export default function PricingSection() {
           whileInView="visible"
           viewport={{ once: true }}
           className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 px-1 md:-mx-2 sm:-mx-2 lg:px-12 xl:px-2"
-        > 
+        >
           {pricingPlans.map((plan, index) => (
             <motion.div
               key={index}
@@ -231,7 +248,10 @@ export default function PricingSection() {
               <meta itemProp="price" content={plan.priceValue} />
               <meta itemProp="priceCurrency" content="EUR" />
               <link itemProp="availability" href="https://schema.org/InStock" />
-              <meta itemProp="url" content={`${window.location.origin}/order-form?plan=${plan.key}&price=${plan.priceValue}`} />
+              <meta
+                itemProp="url"
+                content={`${window.location.origin}/order-form?plan=${plan.key}&price=${plan.priceValue}`}
+              />
 
               <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl" />
 
@@ -292,10 +312,15 @@ export default function PricingSection() {
                     ease: [0.22, 1, 0.36, 1],
                   },
                 }}
-                className={`w-full border-t mb-6 ${plan.recommended ? "border-yellow-400/30" : "border-gray-700"}`}
+                className={`w-full border-t mb-6 ${
+                  plan.recommended ? "border-yellow-400/30" : "border-gray-700"
+                }`}
               />
 
-              <ul className="space-y-1 text-left text-base" itemProp="description">
+              <ul
+                className="space-y-1 text-left text-base"
+                itemProp="description"
+              >
                 {plan.features.map((feature, idx) => (
                   <motion.li
                     key={idx}
@@ -324,7 +349,9 @@ export default function PricingSection() {
 
               <motion.button
                 onClick={() =>
-                  navigate(`/order-form?plan=${plan.key}&price=${plan.priceValue}`)
+                  navigate(
+                    `/order-form?plan=${plan.key}&price=${plan.priceValue}`
+                  )
                 }
                 initial={{ opacity: 0, y: 20 }}
                 animate={{
@@ -339,7 +366,7 @@ export default function PricingSection() {
                 }}
                 whileHover={{
                   scale: 1.05,
-                  boxShadow: plan.recommended 
+                  boxShadow: plan.recommended
                     ? "0 8px 25px rgba(234, 179, 8, 0.5)"
                     : "0 8px 20px rgba(255, 255, 255, 0.1)",
                   transition: { duration: 0.3 },
@@ -353,8 +380,8 @@ export default function PricingSection() {
                     : "bg-gradient-to-r from-gray-700 to-gray-800 text-white border border-gray-600 hover:border-gray-500"
                 }`}
                 aria-label={
-                  language === "fr" 
-                    ? `Choisir le plan ${plan.title} pour création entreprise Hong Kong` 
+                  language === "fr"
+                    ? `Choisir le plan ${plan.title} pour création entreprise Hong Kong`
                     : `Select ${plan.title} plan for Hong Kong company formation`
                 }
               >
