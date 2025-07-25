@@ -52,7 +52,7 @@ const AdminSidebar = () => {
           Admin Panel
         </h2>
 
-        <nav className="flex flex-col gap-4">
+        <nav className="flex flex-col gap-2">
           <Link
             to="/admin/dashboard"
             className={navLinkClass("/admin/dashboard")}
@@ -80,6 +80,13 @@ const AdminSidebar = () => {
             onClick={() => setIsOpen(false)}
           >
             <FiUsers /> Create Partner
+          </Link>
+          <Link
+            to="/admin/partners"
+            className={navLinkClass("/admin/partners")}
+            onClick={() => setIsOpen(false)}
+          >
+            <FiUsers /> Partners Lists
           </Link>
           <Link
             to="/admin/contacts"

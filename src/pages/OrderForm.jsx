@@ -120,7 +120,7 @@ const formatPrice = (priceInEuros) => {
           orderId,
           amount: form.price * 100, // Already in cents
           successUrl: `${window.location.origin}/payment-success?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`,
-          cancelUrl: `${window.location.origin}/payment-cancelled?plan=${form.plan}`,
+          cancelUrl: `${window.location.origin}/payment-cancelled?order_id=${orderId}`,
         },
         {
           headers: {

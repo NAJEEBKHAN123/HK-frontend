@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams, useLocation } from "react-router-dom";
 import { LanguageContext } from "../context/LanguageContext";
 import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
@@ -10,17 +10,30 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000
 const CancelPage = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
+  const location = useLocation();
   const { language } = useContext(LanguageContext);
   const t = language === 'fr' ? frTranslations.paymentCancelled : enTranslations.paymentCanceled;
   
   const [order, setOrder] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const orderId = searchParams.get('order_id');
 
+    const queryParams = new URLSearchParams(location.search);
+  const orderId = queryParams.get('order_id') || 
+                 queryParams.get('orderId') || 
+                 queryParams.get('id');
 
-   const formatPrice = (price) => {
-    return `€${price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
+  console.log("Location:", location);
+  console.log("Search params:", Array.from(queryParams.entries()));
+  console.log("Order ID from URL:", orderId, "Full URL:", window.location.href);
+
+  // If still null, check sessionStorage/localStorage
+  const sessionOrderId = sessionStorage.getItem('currentOrderId');
+  const finalOrderId = orderId || sessionOrderId;
+  console.log("final order id", finalOrderId)
+
+  const formatPrice = (price) => {
+    return `€${(price / 100).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`;
   };
 
   const transformOrderData = (apiResponse) => {
@@ -65,19 +78,22 @@ const CancelPage = () => {
   };
 
   useEffect(() => {
+    if (!orderId) {
+      setError(t.missingOrderId || 'Missing order information');
+      setLoading(false);
+      return;
+    }
+
     const handleCancellation = async () => {
       try {
-        if (!orderId) {
-          throw new Error(t.missingOrderId || 'Missing order ID');
-        }
-
         console.log('Fetching order details for:', orderId);
         
         // 1. First get the current order details
         const orderResponse = await axios.get(
           `${API_BASE_URL}/api/orders/${orderId}`,
           {
-            headers: { 'Accept': 'application/json' }
+            headers: { 'Accept': 'application/json' },
+            timeout: 10000
           }
         );
 
@@ -96,7 +112,10 @@ const CancelPage = () => {
         const cancelResponse = await axios.post(
           `${API_BASE_URL}/api/payments/sessions/${orderId}/cancel`,
           { reason: 'user_cancelled' },
-          { headers: { 'Content-Type': 'application/json' } }
+          { 
+            headers: { 'Content-Type': 'application/json' },
+            timeout: 10000
+          }
         );
 
         if (!cancelResponse.data?.success) {
@@ -108,7 +127,8 @@ const CancelPage = () => {
         const updatedOrderResponse = await axios.get(
           `${API_BASE_URL}/api/orders/${orderId}`,
           {
-            headers: { 'Accept': 'application/json' }
+            headers: { 'Accept': 'application/json' },
+            timeout: 10000
           }
         );
 
@@ -147,11 +167,11 @@ const CancelPage = () => {
         prefilledData: {
           plan: order.plan,
           price: order.price,
-          email: order.email,
-          phone: order.phone,
-          fullName: order.fullName,
-          address: order.address,
-          birthday: order.birthday?.split('T')[0]
+          email: order.customerDetails?.email || order.email,
+          phone: order.customerDetails?.phone || order.phone,
+          fullName: order.customerDetails?.fullName || order.fullName,
+          address: order.customerDetails?.address || order.address,
+          birthday: order.customerDetails?.birthday || order.birthday?.split('T')[0]
         }
       }
     });
@@ -161,7 +181,7 @@ const CancelPage = () => {
     navigate('/contact', {
       state: {
         prefilledData: {
-          email: order?.email || '',
+          email: order?.customerDetails?.email || order?.email || '',
           subject: language === 'fr' ? 'Annulation de commande' : 'Order cancellation',
           message: language === 'fr' 
             ? `J'ai besoin d'aide concernant ma commande annulée (référence: ${order?._id || 'inconnue'})`
@@ -170,6 +190,41 @@ const CancelPage = () => {
       }
     });
   };
+
+  // Early return if no orderId found
+  if (!orderId) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+        <div className="bg-white p-8 rounded-xl shadow-lg max-w-md w-full text-center">
+          <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100">
+            <svg className="h-6 w-6 text-red-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </div>
+          <h2 className="mt-3 text-2xl font-bold text-gray-900">
+            {t.errorTitle || 'Error'}
+          </h2>
+          <p className="mt-2 text-gray-600">
+            {t.missingOrderId || 'We couldn\'t find your order information. Please return to the order page and try again.'}
+          </p>
+          <div className="mt-6 space-y-3">
+            <button
+              onClick={() => navigate('/order-form')}
+              className="w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+            >
+              {t.returnToOrder || 'Return to Order Page'}
+            </button>
+            <button
+              onClick={() => navigate('/')}
+              className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
+            >
+              {t.returnHome || 'Return Home'}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (loading) {
     return (
@@ -197,12 +252,20 @@ const CancelPage = () => {
             {t.errorTitle || 'Error'}
           </h2>
           <p className="mt-2 text-gray-600">{error}</p>
-          <button
-            onClick={() => navigate('/')}
-            className="mt-6 px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
-          >
-            {t.returnHome || 'Return home'}
-          </button>
+          <div className="mt-6 space-y-3">
+            <button
+              onClick={() => navigate('/order-form')}
+              className="w-full px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors"
+            >
+              {t.returnToOrder || 'Return to Order Page'}
+            </button>
+            <button
+              onClick={() => navigate('/')}
+              className="w-full px-4 py-2 border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 transition-colors"
+            >
+              {t.returnHome || 'Return Home'}
+            </button>
+          </div>
         </div>
       </div>
     );
@@ -238,7 +301,7 @@ const CancelPage = () => {
                   {t.amount || 'Amount'}:
                 </p>
                 <p className="text-sm text-gray-900">
-                  {order.price ? `${formatPrice(order.price)}` : '€0'}
+                  {order.price ? formatPrice(order.price) : '€0'}
                 </p>
                 
                 <p className="text-sm font-medium text-gray-700">

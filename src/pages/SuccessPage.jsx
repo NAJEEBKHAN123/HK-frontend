@@ -19,6 +19,10 @@ const SuccessPage = () => {
   const [error, setError] = useState(null);
   const sessionId = searchParams.get('session_id');
   const orderId = searchParams.get('order_id');
+
+  console.log("session ID", sessionId)
+  console.log("order ID", orderId)
+
   
 
   const formatPrice = (price) => {
@@ -75,7 +79,7 @@ const SuccessPage = () => {
         setOrder({
           ...orderResponse.data.data,
           price: orderResponse.data.data.price || orderResponse.data.data.amount,
-          plan: orderResponse.data.data.plan || 'Standard Plan',
+          plan: orderResponse.data.data.plan || 'STARTER Pack',
           status: 'completed'
         });
 

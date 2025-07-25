@@ -33,7 +33,9 @@ import Contacts from "./pages/adminPages/Contacts";
 import PartnerSignup from "./components/auth/PartnerSignup";
 import SignupWithReferral from "./pages/SignupWithReferral ";
 import PartnerDashboard from "./pages/PartnerDashboard/PartnerDashboard ";
-import Cards from './components/Cards'
+import Cards from "./components/Cards";
+import PartnersList from "./pages/adminPages/PartnersList";
+import PartnerDetail from "./pages/adminPages/PartnerDetails";
 
 function App() {
   return (
@@ -68,31 +70,29 @@ function App() {
             <Route path="accessibility" element={<Accessibility />} />
             <Route path="choices" element={<Choices />} />
           </Route>
-          
+
           <Route path="/team" element={<TeamMember />} />
           <Route path="/signup" element={<SignupWithReferral />} />
           <Route path="/partner/dashboard" element={<PartnerDashboard />} />
-
-
-
-          
 
           {/* Admin Routes */}
           <Route path="/admin">
             {/* Public admin routes */}
             <Route path="login" element={<AdminLogin />} />
-            
+
             {/* Protected admin routes with layout */}
             <Route element={<AdminProtectedRoute />}>
-               {/* Wrap all admin routes with layout */}
-                <Route path="dashboard" element={<AdminDashboard />} />
-                <Route path="orders" element={<AllOrders />} />
-                <Route path="create-partner" element={<GenerateInvite />} />
-                <Route path="contacts" element={<Contacts />} />
-              </Route>
+              {/* Wrap all admin routes with layout */}
+              <Route path="dashboard" element={<AdminDashboard />} />
+              <Route path="orders" element={<AllOrders />} />
+              <Route path="create-partner" element={<GenerateInvite />} />
+              <Route path="contacts" element={<Contacts />} />
+              <Route path="partners" element={<PartnersList />} />
+              <Route path="partners/:id" element={<PartnerDetail />} />
             </Route>
+          </Route>
         </Routes>
-        
+
         <Footer />
       </LanguageProvider>
     </BrowserRouter>
