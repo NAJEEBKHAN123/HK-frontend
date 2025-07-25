@@ -7,7 +7,7 @@ import ContactUs from "../components/Contact";
 import Faq from "../pages/Faq";
 import BookingModal from "../components/BookingModal";
 import CookieConsent from "./legal/Choices";
-import ServicePricing from "../components/servicePricing";
+import ServicePricing from "../components/ServicePricing";
 
 const Home = () => {
   return (
