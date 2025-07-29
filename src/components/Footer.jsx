@@ -418,9 +418,9 @@ const Footer = () => {
                 transition={{ type: "spring", stiffness: 300 }}
                 className="flex  xs:flex-row gap-6 items-center"
               >
-               <Link to='/partner-signup'>
-                 <button className="flex items-center gap-2  py-2 text-white rounded hover:bg-blue-700">
-                  <FaUser /> 
+               <Link to='/partner/login'>
+                 <button className="flex items-center gap-2  py-2 text-gray-400 rounded ">
+                  <FaUser /> Partner
                 </button>
                </Link>
                 <Link
@@ -429,7 +429,7 @@ const Footer = () => {
                 >
                   <FaCog className="h-4 w-4 group-hover:rotate-12 transition-transform" />
                   <span className="hidden lg:inline-block">
-                    Admin Dashboard
+                    Admin
                   </span>
                   <span className="inline-block lg:hidden">Admin</span>
                 </Link>

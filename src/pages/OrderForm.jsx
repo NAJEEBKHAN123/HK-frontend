@@ -1,22 +1,26 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { loadStripe } from "@stripe/stripe-js";
 import { LanguageContext } from "../context/LanguageContext";
 import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
 import useReferralTracker from "../hook/useReferralTracker";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY);
 
 const OrderForm = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState(false);
-  const [paymentProcessing, setPaymentProcessing] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState(null);
   const [idPreview, setIdPreview] = useState(null);
+  const [orderDetails, setOrderDetails] = useState({
+    orderId: '',
+    customerName: '',
+    email: '',
+    phone: '',
+    plan: '',
+    price: 0
+  });
 
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
@@ -26,12 +30,11 @@ const OrderForm = () => {
 
   const t = language === "fr" ? frTranslations.orderForm : enTranslations.orderForm;
 
-const planPrices = {
-  STARTER: 3900, // 3,900 EUR
-  TURNKEY: 4600, // 4,600 EUR
-  PREMIUM: 9800, // 9,800 EUR
-};
-
+  const planPrices = {
+    STARTER: 3900,
+    TURNKEY: 4600,
+    PREMIUM: 9800,
+  };
 
   const planDisplayNames = {
     en: {
@@ -65,17 +68,6 @@ const planPrices = {
     status: "pending",
   });
 
-  useEffect(() => {
-    const query = new URLSearchParams(window.location.search);
-    if (query.get("success")) {
-      setPaymentStatus("success");
-      setSuccess(true);
-    }
-    if (query.get("cancelled")) {
-      setPaymentStatus("cancelled");
-    }
-  }, []);
-
   const handleChange = (e) => {
     const { name, value, files } = e.target;
     if (name === "idFile") {
@@ -86,88 +78,41 @@ const planPrices = {
           setIdPreview(reader.result);
         };
         reader.readAsDataURL(file);
-        setForm({ ...form, idFile: file });
+        setForm(prev => ({ ...prev, idFile: file }));
       }
     } else {
-      setForm({ ...form, [name]: value });
+      setForm(prev => ({ ...prev, [name]: value }));
     }
   };
 
-const formatPrice = (priceInEuros) => {
-  return priceInEuros.toLocaleString("fr-FR", {
-    style: "currency",
-    currency: "EUR",
-    minimumFractionDigits: 0,
-  });
-};
-
-
-
-  const handlePayment = async (orderId) => {
-    setPaymentProcessing(true);
-    setError("");
-
-    try {
-      if (!orderId) {
-        throw new Error("Missing order ID for payment processing");
-      }
-
-      
-
-      const response = await axios.post(
-        `${API_BASE_URL}/api/payments/sessions`,
-        {
-          orderId,
-          amount: form.price * 100, // Already in cents
-          successUrl: `${window.location.origin}/payment-success?session_id={CHECKOUT_SESSION_ID}&order_id=${orderId}`,
-          cancelUrl: `${window.location.origin}/payment-cancelled?order_id=${orderId}`,
-        },
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-          timeout: 15000,
-        }
-      );
-
-      if (response.data.url) {
-        window.location.href = response.data.url;
-      } else if (response.data.sessionId) {
-        const stripe = await stripePromise;
-        const { error } = await stripe.redirectToCheckout({
-          sessionId: response.data.sessionId,
-        });
-        if (error) throw error;
-      } else {
-        throw new Error("Unexpected payment session response");
-      }
-    } catch (err) {
-      let errorMessage = "Payment processing failed. Please try again.";
-      if (err.response?.data?.message) {
-        errorMessage = err.response.data.message;
-      } else if (err.message) {
-        errorMessage = err.message;
-      }
-      setError(errorMessage);
-      setPaymentProcessing(false);
-    }
+  const formatPrice = (priceInEuros) => {
+    return priceInEuros.toLocaleString("fr-FR", {
+      style: "currency",
+      currency: "EUR",
+      minimumFractionDigits: 0,
+    });
   };
 
   const uploadIdImage = async (file) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", "id_uploads");
+    try {
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("upload_preset", "id_uploads");
 
-    const response = await axios.post(
-      "https://api.cloudinary.com/v1_1/dockii7o6/image/upload",
-      formData
-    );
+      const response = await axios.post(
+        "https://api.cloudinary.com/v1_1/dockii7o6/image/upload",
+        formData
+      );
 
-    if (!response.data.secure_url) {
-      throw new Error("ID image upload failed");
+      if (!response.data.secure_url) {
+        throw new Error("ID image upload failed");
+      }
+
+      return response.data.secure_url;
+    } catch (err) {
+      console.error("Image upload error:", err);
+      throw new Error("Failed to upload ID image. Please try again.");
     }
-
-    return response.data.secure_url;
   };
 
   const handleSubmit = async (e) => {
@@ -220,66 +165,107 @@ const formatPrice = (priceInEuros) => {
         clearReferralCode();
       }
 
-      await handlePayment(orderResponse.data.orderId);
+      setOrderDetails({
+        orderId: orderResponse.data.orderId,
+        customerName: form.fullName,
+        email: form.email,
+        phone: form.phone,
+        plan: form.plan,
+        price: form.price
+      });
+      setSuccess(true);
 
     } catch (err) {
-      console.error("Order submission error:", {
-        error: err.response?.data || err.message,
-        stack: err.stack
-      });
+      console.error("Order submission error:", err);
       setError(err.response?.data?.message || err.message || "Order submission failed");
       setLoading(false);
     }
   };
 
-
-
   const getDisplayPlanName = () => {
-    return planDisplayNames[language][form.plan] || planDisplayNames.en[form.plan];
+    return planDisplayNames[language]?.[form.plan] || planDisplayNames.en[form.plan] || form.plan;
   };
 
   if (success) {
     return (
       <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5 py-20">
-        <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5 text-center">
-          <h2 className="text-2xl font-bold text-green-600">
-            {paymentStatus === "success" ? t.paymentSuccess.title : t.success.title}
+        <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-2xl space-y-6">
+          <h2 className="text-2xl font-bold text-green-600 text-center">
+            {t.success?.title || "Order Successful"}
           </h2>
-          <p className="text-lg">
-            {paymentStatus === "success"
-              ? t.paymentSuccess.message.replace("{plan}", getDisplayPlanName())
-              : t.success.message.replace("{plan}", getDisplayPlanName())}
-          </p>
-          <p>
-            {t.success.totalLabel}: <strong>{formatPrice(form.price)}</strong>
-          </p>
-          <div className="pt-4">
-            <p
-              className="text-gray-600"
-              dangerouslySetInnerHTML={{
-                __html: t.success.contact
-                  .replace(`{email}`, `<strong>${form.email}</strong>`)
-                  .replace("{phone}", `<strong>${form.phone}</strong>`),
-              }}
-            />
-          </div>
-        </div>
-      </div>
-    );
-  }
+          
+          <div className="space-y-4">
+            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+              <h3 className="font-semibold text-green-800 mb-2">
+                {t.success?.orderConfirmed || "Order Confirmed"}
+              </h3>
+              <p className="text-green-700">
+                {t.success?.orderNumber || "Order number"}: <strong>{orderDetails.orderId}</strong>
+              </p>
+            </div>
 
-  if (paymentStatus === "cancelled") {
-    return (
-      <div className="min-h-screen bg-gray-100 flex items-center justify-center px-5 py-20">
-        <div className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5 text-center">
-          <h2 className="text-2xl font-bold text-red-600">{t.paymentCanceled.title}</h2>
-          <p className="text-lg">{t.paymentCanceled.message}</p>
-          <button
-            onClick={() => navigate(`/order?plan=${form.plan}`)}
-            className="mt-4 px-6 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600"
-          >
-            {t.paymentCanceled.tryAgain}
-          </button>
+            <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+              <h3 className="font-semibold text-blue-800 mb-2">
+                {t.success?.paymentInstructions || "Payment Instructions"}
+              </h3>
+              <div className="space-y-3">
+                <p className="text-gray-700">
+                  {t.success?.pleaseTransfer || "Please transfer"} <strong>{formatPrice(orderDetails.price)}</strong> {t.success?.toOurBankAccount || "to our bank account"}
+                </p>
+                
+                <div className="bg-white p-3 rounded border border-gray-200">
+                  <table className="w-full">
+                    <tbody>
+                      <tr>
+                        <td className="py-1 font-medium text-gray-700">{t.success?.bankName || "Bank Name"}:</td>
+                        <td className="py-1">Your Bank Name</td>
+                      </tr>
+                      <tr>
+                        <td className="py-1 font-medium text-gray-700">{t.success?.accountHolder || "Account Holder"}:</td>
+                        <td className="py-1">Your Company Name</td>
+                      </tr>
+                      <tr>
+                        <td className="py-1 font-medium text-gray-700">IBAN:</td>
+                        <td className="py-1 font-mono">FR76 3000 4000 5000 6000 7000 123</td>
+                      </tr>
+                      <tr>
+                        <td className="py-1 font-medium text-gray-700">BIC/SWIFT:</td>
+                        <td className="py-1 font-mono">BANKFRPPXXX</td>
+                      </tr>
+                      <tr>
+                        <td className="py-1 font-medium text-gray-700">{t.success?.reference || "Reference"}:</td>
+                        <td className="py-1 font-mono">ORDER-{orderDetails.orderId}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+                <p className="text-sm text-gray-600">
+                  {t.success?.paymentProcessingTime || "Your order will be processed once payment is received (usually within 1-2 business days)."}
+                </p>
+              </div>
+            </div>
+
+            <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
+              <h3 className="font-semibold text-yellow-800 mb-2">
+                {t.success?.nextSteps || "Next Steps"}
+              </h3>
+              <ol className="list-decimal pl-5 space-y-1 text-gray-700">
+                <li>{t.success?.step1 || "Complete the bank transfer using the information above"}</li>
+                <li>{t.success?.step2 || "Send the payment confirmation to our email"}</li>
+                <li>{t.success?.step3 || "We'll contact you to complete the process"}</li>
+              </ol>
+            </div>
+
+            <div className="pt-4 border-t border-gray-200">
+              <p className="text-gray-600">
+                {t.success?.contactInfo || "We'll contact you at"}: <strong>{orderDetails.email}</strong> {t.success?.or || "or"} <strong>{orderDetails.phone}</strong>
+              </p>
+              <p className="text-sm text-gray-500 mt-2">
+                {t.success?.contactSupport || "For any questions, please contact our support team."}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -291,24 +277,26 @@ const formatPrice = (priceInEuros) => {
         onSubmit={handleSubmit}
         className="bg-white p-8 rounded-xl shadow-xl w-full max-w-xl space-y-5"
       >
-        <h2 className="text-2xl font-bold text-center text-gray-800">{t.title}</h2>
+        <h2 className="text-2xl font-bold text-center text-gray-800">
+          {t.title || "Order Form"}
+        </h2>
 
         <div className="text-center">
           <p className="text-gray-600">
-            {t.planLabel}:{" "}
+            {t.planLabel || "Plan"}:{" "}
             <span className="font-semibold text-yellow-600">{getDisplayPlanName()}</span>
           </p>
           <p className="text-lg font-medium text-black mt-1">
-            {t.totalLabel}: {formatPrice(form.price)}
+            {t.totalLabel || "Total"}: {formatPrice(form.price)}
           </p>
         </div>
 
         <div className="space-y-4">
           {[
-            { name: "fullName", label: t.fields.fullName, type: "text" },
-            { name: "email", label: t.fields.email, type: "email" },
-            { name: "phone", label: t.fields.phone, type: "tel" },
-            { name: "birthday", label: t.fields.birthday, type: "date" },
+            { name: "fullName", label: t.fields?.fullName || "Full Name", type: "text" },
+            { name: "email", label: t.fields?.email || "Email", type: "email" },
+            { name: "phone", label: t.fields?.phone || "Phone", type: "tel" },
+            { name: "birthday", label: t.fields?.birthday || "Birthday", type: "date" },
           ].map((field) => (
             <div key={field.name}>
               <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -327,7 +315,7 @@ const formatPrice = (priceInEuros) => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              {t.fields.address} *
+              {t.fields?.address || "Address"} *
             </label>
             <textarea
               name="address"
@@ -341,7 +329,7 @@ const formatPrice = (priceInEuros) => {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
-              {t.fields.idUpload} *
+              {t.fields?.idUpload || "ID Upload"} *
             </label>
             <input
               type="file"
@@ -353,7 +341,7 @@ const formatPrice = (priceInEuros) => {
             />
             {idPreview && (
               <div className="mt-2">
-                <p className="text-sm text-gray-500">ID Preview:</p>
+                <p className="text-sm text-gray-500">{t.fields?.idPreview || "ID Preview"}:</p>
                 <img
                   src={idPreview}
                   alt="ID Preview"
@@ -372,18 +360,14 @@ const formatPrice = (priceInEuros) => {
 
         <button
           type="submit"
-          disabled={loading || paymentProcessing}
+          disabled={loading}
           className={`w-full py-3 px-6 rounded-md font-semibold text-white ${
-            loading || paymentProcessing
-              ? "bg-gray-400"
-              : "bg-yellow-500 hover:bg-yellow-600"
+            loading ? "bg-gray-400" : "bg-yellow-500 hover:bg-yellow-600"
           }`}
         >
-          {loading
-            ? t.buttons.submitting
-            : paymentProcessing
-            ? t.buttons.processingPayment
-            : `${t.pay} ${formatPrice(form.price)}`}
+          {loading 
+            ? t.buttons?.submitting || "Submitting..." 
+            : `${t.submitOrder || "Submit Order"} ${formatPrice(form.price)}`}
         </button>
       </form>
     </div>

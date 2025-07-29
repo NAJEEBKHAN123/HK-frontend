@@ -12,8 +12,7 @@ const PartnersList = () => {
   const [totalPages, setTotalPages] = useState(1);
   const limit = 10;
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
-
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
   useEffect(() => {
     const fetchPartners = async () => {
@@ -73,16 +72,16 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000
   );
 
   return (
-    <div className="bg-white rounded-lg shadow p-6">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
-        <h2 className="text-2xl font-bold text-gray-800 mb-4 md:mb-0">Partner Management</h2>
+    <div className="bg-white rounded-lg shadow p-4 sm:p-6">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-4 sm:mb-6">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 pt-6 md:mb-0">Partner Management</h2>
         <div className="relative w-full md:w-64">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <FiSearch className="text-gray-400" />
           </div>
           <input
             type="text"
-            className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-blue-500 focus:border-blue-500 text-sm sm:text-base"
             placeholder="Search partners..."
             value={searchTerm}
             onChange={(e) => {
@@ -97,19 +96,19 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
             <tr>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Partner
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden sm:table-cell">
                 Contact
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider hidden md:table-cell">
                 Performance
               </th>
-              <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Status
               </th>
-              <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                 Actions
               </th>
             </tr>
@@ -117,40 +116,40 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000
           <tbody className="bg-white divide-y divide-gray-200">
             {partners.map((partner) => (
               <tr key={partner._id}>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-4 py-4 whitespace-nowrap">
                   <div className="flex items-center">
-                    <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                      <FiUser className="text-blue-600" />
+                    <div className="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-blue-100 flex items-center justify-center">
+                      <FiUser className="text-blue-600 text-sm sm:text-base" />
                     </div>
-                    <div className="ml-4">
-                      <div className="text-sm font-medium text-gray-900">{partner.name}</div>
-                      <div className="text-sm text-gray-500">{partner.referralCode}</div>
+                    <div className="ml-2 sm:ml-4">
+                      <div className="text-xs sm:text-sm font-medium text-gray-900 truncate max-w-[120px] sm:max-w-none">{partner.name}</div>
+                      <div className="text-xs text-gray-500 hidden sm:block">{partner.referralCode}</div>
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="text-sm text-gray-900">{partner.email}</div>
-                  <div className="text-sm text-gray-500">
+                <td className="px-4 py-4 whitespace-nowrap hidden sm:table-cell">
+                  <div className="text-xs sm:text-sm text-gray-900">{partner.email}</div>
+                  <div className="text-xs text-gray-500">
                     Joined {new Date(partner.createdAt).toLocaleDateString()}
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
-                  <div className="flex items-center space-x-4">
+                <td className="px-4 py-4 whitespace-nowrap hidden md:table-cell">
+                  <div className="flex items-center space-x-2 sm:space-x-4">
                     <div className="flex items-center">
-                      <FiUsers className="text-gray-400 mr-1" />
-                      <span className="text-sm text-gray-900">
+                      <FiUsers className="text-gray-400 mr-1 text-xs sm:text-sm" />
+                      <span className="text-xs sm:text-sm text-gray-900">
                         {partner.totalClientsReferred || 0}
                       </span>
                     </div>
                     <div className="flex items-center">
-                      <FiDollarSign className="text-gray-400 mr-1" />
-                      <span className="text-sm text-gray-900">
+                      <FiDollarSign className="text-gray-400 mr-1 text-xs sm:text-sm" />
+                      <span className="text-xs sm:text-sm text-gray-900">
                         ${((partner.commissionEarned || 0) / 100).toFixed(2)}
                       </span>
                     </div>
                   </div>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap">
+                <td className="px-4 py-4 whitespace-nowrap">
                   <select
                     value={partner.status}
                     onChange={(e) => handleStatusChange(partner._id, e.target.value)}
@@ -164,10 +163,10 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000
                     <option value="inactive">Inactive</option>
                   </select>
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <td className="px-4 py-4 whitespace-nowrap text-right text-xs sm:text-sm font-medium">
                   <Link
                     to={`/admin/partners/${partner._id}`}
-                    className="text-blue-600 hover:text-blue-900 mr-3"
+                    className="text-blue-600 hover:text-blue-900 mr-2 sm:mr-3"
                   >
                     <FiEdit2 className="inline mr-1" /> Manage
                   </Link>
@@ -180,26 +179,30 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000
 
       {partners.length === 0 && (
         <div className="text-center py-8">
-          <p className="text-gray-500">No partners found</p>
+          <p className="text-gray-500 text-sm sm:text-base">No partners found</p>
         </div>
       )}
 
       {totalPages > 1 && (
-        <div className="flex justify-between items-center mt-4">
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-4 space-y-3 sm:space-y-0">
           <button
             onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
             disabled={currentPage === 1}
-            className={`px-4 py-2 rounded-md ${currentPage === 1 ? 'bg-gray-200 cursor-not-allowed' : 'bg-blue-600 text-white'}`}
+            className={`px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm ${
+              currentPage === 1 ? 'bg-gray-200 cursor-not-allowed' : 'bg-blue-600 text-white'
+            }`}
           >
             Previous
           </button>
-          <span className="text-sm text-gray-700">
+          <span className="text-xs sm:text-sm text-gray-700">
             Page {currentPage} of {totalPages}
           </span>
           <button
             onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
             disabled={currentPage === totalPages}
-            className={`px-4 py-2 rounded-md ${currentPage === totalPages ? 'bg-gray-200 cursor-not-allowed' : 'bg-blue-600 text-white'}`}
+            className={`px-3 py-1 sm:px-4 sm:py-2 rounded-md text-xs sm:text-sm ${
+              currentPage === totalPages ? 'bg-gray-200 cursor-not-allowed' : 'bg-blue-600 text-white'
+            }`}
           >
             Next
           </button>

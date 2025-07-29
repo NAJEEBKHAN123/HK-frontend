@@ -11,14 +11,14 @@ import {
   FiLogOut,
 } from "react-icons/fi";
 
-const AdminSidebar = () => {
+const PartnerSidebar = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [isOpen, setIsOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.clear();
-    navigate("/admin/login");
+    navigate("/partner/login");
   };
 
   const navLinkClass = (path) =>
@@ -49,59 +49,20 @@ const AdminSidebar = () => {
           <span className="bg-white text-cyan-700 p-1 rounded-full">
             <FiHome />
           </span>
-          Admin Panel
+          Partner Panel
         </h2>
 
         <nav className="flex flex-col gap-2">
           <Link
-            to="/admin/dashboard"
-            className={navLinkClass("/admin/dashboard")}
+            to="/partner/dashboard"
+            className={navLinkClass("/partner/dashboard")}
             onClick={() => setIsOpen(false)}
           >
-            <FiHome /> Dashboard
+            <FiHome /> Home
           </Link>
-          <Link
-            to="/admin/appointment"
-            className={navLinkClass("/admin/appointment")}
-            onClick={() => setIsOpen(false)}
-          >
-            <FiCalendar /> Book Appointment
-          </Link>
-          <Link
-            to="/admin/orders"
-            className={navLinkClass("/admin/orders")}
-            onClick={() => setIsOpen(false)}
-          >
-            <FiShoppingCart /> Orders
-          </Link>
-          <Link
-            to="/admin/create-partner"
-            className={navLinkClass("/admin/create-partner")}
-            onClick={() => setIsOpen(false)}
-          >
-            <FiUsers /> Create Partner
-          </Link>
-          <Link
-            to="/admin/partners"
-            className={navLinkClass("/admin/partners")}
-            onClick={() => setIsOpen(false)}
-          >
-            <FiUsers /> Partners Lists
-          </Link>
-          <Link
-            to="/admin/client"
-            className={navLinkClass("/admin/client")}
-            onClick={() => setIsOpen(false)}
-          >
-            <FiUsers /> Clients Lists
-          </Link>
-          <Link
-            to="/admin/contacts"
-            className={navLinkClass("/admin/contacts")}
-            onClick={() => setIsOpen(false)}
-          >
-            <FiMail /> View Contacts
-          </Link>
+      
+          
+         
           <button
             onClick={handleLogout}
             className="mt-8 flex items-center gap-3 text-left hover:text-red-300 transition-all"
@@ -114,4 +75,4 @@ const AdminSidebar = () => {
   );
 };
 
-export default AdminSidebar;
+export default PartnerSidebar;

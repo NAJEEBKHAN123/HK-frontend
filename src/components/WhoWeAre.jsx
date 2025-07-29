@@ -451,7 +451,7 @@ export default function WhoWeAre() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Meet Full Team
+                  Know Our Team
                 </motion.button>
               </Link>
             </motion.div>

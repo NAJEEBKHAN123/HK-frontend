@@ -81,7 +81,7 @@ export default function PartnerSignup() {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+    <div className="max-w-md mx-auto p-6 mt-12 bg-white rounded-lg shadow-md">
       {step === 1 && (
         <div className="space-y-4">
           <h2 className="text-2xl font-bold text-center">Partner Signup</h2>

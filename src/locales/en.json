@@ -2,6 +2,9 @@
   "navbar": {
     "home": "Home",
     "services": "Our Services",
+    "all_services": "Service Overview",
+    "pricing": "Pricing Plans",
+    "service_cards": "Our Solutions",
     "faq": "FAQ / Blog",
     "who_we_are": "Who We Are",
     "contact": "Contact Us",
@@ -349,36 +352,25 @@
   },
 
   "orderForm": {
-    "title": "Order Registration",
-    "planLabel": "Plan",
-    "totalLabel": "Total",
-    "buttons": {
-      "submit": "Complete Registration",
-      "submitting": "Submitting..."
-    },
-    "pay" : "Pay Now",
-    "fields": {
-      "fullName": "Full Name",
-      "email": "Email",
-      "phone": "Phone Number",
-      "birthday": "Birthday",
-      "address": "Address",
-      "idUpload": "Upload ID (JPEG/PNG/PDF)"
-    },
-    "errors": {
-      "fullName": "Full name is required",
-      "email": "Email is required",
-      "phone": "Phone number is required",
-      "birthday": "Birthday is required",
-      "address": "Address is required",
-      "idFile": "ID file is required"
-    },
     "success": {
-      "title": "Order Submitted Successfully!",
-      "message": "We've received your order for the {plan} plan.",
-      "total": "Total Amount",
-      "contact": "Our team _ contact you shortly at {email} or {phone} with payment instructions."
-    }
+      "orderConfirmed": "Order Confirmed",
+      "orderNumber" : "Order No",
+      "paymentInstructions": "Payment Instructions",
+      "pleaseTransfer": "Please transfer",
+      "toOurBankAccount": "to our bank account",
+      "bankName": "Bank Name",
+      "accountHolder": "Account Holder",
+      "reference": "Payment Reference",
+      "paymentProcessingTime": "Your order will be processed once payment is received (usually within 1-2 business days).",
+      "nextSteps": "Next Steps",
+      "step1": "Complete the bank transfer using the information above",
+      "step2": "Send the payment confirmation to our email",
+      "step3": "We'll contact you to complete the process",
+      "contactInfo": "We'll contact you at",
+      "contactSupport": "For any questions, please contact our support team.",
+      "or" : "or"
+    },
+    "submitOrder": "Submit Order"
   },
 
   "appointment": {
@@ -1168,7 +1160,57 @@
       "title": "Account Created!",
       "message": "You're being redirected to your dashboard..."
     }
+  },
+
+  "priceServiceCard": {
+    "title": "Premium Business Services",
+    "subtitle": "Tailored solutions for global entrepreneurs and corporations",
+    "services": [
+      {
+        "title": "Company Renewal",
+        "price": "€1,000",
+        "description": "Annual company registration renewal",
+        "features": ["Document preparation", "Government submission", "Compliance check"]
+      },
+      {
+        "title": "Company Audit",
+        "price": "€1,000-5,000",
+        "description": "Professional financial audit services",
+        "features": ["Balance sheet review", "Income statement audit", "Compliance verification"]
+      },
+      {
+        "title": "Apostille Service",
+        "price": "€400 per apostille",
+        "description": "Document legalization for international use",
+        "features": ["Notarization", "State certification", "Embassy legalization"]
+      },
+      {
+        "title": "Company Liquidation",
+        "price": "€2,000+",
+        "description": "Orderly dissolution of your business entity",
+        "features": ["Debt settlement", "Asset distribution", "Final tax filing"]
+      },
+      {
+        "title": "Bank Account Opening",
+        "price": "€3,000",
+        "description": "Corporate account with international banks",
+        "features": ["Bank selection", "Document preparation", "Relationship management"]
+      },
+      {
+        "title": "Nominee Services",
+        "price": "€1,000",
+        "description": "Professional nominee director/shareholder",
+        "features": ["Annual service", "Complete discretion", "Contract agreement"]
+      }
+    ],
+    "cta": {
+      "custom": "Need custom solutions?",
+      "enterprise": "Contact Enterprise Team",
+      "getStarted": "Get Started"
+    }
   }
+
+
 
 
 

@@ -2,6 +2,9 @@
   "navbar": {
     "home": "Accueil",
     "services": "Nos Services",
+    "all_services": "Aperçu des Services",
+    "pricing": "Plans Tarifaires", 
+    "service_cards": "Nos Solutions",
     "faq": "FAQ / Blog",
     "who_we_are": "Qui Nous Sommes",
     "contact": "Contactez-Nous",
@@ -327,7 +330,7 @@
   },
 
   "orderForm": {
-    "title": "Enregistrement de commande",
+    "title": "enregistrement de la société",
     "planLabel": "Forfait",
     "totalLabel": "Total",
     "buttons": {
@@ -1140,7 +1143,59 @@
       "title": "Compte créé!",
       "message": "Vous êtes redirigé vers votre tableau de bord..."
     }
+  },
+
+  
+  "priceServiceCard": {
+    "title": "Services Professionnels Premium",
+    "subtitle": "Solutions sur mesure pour entrepreneurs et entreprises internationales",
+    "services": [
+      {
+        "title": "Renouvellement d'Entreprise",
+        "price": "1 000 €",
+        "description": "Renouvellement annuel d'enregistrement d'entreprise",
+        "features": ["Préparation de documents", "Soumission gouvernementale", "Vérification de conformité"]
+      },
+      {
+        "title": "Audit d'Entreprise",
+        "price": "1 000 à 5 000 €",
+        "description": "Services d'audit financier professionnel",
+        "features": ["Examen du bilan", "Audit du compte de résultats", "Vérification de conformité"]
+      },
+      {
+        "title": "Service d'Apostille",
+        "price": "400 € par apostille",
+        "description": "Légalisation de documents pour usage international",
+        "features": ["Notarisation", "Certification d'état", "Légalisation d'ambassade"]
+      },
+      {
+        "title": "Liquidation d'Entreprise",
+        "price": "À partir de 2 000 €",
+        "description": "Dissolution ordonnée de votre entité commerciale",
+        "features": ["Règlement des dettes", "Distribution des actifs", "Déclaration fiscale finale"]
+      },
+      {
+        "title": "Ouverture de Compte Bancaire",
+        "price": "3 000 €",
+        "description": "Compte corporate avec des banques internationales",
+        "features": ["Sélection de banque", "Préparation de documents", "Gestion de relation"]
+      },
+      {
+        "title": "Services de Nomination",
+        "price": "1 000 €",
+        "description": "Directeur/actionnaire nominé professionnel",
+        "features": ["Service annuel", "Discrétion absolue", "Accord contractuel"]
+      }
+    ],
+    "cta": {
+      "custom": "Besoin de solutions personnalisées ?",
+      "enterprise": "Contacter l'Équipe Entreprise",
+      "getStarted": "Commencer"
+    }
   }
+
+
+
 
 
 }

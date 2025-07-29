@@ -14,7 +14,6 @@ import BookingModal from "./components/BookingModal";
 import OrderForm from "./pages/OrderForm";
 import SuccessPage from "./pages/SuccessPage";
 import CancelPage from "./pages/CancelPage";
-import AdminLayout from "./components/admin/AdminLayout"; // Updated import
 import AdminDashboard from "./pages/adminPages/AdminDashboard";
 import AdminLogin from "./pages/adminPages/AdminLogin";
 import AdminProtectedRoute from "./pages/adminPages/AdminProtectedRoute";
@@ -32,10 +31,17 @@ import GenerateInvite from "./components/admin/GenerateInvite";
 import Contacts from "./pages/adminPages/Contacts";
 import PartnerSignup from "./components/auth/PartnerSignup";
 import SignupWithReferral from "./pages/SignupWithReferral ";
-import PartnerDashboard from "./pages/PartnerDashboard/PartnerDashboard ";
 import Cards from "./components/Cards";
 import PartnersList from "./pages/adminPages/PartnersList";
 import PartnerDetail from "./pages/adminPages/PartnerDetails";
+import ClientDetail from "./pages/adminPages/ClientDetail";
+import ClientList from "./pages/adminPages/ClientList";
+import PartnerLogin from "./pages/PartnerPages/PartnerLogin";
+import PartnerDashboard from "./pages/PartnerPages/PartnerDashboard";
+import PartnerProtectedRoute from "./pages/PartnerPages/PartnerProtectedRoute";
+import ClientCompDetail from "./pages/PartnerPages/ClientsCompDetails";
+import ServicePricing from "./components/ServicePricing";
+import AdminOrderDetails from "./pages/adminPages/AdminOrderDetails";
 
 function App() {
   return (
@@ -58,6 +64,8 @@ function App() {
           <Route path="/payment-success" element={<SuccessPage />} />
           <Route path="/payment-cancelled" element={<CancelPage />} />
           <Route path="/partner-signup" element={<PartnerSignup />} />
+          <Route path="/serviceCards" element={<ServicePricing />} />
+
           <Route path="*" element={<NotFound />} />
 
           {/* Legal Routes */}
@@ -73,7 +81,6 @@ function App() {
 
           <Route path="/team" element={<TeamMember />} />
           <Route path="/signup" element={<SignupWithReferral />} />
-          <Route path="/partner/dashboard" element={<PartnerDashboard />} />
 
           {/* Admin Routes */}
           <Route path="/admin">
@@ -89,6 +96,19 @@ function App() {
               <Route path="contacts" element={<Contacts />} />
               <Route path="partners" element={<PartnersList />} />
               <Route path="partners/:id" element={<PartnerDetail />} />
+              <Route path="client/:id" element={<ClientDetail />} />
+              <Route path="client" element={<ClientList />} />
+             <Route path="orders/:orderId" element={<AdminOrderDetails />} /> 
+            </Route>
+          </Route>
+
+          {/* // partner dashboard  */}
+          <Route path="/partner">
+            <Route path="login" element={<PartnerLogin />} />
+
+            <Route element={<PartnerProtectedRoute />}>
+              <Route path="dashboard" element={<PartnerDashboard />} />
+              <Route path="client/:id" element={<ClientCompDetail />} />
             </Route>
           </Route>
         </Routes>

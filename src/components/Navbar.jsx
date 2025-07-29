@@ -6,13 +6,23 @@ import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
 import { motion } from "framer-motion";
 import ReactCountryFlag from "react-country-flag";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaYoutube,
+  FaTiktok
+} from "react-icons/fa";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLangOpen, setIsLangOpen] = useState(false);
   const [isMobileLangOpen, setIsMobileLangOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [langTimeout, setLangTimeout] = useState(null);
-  
+  const [servicesTimeout, setServicesTimeout] = useState(null);
+
   const navigate = useNavigate();
   const location = useLocation();
   const { language, changeLanguage } = useContext(LanguageContext);
@@ -20,14 +30,22 @@ const Navbar = () => {
   const translations =
     language === "fr" ? frTranslations.navbar : enTranslations.navbar;
 
-  // Active link detection (excludes home page)
+  // Service sub-items
+  const serviceItems = [
+    { path: "services", label: "all_services" },
+    { path: "pricingCards", label: "pricing" },
+    { path: "serviceCards", label: "service_cards" },
+  ];
+
+  // Active link detection
   const isActive = (path) => {
-    if (path === '') return false; 
-    return location.pathname === `/${path}` || 
-           (path !== '' && location.pathname.includes(path));
+    if (path === "") return false;
+    return (
+      location.pathname === `/${path}` ||
+      (path !== "" && location.pathname.includes(path))
+    );
   };
 
- 
   const navLinkClass = (path) => `
     hover:text-white
     transition-all
@@ -36,17 +54,21 @@ const Navbar = () => {
     hover:decoration-pink-500
     hover:underline
     transition-colors 
-    ${isActive(path) ? 'text-gray-300' : 'text-gray-100'}
+    ${isActive(path) ? "text-gray-300" : "text-gray-100"}
     text-sm xl:text-base
   `;
 
-  const closeMobileMenu = () => setIsMenuOpen(false);
-
+  const closeAllMenus = () => {
+    setIsMenuOpen(false);
+    setIsServicesOpen(false);
+    setIsMobileServicesOpen(false);
+  };
 
   const handleHomeClick = () => {
     if (window.location.pathname === "/") {
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
+    closeAllMenus();
   };
 
   const handleBookingClick = (e) => {
@@ -56,7 +78,7 @@ const Navbar = () => {
     } else {
       navigate("/", { state: { scrollToBooking: true } });
     }
-    closeMobileMenu();
+    closeAllMenus();
   };
 
   const scrollToBookingSection = () => {
@@ -70,7 +92,10 @@ const Navbar = () => {
   };
 
   useEffect(() => {
-    if (location.state?.scrollToBooking || window.location.hash === "#booking-section") {
+    if (
+      location.state?.scrollToBooking ||
+      window.location.hash === "#booking-section"
+    ) {
       setTimeout(scrollToBookingSection, 100);
     }
   }, [location]);
@@ -78,13 +103,13 @@ const Navbar = () => {
   const handleLanguageChange = (lang) => {
     changeLanguage(lang);
     setIsLangOpen(false);
-    if (isMenuOpen) closeMobileMenu();
+    if (isMenuOpen) closeAllMenus();
   };
 
   const handleMobileLanguageChange = (lang) => {
     changeLanguage(lang);
     setIsMobileLangOpen(false);
-    closeMobileMenu();
+    closeAllMenus();
   };
 
   // Hidden SEO content
@@ -178,11 +203,26 @@ const Navbar = () => {
           className="text-white focus:outline-none"
           aria-label={language === "fr" ? "Menu" : "Menu"}
         >
-          <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg
+            className="w-7 h-7"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
             {isMenuOpen ? (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             ) : (
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             )}
           </svg>
         </button>
@@ -190,10 +230,10 @@ const Navbar = () => {
 
       {/* Desktop Nav (lg+) */}
       <div className="hidden xl1170:flex justify-between items-center h-[90px] px-6 lg:px-20">
-        {/* Left Nav */}
-        <div className={`flex ${language === 'fr' ? 'gap-5 ' : 'gap-9'}`}>
-          {['home', 'services', 'who_we_are', 'contact'].map((item) => {
-            const path = item === 'home' ? '' : item.replace(/_/g, '-');
+        {/* Left Nav - Updated with Services Dropdown */}
+        <div className={`flex ${language === "fr" ? "gap-5" : "gap-9"}`}>
+          {["home", "who_we_are", "contact"].map((item) => {
+            const path = item === "home" ? "" : item.replace(/_/g, "-");
             return (
               <Link
                 key={item}
@@ -206,13 +246,87 @@ const Navbar = () => {
               </Link>
             );
           })}
+
+          {/* Services Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => {
+              clearTimeout(servicesTimeout);
+              setIsServicesOpen(true);
+            }}
+            onMouseLeave={() => {
+              const timeout = setTimeout(() => setIsServicesOpen(false), 200); // 200ms delay before closing
+              setServicesTimeout(timeout);
+            }}
+          >
+            <button
+              className={`${navLinkClass("services")} flex items-center gap-1`}
+              aria-expanded={isServicesOpen}
+              aria-haspopup="true"
+              onClick={() => setIsServicesOpen(!isServicesOpen)} // Added click handler
+            >
+              {translations.services}
+              <svg
+                className={`w-4 h-4 transition-transform ${
+                  isServicesOpen ? "rotate-180" : ""
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
+              </svg>
+            </button>
+
+            {isServicesOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2 }}
+                className="absolute top-full left-0 mt-2 w-[170px] bg-gray-800 rounded-md shadow-lg py-1 z-50"
+                onMouseEnter={() => {
+                  clearTimeout(servicesTimeout); // Clear timeout when mouse enters dropdown
+                  setIsServicesOpen(true);
+                }}
+                onMouseLeave={() => {
+                  const timeout = setTimeout(
+                    () => setIsServicesOpen(false),
+                    200
+                  );
+                  setServicesTimeout(timeout);
+                }}
+              >
+                {serviceItems.map((service) => (
+                  <Link
+                    key={service.path}
+                    to={`/${service.path}`}
+                    className={`block px-4 py-3 text-sm hover:bg-gray-700 transition-colors ${
+                      isActive(service.path) ? "text-pink-400" : "text-gray-200"
+                    }`}
+                    onClick={closeAllMenus}
+                  >
+                    {translations[service.label]}
+                  </Link>
+                ))}
+              </motion.div>
+            )}
+          </div>
         </div>
 
         {/* Right Nav */}
-        <div className={`flex ${language === 'fr' ? 'gap-3' : 'gap-7'} items-center`}>
+        <div
+          className={`flex ${
+            language === "fr" ? "gap-3" : "gap-7"
+          } items-center`}
+        >
           <Link
             to="/faq"
-            className={navLinkClass('faq')}
+            className={navLinkClass("faq")}
             aria-label={translations.faq}
           >
             {translations.faq}
@@ -227,7 +341,8 @@ const Navbar = () => {
           </button>
 
           {/* Language Dropdown */}
-          <div className="relative group" 
+          <div
+            className="relative group"
             onMouseEnter={() => {
               if (langTimeout) clearTimeout(langTimeout);
               setIsLangOpen(true);
@@ -237,7 +352,8 @@ const Navbar = () => {
               setLangTimeout(timeout);
             }}
             onFocus={() => setIsLangOpen(true)}
-            onBlur={() => setTimeout(() => setIsLangOpen(false), 100)}>
+            onBlur={() => setTimeout(() => setIsLangOpen(false), 100)}
+          >
             <button
               className={`flex items-center gap-1 px-3 py-2 rounded-lg hover:bg-gray-800/50 transition-colors ${
                 isLangOpen ? "bg-gray-800/50" : ""
@@ -250,11 +366,11 @@ const Navbar = () => {
                 <ReactCountryFlag
                   countryCode={language === "en" ? "GB" : "FR"}
                   svg
-                  style={{ 
-                    width: "1.1em", 
+                  style={{
+                    width: "1.1em",
                     height: "1.1em",
                     borderRadius: "2px",
-                    objectFit: "cover"
+                    objectFit: "cover",
                   }}
                 />
                 <span className="ml-2 text-sm font-medium">
@@ -270,23 +386,27 @@ const Navbar = () => {
                 stroke="currentColor"
                 strokeWidth={2}
               >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
 
             {isLangOpen && (
-              <div 
+              <div
                 className="absolute right-0 mt-1 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 shadow-lg rounded-lg z-50 min-w-[140px] border border-gray-200 dark:border-gray-700 overflow-hidden"
                 role="menu"
               >
-                {['en', 'fr'].map((lang) => (
+                {["en", "fr"].map((lang) => (
                   <button
                     key={lang}
                     onClick={() => handleLanguageChange(lang)}
                     onMouseDown={(e) => e.preventDefault()}
                     className={`flex items-center w-full px-4 py-2.5 text-left transition-colors ${
-                      language === lang 
-                        ? "bg-pink-50 dark:bg-gray-700 text-pink-600 dark:text-pink-400 font-medium" 
+                      language === lang
+                        ? "bg-pink-50 dark:bg-gray-700 text-pink-600 dark:text-pink-400 font-medium"
                         : "hover:bg-gray-50 dark:hover:bg-gray-700/70"
                     }`}
                     role="menuitem"
@@ -295,12 +415,12 @@ const Navbar = () => {
                     <ReactCountryFlag
                       countryCode={lang === "en" ? "GB" : "FR"}
                       svg
-                      style={{ 
-                        width: "1.1em", 
+                      style={{
+                        width: "1.1em",
                         height: "1.1em",
                         borderRadius: "2px",
                         marginRight: "10px",
-                        objectFit: "cover"
+                        objectFit: "cover",
                       }}
                       aria-hidden="true"
                     />
@@ -316,7 +436,11 @@ const Navbar = () => {
                         strokeWidth={2}
                         aria-hidden="true"
                       >
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M5 13l4 4L19 7"
+                        />
                       </svg>
                     )}
                   </button>
@@ -364,7 +488,11 @@ const Navbar = () => {
                       "rgba(212, 193, 111, 0.7)",
                     ],
                     scale: 1.1,
-                    transition: { duration: 1.2, repeat: Infinity, repeatType: "reverse" },
+                    transition: {
+                      duration: 1.2,
+                      repeat: Infinity,
+                      repeatType: "reverse",
+                    },
                   }}
                 />
                 <motion.div
@@ -373,7 +501,11 @@ const Navbar = () => {
                   whileHover={{
                     scale: 1.15,
                     opacity: [0, 0.4, 0],
-                    transition: { duration: 1.5, repeat: Infinity, ease: "easeOut" },
+                    transition: {
+                      duration: 1.5,
+                      repeat: Infinity,
+                      ease: "easeOut",
+                    },
                   }}
                 />
               </motion.div>
@@ -386,15 +518,24 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="absolute right-0 top-full xl:hidden bg-white text-gray-900 w-64 py-4 px-6 shadow-inner animate-slideDown z-50">
           <div className="flex flex-col space-y-4">
-            {['', 'services', 'faq', 'who_we_are', 'contact'].map((item) => {
-              const path = item === '' ? 'home' : item;
+            {["", "who_we_are", "contact", "faq"].map((item) => {
+              const path = item === "" ? "home" : item;
               return (
                 <Link
-                  key={item || 'home'}
-                  to={`/${item === 'home' ? '' : item.replace(/_/g, '-')}`}
-                  onClick={item === '' ? () => { closeMobileMenu(); handleHomeClick(); } : closeMobileMenu}
+                  key={item || "home"}
+                  to={`/${item === "home" ? "" : item.replace(/_/g, "-")}`}
+                  onClick={
+                    item === ""
+                      ? () => {
+                          closeAllMenus();
+                          handleHomeClick();
+                        }
+                      : closeAllMenus
+                  }
                   className={`py-2 transition-colors border-b border-gray-300 ${
-                    isActive(item) ? 'text-pink-500 font-medium' : 'hover:text-pink-500'
+                    isActive(item)
+                      ? "text-pink-500 font-medium"
+                      : "hover:text-pink-500"
                   }`}
                   aria-label={translations[path]}
                 >
@@ -403,26 +544,95 @@ const Navbar = () => {
               );
             })}
 
-            {/* <div className="flex space-x-4 p-4 justify-center">
-              {[
-                { icon: <FaLinkedin size={20} />, color: "text-cyan-600" },
-                { icon: <FaFacebook size={20} />, color: "text-blue-600" },
-                { icon: <FaInstagram size={20} />, color: "text-pink-600" },
-                { icon: <FaYoutube size={20} />, color: "text-red-600" },
-                { icon: <FaTiktok size={20} />, color: "text-black" },
-              ].map((social, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`hover:${social.color} transition transform hover:-translate-y-1`}
+            {/* Mobile Services Dropdown */}
+            <div className="border-b border-gray-300 pb-2">
+              <button
+                onClick={() => setIsMobileServicesOpen(!isMobileServicesOpen)}
+                className={`w-full text-left py-2 flex justify-between items-center ${
+                  isActive("services") ? "text-pink-500 font-medium" : ""
+                }`}
+              >
+                {translations.services}
+                <svg
+                  className={`w-4 h-4 transition-transform ${
+                    isMobileServicesOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
                 >
-                  {social.icon}
-                </a>
-              ))}
-            </div> */}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
 
+              {isMobileServicesOpen && (
+                <div className="pl-4 mt-2 space-y-3">
+                  {serviceItems.map((service) => (
+                    <Link
+                      key={service.path}
+                      to={`/${service.path}`}
+                      onClick={closeAllMenus}
+                      className={`block py-1.5 text-sm ${
+                        isActive(service.path)
+                          ? "text-pink-500 font-medium"
+                          : "hover:text-pink-500"
+                      }`}
+                    >
+                      {translations[service.label]}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+            <div className="flex flex-wrap gap-4 w-full p-4 pt-6">
+              <a
+                href="https://www.linkedin.com/in/ouvrir-societehk/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-cyan-400 transition transform hover:-translate-y-1"
+              >
+                <FaLinkedin size={20} />
+              </a>
+              <a
+                href="https://www.facebook.com/profile.php?id=61578182555199"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-blue-500 transition transform hover:-translate-y-1"
+              >
+                <FaFacebook size={20} />
+              </a>
+              <a
+                href="https://www.instagram.com/ouvrirsocietehk?igsh=MWoyZ21tdHZ6N2xrcA=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-pink-500 transition transform hover:-translate-y-1"
+              >
+                <FaInstagram size={20} />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-red-500 transition transform hover:-translate-y-1"
+              >
+                <FaYoutube size={20} />
+              </a>
+              <a
+                href="https://www.tiktok.com/@ouvrirsocietehk?is_from_webapp=1&sender_device=pc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-black dark:hover:text-white transition transform hover:-translate-y-1"
+              >
+                <FaTiktok size={20} />
+              </a>
+            </div>
+
+            {/* Mobile Language Selector */}
             <div className="pt-2">
               <div className="relative">
                 <button
@@ -434,7 +644,9 @@ const Navbar = () => {
                     svg
                     style={{ width: "1em", height: "1em", marginRight: "8px" }}
                   />
-                  {language === "en" ? translations.language_options.en : translations.language_options.fr}
+                  {language === "en"
+                    ? translations.language_options.en
+                    : translations.language_options.fr}
                   <svg
                     className={`absolute right-3 w-4 h-4 transition-transform duration-300 ${
                       isMobileLangOpen ? "rotate-180" : "rotate-0"
@@ -443,24 +655,35 @@ const Navbar = () => {
                     viewBox="0 0 24 24"
                     stroke="currentColor"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
                   </svg>
                 </button>
 
                 {isMobileLangOpen && (
                   <div className="absolute mt-1 w-full bg-white text-gray-900 shadow-lg rounded-md z-50 border border-gray-200">
-                    {['en', 'fr'].map((lang) => (
+                    {["en", "fr"].map((lang) => (
                       <button
                         key={lang}
                         onClick={() => handleMobileLanguageChange(lang)}
                         className={`flex items-center px-4 py-2 w-full text-left transition-colors ${
-                          language === lang ? "bg-gray-100 text-pink-500 font-medium" : "hover:bg-gray-50"
+                          language === lang
+                            ? "bg-gray-100 text-pink-500 font-medium"
+                            : "hover:bg-gray-50"
                         }`}
                       >
                         <ReactCountryFlag
                           countryCode={lang === "en" ? "GB" : "FR"}
                           svg
-                          style={{ width: "1em", height: "1em", marginRight: "8px" }}
+                          style={{
+                            width: "1em",
+                            height: "1em",
+                            marginRight: "8px",
+                          }}
                         />
                         {translations.language_options[lang]}
                       </button>

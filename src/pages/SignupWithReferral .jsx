@@ -51,7 +51,7 @@ export default function ClientSignup() {
 
       // Submit to backend
       const response = await axios.post(
-        `${API_BASE_URL}/api/auth/client/signup`,
+        `${API_BASE_URL}/api/client/signup`,
         payload,
         {
           headers: {
@@ -87,9 +87,9 @@ export default function ClientSignup() {
   };
 
   return (
-  <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
+  <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold text-center mb-6">
-        {referralCode ? 'Join Through Referral' : 'Create Account'}
+        {referralCode ? 'Create account' : 'Create Account'}
       </h2>
 
      <form onSubmit={handleSubmit} className="space-y-4">
