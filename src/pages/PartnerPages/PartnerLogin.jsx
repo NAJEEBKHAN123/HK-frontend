@@ -182,6 +182,9 @@ const PartnerLogin = () => {
                 "Access Partner Dashboard"
               )}
             </motion.button>
+            <div className="mt-6 text-center text-sm text-gray-500">
+              <p>Don't have an account? <Link to='/partner-signup' className="text-blue-600 hover:underline">Sign up</Link></p>
+            </div>
 
             {/* Footer Links */}
             <div className="mt-6 text-center text-sm text-gray-500">
