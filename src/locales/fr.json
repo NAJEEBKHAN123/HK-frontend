@@ -330,37 +330,28 @@
   },
 
   "orderForm": {
-    "title": "enregistrement de la société",
-    "planLabel": "Forfait",
-    "totalLabel": "Total",
-    "buttons": {
-      "submit": "Finaliser l'inscription",
-      "submitting": "Envoi en cours..."
-    },
-    "pay": "Payez maintenant",
-    "fields": {
-      "fullName": "Nom complet",
-      "email": "E-mail",
-      "phone": "Numéro de téléphone",
-      "birthday": "Date de naissance",
-      "address": "Adresse",
-      "idUpload": "Téléverser une pièce d'identité (JPEG/PNG/PDF)"
-    },
-    "errors": {
-      "fullName": "Le nom complet est requis",
-      "email": "L'e-mail est requis",
-      "phone": "Le numéro de téléphone est requis",
-      "birthday": "La date de naissance est requise",
-      "address": "L'adresse est requise",
-      "idFile": "Un fichier d'identité est requis"
-    },
-    "success": {
-      "title": "Commande soumise avec succès !",
-      "message": "Nous avons reçu votre commande pour le forfait {plan}.",
-      "total": "Montant total",
-      "contact": "Notre équipe vous contactera bientôt à {email} ou {phone} avec les instructions de paiement."
-    }
+  "success": {
+    "title": "Commande réussie",
+    "orderConfirmed": "Commande confirmée",
+    "orderNumber": "N° de commande",
+    "paymentInstructions": "Instructions de paiement",
+    "pleaseTransfer": "Veuillez transférer",
+    "toOurBankAccount": "à notre compte bancaire",
+    "bankName": "Nom de la banque",
+    "accountHolder": "Titulaire du compte",
+    "reference": "Référence de paiement",
+    "paymentProcessingTime": "Votre commande sera traitée une fois le paiement reçu (généralement sous 1 à 2 jours ouvrables).",
+    "nextSteps": "Prochaines étapes",
+    "step1": "Effectuez le virement bancaire en utilisant les informations ci-dessus",
+    "step2": "Envoyez la confirmation de paiement à notre adresse e-mail",
+    "step3": "Nous vous contacterons pour finaliser le processus",
+    "contactInfo": "Nous vous contacterons à",
+    "contactSupport": "Pour toute question, veuillez contacter notre équipe d'assistance.",
+    "or": "ou"
   },
+  "submitOrder": "Envoyer la commande"
+}
+,
 
   "appointment": {
     "badge": {

@@ -353,6 +353,7 @@
 
   "orderForm": {
     "success": {
+      "title": "Order Successful",
       "orderConfirmed": "Order Confirmed",
       "orderNumber" : "Order No",
       "paymentInstructions": "Payment Instructions",

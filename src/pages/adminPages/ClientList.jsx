@@ -77,7 +77,7 @@ const ClientsList = () => {
   return (
     <div className="bg-white rounded-lg shadow p-3 sm:p-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 sm:mb-0">Client Management</h2>
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-3 pt-6 sm:mb-0">Client Management</h2>
         <div className="relative w-full sm:w-64">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
             <FiSearch className="text-gray-400" />

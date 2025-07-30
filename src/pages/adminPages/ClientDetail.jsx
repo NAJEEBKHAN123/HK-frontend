@@ -120,9 +120,9 @@ const ClientDetail = () => {
       <div className="mb-4 sm:mb-6">
         <Link
           to="/admin/client"
-          className="flex items-center text-blue-600 hover:text-blue-800 text-sm sm:text-base"
+          className="flex items-center pt-4 text-blue-600 hover:text-blue-800 text-sm sm:text-base"
         >
-          <FiArrowLeft className="mr-1" /> Back to Clients
+          <FiArrowLeft className="mr-1 " /> Back to Clients
         </Link>
       </div>
 

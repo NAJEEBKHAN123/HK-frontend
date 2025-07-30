@@ -416,10 +416,10 @@ const Footer = () => {
               <motion.div
                 whileHover={{ x: 2 }}
                 transition={{ type: "spring", stiffness: 300 }}
-                className="flex  xs:flex-row gap-6 items-center"
+                className="flex xs:flex-row gap-6 items-center"
               >
                <Link to='/partner/login'>
-                 <button className="flex items-center gap-2  py-2 text-gray-400 rounded ">
+                 <button className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-xs sm:text-sm ">
                   <FaUser /> Partner
                 </button>
                </Link>
@@ -428,10 +428,9 @@ const Footer = () => {
                   className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-xs sm:text-sm"
                 >
                   <FaCog className="h-4 w-4 group-hover:rotate-12 transition-transform" />
-                  <span className="hidden lg:inline-block">
+                  <span>
                     Admin
                   </span>
-                  <span className="inline-block lg:hidden">Admin</span>
                 </Link>
 
                 <div className="group flex items-center bg-gray-100 hover:bg-gray-200/60 transition-colors duration-200 rounded-full px-3  lg:py-1 sm:px-4 py-1.5 sm:py-1.5 w-fit max-w-full">
