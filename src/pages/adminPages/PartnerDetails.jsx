@@ -6,12 +6,13 @@ import {
   FiCalendar, FiTrendingUp, FiActivity, FiArrowLeft 
 } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
+import ReferredClientsForAdmin from '../adminPages/ReferredClientForAdmin';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
 const PartnerDetail = () => {
   const { id } = useParams();
-  const [partner, setPartner] = useState(null);
+  const [partnerData, setPartnerData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [payoutAmount, setPayoutAmount] = useState('');
@@ -25,7 +26,9 @@ const PartnerDetail = () => {
         const response = await axios.get(`${API_BASE_URL}/api/partner-auth/admin/partners/${id}`, {
           headers: { Authorization: `Bearer ${token}` }
         });
-        setPartner(response.data.partner);
+        console.log('Partner data:', response.data.data.partner);
+        console.log('Clients data:', response.data.data.clients);
+        setPartnerData(response.data.data);
       } catch (err) {
         setError(err.response?.data?.error || 'Failed to load partner details');
       } finally {
@@ -53,7 +56,7 @@ const PartnerDetail = () => {
       const response = await axios.get(`${API_BASE_URL}/api/partner-auth/admin/partners/${id}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
-      setPartner(response.data.partner);
+      setPartnerData(response.data.data);
       
       setShowPayoutModal(false);
       setPayoutAmount('');
@@ -75,8 +78,9 @@ const PartnerDetail = () => {
     </div>
   );
 
-  if (!partner) return <div>Partner not found</div>;
+  if (!partnerData || !partnerData.partner) return <div>Partner not found</div>;
 
+  const { partner, clients } = partnerData;
   const availableCommission = (partner.commissionEarned || 0) - (partner.commissionPaid || 0);
 
   return (
@@ -109,6 +113,7 @@ const PartnerDetail = () => {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-6 sm:mb-8">
+        {/* Commission Summary Card */}
         <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200">
           <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center">
             <FiDollarSign className="text-green-500 mr-2" /> Commission Summary
@@ -140,6 +145,7 @@ const PartnerDetail = () => {
           </div>
         </div>
 
+        {/* Referral Performance Card */}
         <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200">
           <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center">
             <FiUsers className="text-blue-500 mr-2" /> Referral Performance
@@ -155,7 +161,7 @@ const PartnerDetail = () => {
             </div>
             <div className="flex justify-between text-sm sm:text-base">
               <span className="text-gray-600">Clients Referred:</span>
-              <span className="font-medium">{partner.totalClientsReferred || 0}</span>
+              <span className="font-medium">{clients?.length || 0}</span>
             </div>
             <div className="flex justify-between border-t pt-2 text-sm sm:text-base">
               <span className="text-gray-600 font-semibold">Conversion Rate:</span>
@@ -166,6 +172,7 @@ const PartnerDetail = () => {
           </div>
         </div>
 
+        {/* Quick Actions Card */}
         <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200">
           <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center">
             <FiActivity className="text-purple-500 mr-2" /> Quick Actions
@@ -190,7 +197,10 @@ const PartnerDetail = () => {
                   { status: newStatus },
                   { headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` } }
                 );
-                setPartner({ ...partner, status: newStatus });
+                setPartnerData({
+                  ...partnerData,
+                  partner: { ...partner, status: newStatus }
+                });
               }}
             >
               {partner.status === 'active' ? 'Deactivate Account' : 'Activate Account'}
@@ -199,66 +209,43 @@ const PartnerDetail = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-        <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200">
-          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Referred Clients ({partner.clients?.length || 0})</h3>
-          {partner.clients?.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-3 py-2 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase">Name</th>
-                    <th className="px-3 py-2 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase">Email</th>
-                    <th className="px-3 py-2 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase">Date</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {partner.clients.map(client => (
-                    <tr key={client._id}>
-                      <td className="px-3 py-2 sm:px-4 sm:py-3 whitespace-nowrap text-xs sm:text-sm text-gray-900">{client.name}</td>
-                      <td className="px-3 py-2 sm:px-4 sm:py-3 whitespace-nowrap text-xs sm:text-sm text-gray-500">{client.email}</td>
-                      <td className="px-3 py-2 sm:px-4 sm:py-3 whitespace-nowrap text-xs sm:text-sm text-gray-500">
-                        {new Date(client.createdAt).toLocaleDateString()}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <p className="text-gray-500 text-sm sm:text-base">No clients referred yet.</p>
-          )}
-        </div>
+      {/* Clients Section */}
+      <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200 mb-6">
+        <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
+          Referred Clients ({clients?.length || 0})
+        </h3>
+        <ReferredClientsForAdmin clients={clients || []} />
+      </div>
 
-        <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200">
-          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Recent Activity</h3>
-          <div className="space-y-3 sm:space-y-4">
+      {/* Recent Activity Section */}
+      <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200">
+        <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Recent Activity</h3>
+        <div className="space-y-3 sm:space-y-4">
+          <div className="flex items-start">
+            <div className="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-blue-100 flex items-center justify-center">
+              <FiCalendar className="text-blue-600 text-sm sm:text-base" />
+            </div>
+            <div className="ml-2 sm:ml-3">
+              <p className="text-xs sm:text-sm font-medium text-gray-900">Account Created</p>
+              <p className="text-xs sm:text-sm text-gray-500">
+                {new Date(partner.createdAt).toLocaleString()}
+              </p>
+            </div>
+          </div>
+          {partner.orders?.length > 0 && (
             <div className="flex items-start">
-              <div className="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                <FiCalendar className="text-blue-600 text-sm sm:text-base" />
+              <div className="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-green-100 flex items-center justify-center">
+                <FiTrendingUp className="text-green-600 text-sm sm:text-base" />
               </div>
               <div className="ml-2 sm:ml-3">
-                <p className="text-xs sm:text-sm font-medium text-gray-900">Account Created</p>
+                <p className="text-xs sm:text-sm font-medium text-gray-900">Recent Referral</p>
                 <p className="text-xs sm:text-sm text-gray-500">
-                  {new Date(partner.createdAt).toLocaleString()}
+                  {partner.orders.length} orders totaling $
+                  {(partner.orders.reduce((sum, order) => sum + (order.finalPrice || 0), 0) / 100).toFixed(2)}
                 </p>
               </div>
             </div>
-            {partner.orders?.length > 0 && (
-              <div className="flex items-start">
-                <div className="flex-shrink-0 h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-green-100 flex items-center justify-center">
-                  <FiTrendingUp className="text-green-600 text-sm sm:text-base" />
-                </div>
-                <div className="ml-2 sm:ml-3">
-                  <p className="text-xs sm:text-sm font-medium text-gray-900">Recent Referral</p>
-                  <p className="text-xs sm:text-sm text-gray-500">
-                    {partner.orders.length} orders totaling $
-                    {(partner.orders.reduce((sum, order) => sum + (order.finalPrice || 0), 0) / 100).toFixed(2)}
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
+          )}
         </div>
       </div>
 

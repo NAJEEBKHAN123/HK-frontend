@@ -61,13 +61,6 @@ const AdminSidebar = () => {
             <FiHome /> Dashboard
           </Link>
           <Link
-            to="/admin/appointment"
-            className={navLinkClass("/admin/appointment")}
-            onClick={() => setIsOpen(false)}
-          >
-            <FiCalendar /> Book Appointment
-          </Link>
-          <Link
             to="/admin/orders"
             className={navLinkClass("/admin/orders")}
             onClick={() => setIsOpen(false)}
@@ -94,13 +87,6 @@ const AdminSidebar = () => {
             onClick={() => setIsOpen(false)}
           >
             <FiUsers /> Clients Lists
-          </Link>
-          <Link
-            to="/admin/contacts"
-            className={navLinkClass("/admin/contacts")}
-            onClick={() => setIsOpen(false)}
-          >
-            <FiMail /> View Contacts
           </Link>
           <button
             onClick={handleLogout}

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import jean from "../assets/founder2.webp";
+import jean from "../assets/member1.jpg";
 import ludo from "../assets/Ludovic-Martinjpg.jpg";
 import sophie from "../assets/female.webp";
 import { Link, useNavigate } from "react-router-dom";

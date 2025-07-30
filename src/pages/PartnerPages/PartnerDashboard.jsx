@@ -17,6 +17,8 @@ const PartnerDashboard = () => {
       try {
         const response = await axios.get(`${API_BASE_URL}/api/partner-auth/dashboard`);
         setDashboardData(response.data.data);
+        console.log('partner details in partner page',response.data.data)
+
       } catch (err) {
         setError(err.response?.data?.error || 'Failed to fetch dashboard data');
         if (err.response?.status === 401) {

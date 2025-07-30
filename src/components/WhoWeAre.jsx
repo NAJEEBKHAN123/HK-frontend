@@ -11,7 +11,7 @@ import {
   FaShieldAlt,
   FaCheck,
 } from "react-icons/fa";
-import jean from "../assets/founder2.webp";
+import jean from "../assets/member1.jpg";
 import ludo from "../assets/Ludovic-Martinjpg.jpg";
 import sophie from "../assets/female.webp";
 import office from "../assets/office.webp";

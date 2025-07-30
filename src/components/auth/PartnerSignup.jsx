@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
+import { motion } from 'framer-motion';
+import { FiUser, FiMail, FiLock, FiCopy, FiCheck, FiArrowRight } from 'react-icons/fi';
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
@@ -14,9 +16,10 @@ export default function PartnerSignup() {
     name: '',
     password: ''
   });
-  const [partnerData, setPartnerData] = useState(null); // Add state for partner data
+  const [partnerData, setPartnerData] = useState(null);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   // Auto-verify when token/code exists in URL
   useEffect(() => {
@@ -63,7 +66,6 @@ export default function PartnerSignup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     
-    // Validate required fields
     if (!form.name || !form.password) {
       return setMessage('Name and password are required');
     }
@@ -71,8 +73,8 @@ export default function PartnerSignup() {
     setLoading(true);
     try {
       const response = await axios.post(`${API_BASE_URL}/api/partner-auth/register`, form);
-      setPartnerData(response.data.partner); // Store the partner data from response
-      setStep(3); // Success step
+      setPartnerData(response.data.partner);
+      setStep(3);
     } catch (err) {
       setMessage(err.response?.data?.error || 'Registration failed');
     } finally {
@@ -80,125 +82,196 @@ export default function PartnerSignup() {
     }
   };
 
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(partnerData.referralLink || `${window.location.origin}/join?ref=${partnerData.referralCode}`);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
-    <div className="max-w-md mx-auto p-6 mt-12 bg-white rounded-lg shadow-md">
-      {step === 1 && (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-center">Partner Signup</h2>
-          {loading ? (
-            <div className="text-center py-8">
-              <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-50 flex items-center justify-center p-4">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="w-full max-w-md bg-white rounded-xl shadow-lg overflow-hidden"
+      >
+        {/* Step 1: Token/Code Verification */}
+        {step === 1 && (
+          <div className="p-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">Partner Signup</h2>
+              <p className="text-gray-600">Enter your invitation details to get started</p>
             </div>
-          ) : (
-            <>
-              <div className="space-y-2">
-                <input
-                  type="text"
-                  placeholder="Invite Token"
-                  value={form.token}
-                  onChange={(e) => setForm({...form, token: e.target.value})}
-                  className="w-full p-2 border rounded"
-                />
-                <p className="text-center text-gray-500">OR</p>
-                <input
-                  type="text"
-                  placeholder="Short Code (P-1234)"
-                  value={form.shortCode}
-                  onChange={(e) => setForm({...form, shortCode: e.target.value})}
-                  className="w-full p-2 border rounded"
-                />
-              </div>
-              <button
-                onClick={() => verifyCredentials(form.token, form.shortCode)}
-                className="w-full p-2 bg-blue-600 text-white rounded"
-              >
-                Continue
-              </button>
-            </>
-          )}
-          {message && <p className="text-red-500 text-center">{message}</p>}
-        </div>
-      )}
 
-      {step === 2 && (
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold text-center">Complete Registration</h2>
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <div>
-              <label className="block mb-1">Email</label>
-              <input
-                type="email"
-                value={form.email}
-                className="w-full p-2 border rounded bg-gray-50"
-                readOnly
-              />
-            </div>
-            <div>
-              <label className="block mb-1">Full Name *</label>
-              <input
-                type="text"
-                value={form.name}
-                onChange={(e) => setForm({...form, name: e.target.value})}
-                className="w-full p-2 border rounded"
-                required
-              />
-            </div>
-            <div>
-              <label className="block mb-1">Password *</label>
-              <input
-                type="password"
-                value={form.password}
-                onChange={(e) => setForm({...form, password: e.target.value})}
-                className="w-full p-2 border rounded"
-                required
-                minLength="8"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full p-2 bg-blue-600 text-white rounded disabled:bg-blue-400"
-            >
-              {loading ? 'Submitting...' : 'Complete Registration'}
-            </button>
-          </form>
-          {message && <p className="text-red-500 text-center">{message}</p>}
-        </div>
-      )}
-
-      {step === 3 && partnerData && (
-        <div className="text-center space-y-4">
-          <h2 className="text-2xl font-bold text-gray-800">Registration Complete!</h2>
-          <div className="bg-green-50 p-4 rounded-lg border border-green-100">
-            <p className="text-green-700 font-medium">Your partner account is now active</p>
-            
-            <div className="mt-4">
-              <p className="font-medium">Your referral link:</p>
-              <div className="p-2 bg-gray-100 rounded-md mt-2 break-all">
-                {partnerData.referralLink || `${window.location.origin}/join?ref=${partnerData.referralCode}`}
+            {loading ? (
+              <div className="flex justify-center py-12">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
               </div>
-              <button 
-                onClick={() => {
-                  navigator.clipboard.writeText(partnerData.referralLink || `${window.location.origin}/join?ref=${partnerData.referralCode}`);
-                  alert('Copied to clipboard!');
-                }}
-                className="mt-2 px-4 py-1 bg-blue-600 text-white rounded-md text-sm"
-              >
-                Copy Link
-              </button>
+            ) : (
+              <div className="space-y-6">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Invite Token</label>
+                  <input
+                    type="text"
+                    placeholder="Paste your invitation token"
+                    value={form.token}
+                    onChange={(e) => setForm({...form, token: e.target.value})}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
+
+                <div className="relative flex items-center">
+                  <div className="flex-grow border-t border-gray-300"></div>
+                  <span className="flex-shrink mx-4 text-gray-500">or</span>
+                  <div className="flex-grow border-t border-gray-300"></div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Short Code</label>
+                  <input
+                    type="text"
+                    placeholder="Enter your short code (P-1234)"
+                    value={form.shortCode}
+                    onChange={(e) => setForm({...form, shortCode: e.target.value})}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                  />
+                </div>
+
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  onClick={() => verifyCredentials(form.token, form.shortCode)}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition-colors"
+                >
+                  Continue <FiArrowRight className="inline ml-1" />
+                </motion.button>
+
+                {message && (
+                  <div className="p-3 bg-red-50 text-red-600 rounded-lg text-center">
+                    {message}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* Step 2: Registration Form */}
+        {step === 2 && (
+          <div className="p-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">Complete Registration</h2>
+              <p className="text-gray-600">Fill in your details to create your partner account</p>
             </div>
-            
-          
-            <a 
-              href={partnerData.dashboardLink || '/partner/dashboard'} 
-              className="inline-block mt-4 px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
+
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <div className="relative">
+                  <FiMail className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="email"
+                    value={form.email}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    readOnly
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Full Name *</label>
+                <div className="relative">
+                  <FiUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="text"
+                    value={form.name}
+                    onChange={(e) => setForm({...form, name: e.target.value})}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Password *</label>
+                <div className="relative">
+                  <FiLock className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+                  <input
+                    type="password"
+                    value={form.password}
+                    onChange={(e) => setForm({...form, password: e.target.value})}
+                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                    required
+                    minLength="8"
+                  />
+                </div>
+                <p className="mt-1 text-xs text-gray-500">Minimum 8 characters</p>
+              </div>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                type="submit"
+                disabled={loading}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 px-4 rounded-lg font-medium transition-colors disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                {loading ? 'Creating Account...' : 'Complete Registration'}
+              </motion.button>
+
+              {message && (
+                <div className="p-3 bg-red-50 text-red-600 rounded-lg text-center">
+                  {message}
+                </div>
+              )}
+            </form>
+          </div>
+        )}
+
+        {/* Step 3: Success Screen */}
+        {step === 3 && partnerData && (
+          <div className="p-8 text-center">
+            <div className="mb-8">
+              <div className="mx-auto flex items-center justify-center h-16 w-16 rounded-full bg-green-100 mb-4">
+                <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <h2 className="text-3xl font-bold text-gray-800 mb-2">Registration Complete!</h2>
+              <p className="text-gray-600">Your partner account is now active</p>
+            </div>
+
+            <div className="bg-blue-50 p-6 rounded-lg border border-blue-100 mb-6">
+              <h3 className="text-lg font-medium text-gray-800 mb-3">Your Referral Link</h3>
+              <div className="flex items-center">
+                <div className="flex-grow p-3 bg-white rounded-lg border border-gray-200 overflow-x-auto">
+                  <code className="text-sm text-gray-800">
+                    {partnerData.referralLink || `${window.location.origin}/join?ref=${partnerData.referralCode}`}
+                  </code>
+                </div>
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={copyToClipboard}
+                  className="ml-2 p-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+                  aria-label="Copy to clipboard"
+                >
+                  {copied ? <FiCheck /> : <FiCopy />}
+                </motion.button>
+              </div>
+              {copied && <p className="mt-2 text-sm text-green-600">Copied to clipboard!</p>}
+            </div>
+
+            <motion.a
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              href={partnerData.dashboardLink || '/partner/dashboard'}
+              className="inline-block w-full bg-green-600 hover:bg-green-700 text-white py-3 px-4 rounded-lg font-medium transition-colors"
             >
               Go to Dashboard
-            </a>
-            
+            </motion.a>
           </div>
-        </div>
-      )}
+        )}
+      </motion.div>
     </div>
   );
 }

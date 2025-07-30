@@ -28,7 +28,6 @@ import Choices from "./pages/legal/Choices";
 import TeamMember from "./pages/TeamMember";
 import NotFound from "./pages/NotFound";
 import GenerateInvite from "./components/admin/GenerateInvite";
-import Contacts from "./pages/adminPages/Contacts";
 import PartnerSignup from "./components/auth/PartnerSignup";
 import SignupWithReferral from "./pages/SignupWithReferral ";
 import Cards from "./components/Cards";
@@ -93,7 +92,6 @@ function App() {
               <Route path="dashboard" element={<AdminDashboard />} />
               <Route path="orders" element={<AllOrders />} />
               <Route path="create-partner" element={<GenerateInvite />} />
-              <Route path="contacts" element={<Contacts />} />
               <Route path="partners" element={<PartnersList />} />
               <Route path="partners/:id" element={<PartnerDetail />} />
               <Route path="client/:id" element={<ClientDetail />} />

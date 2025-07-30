@@ -46,6 +46,9 @@ const Navbar = () => {
     );
   };
 
+  const dropdownWidth = language === 'fr' ? 'w-[130px]' : 'w-[170px]';
+const dropdownClasses = `absolute top-full left-0 mt-2 ${dropdownWidth} bg-gray-800 rounded-md shadow-lg py-1 z-50`;
+
   const navLinkClass = (path) => `
     hover:text-white
     transition-all
@@ -288,9 +291,9 @@ const Navbar = () => {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.2 }}
-                className="absolute top-full left-0 mt-2 w-[170px] bg-gray-800 rounded-md shadow-lg py-1 z-50"
+                className={dropdownClasses}
                 onMouseEnter={() => {
-                  clearTimeout(servicesTimeout); // Clear timeout when mouse enters dropdown
+                  clearTimeout(servicesTimeout); 
                   setIsServicesOpen(true);
                 }}
                 onMouseLeave={() => {
