@@ -39,7 +39,8 @@ const AdminLogin = () => {
       localStorage.setItem('adminId', response.data.admin.id);
       axios.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
 
-      window.location.href = '/admin/dashboard';
+      navigate('/admin/dashboard')
+      
       
     } catch (error) {
       const errorMessage = error.response?.data?.message || 
