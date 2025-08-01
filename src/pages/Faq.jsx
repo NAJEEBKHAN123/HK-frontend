@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 import { LanguageContext } from '../context/LanguageContext';
 import enTranslations from '../locales/en.json';
 import frTranslations from '../locales/fr.json';
-import { FiChevronDown, FiSearch } from 'react-icons/fi';
+import {  FiSearch } from 'react-icons/fi';
 import { FaQuestionCircle } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import FAQAccordion from '../components/FAQAccordion';
 
 // SEO content for FAQ page
 const faqSeoContent = {
@@ -27,7 +28,6 @@ const FAQPage = () => {
   const translations = language === 'fr' ? frTranslations.faq : enTranslations.faq;
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
-  const [expandedItems, setExpandedItems] = useState([]);
 
   // Enhanced categories with SEO-rich names
   const categories = [
@@ -78,11 +78,6 @@ const FAQPage = () => {
     return matchesSearch && matchesCategory;
   });
 
-  const toggleItem = (id) => {
-    setExpandedItems(prev => 
-      prev.includes(id) ? prev.filter(itemId => itemId !== id) : [...prev, id]
-    );
-  };
 
   // Animation variants
   const containerVariants = {
@@ -237,84 +232,31 @@ const FAQPage = () => {
           </motion.div>
 
           {/* FAQ List */}
-          <motion.div 
-            className="max-w-4xl mx-auto"
-            initial="hidden"
-            animate="visible"
-            variants={containerVariants}
-          >
-            {filteredFaqs.length > 0 ? (
-              <div className="space-y-4">
-                {filteredFaqs.map((faq, index) => (
-                  <motion.div 
-                    key={index}
-                    variants={itemVariants}
-                    className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden transition-all hover:shadow-md"
-                    itemScope
-                    itemProp="mainEntity"
-                    itemType="https://schema.org/Question"
-                  >
-                    <button
-                      onClick={() => toggleItem(faq.id || index)}
-                      className="w-full flex justify-between items-center p-6 text-left focus:outline-none"
-                      aria-expanded={expandedItems.includes(faq.id || index)}
-                      aria-controls={`faq-answer-${faq.id || index}`}
-                    >
-                      <h3 className="text-lg font-medium text-gray-900" itemProp="name">
-                        {faq.question}
-                      </h3>
-                      <FiChevronDown className={`h-5 w-5 text-gray-500 transition-transform ${
-                        expandedItems.includes(faq.id || index) ? 'transform rotate-180' : ''
-                      }`} />
-                    </button>
-                    
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{
-                        height: expandedItems.includes(faq.id || index) ? 'auto' : 0,
-                        opacity: expandedItems.includes(faq.id || index) ? 1 : 0
-                      }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                      id={`faq-answer-${faq.id || index}`}
-                      itemScope
-                      itemProp="acceptedAnswer"
-                      itemType="https://schema.org/Answer"
-                    >
-                      <div className="px-6 pb-6 pt-2 text-gray-600" itemProp="text">
-                        {faq.schemaAnswer.map((paragraph, i) => (
-                          <p key={i} className="mb-3">{paragraph}</p>
-                        ))}
-                        {faq.links.map(link => (
-                          <Link 
-                            key={link.id}
-                            to={link.url}
-                            className="mt-3 inline-flex items-center text-blue-600 hover:underline"
-                          >
-                            {link.text}
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  </motion.div>
-                ))}
-              </div>
-            ) : (
-              <motion.div 
-                variants={itemVariants}
-                className="text-center py-12"
-              >
-                <h3 className="text-xl font-medium text-gray-900 mb-2">
-                  {language === 'fr' ? 'Aucun résultat trouvé' : 'No results found'}
-                </h3>
-                <p className="text-gray-600">
-                  {language === 'fr' 
-                    ? 'Essayez de modifier vos critères de recherche' 
-                    : 'Try adjusting your search criteria'}
-                </p>
-              </motion.div>
-            )}
-          </motion.div>
+         <motion.div 
+  className="max-w-4xl mx-auto"
+  initial="hidden"
+  animate="visible"
+  variants={containerVariants}
+>
+  {filteredFaqs.length > 0 ? (
+    <FAQAccordion faqs={filteredFaqs} />
+  ) : (
+    <motion.div 
+      variants={itemVariants}
+      className="text-center py-12"
+    >
+      <h3 className="text-xl font-medium text-gray-900 mb-2">
+        {language === 'fr' ? 'Aucun résultat trouvé' : 'No results found'}
+      </h3>
+      <p className="text-gray-600">
+        {language === 'fr' 
+          ? 'Essayez de modifier vos critères de recherche' 
+          : 'Try adjusting your search criteria'}
+      </p>
+    </motion.div>
+  )}
+       </motion.div>
+
 
           {/* CTA Section */}
           <motion.div 

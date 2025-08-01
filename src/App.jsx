@@ -3,7 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
 import TopBar from "./components/TopBar";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
+import Home from "./pages/Home"
 import OurServices from "./components/OurService";
 import WhoWeAre from "./components/WhoWeAre";
 import ScrollToTop from "./pages/ScrollToTop";
@@ -41,6 +41,7 @@ import PartnerProtectedRoute from "./pages/PartnerPages/PartnerProtectedRoute";
 import ClientCompDetail from "./pages/PartnerPages/ClientsCompDetails";
 import ServicePricing from "./components/ServicePricing";
 import AdminOrderDetails from "./pages/adminPages/AdminOrderDetails";
+// import BookingTrigger from "./components/BookingTrigger";
 
 function App() {
   return (
@@ -57,7 +58,6 @@ function App() {
           <Route path="/who-we-are" element={<WhoWeAre />} />
           <Route path="/pricingCards" element={<Cards />} />
           <Route path="/faq" element={<Faq />} />
-          <Route path="/booking-section" element={<BookingModal />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/order-form" element={<OrderForm />} />
           <Route path="/payment-success" element={<SuccessPage />} />

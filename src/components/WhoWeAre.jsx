@@ -1,5 +1,6 @@
+import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {
   FaLinkedin,
@@ -13,66 +14,20 @@ import {
 } from "react-icons/fa";
 import jean from "../assets/member1.jpg";
 import ludo from "../assets/Ludovic-Martinjpg.jpg";
-import sophie from "../assets/female.webp";
 import office from "../assets/office.webp";
 import pattern from "../assets/pattern.webp";
 import hkSkyline from "../assets/hksky.webp";
 import hknight from "../assets/hongkong-night.webp";
+import { LanguageContext } from "../context/LanguageContext";
+import enTranslation from "../locales/en.json";
+import frTranslation from "../locales/fr.json";
 
-const team = [
-  {
-    name: "Jean Dubois",
-    role: "Head of Accounting",
-    bio: "12+ years in Hong Kong corporate law. Fluent in French, English, and Cantonese. Specializes in helping European SMEs establish tax-efficient structures in Asia.",
-    photo: jean,
-    specialty: ["Company Formation", "Bank Compliance", "Tax Structuring"],
-    contact: "jean@hongkongbusiness.com",
-    linkedin: "#",
-    quote:
-      "The right corporate structure can save you 30% or more in unnecessary taxes.",
-    years: 12,
-  },
-  {
-    name: "Ludovic Martin",
-    role: "Founder & Legal Expert",
-    bio: "Former Big 4 tax consultant with 15+ years experience in international tax optimization. Has helped 150+ clients expand into Asia.",
-    photo: ludo,
-    specialty: [
-      "Financial Reporting",
-      "Cross-Border Taxation",
-      "VAT Compliance",
-    ],
-    contact: "ludovic@hongkongbusiness.com",
-    linkedin: "#",
-    quote:
-      "Hong Kong remains the most business-friendly jurisdiction in Asia for European entrepreneurs.",
-    years: 15,
-  },
-  {
-    name: "Sophie Chen",
-    role: "Banking Relations Director",
-    bio: "15 years facilitating international banking solutions for foreign entrepreneurs in Asia. Speaks fluent English, French, and Mandarin.",
-    photo: sophie,
-    specialty: [
-      "Account Opening",
-      "Payment Solutions",
-      "Trade Finance",
-      "FX Management",
-    ],
-    contact: "sophie@hongkongbusiness.com",
-    linkedin: "#",
-    quote:
-      "We've helped clients open accounts with every major bank in Hong Kong.",
-    years: 15,
-  },
-];
-
-const stats = [
-  { value: "200+", label: "Satisfied Clients" },
-  { value: "98%", label: "Success Rate" },
-  { value: "24h", label: "Average Response Time" },
-  { value: "15+", label: "Banking Partners" },
-];
+const icons = {
+  FaGlobeAsia,
+  FaHandshake,
+  FaChartLine,
+  FaShieldAlt
+};
 
 const fadeIn = {
   hidden: { opacity: 0, y: 40 },
@@ -98,6 +53,9 @@ const staggerContainer = {
 };
 
 export default function WhoWeAre() {
+  const { language } = useContext(LanguageContext);
+  const translations = language === 'fr' ? frTranslation.WhoWeAre : enTranslation.WhoWeAre;
+  
   const [activeMember, setActiveMember] = useState(null);
   const [scrollY, setScrollY] = useState(0);
   const navigate = useNavigate();
@@ -113,15 +71,35 @@ export default function WhoWeAre() {
     navigate("/#booking-section", { state: { scrollToForm: true } });
   };
 
-  const openModal = (member) => {
-    setActiveMember(member);
-    document.body.style.overflow = "hidden";
-  };
+  
 
   const closeModal = () => {
     setActiveMember(null);
     document.body.style.overflow = "auto";
   };
+
+  const teamMembers = [
+    {
+      id: "founder",
+      name: translations.team.founder.name,
+      role: translations.team.founder.role,
+      photo: ludo,
+      years: translations.team.founder.years,
+      quote: translations.team.founder.quote,
+      bio: translations.team.founder.bio,
+      expertise: translations.team.founder.expertise
+    },
+    {
+      id: "collaborator",
+      name: translations.team.collaborator.name,
+      role: translations.team.collaborator.role,
+      photo: jean,
+      years: translations.team.collaborator.years,
+      quote: translations.team.collaborator.quote,
+      bio: translations.team.collaborator.bio,
+      expertise: translations.team.collaborator.expertise
+    }
+  ];
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-gray-900 to-gray-800 py-28 px-5 lg:px-20">
@@ -134,7 +112,7 @@ export default function WhoWeAre() {
           backgroundPosition: "center",
         }}
       />
-      
+
       <motion.div
         className="absolute top-1/4 right-10 w-40 h-40 rounded-full bg-blue-600/20 blur-3xl"
         animate={{
@@ -150,7 +128,7 @@ export default function WhoWeAre() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Hero Section */}
-        <motion.div 
+        <motion.div
           className="text-center mb-16 md:mb-24 px-2"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -163,7 +141,7 @@ export default function WhoWeAre() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
-            YOUR GATEWAY TO ASIA
+            {translations.hero.tagline}
           </motion.p>
 
           <motion.h1
@@ -173,13 +151,13 @@ export default function WhoWeAre() {
             transition={{ delay: 0.3 }}
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-              Hong Kong Business Experts for{" "}
-              <motion.span 
+              {translations.hero.title}
+              <motion.span
                 className="inline-block"
                 animate={{ color: ["#3b82f6", "#06b6d4", "#3b82f6"] }}
                 transition={{ duration: 8, repeat: Infinity }}
               >
-                European Entrepreneurs
+                {translations.hero.titleHighlight}
               </motion.span>
             </span>
           </motion.h1>
@@ -190,15 +168,7 @@ export default function WhoWeAre() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
-            We're a team of passionate experts helping businesses{" "}
-            <span className="text-blue-300 font-semibold">
-              establish and grow
-            </span>{" "}
-            in Hong Kong. With combined expertise across{" "}
-            <span className="text-blue-300 font-semibold">
-              law, accounting, and banking
-            </span>
-            , we provide end-to-end solutions tailored for European companies and from completely different horizons.
+            {translations.hero.subtitle}
           </motion.p>
         </motion.div>
 
@@ -210,14 +180,14 @@ export default function WhoWeAre() {
           variants={staggerContainer}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-28"
         >
-          {stats.map((stat, index) => (
+          {translations.stats.map((stat, index) => (
             <motion.div
               key={index}
               variants={fadeIn}
               className="bg-gradient-to-br from-gray-800/50 to-gray-900/70 border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm hover:border-cyan-400/30 transition-all"
               whileHover={{ y: -5 }}
             >
-              <motion.p 
+              <motion.p
                 className="text-4xl font-bold text-blue-400 mb-2"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
@@ -237,8 +207,11 @@ export default function WhoWeAre() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
         >
-          <div className="absolute inset-0 bg-[length:300px] opacity-10" style={{ backgroundImage: `url(${pattern})` }} />
-          
+          <div
+            className="absolute inset-0 bg-[length:300px] opacity-10"
+            style={{ backgroundImage: `url(${pattern})` }}
+          />
+
           <div className="grid lg:grid-cols-2">
             <div className="p-8 lg:p-12">
               <motion.h2
@@ -247,7 +220,8 @@ export default function WhoWeAre() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                Beyond <span className="text-blue-400">Company Formation</span>
+                {translations.mission.title}
+                <span className="text-blue-400">{translations.mission.titleHighlight}</span>
               </motion.h2>
 
               <motion.p
@@ -256,21 +230,16 @@ export default function WhoWeAre() {
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
               >
-                We provide <span className="text-blue-400 font-medium">end-to-end solutions</span> that go far beyond simple incorporation:
+                {translations.mission.subtitle}
               </motion.p>
 
-              <motion.ul 
+              <motion.ul
                 className="space-y-4 mb-8"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.4 }}
               >
-                {[
-                  "24/7 Local Support in Hong Kong",
-                  "Native French-Speaking Team",
-                  "Bank Account Opening Guarantee",
-                  "Ongoing Compliance Management"
-                ].map((item, i) => (
+                {translations.mission.features.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <FaCheck className="text-blue-400 mt-1 flex-shrink-0" />
                     <span className="text-gray-300">{item}</span>
@@ -284,15 +253,10 @@ export default function WhoWeAre() {
                 whileInView={{ opacity: 1 }}
                 transition={{ delay: 0.5 }}
               >
-                {[
-                  { icon: <FaGlobeAsia />, text: "Global Expertise" },
-                  { icon: <FaHandshake />, text: "Trusted Partners" },
-                  { icon: <FaChartLine />, text: "Growth Focused" },
-                  { icon: <FaShieldAlt />, text: "Full Compliance" },
-                ].map((item, i) => (
+                {translations.mission.values.map((item, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <div className="bg-blue-900/30 p-2 rounded-lg text-blue-400">
-                      {item.icon}
+                      {React.createElement(icons[item.icon])}
                     </div>
                     <span className="text-gray-300">{item.text}</span>
                   </div>
@@ -303,7 +267,7 @@ export default function WhoWeAre() {
             <div className="relative min-h-[400px]">
               <img
                 src={office}
-                alt="Our Hong Kong office"
+                alt={language === 'fr' ? "Notre bureau à Hong Kong" : "Our Hong Kong office"}
                 className="absolute inset-0 w-full h-full object-cover"
                 loading="eager"
               />
@@ -325,73 +289,149 @@ export default function WhoWeAre() {
             className="text-4xl md:text-5xl font-bold text-center mb-20"
           >
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-300">
-              Meet The Founders
+              {translations.team.title}
             </span>
           </motion.h2>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {team.map((member, i) => (
-              <motion.div
-                key={i}
-                variants={fadeIn}
-                className="group cursor-pointer"
-                onClick={() => openModal(member)}
-              >
-                <div className="relative h-full bg-gradient-to-b from-gray-800 to-gray-900 border border-gray-700/50 rounded-2xl overflow-hidden transition-all duration-300 group-hover:border-cyan-400/30 group-hover:shadow-lg">
-                  <div className="relative h-64 w-full overflow-hidden">
+          {/* Founder Section */}
+          <motion.div className="max-w-6xl mx-auto mb-28" variants={fadeIn}>
+            <div className="relative group">
+              {/* Glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl opacity-75 blur-lg group-hover:opacity-100 transition-all duration-300"></div>
+
+              <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-700/50">
+                <div className="flex flex-col lg:flex-row">
+                  {/* Founder Image */}
+                  <div className="lg:w-1/3 relative aspect-[4/5] lg:aspect-auto">
                     <img
-                      src={member.photo}
-                      alt={`${member.name}, ${member.role}`}
-                      className="w-full h-full object-cover object-top"
+                      src={ludo}
+                      alt={teamMembers[0].name}
+                      className="absolute inset-0 w-auto h-auto object-contain object-center"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-                    <div className="absolute top-4 left-4 bg-gray-600 text-white px-3 py-1 rounded-full text-sm font-bold">
-                      {member.years}+ Years
-                    </div>
-                    <div className="absolute bottom-0 left-0 p-6">
-                      <h3 className="text-2xl font-bold text-white">
-                        {member.name}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute bottom-0 left-0 p-8">
+                      <h3 className="text-3xl font-bold text-white">
+                        {teamMembers[0].name}
                       </h3>
-                      <p className="text-blue-400">{member.role}</p>
-                    </div>
-                    <div className="absolute top-4 right-4 flex gap-2">
-                      <a
-                        href={`mailto:${member.contact}`}
-                        className="p-2 bg-gray-800/80 hover:bg-gray-700/90 rounded-full text-white transition-all"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <FaEnvelope />
-                      </a>
-                      <a
-                        href={member.linkedin}
-                        className="p-2 bg-gray-800/80 hover:bg-blue-700/90 rounded-full text-white transition-all"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <FaLinkedin />
-                      </a>
+                      <div className="flex items-center gap-2 mt-2">
+                        <span className="text-blue-400 font-semibold">
+                          {teamMembers[0].role}
+                        </span>
+                        <span className="w-2 h-2 bg-blue-400 rounded-full"></span>
+                        <span className="text-gray-400">
+                          {teamMembers[0].years} {language === 'fr' ? "Ans d'Expérience" : "Years Experience"}
+                        </span>
+                      </div>
                     </div>
                   </div>
 
-                  <div className="p-6">
-                    <p className="text-gray-300 mb-4 line-clamp-3">
-                      {member.bio}
+                  {/* Founder Content */}
+                  <div className="lg:w-2/3 p-8 lg:p-12 flex flex-col">
+                    <div className="flex items-start gap-4 mb-6">
+                      <FaQuoteLeft className="text-3xl text-blue-400/30 mt-1 flex-shrink-0" />
+                      <p className="text-xl italic text-gray-300">
+                        "{teamMembers[0].quote}"
+                      </p>
+                    </div>
+
+                    <p className="text-gray-300 mb-8 text-lg leading-relaxed">
+                      {teamMembers[0].bio}
                     </p>
-                    <div className="flex flex-wrap gap-2">
-                      {member.specialty.map((skill, j) => (
-                        <span
-                          key={j}
-                          className="px-3 py-1 bg-blue-900/30 text-sm text-blue-400 rounded-full"
-                        >
-                          {skill}
-                        </span>
-                      ))}
+
+                    <div className="mb-8">
+                      <h4 className="text-xl font-bold text-white mb-4">
+                        {language === 'fr' ? "Expertise Principale" : "Core Expertise"}
+                      </h4>
+                      <div className="flex flex-wrap gap-3">
+                        {teamMembers[0].expertise.map((skill, i) => (
+                          <span
+                            key={i}
+                            className="px-4 py-2 bg-blue-900/30 text-blue-400 rounded-full border border-blue-400/20"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Collaborator Section */}
+          <motion.div className="mx-auto" variants={fadeIn}>
+            <motion.h3 className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-300">
+              {translations.team.collaborator.title}
+              <span className="text-blue-400">{translations.team.collaborator.titleHighlight}</span>
+            </motion.h3>
+
+            <div className="relative group">
+              {/* Glow effect */}
+              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-3xl opacity-75 blur-lg group-hover:opacity-100 transition-all duration-300"></div>
+
+              <div className="relative bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl overflow-hidden shadow-2xl border border-gray-700/50">
+                <div className="flex flex-col lg:flex-row">
+                  {/* Collaborator Content */}
+                  <div className="lg:w-2/3 p-8 lg:p-12 flex flex-col">
+                    <div className="flex items-start gap-4 mb-6">
+                      <FaQuoteLeft className="text-3xl text-cyan-400/30 mt-1 flex-shrink-0" />
+                      <p className="text-xl italic text-gray-300">
+                        "{teamMembers[1].quote}"
+                      </p>
+                    </div>
+
+                    <div className="text-gray-300 mb-8 text-lg leading-relaxed space-y-4">
+                      <p>{teamMembers[1].bio}</p>
+                    </div>
+
+                    <div className="mb-8">
+                      <h4 className="text-xl font-bold text-white mb-4">
+                        {language === 'fr' ? "Expertise Principale" : "Core Expertise"}
+                      </h4>
+                      <div className="flex flex-wrap gap-3">
+                        {teamMembers[1].expertise.map((skill, i) => (
+                          <span
+                            key={i}
+                            className="px-4 py-2 bg-cyan-900/30 text-cyan-400 rounded-full border border-cyan-400/20"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Collaborator Image */}
+                  <div className="lg:w-1/3 relative aspect-[4/5] lg:aspect-auto">
+                    <img
+                      src={jean}
+                      alt={teamMembers[1].name}
+                      className="absolute inset-0 w-auto h-auto object-contain object-center"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-0 right-0 p-4 lg:pb-6 text-right w-full bg-gradient-to-t from-black/70 to-transparent">
+                      <div className="container mx-auto">
+                        <h3 className="text-2xl md:text-3xl font-bold text-white">
+                          {teamMembers[1].name}
+                        </h3>
+                        <div className="text-center flex gap-2 items-center mt-2">
+                          <span className="text-cyan-400 font-semibold text-sm md:text-lg">
+                            {teamMembers[1].role}
+                          </span>
+                          <span className="w-2 h-2 bg-cyan-400 rounded-full"></span>
+                          <span className="text-gray-300 text-sm md:text-base">
+                            {teamMembers[1].years} {language === 'fr' ? "Ans d'Exp" : "Years Expr"}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* CTA Section */}
@@ -414,8 +454,8 @@ export default function WhoWeAre() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              Ready to Start Your{" "}
-              <span className="text-blue-400">Hong Kong</span> Journey?
+              {translations.cta.title}
+              <span className="text-blue-400">{translations.cta.titleHighlight}</span>
             </motion.h2>
 
             <motion.p
@@ -424,8 +464,7 @@ export default function WhoWeAre() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              Schedule a free consultation with our experts to discuss your
-              specific needs and how we can help.
+              {translations.cta.subtitle}
             </motion.p>
 
             <motion.div
@@ -437,13 +476,13 @@ export default function WhoWeAre() {
               <motion.button
                 onClick={handleBookClick}
                 className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl text-lg transition-all"
-                whileHover={{ 
+                whileHover={{
                   scale: 1.05,
-                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)"
+                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)",
                 }}
                 whileTap={{ scale: 0.98 }}
               >
-                Book Free Consultation
+                {translations.cta.buttons.consultation}
               </motion.button>
               <Link to="/team">
                 <motion.button
@@ -451,110 +490,13 @@ export default function WhoWeAre() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  Know Our Team
+                  {translations.cta.buttons.team}
                 </motion.button>
               </Link>
             </motion.div>
           </div>
         </motion.div>
       </div>
-
-      {/* Team Member Modal */}
-      <AnimatePresence>
-        {activeMember && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
-            onClick={closeModal}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="relative w-full max-w-4xl bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700 rounded-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={closeModal}
-                className="absolute top-4 right-4 z-10 p-2 bg-gray-700 hover:bg-gray-600 rounded-full text-white"
-              >
-                ✕
-              </button>
-
-              <div className="grid lg:grid-cols-2">
-                <div className="relative h-64 lg:h-full">
-                  <img
-                    src={activeMember.photo}
-                    alt={activeMember.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                </div>
-
-                <div className="p-8 lg:p-12">
-                  <div className="mb-6">
-                    <h3 className="text-3xl font-bold text-white">
-                      {activeMember.name}
-                    </h3>
-                    <p className="text-blue-400 text-xl">{activeMember.role}</p>
-                    <p className="text-gray-400 mt-2">
-                      {activeMember.years}+ years experience
-                    </p>
-                  </div>
-
-                  <div className="mb-8">
-                    <div className="flex items-start gap-3 mb-4">
-                      <FaQuoteLeft className="text-2xl text-blue-400/50 mt-1" />
-                      <p className="text-xl italic text-gray-300">
-                        "{activeMember.quote}"
-                      </p>
-                    </div>
-                    <div className="text-right text-blue-400">
-                      — {activeMember.name.split(" ")[0]}
-                    </div>
-                    <p className="text-gray-300 mt-6">{activeMember.bio}</p>
-                  </div>
-
-                  <div className="mb-8">
-                    <h4 className="text-xl font-bold text-white mb-4">
-                      Areas of Expertise
-                    </h4>
-                    <div className="flex flex-wrap gap-2">
-                      {activeMember.specialty.map((skill, i) => (
-                        <span
-                          key={i}
-                          className="px-4 py-2 bg-gray-700 text-blue-400 rounded-full"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4">
-                    <a
-                      href={`mailto:${activeMember.contact}`}
-                      className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all"
-                    >
-                      <FaEnvelope /> Email {activeMember.name.split(" ")[0]}
-                    </a>
-                    <a
-                      href={activeMember.linkedin}
-                      className="flex-1 flex items-center justify-center gap-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg transition-all"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <FaLinkedin /> LinkedIn
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }

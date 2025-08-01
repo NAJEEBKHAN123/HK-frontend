@@ -1183,7 +1183,152 @@
       "enterprise": "Contacter l'Équipe Entreprise",
       "getStarted": "Commencer"
     }
+  },
+  
+  "TeamDetails": {
+    "hero": {
+      "tagline": "Notre Direction",
+      "title": "Rencontrez Notre ",
+      "titleHighlight": "Équipe Principale",
+      "subtitle": "Les professionnels expérimentés qui guident votre réussite commerciale à Hong Kong"
+    },
+    "member": {
+      "yearsExperience": "Années d'Expérience",
+      "quotePrefix": "«",
+      "quoteSuffix": "»",
+      "coreExpertise": "Expertise Principale",
+      "keyAchievements": "Réalisations Clés",
+      "linkedin": "Se Connecter sur LinkedIn"
+    },
+    "cta": {
+      "title": "Travaillez Directement Avec Nos Experts",
+      "subtitle": "Obtenez des conseils personnalisés pour vos besoins commerciaux à Hong Kong grâce à notre équipe expérimentée",
+      "contact": "Contacter Notre Équipe",
+      "services": "Découvrir Nos Services"
+    },
+    "ludovic": {
+      "name": "Ludovic Martin",
+      "role": "Fondateur & PDG",
+      "quote": "Hong Kong reste la juridiction la plus favorable aux entreprises en Asie pour les entrepreneurs européens",
+      "bio": [
+        "Je suis fier de diriger Open Society HONG KONG 🇭🇰, où mes compétences en stratégie de négociation et mon expertise en commerce international nous propulsent au sommet. Notre mission est claire : atteindre l'excellence tout en forgeant des partenariats solides à travers le monde.",
+        "Je suis passionné par l'innovation et l'enrichissement que procurent les perspectives diverses, et je m'efforce d'insuffler cette passion dans notre culture d'entreprise.",
+        "Depuis mai 2024, en tant que Fondateur d'Open Society HONG KONG 🇭🇰, j'ai mis à profit mes talents en vente, marketing et développement stratégique pour naviguer dans le monde complexe des affaires internationales. Notre équipe multiculturelle et notre réseau mondial sont nos principaux atouts pour transformer les défis en opportunités.",
+        "Ensemble, nous faisons progresser les projets de nos partenaires vers de nouveaux sommets en créant des opportunités uniques. Le dynamisme et l'enthousiasme que nous apportons à chaque projet stimulent notre succès et celui de nos partenaires."
+      ],
+      "expertise": [
+        "Stratégie de Négociation",
+        "Commerce International",
+        "Développement Commercial",
+        "Partenariats Mondiaux"
+      ],
+      "achievements": [
+        "Fondé Open Society HONG KONG en 2024",
+        "15+ ans d'expérience en affaires internationales",
+        "Partenariats établis sur 3 continents"
+      ]
+    },
+    "ostap": {
+      "name": "Ostap Sinko",
+      "role": "Collaborateur Comptable",
+      "quote": "En combinant expertise internationale et passion pour l'économie, je propose des solutions innovantes adaptées à vos besoins",
+      "bio": [
+        "Je suis ravi de vous rejoindre et j'ai hâte de travailler ensemble. Avec plus de neuf ans d'expérience à Hong Kong, je me consacre à être votre partenaire de confiance sur place.",
+        "En combinant mon expertise internationale et ma passion pour l'économie, je propose des solutions financières innovantes et sur mesure adaptées à vos besoins.",
+        "Ma spécialisation comprend la planification fiscale stratégique et la protection d'actifs, soutenues par mes capacités multilingues. Associé à une solide compréhension des marchés mondiaux et une approche axée sur les résultats, je m'engage à fournir des conseils et orientations actionnables pour soutenir vos objectifs.",
+        "Je suis enthousiaste à l'idée de collaborer avec vous et de contribuer à notre succès commun. N'hésitez pas à me contacter - je suis impatient d'échanger et d'explorer comment nous pouvons obtenir des résultats exceptionnels ensemble."
+      ],
+      "expertise": [
+        "Planification Fiscale Stratégique",
+        "Protection d'Actifs",
+        "Reporting Financier",
+        "Consulting Multilingue"
+      ],
+      "achievements": [
+        "10+ ans d'expérience financière à Hong Kong",
+        "Expert financier multilingue",
+        "Spécialisé dans les ponts financiers Asie-Europe"
+      ]
+    }
+  },
+
+  
+  "WhoWeAre": {
+    "hero": {
+      "tagline": "VOTRE PASSERELLE VERS L'ASIE",
+      "title": "Experts en affaires à Hong Kong pour les ",
+      "titleHighlight": "Entrepreneurs Européens",
+      "subtitle": "Nous sommes une équipe d'experts passionnés qui aident les entreprises à s'établir et à se développer à Hong Kong. Avec une expertise combinée en droit, comptabilité et banque, nous proposons des solutions complètes adaptées aux entreprises européennes et d'horizons complètement différents."
+    },
+    "stats": [
+      { "value": "200+", "label": "Clients Satisfaits" },
+      { "value": "98%", "label": "Taux de Réussite" },
+      { "value": "24h", "label": "Temps de Réponse Moyen" },
+      { "value": "15+", "label": "Partenaires Bancaires" }
+    ],
+    "mission": {
+      "title": "Au-delà de la ",
+      "titleHighlight": "Création d'Entreprise",
+      "subtitle": "Nous proposons des solutions complètes qui vont bien au-delà de la simple incorporation :",
+      "features": [
+        "Support local 24/7 à Hong Kong",
+        "Équipe francophone native",
+        "Garantie d'ouverture de compte bancaire",
+        "Gestion continue de la conformité"
+      ],
+      "values": [
+        { "icon": "FaGlobeAsia", "text": "Expertise Globale" },
+        { "icon": "FaHandshake", "text": "Partenaires de Confiance" },
+        { "icon": "FaChartLine", "text": "Axé sur la Croissance" },
+        { "icon": "FaShieldAlt", "text": "Conformité Totale" }
+      ]
+    },
+    "team": {
+      "title": "Notre Direction",
+      "founder": {
+        "name": "Ludovic Martin",
+        "role": "Fondateur & PDG",
+        "years": "15+",
+        "quote": "Hong Kong reste la juridiction la plus favorable aux entreprises en Asie pour les entrepreneurs européens.",
+        "bio": "Je suis fier de diriger Open Society HONG KONG 🇭🇰, où mes compétences en stratégie de négociation et mon expertise en commerce international nous propulsent au sommet. Notre mission est claire : atteindre l'excellence tout en forgeant des partenariats solides dans le monde entier. Je suis passionné par l'innovation et l'enrichissement que procurent les perspectives diverses, et je m'efforce d'insuffler cette passion dans notre culture d'entreprise.",
+        "expertise": [
+          "Stratégie de Négociation",
+          "Commerce International",
+          "Développement Commercial",
+          "Partenariats Mondiaux"
+        ]
+      },
+      "collaborator": {
+        "title": "Collaborateur de ",
+        "titleHighlight": "Confiance",
+        "name": "Ostap Sinko",
+        "role": "Collaborateur Comptable",
+        "years": "10+",
+        "quote": "En combinant expertise internationale et passion pour l'économie, je propose des solutions innovantes adaptées à vos besoins.",
+        "bio": "Avec plus de 10 ans d'expérience à Hong Kong, je me consacre à être votre partenaire de confiance sur place. Ma spécialisation comprend la planification fiscale stratégique et la protection d'actifs, soutenues par mes capacités.",
+        "expertise": [
+          "Planification Fiscale Stratégique",
+          "Protection d'Actifs",
+          "Stratégies d'Entrée sur le Marché",
+          "Conformité Transfrontalière",
+          "Consulting Multilingue",
+          "Structuration Financière"
+        ]
+      }
+    },
+    "cta": {
+      "title": "Prêt à Commencer Votre Aventure à ",
+      "titleHighlight": "Hong Kong",
+      "subtitle": "Planifiez une consultation gratuite avec nos experts pour discuter de vos besoins spécifiques et de la manière dont nous pouvons vous aider.",
+      "buttons": {
+        "consultation": "Réserver une Consultation Gratuite",
+        "team": "Découvrir Notre Équipe"
+      }
+    }
   }
+
+
+
 
 
 

@@ -6,6 +6,8 @@ import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
 import { motion } from "framer-motion";
 import ReactCountryFlag from "react-country-flag";
+import BookingSection from "./BookingSection.jsx";
+
 import {
   FaFacebook,
   FaInstagram,
@@ -22,6 +24,7 @@ const Navbar = () => {
   const [isMobileServicesOpen, setIsMobileServicesOpen] = useState(false);
   const [langTimeout, setLangTimeout] = useState(null);
   const [servicesTimeout, setServicesTimeout] = useState(null);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -47,7 +50,7 @@ const Navbar = () => {
   };
 
   const dropdownWidth = language === 'fr' ? 'w-[130px]' : 'w-[170px]';
-const dropdownClasses = `absolute top-full left-0 mt-2 ${dropdownWidth} bg-gray-800 rounded-md shadow-lg py-1 z-50`;
+  const dropdownClasses = `absolute top-full left-0 mt-2 ${dropdownWidth} bg-gray-800 rounded-md shadow-lg py-1 z-50`;
 
   const navLinkClass = (path) => `
     hover:text-white
@@ -74,34 +77,11 @@ const dropdownClasses = `absolute top-full left-0 mt-2 ${dropdownWidth} bg-gray-
     closeAllMenus();
   };
 
-  const handleBookingClick = (e) => {
-    e.preventDefault();
-    if (location.pathname === "/") {
-      scrollToBookingSection();
-    } else {
-      navigate("/", { state: { scrollToBooking: true } });
-    }
-    closeAllMenus();
-  };
-
-  const scrollToBookingSection = () => {
-    const bookingSection = document.getElementById("booking-section");
-    if (bookingSection) {
-      const navbarHeight = document.querySelector("nav")?.offsetHeight || 0;
-      const sectionPosition = bookingSection.offsetTop - navbarHeight;
-      window.scrollTo({ top: sectionPosition, behavior: "smooth" });
-      window.history.replaceState(null, "", "/#booking-section");
-    }
-  };
-
-  useEffect(() => {
-    if (
-      location.state?.scrollToBooking ||
-      window.location.hash === "#booking-section"
-    ) {
-      setTimeout(scrollToBookingSection, 100);
-    }
-  }, [location]);
+ const handleBookingClick = (e) => {
+  e.preventDefault();
+  setIsBookingModalOpen(true);
+  closeAllMenus();
+};
 
   const handleLanguageChange = (lang) => {
     changeLanguage(lang);
@@ -258,7 +238,7 @@ const dropdownClasses = `absolute top-full left-0 mt-2 ${dropdownWidth} bg-gray-
               setIsServicesOpen(true);
             }}
             onMouseLeave={() => {
-              const timeout = setTimeout(() => setIsServicesOpen(false), 200); // 200ms delay before closing
+              const timeout = setTimeout(() => setIsServicesOpen(false), 200);
               setServicesTimeout(timeout);
             }}
           >
@@ -266,7 +246,7 @@ const dropdownClasses = `absolute top-full left-0 mt-2 ${dropdownWidth} bg-gray-
               className={`${navLinkClass("services")} flex items-center gap-1`}
               aria-expanded={isServicesOpen}
               aria-haspopup="true"
-              onClick={() => setIsServicesOpen(!isServicesOpen)} // Added click handler
+              onClick={() => setIsServicesOpen(!isServicesOpen)}
             >
               {translations.services}
               <svg
@@ -293,7 +273,7 @@ const dropdownClasses = `absolute top-full left-0 mt-2 ${dropdownWidth} bg-gray-
                 transition={{ duration: 0.2 }}
                 className={dropdownClasses}
                 onMouseEnter={() => {
-                  clearTimeout(servicesTimeout); 
+                  clearTimeout(servicesTimeout);
                   setIsServicesOpen(true);
                 }}
                 onMouseLeave={() => {
@@ -337,7 +317,7 @@ const dropdownClasses = `absolute top-full left-0 mt-2 ${dropdownWidth} bg-gray-
 
           <button
             onClick={handleBookingClick}
-            className="bg-gradient-to-r from-pink-600  to-pink-500 text-white px-4 xl:px-4 py-1.5 rounded hover:from-pink-700 hover:to-pink-600 transition-colors shadow-md hover:shadow-lg text-sm xl:text-base"
+            className="bg-gradient-to-r from-pink-600 to-pink-500 text-white px-4 xl:px-4 py-1.5 rounded hover:from-pink-700 hover:to-pink-600 transition-colors shadow-md hover:shadow-lg text-sm xl:text-base"
             aria-label={translations.book_appointment}
           >
             {translations.book_appointment}
@@ -698,6 +678,12 @@ const dropdownClasses = `absolute top-full left-0 mt-2 ${dropdownWidth} bg-gray-
           </div>
         </div>
       )}
+
+      {/* Booking Modal */}
+      <BookingSection
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+      />
     </nav>
   );
 };

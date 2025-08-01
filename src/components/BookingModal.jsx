@@ -5,7 +5,7 @@ import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
 import { Helmet } from "react-helmet";
 
-const BookingSection = ({ id }) => {
+const BookingModal = ({ id }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isHovering, setIsHovering] = useState(false);
   const [activeTab, setActiveTab] = useState("30min");
@@ -409,4 +409,4 @@ const BookingSection = ({ id }) => {
   );
 };
 
-export default BookingSection;
+export default BookingModal;
