@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import lionIcon from "../assets/siteLogo.png";
 import { LanguageContext } from "../context/LanguageContext.jsx";
@@ -13,7 +13,7 @@ import {
   FaInstagram,
   FaLinkedin,
   FaYoutube,
-  FaTiktok
+  FaTiktok,
 } from "react-icons/fa";
 
 const Navbar = () => {
@@ -49,20 +49,18 @@ const Navbar = () => {
     );
   };
 
-  const dropdownWidth = language === 'fr' ? 'w-[130px]' : 'w-[170px]';
+  const dropdownWidth = language === "fr" ? "w-[130px]" : "w-[170px]";
   const dropdownClasses = `absolute top-full left-0 mt-2 ${dropdownWidth} bg-gray-800 rounded-md shadow-lg py-1 z-50`;
 
   const navLinkClass = (path) => `
-    hover:text-white
-    transition-all
-    duration-400
-    ease-in-out
-    hover:decoration-pink-500
-    hover:underline
-    transition-colors 
-    ${isActive(path) ? "text-gray-300" : "text-gray-100"}
-    text-sm xl:text-base
-  `;
+  relative
+  hover:text-white
+  transition-all
+  duration-300
+  ${isActive(path) ? "text-gray-300" : "text-gray-100"}
+  text-sm xl:text-base
+  group
+`;
 
   const closeAllMenus = () => {
     setIsMenuOpen(false);
@@ -77,11 +75,11 @@ const Navbar = () => {
     closeAllMenus();
   };
 
- const handleBookingClick = (e) => {
-  e.preventDefault();
-  setIsBookingModalOpen(true);
-  closeAllMenus();
-};
+  const handleBookingClick = (e) => {
+    e.preventDefault();
+    setIsBookingModalOpen(true);
+    closeAllMenus();
+  };
 
   const handleLanguageChange = (lang) => {
     changeLanguage(lang);
@@ -226,6 +224,13 @@ const Navbar = () => {
                 onClick={handleHomeClick}
               >
                 {translations[item]}
+                <span
+                  className={`
+  absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-pink-500 to-purple-500
+  transition-all duration-300 ease-out 
+  ${isActive(path) ? "w-full" : "w-0 group-hover:w-full"}
+`}
+                ></span>
               </Link>
             );
           })}
@@ -249,6 +254,13 @@ const Navbar = () => {
               onClick={() => setIsServicesOpen(!isServicesOpen)}
             >
               {translations.services}
+              <span
+                className={`
+  absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-pink-500 to-purple-500
+  transition-all duration-300 ease-out 
+  ${isActive(navLinkClass()) ? "w-full" : "w-0 group-hover:w-full"}
+`}
+              ></span>
               <svg
                 className={`w-4 h-4 transition-transform ${
                   isServicesOpen ? "rotate-180" : ""
@@ -313,6 +325,13 @@ const Navbar = () => {
             aria-label={translations.faq}
           >
             {translations.faq}
+            <span
+              className={`
+  absolute left-0 -bottom-1 h-0.5 bg-gradient-to-r from-pink-500 to-purple-500
+  transition-all duration-300 ease-out 
+  ${isActive(navLinkClass()) ? "w-full" : "w-0 group-hover:w-full"}
+`}
+            ></span>
           </Link>
 
           <button
@@ -681,8 +700,8 @@ const Navbar = () => {
 
       {/* Booking Modal */}
       <BookingSection
-        isOpen={isBookingModalOpen} 
-        onClose={() => setIsBookingModalOpen(false)} 
+        isOpen={isBookingModalOpen}
+        onClose={() => setIsBookingModalOpen(false)}
       />
     </nav>
   );
