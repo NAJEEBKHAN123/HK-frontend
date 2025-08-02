@@ -3,14 +3,13 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
 import TopBar from "./components/TopBar";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home"
+import Home from "./pages/Home";
 import OurServices from "./components/OurService";
 import WhoWeAre from "./components/WhoWeAre";
 import ScrollToTop from "./pages/ScrollToTop";
 import Footer from "./components/Footer";
 import Faq from "./pages/Faq";
 import ContactUs from "./components/Contact";
-import BookingModal from "./components/BookingModal";
 import OrderForm from "./pages/OrderForm";
 import SuccessPage from "./pages/SuccessPage";
 import CancelPage from "./pages/CancelPage";
@@ -41,7 +40,27 @@ import PartnerProtectedRoute from "./pages/PartnerPages/PartnerProtectedRoute";
 import ClientCompDetail from "./pages/PartnerPages/ClientsCompDetails";
 import ServicePricing from "./components/ServicePricing";
 import AdminOrderDetails from "./pages/adminPages/AdminOrderDetails";
-// import BookingTrigger from "./components/BookingTrigger";
+
+ 
+// Admin Layout Wrapper
+const AdminLayout = ({ children }) => {
+  return (
+    <div className="admin-layout">
+      {/* Add admin-specific headers/sidebars here if needed */}
+      {children}
+    </div>
+  );
+};
+
+// Partner Layout Wrapper
+const PartnerLayout = ({ children }) => {
+  return (
+    <div className="partner-layout">
+      {/* Add partner-specific headers/sidebars here if needed */}
+      {children}
+    </div>
+  );
+};
 
 function App() {
   return (
@@ -69,7 +88,7 @@ function App() {
 
           {/* Legal Routes */}
           <Route path="/legal" element={<Legal />}>
-            <Route index element={<Navigate to="/legal" replace />} />
+            <Route index element={<Navigate to="privacy" replace />} />
             <Route path="privacy" element={<Privacy />} />
             <Route path="notices" element={<LegalNotices />} />
             <Route path="conditions" element={<Conditions />} />
@@ -82,33 +101,42 @@ function App() {
           <Route path="/signup" element={<SignupWithReferral />} />
 
           {/* Admin Routes */}
-          <Route path="/admin">
-            {/* Public admin routes */}
-            <Route path="login" element={<AdminLogin />} />
+          <Route
+            path="/admin/*"
+            element={
+              <AdminLayout>
+                <Routes>
+                  <Route path="login" element={<AdminLogin />} />
+                  <Route element={<AdminProtectedRoute />}>
+                    <Route path="dashboard" element={<AdminDashboard />} />
+                    <Route path="orders" element={<AllOrders />} />
+                    <Route path="create-partner" element={<GenerateInvite />} />
+                    <Route path="partners" element={<PartnersList />} />
+                    <Route path="partners/:id" element={<PartnerDetail />} />
+                    <Route path="client/:id" element={<ClientDetail />} />
+                    <Route path="client" element={<ClientList />} />
+                    <Route path="orders/:orderId" element={<AdminOrderDetails />} />
+                  </Route>
+                </Routes>
+              </AdminLayout>
+            }
+          />
 
-            {/* Protected admin routes with layout */}
-            <Route element={<AdminProtectedRoute />}>
-              {/* Wrap all admin routes with layout */}
-              <Route path="dashboard" element={<AdminDashboard />} />
-              <Route path="orders" element={<AllOrders />} />
-              <Route path="create-partner" element={<GenerateInvite />} />
-              <Route path="partners" element={<PartnersList />} />
-              <Route path="partners/:id" element={<PartnerDetail />} />
-              <Route path="client/:id" element={<ClientDetail />} />
-              <Route path="client" element={<ClientList />} />
-             <Route path="orders/:orderId" element={<AdminOrderDetails />} /> 
-            </Route>
-          </Route>
-
-          {/* // partner dashboard  */}
-          <Route path="/partner">
-            <Route path="login" element={<PartnerLogin />} />
-
-            <Route element={<PartnerProtectedRoute />}>
-              <Route path="dashboard" element={<PartnerDashboard />} />
-              <Route path="client/:id" element={<ClientCompDetail />} />
-            </Route>
-          </Route>
+          {/* Partner Routes */}
+          <Route
+            path="/partner/*"
+            element={
+              <PartnerLayout>
+                <Routes>
+                  <Route path="login" element={<PartnerLogin />} />
+                  <Route element={<PartnerProtectedRoute />}>
+                    <Route path="dashboard" element={<PartnerDashboard />} />
+                    <Route path="client/:id" element={<ClientCompDetail />} />
+                  </Route>
+                </Routes>
+              </PartnerLayout>
+            }
+          />
         </Routes>
 
         <Footer />
