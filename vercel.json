@@ -1,13 +1,18 @@
 {
-  "rewrites": [
+  "version": 2,
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist",
+        "outputDirectory": "dist"
+      }
     }
   ],
   "redirects": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "has": [
         {
           "type": "host",
@@ -16,6 +21,26 @@
       ],
       "destination": "https://ouvrir-societe-hong-kong.fr/:path*",
       "permanent": true
+    }
+  ],
+  "routes": [
+    {
+      "src": "/static/:path*",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "continue": true
+    },
+    {
+      "src": "/api/:path*",
+      "dest": "/api/:path*"
+    },
+    {
+      "src": "/:path*",
+      "dest": "/index.html",
+      "headers": {
+        "Cache-Control": "no-cache"
+      }
     }
   ]
 }
