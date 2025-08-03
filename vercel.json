@@ -2,40 +2,24 @@
   "version": 2,
   "builds": [
     {
-      "src": "package.json",
+      "src": "vite.config.js",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "dist",
+        "outputDirectory": "dist"
       }
-    }
-  ],
-  "redirects": [
-    {
-      "source": "/(.*)",
-      "has": [
-        {
-          "type": "host",
-          "value": "www.ouvrir-societe-hong-kong.fr"
-        }
-      ],
-      "destination": "https://ouvrir-societe-hong-kong.fr/:path*",
-      "permanent": true
     }
   ],
   "routes": [
     {
-      "src": "/static/(.*)",
+      "src": "/assets/.+",
       "headers": {
         "Cache-Control": "public, max-age=31536000, immutable"
-      },
-      "continue": true
+      }
     },
     {
-      "src": "/(.*)",
-      "dest": "/index.html",
-      "headers": {
-        "Cache-Control": "no-cache"
-      }
+      "src": "/.*",
+      "dest": "/index.html"
     }
   ]
 }
