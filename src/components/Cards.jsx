@@ -6,7 +6,7 @@ import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
 import { useNavigate } from "react-router-dom";
 
-// Animation Configs (unchanged)
+// Animation Configs
 const container = {
   hidden: { opacity: 0 },
   visible: {
@@ -85,7 +85,6 @@ export default function PricingSection() {
   const translations =
     language === "fr" ? frTranslations.pricing : enTranslations.pricing;
 
-  // Define consistent plan keys and base prices
   const planData = {
     STARTER: {
       en: "STARTER Pack",
@@ -104,7 +103,6 @@ export default function PricingSection() {
     },
   };
 
-  // Create pricing plans with consistent keys
   const pricingPlans = Object.keys(planData).map((key, index) => {
     const isRecommended = index === 1;
     return {
@@ -115,7 +113,6 @@ export default function PricingSection() {
         currency: "EUR",
         minimumFractionDigits: 0,
       }),
-
       priceValue: planData[key].price,
       features: translations?.plans?.[index]?.features || [],
       recommended: isRecommended,
@@ -127,9 +124,6 @@ export default function PricingSection() {
     };
   });
 
-  
-
-  // SEO-optimized hidden content
   const seoContent = {
     fr: `Création entreprise Hong Kong à partir de ${planData.STARTER.price}€. Société offshore avec avantages fiscaux.`,
     en: `Hong Kong company formation from ${planData.STARTER.price}€. Offshore company with tax advantages.`,
@@ -145,12 +139,10 @@ export default function PricingSection() {
       itemScope
       itemType="https://schema.org/Product"
     >
-      {/* Decorative elements */}
-      <div
-        className="absolute inset-0 opacity-10"
-        style={{ backgroundImage: "url(pattern.webp)" }}
-      />
-      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-yellow-900/30 to-transparent" />
+      {/* Improved background with fallback */}
+      <div className="absolute inset-0 bg-gray-900 opacity-90" />
+      <div className="absolute top-0 left-0 w-full h-1/2 bg-gradient-to-b from-yellow-900/20 to-transparent" />
+      
       <motion.div
         className="absolute top-1/4 right-10 w-40 h-40 rounded-full bg-yellow-600/20 blur-3xl"
         animate={{
@@ -224,7 +216,7 @@ export default function PricingSection() {
           </motion.p>
         </motion.div>
 
-        {/* Pricing Cards */}
+        {/* Pricing Cards - Improved contrast */}
         <motion.div
           variants={container}
           initial="hidden"
@@ -237,10 +229,10 @@ export default function PricingSection() {
               key={index}
               variants={cardVariants}
               whileHover="hover"
-              className={`relative w-full rounded-xl border p-6 sm:p-8 grid grid-rows-[auto_1fr_auto] transition-all duration-300 backdrop-blur-sm ${
+              className={`relative w-full rounded-xl border p-6 sm:p-8 grid grid-rows-[auto_1fr_auto] transition-all duration-300 ${
                 plan.recommended
                   ? "border-yellow-400 bg-gradient-to-br from-gray-800 to-gray-900 shadow-lg shadow-yellow-500/20"
-                  : "border-gray-700 bg-gray-900/60 hover:border-gray-600"
+                  : "border-gray-600 bg-gray-800 hover:border-gray-500"
               }`}
               itemScope
               itemType="https://schema.org/Offer"
@@ -252,8 +244,6 @@ export default function PricingSection() {
                 itemProp="url"
                 content={`${window.location.origin}/order-form?plan=${plan.key}&price=${plan.priceValue}`}
               />
-
-              <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl" />
 
               {plan.recommended && (
                 <motion.div
@@ -295,7 +285,7 @@ export default function PricingSection() {
                       stiffness: 150,
                     },
                   }}
-                  className="text-3xl sm:text-4xl text-center font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 mt-2"
+                  className="text-3xl sm:text-4xl text-center font-extrabold text-yellow-400 mt-2"
                   itemProp="price"
                 >
                   {plan.price}
@@ -313,7 +303,7 @@ export default function PricingSection() {
                   },
                 }}
                 className={`w-full border-t mb-6 ${
-                  plan.recommended ? "border-yellow-400/30" : "border-gray-700"
+                  plan.recommended ? "border-yellow-400/30" : "border-gray-600"
                 }`}
               />
 
@@ -340,7 +330,7 @@ export default function PricingSection() {
                     >
                       <CheckCircleIcon className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
                     </motion.span>
-                    <span className="text-gray-300 group-hover:text-gray-100 transition-colors">
+                    <span className="text-gray-200 group-hover:text-white transition-colors">
                       {feature}
                     </span>
                   </motion.li>
