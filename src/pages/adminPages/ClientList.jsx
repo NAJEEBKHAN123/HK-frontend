@@ -164,9 +164,7 @@ const ClientsList = () => {
               <th scope="col" className="px-4 sm:px-6 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                 Source
               </th>
-              <th scope="col" className="px-4 sm:px-6 py-2 sm:py-3 text-left text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
-                Orders
-              </th>
+             
               <th scope="col" className="px-4 sm:px-6 py-2 sm:py-3 text-right text-xs sm:text-sm font-medium text-gray-500 uppercase tracking-wider">
                 Actions
               </th>
@@ -204,14 +202,7 @@ const ClientsList = () => {
                     <div className="text-xs text-gray-500 mt-1">Code: {client.referralCode}</div>
                   )}
                 </td>
-                <td className="px-4 sm:px-6 py-3 whitespace-nowrap">
-                  <div className="flex items-center">
-                    <FiShoppingBag className="text-gray-400 mr-1" />
-                    <span className="text-sm text-gray-900">
-                      {client.orders?.length || 0} orders
-                    </span>
-                  </div>
-                </td>
+                
                 <td className="px-4 sm:px-6 py-3 whitespace-nowrap text-right text-sm font-medium">
                   <Link
                     to={`/admin/client/${client._id}`}

@@ -2,10 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import {
   FiUser,
-  FiMail,
   FiCalendar,
   FiArrowLeft,
-  FiCreditCard,
   FiActivity,
   FiEdit,
 } from "react-icons/fi";
@@ -157,7 +155,7 @@ const ClientDetail = () => {
       </div>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 gap-4 sm:gap-6 mb-6 sm:mb-8">
+      <div className="grid grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
         {/* Client Information Card */}
         <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200">
           <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex items-center">
@@ -217,10 +215,7 @@ const ClientDetail = () => {
                   : "Never"}
               </span>
             </div>
-            <div className="flex justify-between">
-              <span className="text-gray-600 text-sm sm:text-base">Total Orders:</span>
-              <span className="font-medium text-sm sm:text-base">{client.orders?.length || 0}</span>
-            </div>
+            
             <div className="flex justify-between">
               <span className="text-gray-600 text-sm sm:text-base">Total Spend:</span>
               <span className="font-medium text-sm sm:text-base">
@@ -239,48 +234,7 @@ const ClientDetail = () => {
 
       {/* Bottom Section */}
       <div className="grid grid-cols-1 gap-4 sm:gap-6">
-        {/* Recent Orders Card */}
-        <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200">
-          <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">
-            Recent Orders ({client.orders?.length || 0})
-          </h3>
-          {client.orders?.length > 0 ? (
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th className="px-3 sm:px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Order ID
-                    </th>
-                    <th className="px-3 sm:px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Date
-                    </th>
-                    <th className="px-3 sm:px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                      Amount
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {client.orders.slice(0, 5).map((order) => (
-                    <tr key={order._id}>
-                      <td className="px-3 sm:px-4 py-2 whitespace-nowrap text-xs sm:text-sm text-gray-900">
-                        #{order.orderNumber}
-                      </td>
-                      <td className="px-3 sm:px-4 py-2 whitespace-nowrap text-xs sm:text-sm text-gray-500">
-                        {new Date(order.createdAt).toLocaleDateString()}
-                      </td>
-                      <td className="px-3 sm:px-4 py-2 whitespace-nowrap text-xs sm:text-sm text-gray-500">
-                        ${(order.total / 100).toFixed(2)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          ) : (
-            <p className="text-gray-500 text-sm sm:text-base">No orders found.</p>
-          )}
-        </div>
+     
 
         {/* Activity Log Card */}
         <div className="bg-white p-3 sm:p-4 rounded-lg border border-gray-200">

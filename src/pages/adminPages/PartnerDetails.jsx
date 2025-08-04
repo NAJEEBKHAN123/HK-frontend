@@ -128,7 +128,7 @@ const PartnerDetail = () => {
         {/* Main Content */}
         <div className="p-4 sm:p-6">
           {/* Stats Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-3 gap-4 mb-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2  lg:grid-cols-2 gap-4 mb-6">
             {/* Commission Card */}
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
               <div className="flex items-center mb-3">
@@ -188,57 +188,9 @@ const PartnerDetail = () => {
               </div>
             </div>
 
-            {/* Actions Card */}
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <div className="flex items-center mb-3">
-                <FiActivity className="text-purple-500 mr-2" />
-                <h3 className="text-sm sm:text-base font-semibold">Quick Actions</h3>
-              </div>
-              <div className="space-y-3">
-                <button className="w-full py-2 bg-green-100 text-green-700 rounded-md hover:bg-green-200 text-sm">
-                  Send Message
-                </button>
-                <button className="w-full py-2 bg-yellow-100 text-yellow-700 rounded-md hover:bg-yellow-200 text-sm">
-                  Update Profile
-                </button>
-                <button 
-                  className={`w-full py-2 rounded-md text-sm ${
-                    partner.status === 'active'
-                      ? 'bg-red-100 text-red-700 hover:bg-red-200'
-                      : 'bg-green-100 text-green-700 hover:bg-green-200'
-                  }`}
-                  onClick={() => {
-                    const newStatus = partner.status === 'active' ? 'inactive' : 'active';
-                    axios.put(
-                      `${API_BASE_URL}/api/partner-auth/admin/partners/${id}/status`,
-                      { status: newStatus },
-                      { headers: { Authorization: `Bearer ${localStorage.getItem('adminToken')}` } }
-                    );
-                    setPartnerData({
-                      ...partnerData,
-                      partner: { ...partner, status: newStatus }
-                    });
-                  }}
-                >
-                  {partner.status === 'active' ? 'Deactivate Account' : 'Activate Account'}
-                </button>
-              </div>
-            </div>
           </div>
 
-          {/* Clients Section */}
-          <div className="mb-6">
-            <div className="flex items-center justify-between mb-3">
-              <h3 className="text-lg font-semibold">
-                Referred Clients ({clients?.length || 0})
-              </h3>
-            </div>
-            <div className="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
-              <ReferredClientsForAdmin clients={clients || []} />
-            </div>
-          </div>
-
-          {/* Activity Section */}
+           {/* Activity Section */}
           <div>
             <h3 className="text-lg font-semibold mb-3">Recent Activity</h3>
             <div className="bg-gray-50 rounded-lg border border-gray-200 p-4">
@@ -271,6 +223,20 @@ const PartnerDetail = () => {
               </div>
             </div>
           </div>
+
+          {/* Clients Section */}
+          <div className="mb-6">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-lg font-semibold">
+                Referred Clients ({clients?.length || 0})
+              </h3>
+            </div>
+            <div className="bg-gray-50 rounded-lg border border-gray-200 overflow-hidden">
+              <ReferredClientsForAdmin clients={clients || []} />
+            </div>
+          </div>
+
+         
         </div>
       </div>
 

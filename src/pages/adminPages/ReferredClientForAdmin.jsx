@@ -45,15 +45,13 @@ const ReferredClientsForAdmin = ({ clients }) => {
                 </div>
               </td>
               <td className="px-4 py-4 whitespace-nowrap hidden sm:table-cell">
-                <div className="text-sm text-gray-900">{client.email}</div>
-                <div className="text-sm text-gray-500">{client.phone || 'No phone'}</div>
+                <div className="text-sm text-gray-900">{client.email}</div> 
               </td>
               <td className="px-4 py-4 whitespace-nowrap">
                 <div className="text-sm text-gray-900 flex items-center">
                   <FiDollarSign className="mr-1" />
                   {((client.totalSpent || 0) / 100).toFixed(2)}
                 </div>
-                <div className="text-sm text-gray-500">{client.orders?.length || 0} orders</div>
               </td>
               <td className="px-4 py-4 whitespace-nowrap text-sm text-gray-500">
                 {format(new Date(client.createdAt), 'MMM d, yyyy')}

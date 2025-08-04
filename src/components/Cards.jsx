@@ -91,9 +91,9 @@ export default function PricingSection() {
       fr: "Pack STARTER",
       price: 3900,
     },
-    TURNKEY: {
-      en: "TURNKEY Pack",
-      fr: "Pack TURNKEY",
+    SMART: {
+      en: "SMART Pack",
+      fr: "Le Pack Malin",
       price: 4600,
     },
     PREMIUM: {

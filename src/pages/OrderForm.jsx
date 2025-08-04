@@ -34,19 +34,19 @@ const OrderForm = () => {
 
   const planPrices = {
     STARTER: 3900,
-    TURNKEY: 4600,
+    SMART: 4600,
     PREMIUM: 9800,
   };
 
   const planDisplayNames = {
     en: {
       STARTER: "STARTER Pack",
-      TURNKEY: "TURNKEY Pack",
+      SMART: "SMART Pack",
       PREMIUM: "PREMIUM Pack",
     },
     fr: {
       STARTER: "Pack STARTER",
-      TURNKEY: "Pack TURNKEY",
+      SMART: "Le Pack Malin",
       PREMIUM: "Pack PREMIUM",
     },
   };
