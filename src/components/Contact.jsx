@@ -255,6 +255,8 @@ const ContactUs = () => {
               isOfficeOpen={isOfficeOpen}
               officeStatus={officeStatus}
               setActiveTab={setActiveTab}
+              whatsappUrl={whatsappUrl}
+              
             />
 
             <ContactForm
