@@ -5,7 +5,9 @@ import { motion } from 'framer-motion';
 import { FiUser, FiMail, FiLock, FiCopy, FiCheck, FiArrowRight } from 'react-icons/fi';
 
 const PUBLIC_URL = import.meta.env.VITE_PUBLIC_URL || window.location.origin;
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : import.meta.env.VITE_API_BASE_URL;
 
 export default function PartnerSignup() {
   const [searchParams] = useSearchParams();

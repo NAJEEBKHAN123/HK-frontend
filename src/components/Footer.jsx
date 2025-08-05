@@ -8,7 +8,7 @@ import {
   FaYoutube,
   FaTiktok,
   FaCog,
-  FaUser
+  FaUser,
 } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import {
@@ -17,7 +17,6 @@ import {
   FiArrowUp,
   FiMapPin,
   FiPhoneCall,
-    
 } from "react-icons/fi";
 import QRCode from "react-qr-code";
 import { LanguageContext } from "../context/LanguageContext";
@@ -257,9 +256,12 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <FiMail className="mt-1 mr-2 text-cyan-300" />
-                <span className="text-sm md:text-base">
+                <a
+                  href="mailto:bonjour@ouvrir-societe-hong-kong.fr"
+                  className="text-sm md:text-base text-white"
+                >
                   bonjour@ouvrir-societe-hong-kong.fr
-                </span>
+                </a>
               </li>
               <li className="flex items-start">
                 <FiClock className="mt-1 mr-2 text-cyan-300" />
@@ -374,13 +376,13 @@ const Footer = () => {
                 : translations.bookCallback}
             </p>
             <button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white py-3 px-4 rounded-lg font-medium mb-4 transition-all transform hover:scale-[1.02] text-sm md:text-base">
-              {dynamicCTA}
+              <a href={whatsappUrl}>{dynamicCTA}</a>
             </button>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <div className="bg-white p-2 rounded">
                 <QRCode value={whatsappUrl} size={80} fgColor="#0e7490" />
               </div>
-              <p className="text-sm text-gray-400 text-center sm:text-left max-w-[180px]">
+              <p className="text-sm text-gray-400 text-center  sm:text-left max-w-[180px]">
                 {translations.scanToChat.replace(
                   "{platform}",
                   translations.wechatWhatsapp
@@ -418,19 +420,17 @@ const Footer = () => {
                 transition={{ type: "spring", stiffness: 300 }}
                 className="flex xs:flex-row gap-6 items-center"
               >
-               <Link to='/partner/login'>
-                 <button className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-xs sm:text-sm ">
-                  <FaUser /> Partner
-                </button>
-               </Link>
+                <Link to="/partner/login">
+                  <button className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-xs sm:text-sm ">
+                    <FaUser /> Partner
+                  </button>
+                </Link>
                 <Link
                   to="/admin/login"
                   className="group flex items-center gap-1.5 text-gray-400 hover:text-cyan-300 transition-colors text-xs sm:text-sm"
                 >
                   <FaCog className="h-4 w-4 group-hover:rotate-12 transition-transform" />
-                  <span>
-                    Admin
-                  </span>
+                  <span>Admin</span>
                 </Link>
 
                 <div className="group flex items-center bg-gray-100 hover:bg-gray-200/60 transition-colors duration-200 rounded-full px-3  lg:py-1 sm:px-4 py-1.5 sm:py-1.5 w-fit max-w-full">

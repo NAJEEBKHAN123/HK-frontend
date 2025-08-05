@@ -38,15 +38,7 @@ const item = {
   },
 };
 
-const hoverCard = {
-  scale: 1.03,
-  y: -5,
-  transition: {
-    type: "spring",
-    stiffness: 400,
-    damping: 10,
-  },
-};
+
 
 const ServicePricing = () => {
   const { language } = useContext(LanguageContext);
@@ -113,19 +105,18 @@ const ServicePricing = () => {
             <motion.div
               key={index}
               variants={item}
-              whileHover={hoverCard}
               className={`relative rounded-xl overflow-hidden bg-gradient-to-br ${serviceColors[index]}`}
             >
               <div className="p-6 h-full flex flex-col">
                 {/* Icon Header */}
                 <motion.div
-                  whileHover={{ rotate: 5 }}
+                
                   className="flex items-center mb-4"
                 >
                   <div className="p-2 rounded-lg bg-white shadow-sm">
                     {serviceIcons[index]}
                   </div>
-                  <h3 className="ml-3 text-lg font-medium text-gray-900">
+                  <h3 className="ml-3 text-xl font-semibold  text-gray-900">
                     {service.title}
                   </h3>
                 </motion.div>
