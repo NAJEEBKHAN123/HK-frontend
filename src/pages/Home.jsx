@@ -7,15 +7,10 @@ import ContactUs from "../components/Contact";
 import Faq from "../pages/Faq";
 import CookieConsent from "./legal/Choices";
 import ServicePricing from "../components/ServicePricing";
-import SEO from "../components/SEO";
 
 const Home = () => {
   return (
     <div>
-       <SEO
-        title="Créer une Société à Hong Kong en 2024 | Expert Incorporation & Avantages Fiscaux"
-        description="✅ Ouvrir une société offshore à Hong Kong avec 0% impôt. Services complets en français: création SARL, immatriculation express et compliance."
-      />
       <Hero />
       <Cards />
       <OurServices />
