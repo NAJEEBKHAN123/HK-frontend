@@ -118,27 +118,8 @@ export default function OurServices() {
     }
   };
 
-  const handleBookClick = (e) => {
-    e.preventDefault();
-    
-    if (window.location.pathname === '/') {
-      const bookingSection = document.getElementById('booking-section');
-      if (bookingSection) {
-        const navbarHeight = document.querySelector('nav')?.offsetHeight || 0;
-        const sectionPosition = bookingSection.offsetTop - navbarHeight;
-        
-        window.scrollTo({
-          top: sectionPosition,
-          behavior: 'smooth'
-        });
-        
-        window.history.replaceState(null, '', '/#booking-section');
-      }
-    } else {
-      navigate('/', {
-        state: { scrollToBooking: true }
-      });
-    }
+  const handleBookClick = () => {
+         navigate('/serviceCards')
   };
 
   return (
