@@ -4,7 +4,9 @@ import Modal from "react-modal";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : import.meta.env.VITE_API_BASE_URL;
 
 const api = axios.create({
   baseURL: API_BASE_URL

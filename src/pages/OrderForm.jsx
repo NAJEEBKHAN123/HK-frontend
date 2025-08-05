@@ -6,8 +6,10 @@ import enTranslations from "../locales/en.json";
 import frTranslations from "../locales/fr.json";
 import useReferralTracker from "../hook/useReferralTracker";
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL || "http://localhost:3000";
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : import.meta.env.VITE_API_BASE_URL;
+
 
 const OrderForm = () => {
   const [loading, setLoading] = useState(false);
@@ -160,7 +162,7 @@ const OrderForm = () => {
       };
 
       const orderResponse = await axios.post(
-        `${API_BASE_URL}/api/orders`,
+         `${API_BASE_URL}/api/orders`,
         payload,
         {
           headers: {

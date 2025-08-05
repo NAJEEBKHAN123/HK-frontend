@@ -4,7 +4,9 @@ import axios from "axios";
 import { FiEye, FiEyeOff, FiLock, FiMail } from 'react-icons/fi';
 import { motion } from "framer-motion";
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.DEV
+  ? "http://localhost:3000"
+  : import.meta.env.VITE_API_BASE_URL;
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
