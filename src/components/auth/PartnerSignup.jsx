@@ -4,6 +4,7 @@ import axios from 'axios';
 import { motion } from 'framer-motion';
 import { FiUser, FiMail, FiLock, FiCopy, FiCheck, FiArrowRight } from 'react-icons/fi';
 
+const PUBLIC_URL = import.meta.env.VITE_PUBLIC_URL || window.location.origin;
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
 export default function PartnerSignup() {
@@ -83,7 +84,7 @@ export default function PartnerSignup() {
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(partnerData.referralLink || `${window.location.origin}/join?ref=${partnerData.referralCode}`);
+    navigator.clipboard.writeText(partnerData.referralLink || `${PUBLIC_URL}/join?ref=${partnerData.referralCode}`);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -245,7 +246,7 @@ export default function PartnerSignup() {
               <div className="flex items-center">
                 <div className="flex-grow p-3 bg-white rounded-lg border border-gray-200 overflow-x-auto">
                   <code className="text-sm text-gray-800">
-                    {partnerData.referralLink || `${window.location.origin}/join?ref=${partnerData.referralCode}`}
+                    {partnerData.referralLink || `${PUBLIC_URL}/join?ref=${partnerData.referralCode}`}
                   </code>
                 </div>
                 <motion.button

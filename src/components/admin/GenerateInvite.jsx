@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import AdminLayout from './AdminLayout';
+const PUBLIC_URL = import.meta.env.VITE_PUBLIC_URL || window.location.origin;
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
 
 export default function GenerateInvite() {
