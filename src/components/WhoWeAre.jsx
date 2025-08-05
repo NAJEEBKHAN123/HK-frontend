@@ -473,17 +473,7 @@ export default function WhoWeAre() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
-              <motion.button
-                onClick={handleBookClick}
-                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl text-lg transition-all"
-                whileHover={{
-                  scale: 1.05,
-                  boxShadow: "0 0 20px rgba(59, 130, 246, 0.5)",
-                }}
-                whileTap={{ scale: 0.98 }}
-              >
-                {translations.cta.buttons.consultation}
-              </motion.button>
+            
               <Link to="/team">
                 <motion.button
                   className="px-8 py-4 bg-transparent border-2 border-blue-400 hover:bg-blue-400/10 text-blue-400 font-bold rounded-xl shadow-lg hover:shadow-xl text-lg transition-all"
