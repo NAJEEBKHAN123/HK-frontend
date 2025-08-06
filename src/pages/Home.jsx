@@ -15,9 +15,9 @@ const Home = () => {
       <Cards />
       <OurServices />
       <ServicePricing />
-      <Faq />
       <WhoWeAre />
       <ContactUs />
+      <Faq />
       <CookieConsent onlyShowOnHomePage={true} />
     </div>
   );

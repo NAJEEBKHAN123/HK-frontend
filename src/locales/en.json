@@ -1169,37 +1169,37 @@
     "services": [
       {
         "title": "Company Renewal",
-        "price": "€1,000",
+        "price": "€2,000",
         "description": "Annual company registration renewal",
         "features": ["Document preparation", "Government submission", "Compliance check"]
       },
       {
         "title": "Company Audit",
-        "price": "€1,000-5,000",
+        "price": "€1,500-5,500",
         "description": "Professional financial audit services",
         "features": ["Balance sheet review", "Income statement audit", "Compliance verification"]
       },
       {
         "title": "Apostille Service",
-        "price": "€400 per apostille",
+        "price": "€500 per apostille",
         "description": "Document legalization for international use",
         "features": ["Notarization", "State certification", "Embassy legalization"]
       },
       {
         "title": "Company Liquidation",
-        "price": "€2,000+",
+        "price": "€2,500+",
         "description": "Orderly dissolution of your business entity",
         "features": ["Debt settlement", "Asset distribution", "Final tax filing"]
       },
       {
         "title": "Bank Account Opening",
-        "price": "€3,000",
+        "price": "€3,500",
         "description": "Corporate account with international banks",
-        "features": ["Bank selection", "Document preparation", "Relationship management"]
+        "features": ["Free with Premium pack", "Bank selection", "Document preparation"]
       },
       {
         "title": "Nominee Services",
-        "price": "€1,000",
+        "price": "€1,300",
         "description": "Professional nominee director/shareholder",
         "features": ["Annual service", "Complete discretion", "Contract agreement"]
       }
@@ -1237,7 +1237,7 @@
       "role": "Founder & CEO",
       "quote": "Hong Kong remains the most business-friendly jurisdiction in Asia for European entrepreneurs",
       "bio": [
-        "I'm proud to lead Open Society HONG KONG 🇭🇰, where my skills in negotiation strategy and expertise in international trade propel us to the top. Our mission is clear: to achieve excellence while forging strong partnerships worldwide.",
+        "I'm proud to lead Ouvrir Society HONG KONG 🇭🇰, where my skills in negotiation strategy and expertise in international trade propel us to the top. Our mission is clear: to achieve excellence while forging strong partnerships worldwide.",
         "I am passionate about innovation and the enrichment that diverse perspectives bring, and I strive to infuse this passion into our company culture.",
         "Since May 2024, as the Founder of Open Society HONG KONG 🇭🇰, I've leveraged my talents in sales, marketing, and strategy development to navigate the complex world of international business. Our multicultural team and global network are our main assets in turning challenges into opportunities.",
         "Together, we advance our partners' projects to new heights by creating unique opportunities. The dynamism and enthusiasm we bring to each project drive our success and that of our partners."

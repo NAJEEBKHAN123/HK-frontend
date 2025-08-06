@@ -156,7 +156,6 @@ const ContactInfo = ({
             <div className="flex text-center mt-4">
               <button className="flex items-center justify-center p-3 bg-green-50 hover:bg-green-100 rounded-lg transition border border-green-200">
                 <FaWhatsapp className="h-5 w-5 text-green-600" />
-
                 <a href={whatsappUrl}>
                   <span className="ml-2 text-sm font-medium">
                     {translations.whatsapp.qrButton}

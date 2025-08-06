@@ -1143,37 +1143,37 @@
     "services": [
       {
         "title": "Renouvellement d'Entreprise",
-        "price": "1 000 €",
+        "price": "2 000 €",
         "description": "Renouvellement annuel d'enregistrement d'entreprise",
         "features": ["Préparation de documents", "Soumission gouvernementale", "Vérification de conformité"]
       },
       {
         "title": "Audit d'Entreprise",
-        "price": "1 000 à 5 000 €",
+        "price": "1 500 à 5 500 €",
         "description": "Services d'audit financier professionnel",
         "features": ["Examen du bilan", "Audit du compte de résultats", "Vérification de conformité"]
       },
       {
         "title": "Service d'Apostille",
-        "price": "400 € par apostille",
+        "price": "500 € par apostille",
         "description": "Légalisation de documents pour usage international",
         "features": ["Notarisation", "Certification d'état", "Légalisation d'ambassade"]
       },
       {
         "title": "Liquidation d'Entreprise",
-        "price": "À partir de 2 000 €",
+        "price": "À partir de 2 500 €",
         "description": "Dissolution ordonnée de votre entité commerciale",
         "features": ["Règlement des dettes", "Distribution des actifs", "Déclaration fiscale finale"]
       },
       {
         "title": "Ouverture de Compte Bancaire",
-        "price": "3 000 €",
+        "price": "3 500 €",
         "description": "Compte corporate avec des banques internationales",
-        "features": ["Sélection de banque", "Préparation de documents", "Gestion de relation"]
+        "features": ["Gratuit avec le pack Premium","Sélection de banque", "Préparation de documents"]
       },
       {
         "title": "Services de Nomination",
-        "price": "1 000 €",
+        "price": "1 300 €",
         "description": "Directeur/actionnaire nominé professionnel",
         "features": ["Service annuel", "Discrétion absolue", "Accord contractuel"]
       }
@@ -1290,7 +1290,7 @@
         "role": "Fondateur & PDG",
         "years": "15+",
         "quote": "Hong Kong reste la juridiction la plus favorable aux entreprises en Asie pour les entrepreneurs européens.",
-        "bio": "Je suis fier de diriger Open Society HONG KONG 🇭🇰, où mes compétences en stratégie de négociation et mon expertise en commerce international nous propulsent au sommet. Notre mission est claire : atteindre l'excellence tout en forgeant des partenariats solides dans le monde entier. Je suis passionné par l'innovation et l'enrichissement que procurent les perspectives diverses, et je m'efforce d'insuffler cette passion dans notre culture d'entreprise.",
+        "bio": "Je suis fier de diriger Ouvrir Society HONG KONG 🇭🇰, où mes compétences en stratégie de négociation et mon expertise en commerce international nous propulsent au sommet. Notre mission est claire : atteindre l'excellence tout en forgeant des partenariats solides dans le monde entier. Je suis passionné par l'innovation et l'enrichissement que procurent les perspectives diverses, et je m'efforce d'insuffler cette passion dans notre culture d'entreprise.",
         "expertise": [
           "Stratégie de Négociation",
           "Commerce International",
