@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import PartnerStats from '../../pages/PartnerPages/PartnerStats';
 import ReferredClientsTable from '../../pages/PartnerPages/ReferredClientsTable';
+import axios from 'axios';
 
 const API_BASE_URL = import.meta.env.DEV
   ? "http://localhost:3000"
