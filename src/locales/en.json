@@ -90,60 +90,53 @@
     "contactText": "Or",
     "contactLink": "contact us",
     "contactSuffix": "for more information",
-    "serviceCategories": [
-      {
-        "category": "Company Formation in Hong Kong",
-        "name": "Hong Kong Company Registration Services",
-        "description": "Complete Hong Kong company incorporation with full legal compliance and tax advantages",
-        "slug": "hong-kong-company-formation",
-        "icon": "🏢",
-        "items": [
-          "Articles of Association drafted in French",
-          "Certificate of Incorporation",
-          "Premium Registered Office Address",
-          "Local Company Secretariat (mandatory in Hong Kong)"
-        ]
-      },
-      {
-        "category": "Accounting and Annual Obligations",
-        "name": "Hong Kong Accounting and Compliance Services",
-        "description": "Professional accounting, tax filing and annual compliance for Hong Kong businesses",
-        "slug": "accounting-compliance",
-        "icon": "📊",
-        "items": [
-          "Bookkeeping",
-          "Tax Returns",
-          "Annual Audit (mandatory for companies)",
-          "Financial Statement Preparation",
-          "Monthly Accounting"
-        ]
-      },
-      {
-        "category": "Bank Account Opening",
-        "name": "Hong Kong Business Bank Account Services",
-        "description": "Assistance opening local and offshore business accounts with preferred banking partners",
-        "slug": "bank-account-opening",
-        "icon": "🏦",
-        "items": [
-          "Support for Opening a Local or Offshore Business Account",
-          "Partnership with Airwallex, Statrys, Wise, Neat, and other Fintechs",
-          "Bank Introduction Letters Preparation"
-        ]
-      },
-      {
-        "category": "French-Speaking Support",
-        "name": "French Language Business Support in Hong Kong",
-        "description": "Dedicated French-speaking assistance for all your Hong Kong business needs",
-        "slug": "french-support",
-        "icon": "🇫🇷",
-        "items": [
-          "A Dedicated French-Speaking Contact",
-          "Assistance by Email and WhatsApp",
-          "Document Translation Services",
-          "Business Meeting Interpretation"
-        ]
-      }
+"serviceCategories": [
+  {
+    "category": "Company Formation in Hong Kong",
+    "name": "Hong Kong Company Registration Services",
+    "description": "Complete Hong Kong company incorporation with full legal compliance and tax advantages",
+    "slug": "hong-kong-company-formation",
+    "icon": "🏢",
+    "items": [
+      "Articles of Association drafted in French",
+      "Certificate of Incorporation",
+      "Premium Registered Office Address",
+      "Local Company Secretariat (mandatory in Hong Kong)",
+      "Business Registration Certificate",
+      "Initial Tax & Compliance Consultation"
     ]
+  },
+  {
+    "category": "Bank Account Opening",
+    "name": "Hong Kong Business Bank Account Services",
+    "description": "Assistance opening local and offshore business accounts with preferred banking partners",
+    "slug": "bank-account-opening",
+    "icon": "🏦",
+    "items": [
+      "Support for Opening a Local or Offshore Business Account",
+      "Partnership with Airwallex, Statrys, Wise, Neat, and other Fintechs",
+      "Bank Introduction Letters Preparation",
+      "Pre-screening Assistance for Faster Approvals",
+      "KYC Document Review & Guidance"
+    ]
+  },
+  {
+    "category": "French-Speaking Support",
+    "name": "French Language Business Support in Hong Kong",
+    "description": "Dedicated French-speaking assistance for all your Hong Kong business needs",
+    "slug": "french-support",
+    "icon": "🇫🇷",
+    "items": [
+      "A Dedicated French-Speaking Contact",
+      "Assistance by Email and WhatsApp",
+      "Document Translation Services",
+      "Business Meeting Interpretation",
+      "Step-by-Step Support for Non-English Speakers",
+      "Bilingual Document Templates (FR/EN)"
+    ]
+  }
+]
+
   },
 
   "faq": {
@@ -1163,11 +1156,18 @@
     }
   },
 
+
   "priceServiceCard": {
     "title": "Premium Business Services",
     "subtitle": "Tailored solutions for global entrepreneurs and corporations",
     "services": [
       {
+        "title": "Accounting & Compliance",
+        "price": "€75 / week",
+        "description": "HK Accounting & Compliance Services",
+        "features": ["Monthly Accounting", "Tax Returns & Bookkeeping", "Annual Audit (mandatory for companies)"]
+      },
+       {
         "title": "Company Renewal",
         "price": "€2,000",
         "description": "Annual company registration renewal",

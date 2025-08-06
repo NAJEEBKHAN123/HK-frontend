@@ -90,60 +90,53 @@
     "contactText": "Ou",
     "contactLink": "contactez-nous",
     "contactSuffix": "pour plus d'informations",
-    "serviceCategories": [
-      {
-        "category": "Création d'Entreprise à Hong Kong",
-        "name": "Services d'Enregistrement d'Entreprise à Hong Kong",
-        "description": "Incorporation complète d'entreprise à Hong Kong avec conformité légale et avantages fiscaux",
-        "slug": "creation-entreprise-hong-kong",
-        "icon": "🏢",
-        "items": [
-          "Rédaction des statuts en français",
-          "Certificat d'Incorporation",
-          "Adresse officielle premium",
-          "Secrétariat local obligatoire"
-        ]
-      },
-      {
-        "category": "Comptabilité et Obligations Annuelle",
-        "name": "Services Comptables et de Conformité à Hong Kong",
-        "description": "Comptabilité professionnelle, déclarations fiscales et conformité annuelle pour entreprises",
-        "slug": "comptabilite-conformite",
-        "icon": "📊",
-        "items": [
-          "Tenue de livres comptables",
-          "Déclarations fiscales",
-          "Audit annuel (obligatoire)",
-          "Préparation des états financiers",
-          "Comptabilité mensuelle"
-        ]
-      },
-      {
-        "category": "Ouverture de Compte Bancaire",
-        "name": "Services d'Ouverture de Compte Bancaire à Hong Kong",
-        "description": "Assistance pour l'ouverture de comptes bancaires locaux et offshore avec nos partenaires privilégiés",
-        "slug": "ouverture-compte-bancaire",
-        "icon": "🏦",
-        "items": [
-          "Aide à l'ouverture de compte local ou offshore",
-          "Partenariats avec Airwallex, Statrys, Wise, Neat et autres fintechs",
-          "Préparation de lettres d'introduction bancaire"
-        ]
-      },
-      {
-        "category": "Support Francophone",
-        "name": "Assistance en Français pour Entreprises à Hong Kong",
-        "description": "Support dédié en français pour tous vos besoins d'entreprise à Hong Kong",
-        "slug": "support-francophone",
-        "icon": "🇫🇷",
-        "items": [
-          "Un contact francophone dédié",
-          "Assistance par email et WhatsApp",
-          "Services de traduction de documents",
-          "Interprétation pour réunions d'affaires"
-        ]
-      }
+  "serviceCategories": [
+  {
+    "category": "Création d'entreprise à Hong Kong",
+    "name": "Services d'enregistrement d'entreprise à Hong Kong",
+    "description": "Création complète d'une entreprise à Hong Kong avec conformité légale et avantages fiscaux",
+    "slug": "hong-kong-company-formation",
+    "icon": "🏢",
+    "items": [
+      "Rédaction des statuts en français",
+      "Certificat de constitution",
+      "Adresse de siège social premium",
+      "Secrétariat local (obligatoire à Hong Kong)",
+      "Certificat d'enregistrement de l'entreprise",
+      "Consultation initiale sur la fiscalité et la conformité"
     ]
+  },
+  {
+    "category": "Ouverture de compte bancaire",
+    "name": "Services de comptes bancaires professionnels à Hong Kong",
+    "description": "Assistance pour l'ouverture de comptes bancaires locaux et offshore avec des partenaires privilégiés",
+    "slug": "bank-account-opening",
+    "icon": "🏦",
+    "items": [
+      "Assistance pour l'ouverture de compte local ou offshore",
+      "Partenariats avec Airwallex, Statrys, Wise, Neat et autres fintechs",
+      "Préparation de lettres d'introduction bancaire",
+      "Assistance au pré-dépistage pour des approbations plus rapides",
+      "Revue et accompagnement pour les documents KYC"
+    ]
+  },
+  {
+    "category": "Support francophone",
+    "name": "Assistance en français pour les affaires à Hong Kong",
+    "description": "Accompagnement dédié en français pour tous vos besoins professionnels à Hong Kong",
+    "slug": "french-support",
+    "icon": "🇫🇷",
+    "items": [
+      "Un contact dédié francophone",
+      "Assistance par e-mail et WhatsApp",
+      "Services de traduction de documents",
+      "Interprétation lors de réunions professionnelles",
+      "Accompagnement étape par étape pour non-anglophones",
+      "Modèles de documents bilingues (FR/EN)"
+    ]
+  }
+]
+
   },
 
   "faq": {
@@ -1141,6 +1134,17 @@
     "title": "Services Professionnels Premium",
     "subtitle": "Solutions sur mesure pour entrepreneurs et entreprises internationales",
     "services": [
+      {
+  "title": "Comptabilité & Conformité",
+  "price": "75 € / semaine",
+  "description": "de comptabilité et de conformité à HK",
+  "features": [
+    "Comptabilité mensuelle",
+    "Déclarations fiscales & tenue des comptes",
+    "Audit annuel (obligatoire pour les entreprises)"
+  ]
+},
+
       {
         "title": "Renouvellement d'Entreprise",
         "price": "2 000 €",
